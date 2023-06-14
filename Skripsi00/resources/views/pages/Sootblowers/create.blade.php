@@ -4,7 +4,6 @@
 @include('includes.navbar')
 
 <div class="container">
-    
 <div class="content-wrapper mt-2">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -17,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('edg_system.index')}}" class="text-primary mx-2">
-                                EDG System
+                                Sootblowers System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -44,7 +43,7 @@
                             <div class="mb-2">
                                 <a href="{{route('edg_system.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
-                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form EDG System</h6>
+                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Sootblowers System</h6>
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">
                                 <div class="form-group mb-2 mx-3">

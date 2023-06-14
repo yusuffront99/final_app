@@ -29,6 +29,7 @@ use App\Http\Controllers\LFOSystem\HSDLevelController;
 use App\Http\Controllers\Print\Admin\LaporanDataController;
 use App\Http\Controllers\Profile\AuthController;
 use App\Http\Controllers\Report\Alls\AllDataController;
+use App\Http\Controllers\Sootblower\SootblowerController;
 use App\Models\Forwarding_Pump;
 use App\Models\HsdLevel;
 use App\Models\Leader;
@@ -206,6 +207,17 @@ Route::prefix('/home')
         Route::get('burner_system/data/print', [BurnerSystemController::class, 'print'])->name('burner_system.print');
         Route::get('burner_system/all_burner', [BurnerSystemController::class, 'all_view_burner'])->name('all_view_burner');
         Route::get('burner_system/one_print/{id}', [BurnerSystemController::class, 'one_print'])->name('one_print_burner');
+
+        // ==== SOOTBLOWERS SYSTEM
+        Route::get('sbl_system', [SootblowerController::class, 'index'])->name('sbl_system.index');
+        Route::get('sbl_system/create', [SootblowerController::class, 'create'])->name('sbl_system.create');
+        Route::post('sbl_system/', [SootblowerController::class, 'store'])->name('sbl_system.store');
+        Route::put('sbl_system/{id}', [SootblowerController::class, 'update'])->name('sbl_system.update');
+        Route::get('sbl_system/{id}/edit', [SootblowerController::class, 'edit'])->name('sbl_system.edit');
+        Route::get('sbl_system/data', [SootblowerController::class, 'shift_data_sootblower'])->name('sbl_system.shift_data_sootblower');
+        Route::get('sbl_system/data/print', [SootblowerController::class, 'print'])->name('sbl_system.print');
+        Route::get('sbl_system/all_sootblower', [SootblowerController::class, 'all_view_sootblower'])->name('all_view_sootblower');
+        Route::get('sbl_system/one_print/{id}', [SootblowerController::class, 'one_print'])->name('one_print_sootblower');
 
          // ==== FORWARDING PUMP
         Route::get('lfo_system/fw_pump', [FWPumpController::class, 'index'])->name('fw_pump.index');

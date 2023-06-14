@@ -15,7 +15,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                EDG System
+                                Sootblowers System
                             </span>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             <div class="row py-3 rounded m-auto">
                                 <div class="col-lg-12 col-md-12 col-sm">
                                     <div class="mb-2">
-                                        <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Laporan Emergency Diesel Generator System adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Jum'at)</small><br>
+                                        <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Laporan Sootblowers System adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Minggu)</small><br>
                                         <a href="{{route('all_view_edg')}}" class="btn btn-warning btn-sm rounded-pill btn-all-info">All Information <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                     <div class="card bg-secondary text-white p-3">

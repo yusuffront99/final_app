@@ -266,8 +266,8 @@
                 <div data-i18n="Without menu">Burner System</div>
             </a>
             </li>
-            <li class="menu-item {{Request::is('home/burner_system*') ? 'active' : ''}}">
-            <a href="{{route('burner_system.index')}}" class="menu-link">
+            <li class="menu-item {{Request::is('home/sbl_system*') ? 'active' : ''}}">
+            <a href="{{route('sbl_system.index')}}" class="menu-link">
                 <div data-i18n="Without menu">Sootblower System</div>
             </a>
             </li>

@@ -1,0 +1,679 @@
+body {
+    font-family: 'Rubik', sans-serif;
+}
+a.btn.btn-warning.btn-sm.rounded-pill.btn-all-info {
+    background: #fe3cfc;
+    border: #fe3cfc;
+}
+
+span.notif-dot.p-2.rounded-circle {
+    position: absolute;
+    padding: 5px !important;
+    top: 5px;
+    right: -10px;
+    background: #3fff74 !important;
+}
+
+span.notif-dot-lfo.p-2.rounded-circle {
+    position: absolute;
+    padding: 5px !important;
+    top: 5px;
+    right: 15px;
+    background: #3fff74 !important;
+}
+
+
+span.fw-bold.fs-4.text-primary {
+    color: #00adf1 !important;
+    text-shadow: 0.1px 0.2px 1.5px #aeaeae;
+}
+
+span.fw-bold.fs-4.text-warning {
+    color: #fff200 !important;
+    text-shadow: 0.1px 0.2px 1.5px #aeaeae;
+}
+
+.bg-base {
+    background-color: rgb(238, 236, 243);
+}
+
+.scroll {
+    display:block;
+    padding:5px;
+    margin-top:5px;
+    width:100%;
+    height:35vh;
+    overflow:auto;
+}
+
+
+/* membuat container atau wadah dari scrollbar dengan lebar 20px  */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  /* membuat background dari scrollbar */
+  /* kasih warna transparan agar lebih estetik  */
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+
+  /* membuat styling pada batang atau bar scrollbar  */
+  /* kita beri warna abu tua dengan lengkungan di sisi atas dan bawahnya  */
+  ::-webkit-scrollbar-thumb {
+    background-color: #a8bbbf;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  /* warna akan berubah menjadi abu mudah saat kursor diarahkan  */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #d2ffb0;
+  }
+
+.my-3.activity-scroll {
+    display: block;
+    overflow: auto;
+    height: 45vh;
+}
+
+input.form-control.border-input {
+    border: none;
+    font-weight: bold;
+    color: orange;
+}
+
+.show-catatan {
+    opacity: 0%;
+}
+.show {
+    opacity: 100%;
+}
+
+
+.input-text-catatan {
+    opacity: 100%;
+    &:hover {
+        color: red;
+        font-weight: 300;
+    }
+}
+
+th.op-1 {
+    width: 160px !important;
+}
+
+th.op-2 {
+    width: 150px !important;
+}
+
+th.col-email {
+    width: 170px !important;
+}
+
+th.col-spv{
+    width:160px !important;
+}
+th.ket-col.sorting{
+    text-align: center;
+    width:400px !important;
+}
+th.tgl-col, .jam-col{
+    width:150px !important;
+}
+
+th.unit-col {
+    width: 38px !important;
+}
+
+th.col-md {
+    width: 210px !important;
+}
+
+th.col-md-status.sorting {
+    text-align: center;
+    width: 210px !important;
+}
+
+th#th-col {
+    color: orange !important;
+}
+
+td.st-app {
+    color: rgb(46, 255, 39);
+    background: white;
+    padding: 2px;
+}
+td.st-wait {
+    color: rgb(221, 246, 59);
+}
+td.st-rej {
+    color: red;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
+}
+// td#st-app {
+//     background: red;
+// }
+    
+table#example{
+    table-layout:fixed;
+}
+
+.bell-notif {
+    position: absolute;
+    top: 10%;
+}
+
+.show-rejected {
+    opacity: 0%;
+}
+.show-information {
+    opacity: 100%;
+}
+
+th#col-spv {
+    padding: 5px 250px;
+}
+th#tgl_laporan {
+    padding: 0px 50px;
+}
+th#jam_laporan {
+    padding: 0px 50px;
+}
+
+hr.line-dash {
+    width: 25%;
+    margin: auto;
+    color: greenyellow;
+}
+
+.text-center.x-waiting {
+    background: #24247a;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    padding: 20px;
+    border-bottom-left-radius: 50px;
+}
+.text-center.x-working {
+    background: #24247a;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    padding: 20px;
+    border-bottom-left-radius: 50px;
+}
+
+.text-center.x-resolved {
+    background: #eada4c;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    padding: 20px;
+    border-bottom-left-radius: 50px;
+
+    .icon-resolved {
+        color: white !important;
+    }
+}
+// === CKE
+#container {
+    width: 1000px;
+    margin: 20px auto;
+}
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    min-height: 120px;
+}
+
+// border-side-rendal-op
+.border-side {
+    border-left: 5px solid greenyellow;
+}
+
+.card.bg-secondary {
+    background: #233446 !important;
+}
+
+a.btn.btn-warning.btn-sm.btn-view {
+    width: 20%;
+}
+
+.bx-notif {
+    position: absolute;
+    right: 15%;
+    top: 15%;
+}
+
+.bx-notif-sub {
+    position: absolute;
+    right: 15%;
+    top: 15%;
+}
+
+.dot {
+    background: greenyellow;
+    padding: 1px 5px;
+    border-radius: 50%;
+}
+
+th#th-col-burn1 {
+    width: 190px !important;
+}
+
+th#th-col-informasi {
+    color: orange !important;
+    width: 200px !important;
+}
+
+th.common-info {
+    width: 200px !important;
+}
+
+th.common-info1 {
+    width: 280px !important;
+}
+th.common-information {
+    width: 350px !important;
+}
+th.common-information-lg {
+    width: 400px !important;
+}
+#bell-waiting {
+    position: absolute;
+    background: red;
+    top: 1%;
+    left: 3%;
+    padding: 0px 5px;
+    border-radius: 29px;
+    color: white;
+    animation:shake 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+   }
+
+i.bx.bx-alarm-snooze.icon-bg1 {
+    position: absolute;
+    font-size: 4.5rem;
+    left: 20px;
+    top: 20px;
+    opacity: 30%;
+}
+
+i.bx.bx-alarm-snooze.icon-bg2 {
+    position: absolute;
+    font-size: 4.5rem;
+    left: 27%;
+    top: 4%;
+    opacity: 30%;
+}
+
+i.bx.bx-alarm-snooze.icon-bg3 {
+    position: absolute;
+    font-size: 4.5rem;
+    left: 52%;
+    top: 4%;
+    opacity: 30%;
+}
+
+@media screen and (max-width: 800px) {
+    i.bx.bx-alarm-snooze.icon-bg2 {
+        position: absolute;
+        font-size: 4.5rem;
+        left: 52%;
+        top: 4%;
+        opacity: 30%;
+    }
+}
+@media screen and (max-width: 768px) {
+    i.bx.bx-alarm-snooze.icon-bg2 {
+        position: absolute;
+        font-size: 4.5rem;
+        left: 27%;
+        top: 4%;
+        opacity: 30%
+    }
+}
+
+@media screen and (max-width: 640px) {
+    i.bx.bx-alarm-snooze.icon-bg2 {
+        position: absolute;
+        font-size: 4.5rem;
+        left: 36%;
+        top: 4%;
+        opacity: 30%;
+    }
+
+    i.bx.bx-alarm-snooze.icon-bg3 {
+        position: absolute;
+        font-size: 4.5rem;
+        left: 69%;
+        top: 4%;
+        opacity: 30%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    i.bx.bx-alarm-snooze.icon-bg2 {
+        position: absolute;
+        font-size: 4.5rem;
+        left: 5.5%;
+        top: 17%;
+        opacity: 30%;
+    }
+
+    i.bx.bx-alarm-snooze.icon-bg3 {
+        position: absolute;
+        font-size: 4.5rem;
+        left: 5.5%;
+        top: 31%;
+        opacity: 30%;
+    }
+}
+
+// ============== HAR NOTIFS
+
+.rounded.text-white.bg-core-burner {
+    background: #ff3e1d;
+    display: relative;
+
+    .back-bg {
+        position: relative;
+
+        i.bx.bxs-package {
+            font-size: 10rem;
+            position: absolute;
+            right: -1%;
+            opacity: 15%;
+            color: #641010;
+        }
+    }
+
+    .icon {
+        position: relative;
+        padding: 20px;
+        background: white;
+        border-radius: 10%;
+        color: #f64040;
+    }
+    a.text-white.btn-dg {
+        padding: 10px;
+        background: #af0202;
+    
+        .icon-dg {
+            padding: 20px;
+            background: white;
+            border-radius: 10%;
+            color: #af0202;
+        }
+    }
+}
+
+.rounded.text-white.bg-core-lfo {
+    background: #4499fd;
+    display: relative;
+
+    .back-bg {
+        position: relative;
+
+        i.bx.bxs-package {
+            font-size: 10rem;
+            position: absolute;
+            right: -1%;
+            opacity: 15%;
+            color: #641010;
+        }
+    }
+
+    .icon {
+        position: relative;
+        padding: 20px;
+        background: white;
+        border-radius: 10%;
+        color: #4499fd;
+    }
+    a.text-white.btn-dg {
+        padding: 10px;
+        background: #0853aa;
+    
+        .icon-dg {
+            padding: 20px;
+            background: white;
+            border-radius: 10%;
+            color: #af0202;
+        }
+    }
+}
+
+.rounded.text-white.bg-core-edg {
+    background: #26ca0f;
+    display: relative;
+
+    .back-bg {
+        position: relative;
+
+        i.bx.bxs-package {
+            font-size: 10rem;
+            position: absolute;
+            right: -1%;
+            opacity: 15%;
+            color: #641010;
+        }
+    }
+
+    .icon {
+        position: relative;
+        padding: 20px;
+        background: white;
+        border-radius: 10%;
+        color: #26ca0f;
+    }
+    a.text-white.btn-dg {
+        padding: 10px;
+        background: #167e08;
+    
+        .icon-dg {
+            padding: 20px;
+            background: white;
+            border-radius: 10%;
+            color: #26ca0f;
+        }
+    }
+}
+
+
+
+@media screen and (max-width:768px) {
+    .col-lg-4.col-md-5.col-sm-12.text-white.rounded-pill.mx-1 {
+        width: 48% !important;
+        background: #ec4949;
+        margin: 3px 0px;
+    
+        .icon-gas {
+            color: #ec4949;
+            padding: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 25%;
+        }
+    
+        .icon-lfo {
+            color: #1e94ff;
+            padding: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 25%;
+        }
+    
+        .icon-edg {
+            color: #f357ca;
+            padding: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 25%;
+        }
+    }    
+}
+
+
+// ============== HAR NOTIFS
+
+
+
+// --- UPDATED MESSAGE
+.notif-updated {
+    background: linear-gradient(314deg, #017004, #41df01);
+    padding: 25px 5px;
+    width: 30%;
+    color: white;
+    -webkit-box-shadow: -3px 5px 15px #a7a7a7;
+    box-shadow: -3px 5px 15px #a7a7a7;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    position: absolute;
+    right: 15px;
+    top: 18%;
+    z-index: 999;
+
+    div#close-btn {
+        padding: 5px 10px;
+        background: red;
+        position: absolute;
+        right: -5px;
+        top: -15%;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .notif-updated {
+        background: linear-gradient(314deg, #017004, #41df01);
+        padding: 25px 5px;
+        width: 50%;
+        color: white;
+        -webkit-box-shadow: -3px 5px 15px #a7a7a7;
+        box-shadow: -3px 5px 15px #a7a7a7;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 300;
+        position: absolute;
+        right: 90px;
+        top: -15%;
+        z-index: 999;
+    }
+    
+}
+
+// === HOME
+.card {
+    box-shadow: none !important;
+}
+
+
+// =========== DASHBOARD
+button.bg-danger.text-white.mb-2.show_confirm {
+    border: navajowhite;
+    padding: 5px 8px;
+    margin: 11px -27px;
+}
+
+
+
+// ===== DASHBOARD
+.card.text-white.bg1 {
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(50,216,157,1) 67%);
+
+    i.bx.bx-calculator {
+        font-size: 5.5rem;
+        position: absolute;
+        left: 0%;
+        opacity: 25%;
+    }
+}
+
+.card.text-white.bg2 {
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(50,143,216,1) 67%);
+
+    i.bx.bx-calculator {
+        font-size: 5.5rem;
+        position: absolute;
+        left: 0%;
+        opacity: 25%;
+    }
+}
+
+.card.text-white.bg3 {
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(244,79,47,1) 67%);
+    
+    i.bx.bx-calculator {
+        font-size: 5.5rem;
+        position: absolute;
+        left: 0%;
+        opacity: 25%;
+    }
+}
+
+.card.text-white.bg4 {
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(200,18,196,1) 70%);
+
+    i.bx.bx-calculator {
+        font-size: 5.5rem;
+        position: absolute;
+        left: 0%;
+        opacity: 25%;
+    }
+}
+
+.card.text-white.bg5 {
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(196,200,18,1) 46%);
+
+    i.bx.bx-calculator {
+        font-size: 5.5rem;
+        position: absolute;
+        left: 0%;
+        opacity: 25%;
+    }
+}
+
+.card.text-white.bg6 {
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(89,200,18,1) 48%);
+
+    i.bx.bx-calculator {
+        font-size: 5.5rem;
+        position: absolute;
+        left: 0%;
+        opacity: 25%;
+    }
+}
+
+
+// ------ NEW UPDATED CODES
+@-webkit-keyframes blinker {
+    from {opacity: 1.0;}
+    to {opacity: 0.0;}
+}
+.blink{
+    position: absolute;
+    text-decoration: blink;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:ease-in-out;
+    -webkit-animation-direction: alternate;
+}

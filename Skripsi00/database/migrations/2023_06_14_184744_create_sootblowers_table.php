@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sootblowers', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary()->unique();
             $table->foreignUuid('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('operator_kedua');
             $table->string('atasan');

@@ -21,6 +21,12 @@
     <meta name="description" content="" />
 
     @include('includes.style')
+
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>

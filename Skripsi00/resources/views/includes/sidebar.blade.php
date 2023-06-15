@@ -255,7 +255,7 @@
     {{-- OPERATOR BOILER --}}
 
     @elseif (Auth::user()->jabatan == 'Operator Boiler')
-    <li class="menu-item {{Request::is('home/lfo_system*') || Request::is('home/burner_system*') || Request::is('home/co_boiler*')  ? 'active' : ''}}">
+    <li class="menu-item {{Request::is('home/lfo_system*') || Request::is('home/sbl_system*') || Request::is('home/burner_system*') || Request::is('home/co_boiler*')  ? 'active' : ''}}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
             <div data-i18n="Layouts">Reports</div>

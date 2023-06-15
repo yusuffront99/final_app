@@ -34,7 +34,7 @@
                 <div class="card p-3">
                     <div class="p-2">
                         <div class="d-flex justify-content-between">
-                            <a href="{{route('edg_system.create')}}" class="btn btn-sm btn-success" width="25%"><i class='bx bxs-plus-circle'></i> create EDG</a>
+                            <a href="{{route('sbl_system.create')}}" class="btn btn-sm btn-success" width="25%"><i class='bx bxs-plus-circle'></i> create SBL</a>
                             <a href="" class="btn btn-sm btn-primary">{{Carbon\carbon::createFromFormat('Y-m-d', $date)->isoFormat('D MMMM Y')}}</a>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                                             @include('commons.report_status')
                                                             @if ($dt->status_equipments->status_name == 'Rejected')
                                                                 <div class="text-center">
-                                                                    <a href="{{route('edg_system.edit', $dt->id)}}"><i class='bx bx-edit fs-4 text-danger'></i></a>
+                                                                    <a href="{{route('sbl_system.edit', $dt->id)}}"><i class='bx bx-edit fs-4 text-danger'></i></a>
                                                                     <br><small class="text-white">{{$dt->catatan}}</small>
                                                                 </div>
                                                             @endif
@@ -137,7 +137,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('edg_system.shift_data_edg')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('sbl_system.shift_data_sootblower')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -46,10 +46,8 @@ class SootblowerController extends Controller
             'tanggal_update' => 'required',
             'jam_update' => 'required',
             'unit' => 'required',
-            'sbl_type' => 'required',
-            'arus' => 'required',
             'status_equipment_id' => 'required',
-            'catatan' => 'required',
+            'catatan_peralatan' => 'required',
         ]);
 
         $sbl = new Sootblower();
@@ -61,10 +59,47 @@ class SootblowerController extends Controller
         $sbl->atasan = $request->get('atasan');
         $sbl->tanggal_update = $request->get('tanggal_update');
         $sbl->jam_update = $request->get('jam_update');
-        $sbl->sbl_type = $request->get('sbl_type');
-        $sbl->arus = $request->get('arus');
+        $sbl->status_sbl1 = $request->get('status_sbl1');
+        $sbl->status_sbl2 = $request->get('status_sbl2');
+        $sbl->status_sbl3 = $request->get('status_sbl3');
+        $sbl->status_sbl4 = $request->get('status_sbl4');
+        $sbl->status_sbl5 = $request->get('status_sbl5');
+        $sbl->status_sbl6 = $request->get('status_sbl6');
+        $sbl->status_sbl7 = $request->get('status_sbl7');
+        $sbl->status_sbl8 = $request->get('status_sbl8');
+        $sbl->status_sbl9 = $request->get('status_sbl9');
+        $sbl->status_sbl10 = $request->get('status_sbl10');
+        $sbl->status_sbl11 = $request->get('status_sbl11');
+        $sbl->status_sbl12 = $request->get('status_sbl12');
+        $sbl->status_sbl13 = $request->get('status_sbl13');
+        $sbl->status_sbl14 = $request->get('status_sbl14');
+        $sbl->status_sbl15 = $request->get('status_sbl15');
+        $sbl->status_sbl16 = $request->get('status_sbl16');
+        $sbl->status_sbl17 = $request->get('status_sbl17');
+        $sbl->status_sbl18 = $request->get('status_sbl18');
+        $sbl->status_sbl19 = $request->get('status_sbl19');
+        $sbl->status_sbl20 = $request->get('status_sbl20');
+        $sbl->status_sbl21 = $request->get('status_sbl21');
+        $sbl->status_sbl22 = $request->get('status_sbl22');
+
+        $sbl->status_sbl23 = $request->get('status_sbl34');
+        $sbl->status_sbl24 = $request->get('status_sbl24');
+        $sbl->status_sbl25 = $request->get('status_sbl25');
+        $sbl->status_sbl26 = $request->get('status_sbl26');
+        $sbl->status_sbl27 = $request->get('status_sbl27');
+        $sbl->status_sbl28 = $request->get('status_sbl28');
+        $sbl->status_sbl29 = $request->get('status_sbl29');
+        $sbl->status_sbl30 = $request->get('status_sbl30');
+        
+        $sbl->status_sbl31 = $request->get('status_sbl31');
+        $sbl->status_sbl32 = $request->get('status_sbl32');
+        $sbl->status_sbl33 = $request->get('status_sbl33');
+        $sbl->status_sbl34 = $request->get('status_sbl34');
+        $sbl->status_sbl35 = $request->get('status_sbl35');
+        $sbl->status_sbl36 = $request->get('status_sbl36');
+
         $sbl->status_equipment_id = $request->get('status_equipment_id');
-        $sbl->catatan = $request->get('catatan');
+        $sbl->catatan_peralatan = $request->get('catatan_peralatan');
 
         $sbl->save();
 

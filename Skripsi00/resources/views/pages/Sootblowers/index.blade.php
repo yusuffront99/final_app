@@ -84,7 +84,7 @@
                                                         </td>
                                                         <td class="text-white">
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</small>
-                                                            <br>
+                                                            
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
                                                             
                                                             
@@ -97,24 +97,14 @@
                                                                     
                                                                 @else
                                                                 <div class="row">
-                                                                    <div class="col-lg-6 col-md-6">
-                                                                        <div class="px-2">
-                                                                            <ul>
-                                                                                <li class="text-success">Tegangan Output</li> * {{$dt->teg_out}}
-                                                                                <li class="text-success">Frekuensi</li> * {{$dt->frekuensi}}
-                                                                                <li class="text-success">Putaran </li> * {{$dt->putaran}}
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 col-md-6">
-                                                                        <div class="px-2">
-                                                                            <ul>
-                                                                                <li class="text-success">Pressure Oli </li> * {{$dt->press_oli}}
-                                                                                <li class="text-success">Jam Start / Jam Stop </li> * {{$dt->jam_start}} / {{$dt->jam_stop}}
-                                                                                <li class="text-success">Catatan </li> * {{$dt->catatan}}
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <ul>
+                                                                            <li>Type-L (Short) : </li> @include('commons.indication_sbl_type_L')
+                                                                            <li>Type-C (Long) : </li> @include('commons.indication_sbl_type_C')
+                                                                            <li>Type-G/YB (Rotary/Swing) : </li> @include('commons.indication_sbl_type_G')
+                                                                        </ul>
+                                                                       
+                                                                </div>
                                                                 </div>
                                                                 @endif
                                                             </p>
@@ -155,7 +145,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel"><i class='bx bx-info-circle'></i> Laporan Light Fuel Oil</h1>
+            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel"><i class='bx bx-info-circle'></i> Laporan Sootblower System</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -164,26 +154,13 @@
                 <li>Laporan Dibuat : <span class="badge bg-primary rounded-pill">{{$dt->users->nama_lengkap}} / {{$dt->operator_kedua}}</span></li>
                 <li>Tanggal Laporan : <span class="badge bg-warning rounded-pill">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</span></li>
                 <li>Operator Shift : <span class="badge bg-success rounded-pill">{{$dt->operator_shift}}</span></li>
+                <li>Unit : <span class="badge bg-success rounded-pill">{{$dt->unit}}</span></li>
             </ul>
             
             <div class="fw-bold text-white text-center bg-danger rounded-pill">Informasi Laporan</div>
-            <ul>
-                <li class="fw-bold">Level BBM Awal / Level BBM Akhir</li>
-                <span class="bold">{{$dt->lev_bbm_awal}} MM / {{$dt->lev_bbm_akhir}} MM</span>
-                <li class="fw-bold">Jam Start Awal / Jam Stop</li>
-                <span class="bold">{{$dt->jam_start}} / {{$dt->jam_stop}} </span>
-                <li class="fw-bold">Tegangan Battery / Tegangan Output </li>
-                <span class="bold">{{$dt->teg_battery}} V / {{$dt->teg_out}} V</span>
-                <li class="fw-bold">Level Oli / Pressure Oli</li>
-                <span class="bold">{{$dt->lev_oli}} / {{$dt->press_oli}} </span>
-            </ul>
-            <ul>
-                <li class="fw-bold">Frekuensi / Putaran / Temperature Coolant</li>
-                <span class="bold">{{$dt->lev_bbm_awal}} MM / {{$dt->lev_bbm_akhir}} MM</span>
-                <br>
-                <li class="fw-bold">Catatan</li>
-                <span class="bold-catatan">{{$dt->catatan}}</span>
-            </ul>
+            <div class="fw-bold">
+                {!!$dt->catatan_peralatan!!}
+            </div>
             <hr>
             @empty
                 

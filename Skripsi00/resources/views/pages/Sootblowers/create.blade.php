@@ -49,28 +49,28 @@
                                 <div class="form-group mb-2 mx-3">
                                     <label for="user_id">Nama Operator I</label>
                                     <select name="user_id" id="user_id" class="form-select">
-                                        <option value="{{Auth::user()->id}}">{{Auth::user()->nama_lengkap}}</option>
+                                        <option class="checkbox" value="{{Auth::user()->id}}">{{Auth::user()->nama_lengkap}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-2 mx-3">
                                     <label for="operator_kedua">Nama Operator II <sup style="color:salmon">(*Optional)</sup></label>
                                     <select name="operator_kedua" id="operator_kedua" class="form-select">
-                                        <option value="-">-- Pilih Operator --</option>
+                                        <option class="checkbox" value="-">-- Pilih Operator --</option>
                                         @foreach ($users as $user)
-                                            <option value="{{$user->nama_lengkap}}">{{$user->nama_lengkap}}</option>
+                                            <option class="checkbox" value="{{$user->nama_lengkap}}">{{$user->nama_lengkap}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group mb-2 mx-3">
                                     <label for="">Nama Supervisor</label>
                                     <select name="atasan" id="atasan" class="form-select @error('atasan') is-invalid @enderror" name="atasan" required autocomplete="atasan">
-                                        <option value="{{Auth::user()->atasan}}">{{Auth::user()->atasan}}</option>
+                                        <option class="checkbox" value="{{Auth::user()->atasan}}">{{Auth::user()->atasan}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-2 mx-3">
                                     <label for="">Operator Shift</label>
                                     <select name="operator_shift" id="operator_shift" class="form-select @error('operator_shift') is-invalid @enderror" name="operator_shift" required autocomplete="operator_shift">
-                                        <option value="{{Auth::user()->tim_divisi}}">{{Auth::user()->tim_divisi}}</option>
+                                        <option class="checkbox" value="{{Auth::user()->tim_divisi}}">{{Auth::user()->tim_divisi}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -78,9 +78,9 @@
                                 <div class="form-group mb-2 mx-3">
                                     <label for="">Unit Pembangkit</label>
                                     <select name="unit" id="unit" class="form-select @error('unit') is-invalid @enderror" name="unit" required autocomplete="unit">
-                                        <option value="" selected hidden>-- Pilih Unit --</option>
-                                        <option value="Unit 3" id="show-form">Unit 3</option>
-                                        <option value="Unit 4">Unit 4</option>
+                                        <option class="checkbox" value="" selected hidden>-- Pilih Unit --</option>
+                                        <option class="checkbox" value="Unit 3" id="show-form">Unit 3</option>
+                                        <option class="checkbox" value="Unit 4">Unit 4</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-2 mx-3">
@@ -98,6 +98,10 @@
                                 <strong class="text-white mb-3 badge bg-danger">Sootblowers Data</strong>
                                 </div>
 
+                                <div class="my-2">
+                                <input type="checkbox" id="check-all"> <label class="text-success"> Check All <i class='bx bx-check-circle'></i></label></input>
+                                </div>
+                                
                                 <!-- FORM SBL -->
                                 <!-- type L -->
                                 <div class="row mx-auto">
@@ -111,63 +115,63 @@
                                                     <ul>
                                                         <li><div class="badge bg-warning">No 1</div></li>
                                                         <strong class="fw-bold">
-                                                        Repair <input type="checkbox" name="status_sbl1" id="status_sbl1" value="L-1">
+                                                        <input type="checkbox" name="status_sbl1" id="status_sbl1" class="checkbox" value="L-1">
                                                         </strong>
                                                         
                                                         <li><div class="badge bg-warning">No 2</div></li>
-                                                        <input type="checkbox" name="status_sbl2" id="status_sbl2" value="L-2">
+                                                        <input type="checkbox" name="status_sbl2" id="status_sbl2" class="checkbox" value="L-2">
                                                         <li><div class="badge bg-warning">No 3</div></li>
-                                                        <input type="checkbox" name="status_sbl3" id="status_sbl3" value="L-3">
+                                                        <input type="checkbox" name="status_sbl3" id="status_sbl3" class="checkbox" value="L-3">
                                                         <li><div class="badge bg-warning">No 4</div></li>
-                                                        <input type="checkbox" name="status_sbl4" id="status_sbl4" value="L-4">
+                                                        <input type="checkbox" name="status_sbl4" id="status_sbl4" class="checkbox" value="L-4">
                                                         <li><div class="badge bg-warning">No 5</div></li>
-                                                        <input type="checkbox" name="status_sbl5" id="status_sbl5" value="L-5">
+                                                        <input type="checkbox" name="status_sbl5" id="status_sbl5" class="checkbox" value="L-5">
                                                         <li><div class="badge bg-warning">No 6</div></li>
-                                                        <input type="checkbox" name="status_sbl6" id="status_sbl6" value="L-6">
+                                                        <input type="checkbox" name="status_sbl6" id="status_sbl6" class="checkbox" value="L-6">
                                                     </ul>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
                                                     <ul>
                                                         <li><div class="badge bg-warning">No 7</div></li>
-                                                        <input type="checkbox" name="status_sbl7" id="status_sbl7" value="L-7">
+                                                        <input type="checkbox" name="status_sbl7" id="status_sbl7" class="checkbox" value="L-7">
                                                         <li><div class="badge bg-warning">No 8</div></li>
-                                                        <input type="checkbox" name="status_sbl8" id="status_sbl8" value="L-8">
+                                                        <input type="checkbox" name="status_sbl8" id="status_sbl8" class="checkbox" value="L-8">
                                                         <li><div class="badge bg-warning">No 9</div></li>
-                                                        <input type="checkbox" name="status_sbl9" id="status_sbl9" value="L-9">
+                                                        <input type="checkbox" name="status_sbl9" id="status_sbl9" class="checkbox" value="L-9">
                                                         <li><div class="badge bg-warning">No 10</div></li>
-                                                        <input type="checkbox" name="status_sbl10" id="status_sbl10" value="L-10">
+                                                        <input type="checkbox" name="status_sbl10" id="status_sbl10" class="checkbox" value="L-10">
                                                         <li><div class="badge bg-warning">No 11</div></li>
-                                                        <input type="checkbox" name="status_sbl11" id="status_sbl11" value="L-11">
+                                                        <input type="checkbox" name="status_sbl11" id="status_sbl11" class="checkbox" value="L-11">
                                                         <li><div class="badge bg-warning">No 12</div></li>
-                                                        <input type="checkbox" name="status_sbl12" id="status_sbl12" value="L-12">
+                                                        <input type="checkbox" name="status_sbl12" id="status_sbl12" class="checkbox" value="L-12">
                                                     </ul>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
                                                     <ul>
                                                         <li><div class="badge bg-warning">No 13</div></li>
-                                                        <input type="checkbox" name="status_sbl13" id="status_sbl13" value="L-13">
+                                                        <input type="checkbox" name="status_sbl13" id="status_sbl13" class="checkbox" value="L-13">
                                                         <li><div class="badge bg-warning">No 14</div></li>
-                                                        <input type="checkbox" name="status_sbl14" id="status_sbl14" value="L-14">
+                                                        <input type="checkbox" name="status_sbl14" id="status_sbl14" class="checkbox" value="L-14">
                                                         <li><div class="badge bg-warning">No 15</div></li>
-                                                        <input type="checkbox" name="status_sbl15" id="status_sbl15" value="L-15">
+                                                        <input type="checkbox" name="status_sbl15" id="status_sbl15" class="checkbox" value="L-15">
                                                         <li><div class="badge bg-warning">No 16</div></li>
-                                                        <input type="checkbox" name="status_sbl16" id="status_sbl16" value="L-16">
+                                                        <input type="checkbox" name="status_sbl16" id="status_sbl16" class="checkbox" value="L-16">
                                                         <li><div class="badge bg-warning">No 17</div></li>
-                                                        <input type="checkbox" name="status_sbl17" id="status_sbl17" value="L-17">
+                                                        <input type="checkbox" name="status_sbl17" id="status_sbl17" class="checkbox" value="L-17">
                                                     </ul>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
                                                     <ul>
                                                         <li><div class="badge bg-warning">No 18</div></li>
-                                                        <input type="checkbox" name="status_sbl18" id="status_sbl18" value="L-18">
+                                                        <input type="checkbox" name="status_sbl18" id="status_sbl18" class="checkbox" value="L-18">
                                                         <li><div class="badge bg-warning">No 19</div></li>
-                                                        <input type="checkbox" name="status_sbl19" id="status_sbl19" value="L-19">
+                                                        <input type="checkbox" name="status_sbl19" id="status_sbl19" class="checkbox" value="L-19">
                                                         <li><div class="badge bg-warning">No 20</div></li>
-                                                        <input type="checkbox" name="status_sbl20" id="status_sbl9" value="L-20">
+                                                        <input type="checkbox" name="status_sbl20" id="status_sbl9" class="checkbox" value="L-20">
                                                         <li><div class="badge bg-warning">No 21</div></li>
-                                                        <input type="checkbox" name="status_sbl21" id="status_sbl21" value="L-21">
+                                                        <input type="checkbox" name="status_sbl21" id="status_sbl21" class="checkbox" value="L-21">
                                                         <li><div class="badge bg-warning">No 22</div></li>
-                                                        <input type="checkbox" name="status_sbl22" id="status_sbl22" value="L-22">
+                                                        <input type="checkbox" name="status_sbl22" id="status_sbl22" class="checkbox" value="L-22">
                                                     </ul>
                                                 </div>
                                            </div>
@@ -186,26 +190,26 @@
                                                         <div class="col-lg-6 my-2">
                                                             <ul>
                                                             <li><div class="badge bg-danger">No 23</div></li>
-                                                            <input type="checkbox" name="status_sbl23" id="status_sbl23" value="C-23">
+                                                            <input type="checkbox" name="status_sbl23" id="status_sbl23" class="checkbox" value="C-23">
                                                             <li><div class="badge bg-danger">No 24</div></li>
-                                                            <input type="checkbox" name="status_sbl24" id="status_sbl24" value="C-24">
+                                                            <input type="checkbox" name="status_sbl24" id="status_sbl24" class="checkbox" value="C-24">
                                                             <li><div class="badge bg-danger">No 25</div></li>
-                                                            <input type="checkbox" name="status_sbl25" id="status_sbl25" value="C-25">
+                                                            <input type="checkbox" name="status_sbl25" id="status_sbl25" class="checkbox" value="C-25">
                                                             <li><div class="badge bg-danger">No 26</div></li>
-                                                            <input type="checkbox" name="status_sbl26" id="status_sbl26" value="C-26">
+                                                            <input type="checkbox" name="status_sbl26" id="status_sbl26" class="checkbox" value="C-26">
                                                             </ul>
                                                         </div>
 
                                                         <div class="col-lg-6 my-2">
                                                             <ul>
                                                             <li><div class="badge bg-danger">No 27</div></li>
-                                                            <input type="checkbox" name="status_sbl27" id="status_sbl27" value="C-27">
+                                                            <input type="checkbox" name="status_sbl27" id="status_sbl27" class="checkbox" value="C-27">
                                                             <li><div class="badge bg-danger">No 28</div></li>
-                                                            <input type="checkbox" name="status_sbl28" id="status_sbl28" value="C-28">
+                                                            <input type="checkbox" name="status_sbl28" id="status_sbl28" class="checkbox" value="C-28">
                                                             <li><div class="badge bg-danger">No 29</div></li>
-                                                            <input type="checkbox" name="status_sbl29" id="status_sbl29" value="C-29">
+                                                            <input type="checkbox" name="status_sbl29" id="status_sbl29" class="checkbox" value="C-29">
                                                             <li><div class="badge bg-danger">No 30</div></li>
-                                                            <input type="checkbox" name="status_sbl30" id="status_sbl30" value="C-30">
+                                                            <input type="checkbox" name="status_sbl30" id="status_sbl30" class="checkbox" value="C-30">
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -222,21 +226,21 @@
                                                         <div class="col-lg-6 my-2">
                                                             <ul>
                                                                 <li><div class="badge bg-primary">No 31</div></li>
-                                                                <input type="checkbox" name="status_sbl31" id="status_sbl31" value="G-31">
+                                                                <input type="checkbox" name="status_sbl31" id="status_sbl31" class="checkbox" value="G-31">
                                                                 <li><div class="badge bg-primary">No 32</div></li>
-                                                                <input type="checkbox" name="status_sbl32" id="status_sbl32" value="G-32">
+                                                                <input type="checkbox" name="status_sbl32" id="status_sbl32" class="checkbox" value="G-32">
                                                                 <li><div class="badge bg-primary">No 33</div></li>
-                                                                <input type="checkbox" name="status_sbl33" id="status_sbl33" value="G-33">
+                                                                <input type="checkbox" name="status_sbl33" id="status_sbl33" class="checkbox" value="G-33">
                                                             </ul>
                                                             </div>
                                                             <div class="col-lg-6 my-2">
                                                             <ul>
                                                                 <li><div class="badge bg-primary">No 34</div></li>
-                                                                <input type="checkbox" name="status_sbl34" id="status_sbl34" value="G-34">
+                                                                <input type="checkbox" name="status_sbl34" id="status_sbl34" class="checkbox" value="G-34">
                                                                 <li><div class="badge bg-primary">No 35</div></li>
-                                                                <input type="checkbox" name="status_sbl35" id="status_sbl35" value="G-35">
+                                                                <input type="checkbox" name="status_sbl35" id="status_sbl35" class="checkbox" value="G-35">
                                                                 <li><strong class="text-danger"><div class="badge bg-primary">No 36 (Swing)</div></strong></li>
-                                                                <input type="checkbox" name="status_sbl36" id="status_sbl36" value="YB-36">
+                                                                <input type="checkbox" name="status_sbl36" id="status_sbl36" class="checkbox" value="YB-36">
                                                                 <!-- <br><br>
                                                                 <hr> -->
                                                             </ul>
@@ -258,11 +262,12 @@
                                             <trix-editor input="catatan_peralatan"></trix-editor>
                                         </div>
                                         </div>
+
                                    </div>
                                 </div>
 
 
-                                <input type="hidden" name="status_equipment_id" value="1">
+                                <input type="hidden" name="status_equipment_id" class="checkbox" value="1">
                             </div>
                             
                             <div class="d-grid gap-2 px-4 py-2">
@@ -326,6 +331,14 @@
                         }, 5000);
                     }
                 });
+            });
+
+            $("#check-all").click(function(){
+                if ( (this).checked == true ){
+                    $('.checkbox').prop('checked', true);
+                } else {
+                    $('.checkbox').prop('checked', false);
+                }
             });
         });
     </script>   

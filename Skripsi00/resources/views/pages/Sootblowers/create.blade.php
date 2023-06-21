@@ -261,13 +261,15 @@
                                             <input id="catatan_peralatan" type="hidden" name="catatan_peralatan" required>
                                             <trix-editor input="catatan_peralatan"></trix-editor>
                                         </div>
-                                        </div>
+                                    </div>
+                                    <small><span class="text-danger">Perhatian*</span> <span style="font-style: italic;">"Pastikan Data Di Ceklist & Diisi Dengan Benar"</span></small>
 
                                    </div>
                                 </div>
 
 
                                 <input type="hidden" name="status_equipment_id" class="checkbox" value="1">
+                                <input type="hidden" name="catatan_spv" value="-">
                             </div>
                             
                             <div class="d-grid gap-2 px-4 py-2">

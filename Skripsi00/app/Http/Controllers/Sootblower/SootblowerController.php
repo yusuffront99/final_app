@@ -100,6 +100,7 @@ class SootblowerController extends Controller
 
         $sbl->status_equipment_id = $request->get('status_equipment_id');
         $sbl->catatan_peralatan = $request->get('catatan_peralatan');
+        $sbl->catatan_spv = $request->get('catatan_spv');
 
         $sbl->save();
 
@@ -138,7 +139,9 @@ class SootblowerController extends Controller
     public function edit($id)
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $users = User::get();
+        $users = User::where('tim_divisi', Auth::user()->tim_divisi)
+        ->Where('jabatan', Auth::user()->jabatan)
+        ->get();
         $data_id = Sootblower::with('users')->where('id', $id)->first();
         return view('pages.Sootblowers.edit', compact('data_id', 'users', 'user'));
     }
@@ -156,25 +159,49 @@ class SootblowerController extends Controller
 
         $update->id = $update->id;
 
-        $update->nip = $request->get('nip');
         $update->user_id = $request->get('user_id');
         $update->operator_kedua = $request->get('operator_kedua');
         $update->operator_shift = $request->get('operator_shift');
         $update->atasan = $request->get('atasan');
         $update->tanggal_update = $request->get('tanggal_update');
-        $update->lev_bbm_awal = $request->get('lev_bbm_awal');
-        $update->lev_oli = $request->get('lev_oli');
-        $update->teg_battery = $request->get('teg_battery');
-        $update->jam_start = $request->get('jam_start');
-        $update->teg_out = $request->get('teg_out');
-        $update->frekuensi = $request->get('frekuensi');
-        $update->putaran = $request->get('putaran');
-        $update->temp_coolant = $request->get('temp_coolant');
-        $update->press_oli = $request->get('press_oli');
-        $update->jam_stop = $request->get('jam_stop');
-        $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
+        $update->status_sbl1 = $request->get('status_sbl1');
+        $update->status_sbl2 = $request->get('status_sbl2');
+        $update->status_sbl3 = $request->get('status_sbl3');
+        $update->status_sbl4 = $request->get('status_sbl4');
+        $update->status_sbl5 = $request->get('status_sbl5');
+        $update->status_sbl6 = $request->get('status_sbl6');
+        $update->status_sbl7 = $request->get('status_sbl7');
+        $update->status_sbl8 = $request->get('status_sbl8');
+        $update->status_sbl9 = $request->get('status_sbl9');
+        $update->status_sbl11 = $request->get('status_sbl11');
+        $update->status_sbl12 = $request->get('status_sbl12');
+        $update->status_sbl13 = $request->get('status_sbl13');
+        $update->status_sbl14 = $request->get('status_sbl14');
+        $update->status_sbl15 = $request->get('status_sbl15');
+        $update->status_sbl16 = $request->get('status_sbl16');
+        $update->status_sbl17 = $request->get('status_sbl17');
+        $update->status_sbl18 = $request->get('status_sbl18');
+        $update->status_sbl19 = $request->get('status_sbl19');
+        $update->status_sbl20 = $request->get('status_sbl20');
+        $update->status_sbl21 = $request->get('status_sbl21');
+        $update->status_sbl22 = $request->get('status_sbl22');
+        $update->status_sbl23 = $request->get('status_sbl23');
+        $update->status_sbl24 = $request->get('status_sbl24');
+        $update->status_sbl25 = $request->get('status_sbl25');
+        $update->status_sbl26 = $request->get('status_sbl26');
+        $update->status_sbl27 = $request->get('status_sbl27');
+        $update->status_sbl28 = $request->get('status_sbl28');
+        $update->status_sbl29 = $request->get('status_sbl29');
+        $update->status_sbl30 = $request->get('status_sbl30');
+        $update->status_sbl31 = $request->get('status_sbl31');
+        $update->status_sbl32 = $request->get('status_sbl32');
+        $update->status_sbl33 = $request->get('status_sbl33');
+        $update->status_sbl34 = $request->get('status_sbl34');
+        $update->status_sbl35 = $request->get('status_sbl35');
+        $update->status_sbl36 = $request->get('status_sbl36');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_peralatan = $request->get('catatan_peralatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

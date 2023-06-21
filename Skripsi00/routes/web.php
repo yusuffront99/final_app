@@ -72,6 +72,14 @@ Route::prefix('/home')
 
         Route::get('inbox/burner/data_shift', [SupervisorOpController::class, 'burner_data_shift'])->name('op.burner_data_shift');
 
+        // ==== SUPERVISOR MENU SBL
+        Route::get('inbox/sootblower', [LaporanMasuk::class, 'lmasuk_op_sootblower'])->name('lmasuk.op.sootblower');
+        Route::get('inbox/sootblower/{id}/edit', [SupervisorOpController::class, 'sootblower_validation'])->name('op.sootblower_validation');
+        Route::put('inbox/sootblower/{id}', [SupervisorOpController::class, 'sootblower_updated'])->name('op.sootblower_updated');
+        Route::get('inbox/sootblower/data', [SupervisorOpController::class, 'all_sootblower_validation'])->name('op.all_sootblower_validation');
+
+        Route::get('inbox/sootblower/data_shift', [SupervisorOpController::class, 'sootblower_data_shift'])->name('op.sootblower_data_shift');
+
         // ==== SUPERVISOR MENU EDG
         Route::get('inbox/edg', [LaporanMasuk::class, 'lmasuk_op_edg'])->name('lmasuk.op.edg');
         Route::get('inbox/edg/{id}/edit', [SupervisorOpController::class, 'edg_validation'])->name('op.edg_validation');

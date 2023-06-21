@@ -15,8 +15,8 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('lmasuk.op.burner')}}" class="text-primary mx-2">
-                                Burner System
+                            <a href="{{route('lmasuk.op.sootblower')}}" class="text-primary mx-2">
+                                Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -38,36 +38,64 @@
             <div class="row">
                 <div class="d-flex justify-content-between mb-3">
                     <div>
-                        <a href="{{route('lmasuk.op.burner')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                        <a href="{{route('lmasuk.op.sootblower')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                     </div>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="m-auto rounded">
-                    <form action="{{route('op.burner_updated', $data_id->id)}}" method="POST" class="mx-auto" id="edit-burner_system">
+                    <form action="{{route('op.sootblower_updated', $data_id->id)}}" method="POST" class="mx-auto" id="edit-sootblower-system">
                             @csrf
                             @method('put')
                             <input type="hidden" value="{{$data_id->id}}" name="id">
-                            <input type="hidden" value="{{$data_id->nip}}" name="nip">
                             <input type="hidden" value="{{$data_id->user_id}}" name="user_id">
                             <input type="hidden" value="{{$data_id->operator_kedua}}" name="operator_kedua">
                             <input type="hidden" value="{{$data_id->atasan}}" name="atasan">
                             <input type="hidden" value="{{$data_id->operator_shift}}" name="operator_shift">
                             <input type="hidden" value="{{$data_id->unit}}" name="unit">
-                            <input type="hidden" value="{{$data_id->tanggal_update}}" name="tanggal_update">
                             <input type="hidden" value="{{$data_id->jam_update}}" name="jam_update">
-                            <input type="hidden" value="{{$data_id->ket_burner1}}" name="ket_burner1">
-                            <input type="hidden" value="{{$data_id->ket_burner2}}" name="ket_burner2">
-                            <input type="hidden" value="{{$data_id->ket_burner3}}" name="ket_burner3">
-                            <input type="hidden" value="{{$data_id->ket_burner4}}" name="ket_burner4">
-                            <input type="hidden" value="{{$data_id->status_burner1}}" name="status_burner1">
-                            <input type="hidden" value="{{$data_id->status_burner2}}" name="status_burner2">
-                            <input type="hidden" value="{{$data_id->status_burner3}}" name="status_burner3">
-                            <input type="hidden" value="{{$data_id->status_burner4}}" name="status_burner4">
+                            <input type="hidden" value="{{$data_id->tanggal_update}}" name="tanggal_update">
+                            <input type="hidden" value="{{$data_id->status_sbl1}}" name="status_sbl1">
+                            <input type="hidden" value="{{$data_id->status_sbl2}}" name="status_sbl2">
+                            <input type="hidden" value="{{$data_id->status_sbl3}}" name="status_sbl3">
+                            <input type="hidden" value="{{$data_id->status_sbl4}}" name="status_sbl4">
+                            <input type="hidden" value="{{$data_id->status_sbl5}}" name="status_sbl5">
+                            <input type="hidden" value="{{$data_id->status_sbl6}}" name="status_sbl6">
+                            <input type="hidden" value="{{$data_id->status_sbl7}}" name="status_sbl7">
+                            <input type="hidden" value="{{$data_id->status_sbl8}}" name="status_sbl8">
+                            <input type="hidden" value="{{$data_id->status_sbl9}}" name="status_sbl9">
+                            <input type="hidden" value="{{$data_id->status_sbl10}}" name="status_sbl10">
+                            <input type="hidden" value="{{$data_id->status_sbl11}}" name="status_sbl11">
+                            <input type="hidden" value="{{$data_id->status_sbl12}}" name="status_sbl12">
+                            <input type="hidden" value="{{$data_id->status_sbl13}}" name="status_sbl13">
+                            <input type="hidden" value="{{$data_id->status_sbl14}}" name="status_sbl14">
+                            <input type="hidden" value="{{$data_id->status_sbl15}}" name="status_sbl15">
+                            <input type="hidden" value="{{$data_id->status_sbl16}}" name="status_sbl16">
+                            <input type="hidden" value="{{$data_id->status_sbl17}}" name="status_sbl17">
+                            <input type="hidden" value="{{$data_id->status_sbl18}}" name="status_sbl18">
+                            <input type="hidden" value="{{$data_id->status_sbl19}}" name="status_sbl19">
+                            <input type="hidden" value="{{$data_id->status_sbl20}}" name="status_sbl20">
+                            <input type="hidden" value="{{$data_id->status_sbl21}}" name="status_sbl21">
+                            <input type="hidden" value="{{$data_id->status_sbl22}}" name="status_sbl22">
+                            <input type="hidden" value="{{$data_id->status_sbl23}}" name="status_sbl23">
+                            <input type="hidden" value="{{$data_id->status_sbl24}}" name="status_sbl24">
+                            <input type="hidden" value="{{$data_id->status_sbl25}}" name="status_sbl25">
+                            <input type="hidden" value="{{$data_id->status_sbl26}}" name="status_sbl26">
+                            <input type="hidden" value="{{$data_id->status_sbl27}}" name="status_sbl27">
+                            <input type="hidden" value="{{$data_id->status_sbl28}}" name="status_sbl28">
+                            <input type="hidden" value="{{$data_id->status_sbl29}}" name="status_sbl29">
+                            <input type="hidden" value="{{$data_id->status_sbl30}}" name="status_sbl30">
+                            <input type="hidden" value="{{$data_id->status_sbl31}}" name="status_sbl31">
+                            <input type="hidden" value="{{$data_id->status_sbl32}}" name="status_sbl32">
+                            <input type="hidden" value="{{$data_id->status_sbl33}}" name="status_sbl33">
+                            <input type="hidden" value="{{$data_id->status_sbl34}}" name="status_sbl34">
+                            <input type="hidden" value="{{$data_id->status_sbl35}}" name="status_sbl35">
+                            <input type="hidden" value="{{$data_id->status_sbl36}}" name="status_sbl36">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
+                            <input type="hidden" value="{{$data_id->catatan}}" name="catatan">
 
                             <div class="p-3 card bg-secondary text-white">
-                                <h5 class="text-primary fw-bold">Validation Burner System</h5>
+                                <h5 class="text-primary fw-bold">Validation Sootblower System</h5>
                                 <br>
                                 <div class="d-flex justify-content-between">
                                     <div class="">
@@ -76,7 +104,6 @@
                                     <div class="form-group">
                                         <label for="">Status</label>
                                         <br>
-                                        {{-- @dd($status_equipments) --}}
                                         <select name="status_equipment_id" id="status_equipment_id" class="" width="50%">
                                             @foreach ($status_equipments as $status)
                                                 <option value="{{$status->id}}">{{$status->status_equipment}}</option>
@@ -89,7 +116,7 @@
                                     <tr>
                                         <th width="30%">NIP</th>
                                         <th>:</th>
-                                        <td class="text-warning">{{$data_id->nip}}</td>
+                                        <td class="text-warning">{{$data_id->users->nip}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nama Operator</th>
@@ -111,63 +138,30 @@
                                         <th>{{$data_id->operator_shift}}</th>
                                     </tr>
                                     <tr>
-                                        <th>Unit</th>
-                                        <th>:</th>
-                                        <th>{{$data_id->unit}}</th>
-                                    </tr>
-                                    <tr>
                                         <th>Tanggal Update</th>
                                         <th>:</th>
                                         <th>{{$data_id->tanggal_update}}</th>
                                     </tr>
-                                    <tr>
-                                        <th>Jam Update</th>
-                                        <th>:</th>
-                                        <th>{{$data_id->jam_update}}</th>
-                                    </tr>
                                 </table>
                                 <hr>
-                                <div class="row my-2">
-                                    <div class="col-lg col-md-6">
-                                        <strong class="text-success">Burner 1</strong>
-                                        <p>
-                                            * status : {!!$data_id->status_burner1!!}
-                                            <br>
-                                            <small class="text-danger">* Keterangan :</small> <br> {!!$data_id->ket_burner1!!}
-                                        </p>
-                                    </div>
-                                    <div class="col-lg col-md-6">
-                                        <strong class="text-success">Burner 2</strong>
-                                        <p>
-                                            * status : {!!$data_id->status_burner2!!}
-                                            <br>
-                                            <small class="text-danger">* Keterangan :</small> <br> {!!$data_id->ket_burner2!!}
-                                        </p>
-                                    </div>
-                                    <div class="col-lg col-md-6">
-                                        <strong class="text-success">Burner 3</strong>
-                                        <p>
-                                            * status : {!!$data_id->status_burner3!!}
-                                            <br>
-                                            <small class="text-danger">* Keterangan :</small> <br> {!!$data_id->ket_burner3!!}
-                                        </p>
-                                    </div>
-                                    <div class="col-lg col-md-6">
-                                        <strong class="text-success">Burner 4</strong>
-                                        <p>
-                                            * status : {!!$data_id->status_burner4!!}
-                                            <br>
-                                            <small class="text-danger">* Keterangan :</small> <br> {!!$data_id->ket_burner4!!}
-                                        </p>
-                                        
-                                    </div>
+                                <div class="fw-bold">
+                                <ul>
+                                    <li>Sootblower Type-L : </li>
+                                    @include('commons.validation_sbl_type_L')
+                                    <li>Sootblower Type-C : </li>
+                                    @include('commons.validation_sbl_type_C')
+                                    <li>Sootblower Type-G/Swing : </li>
+                                    @include('commons.validation_sbl_type_G')
+                                    <hr>
+                                    <li class="text-danger">{!!$data_id->catatan_peralatan!!}</li>
+                                </ul>
                                 </div>
                                 <hr>
                                 <div class="my-1">
                                     <div class="row">
                                         <div class="col-lg-8 mx-auto">
                                             <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
-                                            <input type="text" name="catatan" id="catatan" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                            <input type="text" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
                                         </div>
                                     </div>
                                 </div>
@@ -203,9 +197,9 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id,
+                url: 'sootblower/update/' + id,
                 method: 'POST',
-                data: $('#edit_burner_system').serialize(),
+                data: $('#edit_sootblower').serialize(),
                 dataType: 'JSON',
                 success: function(data){
                     

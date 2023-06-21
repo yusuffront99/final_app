@@ -11,17 +11,17 @@
             </div>
         </div>
     </div>
-    {{-- <div class="col-lg-3 col-md-3 col-sm-6">
+    <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="p-2 shadow-sm bg-primary rounded card-item text-center text-white">
-            <strong>Light Fuel Oil</strong>
+            <strong>Sootblower</strong>
             <i class='bx bx-alarm-snooze icon-bg2'></i>
-            <div class="fs-3 fw-bold">{{$totlfo}}</div>
+            <div class="fs-3 fw-bold">{{$totsbl}}</div>
             <small>Total Laporan</small>
             <div class="bg-white rounded">
-                <a href="{{route('op.lfo_data_shift')}}" class="text-primary">see report</a>
+                <a href="{{route('op.sootblower_data_shift')}}" class="text-primary">see report</a>
             </div>
         </div>
-    </div> --}}
+    </div>
     <div class="col-lg-3 col-md-3 col-sm-4 mb-3">
         <div class="p-2 shadow-sm bg-primary rounded card-item text-center text-white">
             <strong>Emergency Diesel</strong>

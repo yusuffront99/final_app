@@ -148,7 +148,17 @@
         <ul class="menu-sub">
             <li class="menu-item {{Request::is('home/inbox/burner*') ? 'active' : ''}}">
             <a href="{{route('lmasuk.op.burner')}}" class="menu-link">
-                <div data-i18n="Without menu">Burner Report </div>
+                <div data-i18n="Without menu">Burner System </div>
+                @if ($nb > 0)
+                <div class="bx-notif">
+                    <span class="notif-dot p-2 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" ada {{$nb}} laporan masuk"></span>
+                </div>
+                @endif
+            </a>
+            </li>
+            <li class="menu-item {{Request::is('home/inbox/sootblower*') ? 'active' : ''}}">
+            <a href="{{route('lmasuk.op.sootblower')}}" class="menu-link">
+                <div data-i18n="Without menu">Sootblower System </div>
                 @if ($nb > 0)
                 <div class="bx-notif">
                     <span class="notif-dot p-2 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" ada {{$nb}} laporan masuk"></span>
@@ -158,7 +168,7 @@
             </li>
             <li class="menu-item {{Request::is('home/inbox/edg*') ? 'active' : ''}}">
             <a href="{{route('lmasuk.op.edg')}}" class="menu-link">
-                <div data-i18n="Without menu">EDG Report</div>
+                <div data-i18n="Without menu">EDG System</div>
                 @if ($nedg > 0)
                 <div class="bx-notif">
                     <span class="notif-dot p-2 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" ada {{$nedg}} laporan masuk"></span>

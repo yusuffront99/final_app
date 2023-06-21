@@ -59,6 +59,7 @@ return new class extends Migration
             $table->string('status_sbl35')->nullable();
             $table->string('status_sbl36')->nullable();
             $table->longText('catatan_peralatan');
+            $table->text('catatan_spv');
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
             $table->timestamps();
         });

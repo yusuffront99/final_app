@@ -250,6 +250,20 @@ class LaporanMasuk extends Controller
         return view('pages.supervisor.lmasuk_har.burner.lmasuk_burner', compact('data','mon','wr', 'wmr','wf', 'rr','user'));
     }
 
+    public function lmasuk_har_sootblower()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = Sootblower::with(['users', 'status_equipments'])->whereIn('status_equipment_id', [2,4,5])->latest()->get();
+        $mon = Carbon::now()->isoFormat('MMMM Y');
+
+        $wf = Sootblower::where('status_equipment_id', 2)->count();
+        $wr = Sootblower::where('status_equipment_id', 5)->count();
+        $wmr = Sootblower::where('status_equipment_id', 4)->count();
+        $rr = Sootblower::where('status_equipment_id', 6)->count();
+
+        return view('pages.supervisor.lmasuk_har.sootblower.lmasuk_sootblower', compact('data','mon','wr', 'wmr','wf', 'rr','user'));
+    }
+
     public function lmasuk_har_hsdlevel()
     {
         $user = User::where('id', Auth::user()->id)->first();

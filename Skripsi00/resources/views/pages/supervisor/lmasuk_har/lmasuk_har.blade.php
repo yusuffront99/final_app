@@ -177,10 +177,10 @@
                                     <div class="text-center">
                                         In Processing
                                         <br>
-                                        <h2 class="fw-bold text-white">{{$wcob}}</h2>
+                                        <h2 class="fw-bold text-white">2</h2>
                                     </div>
                                 </div>
-                                <div class="text-center"><a href="{{route('lmasuk.har.coboiler')}}" class="text-white btn-dg">see report <i class='bx bx-right-arrow-circle'></i></a></div>
+                                <div class="text-center"><a href="{{route('lmasuk.har.sootblower')}}" class="text-white btn-dg">see report <i class='bx bx-right-arrow-circle'></i></a></div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-3">

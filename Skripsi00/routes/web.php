@@ -153,6 +153,12 @@ Route::prefix('/home')
         Route::put('inbox/har_burner/{id}', [SupervisorHarController::class, 'burner_updated'])->name('har.burner_updated');
         Route::get('inbox/har_burner/data', [SupervisorHarController::class, 'all_burner_validation'])->name('har.all_burner_validation');
 
+        // ===== SOOTBLOWER
+        Route::get('inbox/har_sootblower', [LaporanMasuk::class, 'lmasuk_har_sootblower'])->name('lmasuk.har.sootblower');
+        Route::get('inbox/har_sootblower/{id}/edit', [SupervisorHarController::class, 'sootblower_validation'])->name('har.sootblower_validation');
+        Route::put('inbox/har_sootblower/{id}', [SupervisorHarController::class, 'sootblower_updated'])->name('har.sootblower_updated');
+        Route::get('inbox/har_sootblower/data', [SupervisorHarController::class, 'all_sootblower_validation'])->name('har.all_sootblower_validation');
+
         // ===== EDG
         Route::get('inbox/har_edg', [LaporanMasuk::class, 'lmasuk_har_edg'])->name('lmasuk.har.edg');
         Route::get('inbox/har_edg/{id}/edit', [SupervisorharController::class, 'edg_validation'])->name('har.edg_validation');

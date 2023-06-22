@@ -14,6 +14,7 @@ use App\Models\EdgSystem;
 use App\Models\Fw_Pump;
 use App\Models\Hp_Pump;
 use App\Models\HsdLevel;
+use App\Models\Sootblower;
 use App\Models\StatusEquipment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -48,6 +49,16 @@ class SupervisorHarController extends Controller
         $status_equipments = StatusEquipment::whereIn('id', [4,5,6])->get();
 
         return view('pages.supervisor.lmasuk_har.burner.validation_burner', compact('data_id', 'users','status_equipments','user'));
+    }
+
+    protected function sootblower_validation($id)
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        $users = User::get();
+        $data_id = Sootblower::with('users')->where('id', $id)->first();
+        $status_equipments = StatusEquipment::whereIn('id', [4,5,6])->get();
+
+        return view('pages.supervisor.lmasuk_har.sootblower.validation_sootblower', compact('data_id', 'users','status_equipments','user'));
     }
 
     protected function hsdlevel_validation($id)
@@ -149,6 +160,65 @@ class SupervisorHarController extends Controller
         $update->save();
 
         return redirect()->route('lmasuk.har.burner')->with('success', 'Updated Data Successfully');;
+    }
+
+    protected function sootblower_updated(Request $request)
+    {
+        
+        $update = Sootblower::with('users')->where('id', $request->id)->first();
+
+        //uuid pake yang sebelumnya
+        $update->id = $update->id;
+
+        $update->user_id = $request->get('user_id');
+        $update->operator_kedua = $request->get('operator_kedua');
+        $update->operator_shift = $request->get('operator_shift');
+        $update->atasan = $request->get('atasan');
+        $update->unit = $request->get('unit');
+        $update->tanggal_update = $request->get('tanggal_update');
+        $update->jam_update = $request->get('jam_update');
+        $update->status_sbl1 = $request->get('status_sbl1');
+        $update->status_sbl2 = $request->get('status_sbl2');
+        $update->status_sbl3 = $request->get('status_sbl3');
+        $update->status_sbl4 = $request->get('status_sbl4');
+        $update->status_sbl5 = $request->get('status_sbl5');
+        $update->status_sbl6 = $request->get('status_sbl6');
+        $update->status_sbl7 = $request->get('status_sbl7');
+        $update->status_sbl8 = $request->get('status_sbl8');
+        $update->status_sbl9 = $request->get('status_sbl9');
+        $update->status_sbl10 = $request->get('status_sbl10');
+        $update->status_sbl11 = $request->get('status_sbl11');
+        $update->status_sbl12 = $request->get('status_sbl12');
+        $update->status_sbl13 = $request->get('status_sbl13');
+        $update->status_sbl14 = $request->get('status_sbl14');
+        $update->status_sbl15 = $request->get('status_sbl15');
+        $update->status_sbl16 = $request->get('status_sbl16');
+        $update->status_sbl17 = $request->get('status_sbl17');
+        $update->status_sbl18 = $request->get('status_sbl18');
+        $update->status_sbl19 = $request->get('status_sbl19');
+        $update->status_sbl20 = $request->get('status_sbl20');
+        $update->status_sbl21 = $request->get('status_sbl21');
+        $update->status_sbl22 = $request->get('status_sbl22');
+        $update->status_sbl23 = $request->get('status_sbl23');
+        $update->status_sbl24 = $request->get('status_sbl24');
+        $update->status_sbl25 = $request->get('status_sbl25');
+        $update->status_sbl26 = $request->get('status_sbl26');
+        $update->status_sbl27 = $request->get('status_sbl27');
+        $update->status_sbl28 = $request->get('status_sbl28');
+        $update->status_sbl29 = $request->get('status_sbl29');
+        $update->status_sbl30 = $request->get('status_sbl30');
+        $update->status_sbl31 = $request->get('status_sbl31');
+        $update->status_sbl32 = $request->get('status_sbl32');
+        $update->status_sbl33 = $request->get('status_sbl33');
+        $update->status_sbl34 = $request->get('status_sbl34');
+        $update->status_sbl35 = $request->get('status_sbl35');
+        $update->status_sbl36 = $request->get('status_sbl36');
+        $update->status_equipment_id = $request->get('status_equipment_id');
+        $update->catatan_peralatan = $request->get('catatan_peralatan');
+        $update->catatan_spv = $request->get('catatan_spv');
+        $update->save();
+
+        return redirect()->route('lmasuk.har.sootblower')->with('success', 'Updated Data Successfully');;
     }
 
     protected function hsdlevel_updated(Request $request)

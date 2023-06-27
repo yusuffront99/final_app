@@ -74,7 +74,7 @@ class HPPumpController extends Controller
         $hppump->DP_High = $request->get('DP_High');
         $hppump->info_HP = $request->get('info_HP');
         $hppump->status_equipment_id = $request->get('status_equipment_id');
-        $hppump->catatan = $request->get('catatan');
+        $hppump->catatan_spv = $request->get('catatan_spv');
 
         $hppump->save();
 
@@ -116,7 +116,7 @@ class HPPumpController extends Controller
         $update->DP_High = $request->get('DP_High');
         $update->info_HP = $request->get('info_HP');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

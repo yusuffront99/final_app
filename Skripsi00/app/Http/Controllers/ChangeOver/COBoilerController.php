@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ChangeOver;
 
 use App\Http\Controllers\Controller;
 use App\Models\CoBoiler;
+use App\Models\commons;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -26,10 +27,11 @@ class COBoilerController extends Controller
     public function create()
     {
         $user = User::where('id', Auth::user()->id)->first();
+        $common_boiler = commons::where('code_equipment','Boiler')->get();
         $users = User::where('tim_divisi', Auth::user()->tim_divisi)
         ->Where('jabatan', Auth::user()->jabatan)
         ->get();
-        return view('pages.ChangeOvers.boiler.create', compact('users','user'));
+        return view('pages.ChangeOvers.boiler.create', compact('users','user','common_boiler'));
     }
 
     public function store(Request $request)
@@ -48,7 +50,7 @@ class COBoilerController extends Controller
             'status_peralatan' => 'required',
             'status_equipment_id' => 'required',
             'keterangan' => 'required',
-            'catatan' => 'required',
+            'catatan_spv' => 'required',
         ]);
 
         $coboiler = new CoBoiler();
@@ -67,7 +69,7 @@ class COBoilerController extends Controller
         $coboiler->status_peralatan = $request->get('status_peralatan');
         $coboiler->status_equipment_id = $request->get('status_equipment_id');
         $coboiler->keterangan = $request->get('keterangan');
-        $coboiler->catatan = $request->get('catatan');
+        $coboiler->catatan_spv = $request->get('catatan_spv');
 
         $coboiler->save();
 
@@ -79,9 +81,10 @@ class COBoilerController extends Controller
     public function edit($id)
     {
         $user = User::where('id', Auth::user()->id)->first();
+        $common_boiler = commons::where('code_equipment','Boiler')->get();
         $users = User::get();
         $data_id = CoBoiler::with('users')->where('id', $id)->first();
-        return view('pages.ChangeOvers.boiler.edit', compact('data_id', 'users','user'));
+        return view('pages.ChangeOvers.boiler.edit', compact('data_id', 'users','user','common_boiler'));
     }
 
 
@@ -103,7 +106,7 @@ class COBoilerController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

@@ -92,7 +92,7 @@
                                                                 @if ($dt->status_equipments->status_name == 'Rejected')
                                                                     <div class="text-danger">
                                                                         <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki</small>
-                                                                        <br><small class="text-white">{{$dt->catatan}}</small>
+                                                                        <br><small class="text-white">{{$dt->catatan_spv}}</small>
                                                                     </div>
                                                                     
                                                                 @else
@@ -159,7 +159,7 @@
             
             <div class="fw-bold text-white text-center bg-danger rounded-pill">Informasi Laporan</div>
             <div class="fw-bold">
-                {!!$dt->catatan_peralatan!!}
+                {!!$dt->keterangan!!}
             </div>
             <hr>
             @empty

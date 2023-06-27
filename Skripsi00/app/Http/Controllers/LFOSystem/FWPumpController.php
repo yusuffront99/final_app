@@ -20,7 +20,7 @@ class FWPumpController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $data = Fw_Pump::with('users')->latest()->where('operator_shift', Auth::user()->tim_divisi)->latest()->get();
         $date = Carbon::now()->format('Y-m-d');
-        $data_latest = Fw_Pump::with('users')->orderBy('tanggal_update','asc')->take(2)->get();
+        $data_latest = Fw_Pump::with('users')->orderBy('tanggal_update','desc')->take(2)->get();
 
         return view('pages.LFOSystem.FWPump.index', compact('user','data','date','data_latest','hsd'));
     }
@@ -70,7 +70,7 @@ class FWPumpController extends Controller
         $forwarding->status_FP_B = $request->get('status_FP_B');
         $forwarding->info_FP = $request->get('info_FP');
         $forwarding->status_equipment_id = $request->get('status_equipment_id');
-        $forwarding->catatan = $request->get('catatan');
+        $forwarding->catatan_spv = $request->get('catatan_spv');
 
         $forwarding->save();
 
@@ -110,7 +110,7 @@ class FWPumpController extends Controller
         $update->status_FP_B = $request->get('status_FP_B');
         $update->info_FP = $request->get('info_FP');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

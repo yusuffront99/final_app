@@ -257,9 +257,9 @@
                                    <div class="col-12">
                                         <div class="">
                                         <div class="form-control">
-                                            <label for="catatan_peralatan">Keterangan Gangguan <small class="text-danger">*</small></label>
-                                            <input id="catatan_peralatan" type="hidden" name="catatan_peralatan" required>
-                                            <trix-editor input="catatan_peralatan"></trix-editor>
+                                            <label for="keterangan">Keterangan Gangguan <small class="text-danger">*</small></label>
+                                            <input id="keterangan" type="hidden" name="keterangan" required>
+                                            <trix-editor input="keterangan"></trix-editor>
                                         </div>
                                     </div>
                                     <small><span class="text-danger">Perhatian*</span> <span style="font-style: italic;">"Pastikan Data Di Ceklist & Diisi Dengan Benar"</span></small>

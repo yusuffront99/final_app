@@ -135,7 +135,7 @@
                                     <textarea name="keterangan" id="" cols="3" rows="2" class="form-control">{{$data_id->keterangan}}</textarea>
                                 </div>
                                 <input type="hidden" name="status_equipment_id" value="1">
-                                <input type="hidden" name="catatan" value="-">
+                                <input type="hidden" name="catatan_spv" value="-">
                             </div>
                             <div class="d-grid gap-2 px-4 py-2">
                                 <button type="submit" class="btn btn-success text-center" id="btn-save">Save</button>

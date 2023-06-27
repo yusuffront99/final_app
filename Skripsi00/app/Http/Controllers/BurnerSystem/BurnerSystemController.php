@@ -67,7 +67,7 @@ class BurnerSystemController extends Controller
             'ket_burner3' => 'required',
             'ket_burner4' => 'required',
             'status_equipment_id' => 'required',
-            'catatan' => 'required',
+            'catatan_spv' => 'required',
         ]);
 
         $burner = new BurnerSystem();
@@ -90,7 +90,7 @@ class BurnerSystemController extends Controller
         $burner->ket_burner3 = $request->get('ket_burner3');
         $burner->ket_burner4 = $request->get('ket_burner4');
         $burner->status_equipment_id = $request->get('status_equipment_id');
-        $burner->catatan = $request->get('catatan');
+        $burner->catatan_spv = $request->get('catatan_spv');
 
         $burner->save();
 
@@ -165,7 +165,7 @@ class BurnerSystemController extends Controller
         $update->ket_burner3 = $request->get('ket_burner3');
         $update->ket_burner4 = $request->get('ket_burner4');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('daily_level', 4, 2);
             $table->enum('status', ['Normal','Abnormal']);
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
-            $table->text('info_hsd');
+            $table->longText('info_hsd');
             $table->text('catatan_spv');
             $table->timestamps();
         });

@@ -104,11 +104,7 @@
                                                             
                                                             <p class="mt-4">
                                                                 @if ($dt->status_equipments->status_name == 'Rejected')
-                                                                    <div class="text-danger">                                         
-                                                                        <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki</small><br>
-                                                                        {!!$dt->catatan!!}
-                                                                    </div>
-                                                                    <hr>
+                                                                    <span class="text-danger fw-bold">Catatan : <span class="text-white">{{$dt->catatan_spv}}</span></span>
                                                                 @else
                                                                     <div class="row">
                                                                         <div class="col-auto">

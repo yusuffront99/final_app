@@ -89,7 +89,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-white">
-                                                            {{-- <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->created_at)->format('d-m-Y')}}</small> --}}
+                                                            <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->created_at)->format('d-m-Y')}}</small>
                                     
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
                                                             <small class="bg-success rounded-pill px-2 mb-2">{{$dt->created_at}}</small>
@@ -128,6 +128,10 @@
                                                                             </li>
                                                                         </ul>
                                                                     </div>
+                                                                    @if ($dt->status_equipments->status_name == 'Rejected')
+                                                                    <hr>
+                                                                    <span class="text-danger fw-bold">Catatan : <span class="text-white">{{$dt->catatan_spv}}</span></span>
+                                                                    @endif
                                                                 </div>
                                                             </p>
                                                         </td>

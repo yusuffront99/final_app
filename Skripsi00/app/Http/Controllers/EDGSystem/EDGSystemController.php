@@ -67,7 +67,7 @@ class EDGSystemController extends Controller
             'jam_stop' => 'required',
             'lev_bbm_akhir' => 'required',
             'status_equipment_id' => 'required',
-            'catatan' => 'required',
+            'catatan_spv' => 'required',
         ]);
 
         $edg = new EdgSystem();
@@ -91,7 +91,7 @@ class EDGSystemController extends Controller
         $edg->jam_stop = $request->get('jam_stop');
         $edg->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $edg->status_equipment_id = $request->get('status_equipment_id');
-        $edg->catatan = $request->get('catatan');
+        $edg->catatan_spv = $request->get('catatan_spv');
 
         $edg->save();
 
@@ -166,7 +166,7 @@ class EDGSystemController extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

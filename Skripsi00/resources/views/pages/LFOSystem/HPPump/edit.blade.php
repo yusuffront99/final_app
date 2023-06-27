@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 text-dark fw-bold">
-                                    <div class="form-group mb-2 mx-3">
+                                    <!-- <div class="form-group mb-2 mx-3">
                                         <label for="DP_High">DP High</label>
                                         <div class="row">
                                             <div class="col">
@@ -176,7 +176,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mb-2 mx-3">
                                         <label for="press_HP">Pressure HP Pump (MPA)</label>
                                         <div class="row m-auto my-1">
@@ -196,7 +196,7 @@
                                         <trix-editor input="info_HP"></trix-editor>
                                     </div>
                                     <input type="hidden" value="1" name="status_equipment_id" id="status_equipment_id">
-                                    <input type="text" name="catatan" id="catatan" value="-" hidden>
+                                    <input type="text" name="catatan_spv" id="catatan_spv" value="-" hidden>
                                 </div>
 
                                 <div class="d-grid gap-2 px-4 py-2">

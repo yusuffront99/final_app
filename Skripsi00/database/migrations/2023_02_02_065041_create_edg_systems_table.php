@@ -33,7 +33,8 @@ return new class extends Migration
             $table->string('jam_stop');
             $table->string('lev_bbm_akhir');
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
-            $table->text('catatan');
+            $table->longText('keterangan'); 
+            $table->text('catatan_spv'); 
             $table->softDeletes();
             $table->timestamps();
         });

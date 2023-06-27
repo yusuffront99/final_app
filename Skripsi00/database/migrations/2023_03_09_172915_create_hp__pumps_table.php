@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('operator_kedua');
             $table->string('atasan');
             $table->string('operator_shift');
-            $table->enum('unit', ['Unit 3', 'Unit 4', 'Common']);
+            $table->enum('unit', ['Unit 3', 'Unit 4']);
             $table->date('tanggal_update');
             $table->time('jam_update');
             $table->string('arus_HP_A');
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('DP_High');
             $table->longText('info_HP');
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
-            $table->text('catatan');
+            $table->text('catatan_spv');
             $table->softDeletes();
             $table->timestamps();
         });

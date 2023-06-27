@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ChangeOver;
 
 use App\Http\Controllers\Controller;
+use App\Models\commons;
 use App\Models\CoTurbine;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,10 +27,11 @@ class COTurbineController extends Controller
     public function create()
     {
         $user = User::where('id', Auth::user()->id)->first();
+        $common_turbine = commons::where('code_equipment','Turbine')->get();
         $users = User::where('tim_divisi', Auth::user()->tim_divisi)
         ->Where('jabatan', Auth::user()->jabatan)
         ->get();
-        return view('pages.ChangeOvers.turbine.create', compact('users','user'));
+        return view('pages.ChangeOvers.turbine.create', compact('users','user','common_turbine'));
     }
 
     public function store(Request $request)
@@ -48,7 +50,7 @@ class COTurbineController extends Controller
             'status_peralatan' => 'required',
             'status_equipment_id' => 'required',
             'keterangan' => 'required',
-            'catatan' => 'required',
+            'catatan_spv' => 'required',
         ]);
 
         $coturbine = new CoTurbine();
@@ -67,7 +69,7 @@ class COTurbineController extends Controller
         $coturbine->status_peralatan = $request->get('status_peralatan');
         $coturbine->status_equipment_id = $request->get('status_equipment_id');
         $coturbine->keterangan = $request->get('keterangan');
-        $coturbine->catatan = $request->get('catatan');
+        $coturbine->catatan_spv = $request->get('catatan_spv');
 
         $coturbine->save();
 
@@ -79,9 +81,10 @@ class COTurbineController extends Controller
     public function edit($id)
     {
         $user = User::where('id', Auth::user()->id)->first();
+        $common_turbine = commons::where('code_equipment','Turbine')->get();
         $users = User::get();
         $data_id = CoTurbine::with('users')->where('id', $id)->first();
-        return view('pages.ChangeOvers.turbine.edit', compact('data_id', 'users','user'));
+        return view('pages.ChangeOvers.turbine.edit', compact('data_id', 'users','user','common_turbine'));
     }
 
 
@@ -103,7 +106,7 @@ class COTurbineController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

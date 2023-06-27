@@ -87,7 +87,7 @@
                                                             <p class="mt-2">
                                                                 @if ($dt->status_equipments->status_name == 'Rejected')
                                                                     <div class="text-danger">
-                                                                        <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki : {{$dt->catatan}}</small>
+                                                                        <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki : {{$dt->catatan_spv}}</small>
                                                                         <br><small class="text-white">{{$dt->catatan}}</small>
                                                                     </div>
                                                                     

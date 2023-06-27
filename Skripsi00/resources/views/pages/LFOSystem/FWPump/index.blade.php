@@ -19,7 +19,7 @@
                             </span>
                             /
                             <span class="text-warning mx-2">
-                                High Pressure Pump
+                                Forwarding Pump
                             </span>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <div class="d-flex justify-content-around">
                                 @forelse ($hsd as $h)
                                 @if ($h->daily_level >= 2.0)  
-                                    <a href="{{route('hp_pump.create')}}" class="btn btn-sm btn-success" width="25%"><i class='bx bxs-plus-circle'></i> Create</a>
+                                    <a href="{{route('fw_pump.create')}}" class="btn btn-sm btn-success" width="25%"><i class='bx bxs-plus-circle'></i> Create</a>
                                 @else
                                     <button class="btn btn-sm btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><i class='bx bxs-plus-circle'></i> Create</button>
                                 @endif
@@ -92,7 +92,7 @@
                                                             
                                                             <div class="text-center">
                                                                 @if ($dt->status_equipments->status_name == 'Rejected')
-                                                                    <a href="{{route('hp_pump.edit', $dt->id)}}"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="HP Pump"><i class='bx bx-edit text-danger'></i></a>
+                                                                    <a href="{{route('fw_pump.edit', $dt->id)}}"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="HP Pump"><i class='bx bx-edit text-danger'></i></a>
                                                                 @endif
                                                             </div>
                                                         </td>
@@ -105,8 +105,8 @@
                                                             <p class="mt-4">
                                                                 @if ($dt->status_equipments->status_name == 'Rejected')
                                                                     <div class="text-danger">                                         
-                                                                        <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki</small><br>
-                                                                        {!!$dt->catatan!!}
+                                                                    
+                                                                    <span class="text-danger fw-bold">Catatan : <span class="text-white">{{$dt->catatan_spv}}</span></span>
                                                                     </div>
                                                                     <hr>
                                                                 @else
@@ -213,7 +213,7 @@
                     <li class="fw-bold text-danger">High Pressure Pump B</li>
                     <span class="bold">{{$dt->press_HP_B}} MPA / {{$dt->arus_HP_B}} A</span>
                     <li class="fw-bold">Catatan High PressurePump</li>
-                    <span class="bold">{!!$dt->info_HP!!}</span>
+                    <span class="bold">{!!$dt->info_FP!!}</span>
                 </ul>
             </div>
             <hr>

@@ -27,7 +27,7 @@ class COCommonController extends Controller
     public function create()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $commons = commons::get();
+        $commons = commons::where('code_equipment','Common')->get();
         $users = User::where('tim_divisi', Auth::user()->tim_divisi)
         ->Where('jabatan', Auth::user()->jabatan)
         ->get();
@@ -50,7 +50,7 @@ class COCommonController extends Controller
             'status_peralatan' => 'required',
             'status_equipment_id' => 'required',
             'keterangan' => 'required',
-            'catatan' => 'required',
+            'catatan_spv' => 'required',
         ]);
 
         $cocommon = new CoCommon();
@@ -69,7 +69,7 @@ class COCommonController extends Controller
         $cocommon->status_peralatan = $request->get('status_peralatan');
         $cocommon->status_equipment_id = $request->get('status_equipment_id');
         $cocommon->keterangan = $request->get('keterangan');
-        $cocommon->catatan = $request->get('catatan');
+        $cocommon->catatan_spv = $request->get('catatan_spv');
 
         $cocommon->save();
 
@@ -80,7 +80,7 @@ class COCommonController extends Controller
 
     public function edit($id)
     {
-        $commons = commons::get();
+        $commons = commons::where('code_equipment','Common')->get();
         $user = User::where('id', Auth::user()->id)->first();
         $users = User::get();
         $data_id = CoCommon::with('users')->where('id', $id)->first();
@@ -106,7 +106,7 @@ class COCommonController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

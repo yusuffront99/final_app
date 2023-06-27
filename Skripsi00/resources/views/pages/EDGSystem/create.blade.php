@@ -150,9 +150,10 @@
                                         <input type="text" name="lev_bbm_akhir" id="lev_bbm_akhir" class="form-control" placeholder="000" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label for="">Catatan</label>
-                                        <input type="text" name="catatan" id="catatan" class="form-control" required>
+                                        <label for="">Keterangan</label>
+                                        <input type="text" name="keterangan" id="keterangan" class="form-control" required>
                                     </div>
+                                    <input type="hidden" name="catatan_spv" value="-">
                                     <input type="hidden" name="status_equipment_id" id="status_equipment_id" value="1">
                                 </div>
                             </div>

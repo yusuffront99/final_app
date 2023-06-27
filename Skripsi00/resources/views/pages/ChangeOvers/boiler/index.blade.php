@@ -90,14 +90,14 @@
                                                             @if ($dt->status_equipments->status_name == 'Rejected')
                                                                 <div class="text-danger">
                                                                     <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki</small>
-                                                                    <br><small class="text-white">{{$dt->catatan}}</small>
+                                                                    <br><small class="text-white">{{$dt->catatan_spv}}</small>
                                                                 </div>
                                                                 
                                                             @else
                                                             <div class="row">
                                                                 <div class="col">
                                                                     <ul>
-                                                                        <li>Nama Peralatan : <br><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}}</div></li>
+                                                                        <li>Nama Peralatan : <br><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}} {{$dt->operasi_akhir}}</div></li>
                                                                         <li>Status Kegiatan : <br> <div class="text-success">{{$dt->status_kegiatan}}</div></li>
                                                                         <li>Alat Beroperasi : <br> <div class="text-success">Motor {{$dt->operasi_akhir}}</div></li>
                                                                     </ul>
@@ -164,7 +164,7 @@
         <div class="fw-bold text-white text-center bg-danger rounded-pill">Informasi Laporan</div>
         <ul>
             <li class="fw-bold">Nama Peralatan</li>
-            <span class="rounded-pill bg-success px-2 py-1 text-white">{{$dt->nama_peralatan}}</span>
+            <span class="rounded-pill bg-success px-2 py-1 text-white">{{$dt->nama_peralatan}} {{$dt->operasi_akhir}}</span>
             <li class="fw-bold">Tanggal Update / Jam Update</li>
             <span class="bold">{{$dt->tanggal_update}} / {{$dt->jam_update}} </span>
             <li class="fw-bold">Operasi Awal / Rencana Awal / Operasi Akhir</li>

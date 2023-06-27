@@ -259,9 +259,9 @@
                                    <div class="col-12">
                                         <div class="">
                                         <div class="form-control">
-                                            <label for="catatan_peralatan">Catatan Peralatan <small class="text-danger">*</small></label>
-                                            <input id="catatan_peralatan" type="hidden" name="catatan_peralatan" required value="{{$data_id->catatan_peralatan}}">
-                                            <trix-editor input="catatan_peralatan"></trix-editor>
+                                            <label for="keterangan">Catatan Peralatan <small class="text-danger">*</small></label>
+                                            <input id="keterangan" type="hidden" name="keterangan" required value="{{$data_id->keterangan}}">
+                                            <trix-editor input="keterangan"></trix-editor>
                                         </div>
                                         </div>
 

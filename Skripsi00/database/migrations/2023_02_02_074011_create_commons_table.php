@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('commons', function (Blueprint $table) {
             $table->id();
+            $table->char('code_equipment');
             $table->string('name_equipment');
             $table->timestamps();
         });

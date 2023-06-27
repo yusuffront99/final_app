@@ -92,7 +92,12 @@
                             <div class="col-lg-6 col-md-6 fw-bold">
                                 <div class="form-group mb-2 mx-3">
                                     <label for="nama_peralatan">Nama Peralatan</label>
-                                    <input type="text" name="nama_peralatan" id="nama_peralatan" class="form-control" placeholder="Close Loop" required>
+                                    <select name="nama_peralatan" id="nama_peralatan" class="form-select">
+                                        <option value="" selected hidden>-- Pilih Nama Peralatan</option>
+                                        @foreach ($common_turbine as $c)
+                                            <option value="{{$c->name_equipment}}" class="bg-dark">{{$c->name_equipment}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group mb-2 mx-3">
                                     <label for="">Peralatan Operasi</label>
@@ -135,7 +140,7 @@
                                     <textarea name="keterangan" id="" cols="3" rows="2" class="form-control"></textarea>
                                 </div>
                                 <input type="hidden" name="status_equipment_id" value="1">
-                                <input type="hidden" name="catatan" value="-">
+                                <input type="hidden" name="catatan_spv" value="-">
                             </div>
                             <div class="d-grid gap-2 px-4 py-2">
                                 <button type="submit" class="btn btn-success text-center" id="btn-save">Save</button>

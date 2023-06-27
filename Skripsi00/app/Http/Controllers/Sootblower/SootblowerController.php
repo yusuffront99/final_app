@@ -47,7 +47,7 @@ class SootblowerController extends Controller
             'jam_update' => 'required',
             'unit' => 'required',
             'status_equipment_id' => 'required',
-            'catatan_peralatan' => 'required',
+            'keterangan' => 'required',
         ]);
 
         $sbl = new Sootblower();
@@ -99,7 +99,7 @@ class SootblowerController extends Controller
         $sbl->status_sbl36 = $request->get('status_sbl36');
 
         $sbl->status_equipment_id = $request->get('status_equipment_id');
-        $sbl->catatan_peralatan = $request->get('catatan_peralatan');
+        $sbl->keterangan = $request->get('keterangan');
         $sbl->catatan_spv = $request->get('catatan_spv');
 
         $sbl->save();
@@ -200,7 +200,7 @@ class SootblowerController extends Controller
         $update->status_sbl35 = $request->get('status_sbl35');
         $update->status_sbl36 = $request->get('status_sbl36');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan_peralatan = $request->get('catatan_peralatan');
+        $update->keterangan = $request->get('keterangan');
         $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();

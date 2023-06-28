@@ -94,7 +94,19 @@
                                                                 @else
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
-                                                                        {!!$dt->catatan_peralatan!!}
+                                                                    <ul>
+                                                                        <li>Sootblower Type-L :</li>
+                                                                        @include('commons.indication_sbl_type_L')
+                                                                        <li>Sootblower Type-C :</li>
+                                                                        @include('commons.indication_sbl_type_C')
+                                                                        <li>Sootblower Type-G/YB :</li>
+                                                                        @include('commons.indication_sbl_type_G')
+                                                                    </ul>    
+                                                                    <hr>
+                                                                        Keterangan : 
+                                                                        <span class="text-warning">
+                                                                        {!!$dt->keterangan!!}
+                                                                        </span>
                                                                     </div>
                                                                 </div>
                                                                 @endif
@@ -117,7 +129,7 @@
                                                     @endforelse
                                             </table>
                                         </div>
-                                        <a href="{{route('op.all_burner_validation')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('op.all_sootblower_validation')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

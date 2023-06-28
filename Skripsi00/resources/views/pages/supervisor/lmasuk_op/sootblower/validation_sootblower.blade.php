@@ -153,7 +153,7 @@
                                     <li>Sootblower Type-G/Swing : </li>
                                     @include('commons.validation_sbl_type_G')
                                     <hr>
-                                    <li class="text-danger">{!!$data_id->catatan_peralatan!!}</li>
+                                    <li class="text-danger">{!!$data_id->keterangan!!}</li>
                                 </ul>
                                 </div>
                                 <hr>

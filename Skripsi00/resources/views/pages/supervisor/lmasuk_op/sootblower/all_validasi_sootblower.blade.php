@@ -15,8 +15,8 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('lmasuk.op.burner')}}" class="text-primary">
-                                Burner System
+                            <a href="{{route('lmasuk.op.sootblower')}}" class="text-primary">
+                                Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -42,10 +42,10 @@
                     <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="d-flex justify-content-between mb-3">
                             <div>
-                                <a href="{{route('lmasuk.op.burner')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                <a href="{{route('lmasuk.op.sootblower')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">BURNER SYSTEM VALIDATIONS - {{Auth::user()->tim_divisi}}</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">SOOTBLOWER SYSTEM VALIDATIONS - {{Auth::user()->tim_divisi}}</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
@@ -58,10 +58,8 @@
                                 <th class="tgl-col">Updated Date</th>
                                 <th class="jam-col">Updated Time</th>
                                 <th class="unit-col">Unit</th>
-                                <th class="common-info">Burner 1</th>
-                                <th class="common-info">Burner 2</th>
-                                <th class="common-info">Burner 3</th>
-                                <th class="common-info">Burner 4</th>
+                                <th class="common-information">Status Peralatan</th>
+                                <th class="common-information">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -73,7 +71,7 @@
                                 <tr>
                                     <td>{{$no++;}}</td>
                                     <td>
-                                        <a href="{{route('op.burner_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
+                                        <a href="{{route('op.sootblower_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
                                     <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
@@ -90,40 +88,21 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($dt->status_burner1 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner1}}</small>
+                                        <ul>
+                                            <li>Sootblower Type-L:</li>
+                                            @include('commons.indication_sbl_type_L')
+                                            
+                                            <li>Sootblower Type-C :</li>
+                                            @include('commons.indication_sbl_type_C')
+
+                                            <li>Sootblower Type-G/YB :</li>
+                                            @include('commons.indication_sbl_type_G')
+                                        </ul>
                                     </td>
                                     <td>
-                                        @if ($dt->status_burner2 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner2}}</small>
-                                    </td>
-                                    <td>
-                                        @if ($dt->status_burner3 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner3}}</small>
-                                    </td>
-                                    <td>
-                                        @if ($dt->status_burner4 == 'Ready')
-                                        <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner4}}</small>
+                                    <strong class="text-danger">
+                                    {!!$dt->keterangan!!}
+                                    </strong>
                                     </td>
                                     <td>
                                         @include('commons.report_status')

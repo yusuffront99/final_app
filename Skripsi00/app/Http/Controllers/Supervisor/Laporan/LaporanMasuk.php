@@ -22,6 +22,7 @@ class LaporanMasuk extends Controller
     public function lmasuk_op_burner()
     {
         $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
@@ -35,13 +36,11 @@ class LaporanMasuk extends Controller
         $data = BurnerSystem::with(['users', 'status_equipments'])->where('status_equipment_id', 1)->where('operator_shift', Auth::user()->tim_divisi)->latest()->get();
         $mon = Carbon::now()->isoFormat('MMMM Y');
         $totburner = BurnerSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $tothsd = HsdLevel::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id',[6,7])->count();
-        $totfw = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $tothp = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
+        $totsbl = Sootblower::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
         $totedg = EdgSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
 
         return view('pages.supervisor.lmasuk_op.burner.lmasuk_burner', 
-        compact('data','mon', 'totburner','totedg','totfw','tothp','tothsd','user','nb','nedg','nct','ncb','ncc','nfw','nhp','nhsd'));
+        compact('data','mon', 'totburner','totsbl','totedg','user','nb','nedg','nct','ncb','ncc','nfw','nhp','nhsd','nsbl'));
     }
 
     public function lmasuk_op_sootblower()
@@ -62,15 +61,34 @@ class LaporanMasuk extends Controller
         $mon = Carbon::now()->isoFormat('MMMM Y');
         $totburner = BurnerSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
         $totsbl = Sootblower::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $tothsd = HsdLevel::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id',[6,7])->count();
-        $totfw = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $tothp = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
         $totedg = EdgSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
 
         return view('pages.supervisor.lmasuk_op.sootblower.lmasuk_sootblower', 
-        compact('data','mon', 'totburner','totsbl','totedg','totfw','tothp','tothsd','user','nb','nsbl','nedg','nct','ncb','ncc','nfw','nhp','nhsd'));
+        compact('data','mon', 'totburner','totsbl','totedg','user','nb','nedg','nct','ncb','ncc','nfw','nhp','nhsd','nsbl'));
     }
 
+    public function lmasuk_op_edg()
+    {
+        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+    
+
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = EdgSystem::with(['users', 'status_equipments'])->where('status_equipment_id', 1)->where('operator_shift', Auth::user()->tim_divisi)->get();
+        $mon = Carbon::now()->isoFormat('MMMM Y');
+        $totburner = BurnerSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
+        $totsbl = Sootblower::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
+        $totedg = EdgSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
+
+        return view('pages.supervisor.lmasuk_op.edg.lmasuk_edg', compact('data','mon', 'totburner','totsbl','totedg','user','nb','nedg','nct','ncb','ncc','nfw','nhp','nhsd','nsbl'));
+    }
 
     public function lmasuk_op_hsdlevel()
     {
@@ -139,31 +157,6 @@ class LaporanMasuk extends Controller
         $tothp = Hp_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
 
         return view('pages.supervisor.lmasuk_op.lfo_system.hp_pump.lmasuk_hpp', compact('data','mon','totfw','tothp','tothsd','user', 'nb','nedg','nct','ncb','ncc','nfw','nhp','nhsd'));
-    }
-
-
-    public function lmasuk_op_edg()
-    {
-        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
-    
-
-        $user = User::where('id', Auth::user()->id)->first();
-        $data = EdgSystem::with(['users', 'status_equipments'])->where('status_equipment_id', 1)->where('operator_shift', Auth::user()->tim_divisi)->get();
-        $mon = Carbon::now()->isoFormat('MMMM Y');
-        $totburner = BurnerSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $tothsd = HsdLevel::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id',[6,7])->count();
-        $totfw = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $tothp = Hp_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-        $totedg = EdgSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->count();
-
-        return view('pages.supervisor.lmasuk_op.edg.lmasuk_edg', compact('data','mon', 'totburner','totedg','totfw','tothp','tothsd','user','nb','nedg','nct','ncb','ncc','nfw','nhp','nhsd'));
     }
 
     public function lmasuk_op_coturbine()

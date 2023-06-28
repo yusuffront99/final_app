@@ -11,6 +11,7 @@ use App\Models\EdgSystem;
 use App\Models\Fw_Pump;
 use App\Models\Hp_Pump;
 use App\Models\HsdLevel;
+use App\Models\Sootblower;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -46,6 +47,7 @@ class HomeController extends Controller
         $dcoc = CoCommon::with('users')->latest()->take(1)->get();
 
         $nburner = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', [1])->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', [1])->count();
         $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nhsd = HsdLevel::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
@@ -99,6 +101,7 @@ class HomeController extends Controller
 
         return view('home', [
             'nb' => $nburner,
+            'nsbl' => $nsbl,
             'nfw' => $nfw,
             'nhp' => $nhp,
             'nhsd' => $nhsd,

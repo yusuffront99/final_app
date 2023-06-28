@@ -159,9 +159,9 @@
             <li class="menu-item {{Request::is('home/inbox/sootblower*') ? 'active' : ''}}">
             <a href="{{route('lmasuk.op.sootblower')}}" class="menu-link">
                 <div data-i18n="Without menu">Sootblower System </div>
-                @if ($nb > 0)
+                @if ($nsbl > 0)
                 <div class="bx-notif">
-                    <span class="notif-dot p-2 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" ada {{$nb}} laporan masuk"></span>
+                    <span class="notif-dot p-2 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" ada {{$nsbl}} laporan masuk"></span>
                 </div>
                 @endif
             </a>

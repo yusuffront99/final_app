@@ -70,10 +70,9 @@
                                                         <th id="th-col" width="25">Status</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
+                                                <tr>
                                                         <td class="text-center">
-                                                            @if ($dt->status_equipments->status_name == 'Forwarding')
+                                                            @if ($dt->status_equipments->status_name == 'Forward')
                                                                 <a href="{{route('har.hsdlevel_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
                                                             @elseif ($dt->status_equipments->status_name == 'Waiting Material')
                                                                 <a href="{{route('har.hsdlevel_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
@@ -139,7 +138,6 @@
                                                         </tr>
                                                     </tbody>
                                                     @endforelse
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>

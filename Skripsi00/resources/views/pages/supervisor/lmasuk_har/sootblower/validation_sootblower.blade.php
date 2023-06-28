@@ -53,43 +53,8 @@
                             <input type="hidden" value="{{$data_id->unit}}" name="unit">
                             <input type="hidden" value="{{$data_id->jam_update}}" name="jam_update">
                             <input type="hidden" value="{{$data_id->tanggal_update}}" name="tanggal_update">
-                            <!-- <input type="hidden" value="{{$data_id->status_sbl1}}" name="status_sbl1">
-                            <input type="hidden" value="{{$data_id->status_sbl2}}" name="status_sbl2">
-                            <input type="hidden" value="{{$data_id->status_sbl3}}" name="status_sbl3">
-                            <input type="hidden" value="{{$data_id->status_sbl4}}" name="status_sbl4">
-                            <input type="hidden" value="{{$data_id->status_sbl5}}" name="status_sbl5">
-                            <input type="hidden" value="{{$data_id->status_sbl6}}" name="status_sbl6">
-                            <input type="hidden" value="{{$data_id->status_sbl7}}" name="status_sbl7">
-                            <input type="hidden" value="{{$data_id->status_sbl8}}" name="status_sbl8">
-                            <input type="hidden" value="{{$data_id->status_sbl9}}" name="status_sbl9">
-                            <input type="hidden" value="{{$data_id->status_sbl10}}" name="status_sbl10">
-                            <input type="hidden" value="{{$data_id->status_sbl11}}" name="status_sbl11">
-                            <input type="hidden" value="{{$data_id->status_sbl12}}" name="status_sbl12">
-                            <input type="hidden" value="{{$data_id->status_sbl13}}" name="status_sbl13">
-                            <input type="hidden" value="{{$data_id->status_sbl14}}" name="status_sbl14">
-                            <input type="hidden" value="{{$data_id->status_sbl15}}" name="status_sbl15">
-                            <input type="hidden" value="{{$data_id->status_sbl16}}" name="status_sbl16">
-                            <input type="hidden" value="{{$data_id->status_sbl17}}" name="status_sbl17">
-                            <input type="hidden" value="{{$data_id->status_sbl18}}" name="status_sbl18">
-                            <input type="hidden" value="{{$data_id->status_sbl19}}" name="status_sbl19">
-                            <input type="hidden" value="{{$data_id->status_sbl20}}" name="status_sbl20">
-                            <input type="hidden" value="{{$data_id->status_sbl21}}" name="status_sbl21">
-                            <input type="hidden" value="{{$data_id->status_sbl22}}" name="status_sbl22">
-                            <input type="hidden" value="{{$data_id->status_sbl23}}" name="status_sbl23">
-                            <input type="hidden" value="{{$data_id->status_sbl24}}" name="status_sbl24">
-                            <input type="hidden" value="{{$data_id->status_sbl25}}" name="status_sbl25">
-                            <input type="hidden" value="{{$data_id->status_sbl26}}" name="status_sbl26">
-                            <input type="hidden" value="{{$data_id->status_sbl27}}" name="status_sbl27">
-                            <input type="hidden" value="{{$data_id->status_sbl28}}" name="status_sbl28">
-                            <input type="hidden" value="{{$data_id->status_sbl29}}" name="status_sbl29">
-                            <input type="hidden" value="{{$data_id->status_sbl30}}" name="status_sbl30">
-                            <input type="hidden" value="{{$data_id->status_sbl31}}" name="status_sbl31">
-                            <input type="hidden" value="{{$data_id->status_sbl32}}" name="status_sbl32">
-                            <input type="hidden" value="{{$data_id->status_sbl33}}" name="status_sbl33">
-                            <input type="hidden" value="{{$data_id->status_sbl34}}" name="status_sbl34">
-                            <input type="hidden" value="{{$data_id->status_sbl35}}" name="status_sbl35">
-                            <input type="hidden" value="{{$data_id->status_sbl36}}" name="status_sbl36"> -->
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">                          
+                            <input type="hidden" value="-" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation Sootblower System</h5>
@@ -162,7 +127,7 @@
                                     <br><br>
                                     <li class="text-danger">
                                         <div class="text-warning">Catatan : </div>
-                                        {!!$data_id->catatan_peralatan!!}
+                                        {!!$data_id->keterangan!!}
                                     </li>
                                 </ul>
                                 </div>
@@ -186,13 +151,13 @@
                                     </div>
                                 </div>
                                 <br>
-                                <input type="hidden" name="catatan_spv" value="-">
+                                
                                 <div class="col-12">
                                     <div class="">
                                         <div class="form-control">
-                                            <label for="catatan_peralatan" class="text-primary fw-bold">Keterangan Gangguan <small class="text-danger">*</small></label>
-                                            <input id="catatan_peralatan" type="hidden" name="catatan_peralatan" value="{{$data_id->catatan_peralatan}}" required>
-                                            <trix-editor input="catatan_peralatan"></trix-editor>
+                                            <label for="keterangan" class="text-primary fw-bold">Keterangan Gangguan <small class="text-danger">*</small></label>
+                                            <input id="keterangan" type="hidden" name="keterangan" value="{{$data_id->keterangan}}" required>
+                                            <trix-editor input="keterangan"></trix-editor>
                                         </div>
                                     </div>
                                 <br>

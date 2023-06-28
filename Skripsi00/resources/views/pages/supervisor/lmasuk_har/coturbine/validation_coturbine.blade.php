@@ -61,7 +61,7 @@
                             <input type="hidden" value="{{$data_id->status_peralatan}}" name="status_peralatan">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
                             <input type="hidden" value="{{$data_id->keterangan}}" name="keterangan">
-                            <input type="hidden" value="-" name="catatan">
+                            <input type="hidden" value="-" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation CO Turbine</h5>
@@ -162,7 +162,7 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id
+                url: 'burner_system/update/' + id,
                 method: 'POST',
                 data: $('#edit_burner_system').serialize(),
                 dataType: 'JSON',

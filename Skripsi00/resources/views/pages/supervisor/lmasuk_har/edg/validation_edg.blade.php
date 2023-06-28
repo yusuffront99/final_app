@@ -65,7 +65,7 @@
                             <input type="hidden" value="{{$data_id->jam_stop}}" name="jam_stop">
                             <input type="hidden" value="{{$data_id->lev_bbm_akhir}}" name="lev_bbm_akhir">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
-                            <input type="hidden" value="{{$data_id->catatan}}" name="catatan">
+                            <input type="hidden" value="-" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation EDG System</h5>
@@ -174,7 +174,7 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id
+                url: 'burner_system/update/' + id,
                 method: 'POST',
                 data: $('#edit_burner_system').serialize(),
                 dataType: 'JSON',

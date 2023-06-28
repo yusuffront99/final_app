@@ -156,7 +156,7 @@ class SupervisorHarController extends Controller
         $update->status_burner3 = $request->get('status_burner3');
         $update->status_burner4 = $request->get('status_burner4');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
         return redirect()->route('lmasuk.har.burner')->with('success', 'Updated Data Successfully');;
@@ -214,7 +214,7 @@ class SupervisorHarController extends Controller
         $update->status_sbl35 = $request->get('status_sbl35');
         $update->status_sbl36 = $request->get('status_sbl36');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan_peralatan = $request->get('catatan_peralatan');
+        $update->keterangan = $request->get('keterangan');
         $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
@@ -261,7 +261,7 @@ class SupervisorHarController extends Controller
         $update->status_FP_B = $request->get('status_FP_B');
         $update->info_FP = $request->get('info_FP');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
         return redirect()->route('lmasuk.har.fwpump')->with('success', 'Updated Data Successfully');
@@ -289,7 +289,7 @@ class SupervisorHarController extends Controller
         $update->info_HP = $request->get('info_HP');
         $update->DP_High = $request->get('DP_High');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
         return redirect()->route('lmasuk.har.hppump')->with('success', 'Updated Data Successfully');
@@ -319,7 +319,7 @@ class SupervisorHarController extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -344,7 +344,7 @@ class SupervisorHarController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -369,7 +369,7 @@ class SupervisorHarController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -394,7 +394,7 @@ class SupervisorHarController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

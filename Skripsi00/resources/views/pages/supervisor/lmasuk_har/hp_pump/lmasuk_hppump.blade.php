@@ -72,7 +72,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td class="text-center">
-                                                            @if ($dt->status_equipments->status_name == 'Forwarding')
+                                                            @if ($dt->status_equipments->status_name == 'Forward')
                                                                 <a href="{{route('har.hppump_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
                                                             @elseif ($dt->status_equipments->status_name == 'Waiting Material')
                                                                 <a href="{{route('har.hppump_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
@@ -84,6 +84,7 @@
                                                         <td class="text-white">
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</small>
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
+                                                            <small class="bg-warning rounded-pill px-2 mb-2">{{$dt->unit}}</small>
                                                             
                                                             <p class="mt-4">
                                                                 <div class="row">

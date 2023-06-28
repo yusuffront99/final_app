@@ -67,20 +67,19 @@
                                                 
                                                     <tr>
                                                         <td class="text-center">
-                                                            @if ($dt->status_equipments->status_name == 'Forwarding')
+                                                            @if ($dt->status_equipments->status_name == 'Forward')
                                                                 <a href="{{route('har.sootblower_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
                                                             @elseif ($dt->status_equipments->status_name == 'Waiting Material')
                                                                 <a href="{{route('har.sootblower_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
                                                             @elseif ($dt->status_equipments->status_name == 'Working')
                                                                 <a href="{{route('har.sootblower_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
-                                                            {{-- @else
-                                                                - --}}
+                                                            @else
                                                             @endif
                                                         </td>
                                                         <td class="text-white">
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</small>
-                                                            
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
+                                                            <small class="bg-warning rounded-pill px-2 mb-2">{{$dt->unit}}</small>
                                                             
                                                             
                                                             <p class="mt-2">
@@ -92,7 +91,19 @@
                                                                 @else
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
-                                                                        {!!$dt->catatan_peralatan!!}
+                                                                    <ul>
+                                                                        <li>Sootblower Type-L :</li>
+                                                                        @include('commons.indication_sbl_type_L')
+                                                                        <li>Sootblower Type-C :</li>
+                                                                        @include('commons.indication_sbl_type_C')
+                                                                        <li>Sootblower Type-G/YB :</li>
+                                                                        @include('commons.indication_sbl_type_G')
+                                                                    </ul>    
+                                                                    <hr>
+                                                                        Keterangan : 
+                                                                        <span class="text-warning">
+                                                                        {!!$dt->keterangan!!}
+                                                                        </span>
                                                                     </div>
                                                                 </div>
                                                                 @endif

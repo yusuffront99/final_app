@@ -61,7 +61,7 @@
                             <input type="hidden" value="{{$data_id->DP_High}}" name="DP_High">
                             <input type="hidden" value="{{$data_id->info_FP}}" name="info_FP">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
-                            <input type="hidden" value="{{$data_id->catatan}}" name="catatan">
+                            <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation LFO System</h5>
@@ -164,7 +164,7 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id
+                url: 'burner_system/update/' + id,
                 method: 'POST',
                 data: $('#edit_burner_system').serialize(),
                 dataType: 'JSON',

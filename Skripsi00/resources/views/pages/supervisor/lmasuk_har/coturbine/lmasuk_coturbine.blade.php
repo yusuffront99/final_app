@@ -68,7 +68,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="text-center">
-                                                        @if ($dt->status_equipments->status_name == 'Forwarding')
+                                                        @if ($dt->status_equipments->status_name == 'Forward')
                                                             <a href="{{route('har.coturbine_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>
                                                         @elseif ($dt->status_equipments->status_name == 'Waiting Material')
                                                             <a href="{{route('har.coturbine_validation', $dt->id)}}" class="text-primary"><i class="bx bx-edit fs-3"></i></a>

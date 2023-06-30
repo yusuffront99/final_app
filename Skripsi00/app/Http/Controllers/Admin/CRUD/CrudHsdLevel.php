@@ -47,22 +47,14 @@ class CrudHsdLevel extends Controller
         $update->id = $update->id;
 
         $update->user_id = $request->get('user_id');
-        $update->operator_kedua = $request->get('operator_kedua');
         $update->operator_shift = $request->get('operator_shift');
-        $update->atasan = $request->get('atasan');
-        $update->unit = $request->get('unit');
-        $update->tanggal_update = $request->get('tanggal_update');
+        $update->storage_level = $request->get('storage_level');
+        $update->daily_level = $request->get('daily_level');
+        $update->status = $request->get('status');
         $update->jam_update = $request->get('jam_update');
-        $update->arus_HP_A = $request->get('arus_HP_A');
-        $update->arus_HP_B = $request->get('arus_HP_B');
-        $update->press_HP_A = $request->get('press_HP_A');
-        $update->press_HP_B = $request->get('press_HP_B');
-        $update->status_HP_A = $request->get('status_HP_A');
-        $update->status_HP_B = $request->get('status_HP_B');
-        $update->DP_High = $request->get('DP_High');
-        $update->info_HP = $request->get('info_HP');
+        $update->info_hsd = $request->get('info_hsd');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
 
         $update->save();

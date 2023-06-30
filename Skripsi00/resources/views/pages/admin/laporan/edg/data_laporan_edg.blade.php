@@ -81,7 +81,7 @@
                                 <th class="tgl-col">Jam Operasi</th>
                                 <th class="common-information text-center">Info I</th>                                
                                 <th class="common-information text-center">Info II</th>                                
-                                <th class="common-information">Catatan</th>      
+                                <th class="common-information">Keterangan</th>      
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -137,7 +137,7 @@
                                             <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
                                         </ul>
                                     </td>
-                                    <td>{{$dt->catatan}}</td>
+                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

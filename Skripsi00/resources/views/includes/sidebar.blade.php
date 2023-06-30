@@ -355,11 +355,11 @@
                 <div data-i18n="Without menu">Burner System</div>
             </a>
             </li>
-            {{-- <li class="menu-item  {{Request::is('dashboard/report/lfo*') ? 'active' : ''}}">
-            <a href="{{route('admin.index.lfo')}}" class="menu-link">
-                <div data-i18n="Without navbar">LFO System</div>
+            <li class="menu-item  {{Request::is('dashboard/report/sootblower*') ? 'active' : ''}}">
+            <a href="{{route('admin.index.sootblower')}}" class="menu-link">
+                <div data-i18n="Without navbar">Sootblower System</div>
             </a>
-            </li> --}}
+            </li>
             <li class="menu-item  {{Request::is('dashboard/report/edg*') ? 'active' : ''}}">
             <a href="{{route('admin.index.edg')}}" class="menu-link">
                 <div data-i18n="Without navbar">EDG System</div>

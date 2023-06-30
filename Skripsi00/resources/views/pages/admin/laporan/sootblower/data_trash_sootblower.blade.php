@@ -4,7 +4,7 @@
 @section('content')
 @include('includes.navbar')
     <!-- Content wrapper -->
-    <div class="content-wrapper mt-2">
+    <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="rounded-pill p-3 fw-bold">
@@ -15,12 +15,12 @@
                                 <i class='bx bxs-dashboard'></i> Dashboard
                             </a>
                             /
-                            <a href="{{route('admin.index.edg')}}" class="text-primary">
-                                Data EDG System
+                            <a href="{{route('admin.index.sootblower')}}" class="text-primary">
+                                Data Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">
-                            Trash Data
+                                Trash Data
                             </span>
                         </div>
                     </div>
@@ -38,28 +38,27 @@
                 <div class="card shadow-sm p-3 bg-light">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <a href="{{route('admin.index.edg')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="{{route('admin.index.sootblower')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
                     </div>
                     <br>
                     @include('commons.validasi_success_update')
                     <table class="table table-striped table-hovered" id="example">
-                        <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">DATA EMERGENCY DIESEL GENERATOR SYSTEM - TRASH DATA</span>
+                        <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">DATA SOOTBLOWER SYSTEM - TRASH DATA</span>
                         <thead class="table-primary">
                             <tr>
-                                <th class="op-1 text-center">Aksi</th>
+                            <th class="op-1 text-center">Aksi</th>
                                 <th>No</th>
-                                <th class="op-1 text-center">Trash In</th>
                                 <th>NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Tanggal Update</th>
-                                <th class="tgl-col">Jam Operasi</th>
-                                <th class="common-information text-center">Info I</th>                                
-                                <th class="common-information text-center">Info II</th>                                
-                                <th class="common-information">Keterangan</th>     
+                                <th class="tgl-col">Updated Date</th>
+                                <th class="jam-col">Updated Time</th>
+                                <th class="unit-col">Unit</th>
+                                <th class="common-information">Status Peralatan</th>
+                                <th class="common-information">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -72,46 +71,43 @@
                                     <td>
                                         <div class="d-flex justify-content-evenly">
                                             <div class="mt-3">
-                                                {{-- <a href="{{route('har.burner_updated', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Download"><i class='bx bxs-download'></i></a> --}}
-                                                <a href="{{route('admin.restore.edg', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
-                                                <a href="{{route('admin.delete_permanent.edg', $dt->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
+                                                {{-- <a href="{{route('admin.sootblower_updated', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Download"><i class='bx bxs-download'></i></a> --}}
+                                                <a href="{{route('admin.restore.sootblower', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
+                                                <a href="{{route('admin.delete_permanent.sootblower', $dt->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td>{{$no++;}}</td>
-                                    <td>{{$dt->deleted_at}}</td>
                                     <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
+                                    <td>{{$dt->jam_update}}</td>
                                     <td>
-                                        <ul>
-                                            <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
-                                            <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
-                                        </ul>
+                                        @if ($dt->unit == 'Unit 3')
+                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                        @else
+                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>Level BBM Awal : {{$dt->lev_bbm_awal}}</li>
-                                            <li>Tegangan Battery : {{$dt->teg_battery}}</li>
-                                            <li>Level Oli : {{$dt->lev_oli}}</li>
-                                            <li>Putaran : {{$dt->putaran}}</li>
+                                            <li>Sootblower Type-L:</li>
+                                            @include('commons.indication_sbl_type_L')
+                                            
+                                            <li>Sootblower Type-C :</li>
+                                            @include('commons.indication_sbl_type_C')
+
+                                            <li>Sootblower Type-G/YB :</li>
+                                            @include('commons.indication_sbl_type_G')
                                         </ul>
                                     </td>
                                     <td>
-                                        <ul>
-                                            <li>Level BBM Akhir : {{$dt->lev_bbm_akhir}}</li>
-                                            <li>Tegangan Output : {{$dt->teg_out}}</li>
-                                            <li>Pressure Oli : {{$dt->press_oli}}</li>
-                                            <li>Frekuensi : {{$dt->frekuensi}}</li>
-                                            <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
-                                        </ul>
-                                    </td>
-                                    <td>{{$dt->keterangan}}</td>
-                                    <td>
-                                        @include('commons.report_status')
+                                    <strong class="text-danger">
+                                    {!!$dt->keterangan!!}
+                                    </strong>
                                     </td>
                                 </tr>
                             @endforeach

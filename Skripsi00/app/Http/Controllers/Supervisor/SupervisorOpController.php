@@ -254,7 +254,7 @@ class SupervisorOpController extends Controller
         $update->status_burner3 = $request->get('status_burner3');
         $update->status_burner4 = $request->get('status_burner4');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -416,7 +416,8 @@ class SupervisorOpController extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->keterangan = $request->get('keterangan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -441,7 +442,7 @@ class SupervisorOpController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -466,7 +467,7 @@ class SupervisorOpController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 
@@ -491,7 +492,7 @@ class SupervisorOpController extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

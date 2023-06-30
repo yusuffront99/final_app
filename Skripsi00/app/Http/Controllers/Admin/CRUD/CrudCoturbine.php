@@ -48,7 +48,7 @@ class CrudCoturbine extends Controller
         $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->keterangan = $request->get('keterangan');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

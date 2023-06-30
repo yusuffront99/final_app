@@ -1,4 +1,4 @@
-@if ($dt->status_equipments->status_name == 'Forwarding')
+@if ($dt->status_equipments->status_name == 'Forward')
                                                                 <i class='bx bx-user text-primary'></i>
                                                                 <br>
                                                                 <i class='bx bx-down-arrow-alt'></i>

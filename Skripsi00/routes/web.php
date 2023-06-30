@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CRUD\CrudHpPump;
 use App\Http\Controllers\Admin\CRUD\CrudHsdLevel;
 use App\Http\Controllers\Admin\CRUD\CrudLeader;
 use App\Http\Controllers\Admin\CRUD\CrudLfo;
+use App\Http\Controllers\Admin\CRUD\CrudSootblower;
 use App\Http\Controllers\Admin\CRUD\CrudUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -336,6 +337,16 @@ Route::prefix('/dashboard')
         Route::get('report/burner/delete_permanent/{id}', [CrudBurner::class, 'delete_permanent'])->name('admin.delete_permanent.burner');
         Route::get('report/burner/restore/{id}', [CrudBurner::class, 'restore'])->name('admin.restore.burner');
 
+
+        // --- DATA LAPORAN SOOTBLOWER
+        Route::get('report/sootblower/', [CrudSootblower::class, 'index'])->name('admin.index.sootblower');
+        Route::get('report/sootblower/{id}/edit', [CrudSootblower::class, 'edit'])->name('admin.edit.sootblower');
+        Route::put('report/sootblower/{id}', [CrudSootblower::class, 'update'])->name('admin.update.sootblower');
+        Route::delete('report/sootblower/{id}', [CrudSootblower::class, 'delete'])->name('admin.delete.sootblower');
+        Route::get('report/sootblower/trash', [CrudSootblower::class, 'trash'])->name('admin.trash.sootblower');
+        Route::get('report/sootblower/delete_permanent/{id}', [CrudSootblower::class, 'delete_permanent'])->name('admin.delete_permanent.sootblower');
+        Route::get('report/sootblower/restore/{id}', [CrudSootblower::class, 'restore'])->name('admin.restore.sootblower');
+
         // =================== FORWARDINGS
         Route::get('report/forwarding/{id}/edit', [CrudLfo::class, 'edit_forwarding'])->name('admin.edit.forwarding');
         Route::put('report/forwarding/{id}', [CrudLfo::class, 'update_forwarding'])->name('admin.update.forwarding');
@@ -411,7 +422,10 @@ Route::prefix('/dashboard')
 
         // ==== PRINTS
         Route::get('report/burner/print', [LaporanDataController::class, 'laporan_burner'])->name('print.admin.laporan_burner');
-        Route::get('report/lfo/print', [LaporanDataController::class, 'laporan_lfo'])->name('print.admin.laporan_lfo');
+        Route::get('report/sootblower/print', [LaporanDataController::class, 'laporan_sootblower'])->name('print.admin.laporan_sootblower');
+        Route::get('report/hsdlevel/print', [LaporanDataController::class, 'laporan_hsdlevel'])->name('print.admin.laporan_hsdlevel');
+        Route::get('report/fwpump/print', [LaporanDataController::class, 'laporan_fwpump'])->name('print.admin.laporan_fwpump');
+        Route::get('report/hppump/print', [LaporanDataController::class, 'laporan_hppump'])->name('print.admin.laporan_hppump');
         Route::get('report/edg/print', [LaporanDataController::class, 'laporan_edg'])->name('print.admin.laporan_edg');
         Route::get('report/coturbine/print', [LaporanDataController::class, 'laporan_coturbine'])->name('print.admin.laporan_coturbine');
         Route::get('report/coboiler/print', [LaporanDataController::class, 'laporan_coboiler'])->name('print.admin.laporan_coboiler');

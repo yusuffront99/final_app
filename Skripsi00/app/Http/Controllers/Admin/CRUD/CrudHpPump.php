@@ -62,7 +62,7 @@ class CrudHpPump extends Controller
         $update->DP_High = $request->get('DP_High');
         $update->info_HP = $request->get('info_HP');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
 
         $update->save();

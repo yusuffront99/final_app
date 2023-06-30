@@ -58,10 +58,8 @@
                                 <th class="tgl-col">Updated Date</th>
                                 <th class="jam-col">Updated Time</th>
                                 <th class="unit-col">Unit</th>
-                                <th class="common-info">Burner 1</th>
-                                <th class="common-info">Burner 2</th>
-                                <th class="common-info">Burner 3</th>
-                                <th class="common-info">Burner 4</th>
+                                <th class="common-information">Status Peralatan</th>
+                                <th class="common-information">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -90,40 +88,21 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($dt->status_burner1 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner1}}</small>
+                                        <ul>
+                                            <li>Sootblower Type-L:</li>
+                                            @include('commons.indication_sbl_type_L')
+                                            
+                                            <li>Sootblower Type-C :</li>
+                                            @include('commons.indication_sbl_type_C')
+
+                                            <li>Sootblower Type-G/YB :</li>
+                                            @include('commons.indication_sbl_type_G')
+                                        </ul>
                                     </td>
                                     <td>
-                                        @if ($dt->status_burner2 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner2}}</small>
-                                    </td>
-                                    <td>
-                                        @if ($dt->status_burner3 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner3}}</small>
-                                    </td>
-                                    <td>
-                                        @if ($dt->status_burner4 == 'Ready')
-                                        <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner4}}</small>
+                                    <strong class="text-danger">
+                                    {!!$dt->keterangan!!}
+                                    </strong>
                                     </td>
                                     <td>
                                         @include('commons.report_status')

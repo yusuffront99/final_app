@@ -1,8 +1,10 @@
+
 @if ($dt->status_sbl23 == NULL)
     <small class="badge bg-success">C-23</small>
 @elseif ($dt->status_sbl23 == 'C-23')
     <div class="badge bg-danger">{{$dt->status_sbl23}}</div>
 @endif
+
 @if ($dt->status_sbl24 == NULL)
     <small class="badge bg-success">C-24</small>
 @elseif ($dt->status_sbl24 == 'C-24')

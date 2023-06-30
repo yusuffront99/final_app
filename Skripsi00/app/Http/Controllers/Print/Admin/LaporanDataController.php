@@ -10,7 +10,11 @@ use App\Models\CoBoiler;
 use App\Models\CoCommon;
 use App\Models\CoTurbine;
 use App\Models\EdgSystem;
+use App\Models\Fw_Pump;
+use App\Models\Hp_Pump;
+use App\Models\HsdLevel;
 use App\Models\LfoSystem;
+use App\Models\Sootblower;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
@@ -49,11 +53,101 @@ class LaporanDataController extends Controller
         return $pdf->stream();
     }
 
-    public function laporan_lfo()
+    public function laporan_sootblower()
     {
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = LfoSystem::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        $reports = Sootblower::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+
+        $date_now = Carbon::now()->format('Y-m-d');
+
+        $path = base_path('public/frontends/assets/img/logo/pln.png');
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $img = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $pdf = PDF::setOptions(
+            ['isHtml5ParserEnabled' => true, 
+            'isRemoteEnabled' => true,
+            ])
+            ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
+            ->setPaper('a4', 'landscape')
+            ->loadView('prints.admin.sootblower.LaporanSootblower', [
+                'img' => $img,
+                'date_now' => $date_now,
+                'reports' => $reports,
+                'date' => date('d-m-Y'),
+            ]);
+
+        // return $pdf->stream();
+        return $pdf->stream();
+    }
+
+    public function laporan_hsdlevel()
+    {
+        $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
+        $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
+        $reports = HsdLevel::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+
+        $date_now = Carbon::now()->format('Y-m-d');
+
+        $path = base_path('public/frontends/assets/img/logo/pln.png');
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $img = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $pdf = PDF::setOptions(
+            ['isHtml5ParserEnabled' => true, 
+            'isRemoteEnabled' => true,
+            ])
+            ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
+            ->setPaper('a4', 'landscape')
+            ->loadView('prints.admin.Lfo.LaporanLfo', [
+                'img' => $img,
+                'date_now' => $date_now,
+                'reports' => $reports,
+                'date' => date('d-m-Y'),
+            ]);
+
+        // return $pdf->stream();
+        return $pdf->stream();
+    }
+
+    public function laporan_hppump()
+    {
+        $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
+        $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
+        $reports = Hp_Pump::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+
+        $date_now = Carbon::now()->format('Y-m-d');
+
+        $path = base_path('public/frontends/assets/img/logo/pln.png');
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $img = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $pdf = PDF::setOptions(
+            ['isHtml5ParserEnabled' => true, 
+            'isRemoteEnabled' => true,
+            ])
+            ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
+            ->setPaper('a4', 'landscape')
+            ->loadView('prints.admin.Lfo.LaporanLfo', [
+                'img' => $img,
+                'date_now' => $date_now,
+                'reports' => $reports,
+                'date' => date('d-m-Y'),
+            ]);
+
+        // return $pdf->stream();
+        return $pdf->stream();
+    }
+
+    public function laporan_fwpump()
+    {
+        $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
+        $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
+        $reports = Fw_Pump::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
 
         $date_now = Carbon::now()->format('Y-m-d');
 

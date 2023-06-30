@@ -11,7 +11,7 @@ class HsdLevel extends Model
 {
     use HasFactory;
     use Uuids;
-    // use SoftDeletes;
+    use SoftDeletes;
 
     protected $guarded = [];
 

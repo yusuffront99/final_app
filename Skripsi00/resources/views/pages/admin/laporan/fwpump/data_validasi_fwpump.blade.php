@@ -155,7 +155,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <input type="text" name="catatan" id="catatan" value="-" hidden>
+                                    <input type="text" name="catatan_spv" id="catatan_spv" value="-" hidden>
                                 </div>
 
                                 <div class="d-grid gap-2 px-4 py-2">

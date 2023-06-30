@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
             $table->longText('info_hsd');
             $table->text('catatan_spv');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

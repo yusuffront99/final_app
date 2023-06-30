@@ -166,7 +166,7 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id
+                url: 'burner_system/update/' + id,
                 method: 'POST',
                 data: $('#edit_burner_system').serialize(),
                 dataType: 'JSON',

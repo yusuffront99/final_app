@@ -60,7 +60,7 @@ class CrudFwPump extends Controller
         $update->status_FP_B = $request->get('status_FP_B');
         $update->info_FP = $request->get('info_FP');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
 
         $update->save();

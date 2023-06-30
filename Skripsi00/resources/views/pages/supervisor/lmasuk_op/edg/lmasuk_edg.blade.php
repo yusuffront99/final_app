@@ -60,7 +60,7 @@
                                         
                                         
                                         <div class="scroll">
-                                            <table>
+                                            <table class="table table-hovered">
                                                 @forelse ($data as $dt)
                                                 <thead class="text-center mb-4">
                                                     <tr>
@@ -69,7 +69,7 @@
                                                         <th id="th-col" width="35%">Status</th>
                                                     </tr>
                                                 </thead>
-                                                
+                                                <tbody>
                                                     <tr>
                                                         <td>
                                                             @if ($dt->status_equipments->status_name == 'Waiting')

@@ -61,7 +61,7 @@ class CrudBurner extends Controller
         $update->ket_burner3 = $request->get('ket_burner3');
         $update->ket_burner4 = $request->get('ket_burner4');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

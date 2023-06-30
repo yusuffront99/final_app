@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <form action="{{route('print.admin.laporan_lfo')}}" method="GET" target="_blank">
+                            <form action="{{route('print.admin.laporan_hppump')}}" method="GET" target="_blank">
                                 <div class="input-group mb-3">
                                     <input type="date" class="form-control" name="first_date" required>
                                     <input type="date" class="form-control" name="last_date" required>

@@ -68,7 +68,8 @@
                             <input type="hidden" value="{{$data_id->jam_stop}}" name="jam_stop">
                             <input type="hidden" value="{{$data_id->lev_bbm_akhir}}" name="lev_bbm_akhir">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
-                            <input type="hidden" value="{{$data_id->catatan}}" name="catatan">
+                            <input type="hidden" value="{{$data_id->keterangan}}" name="keterangan">
+                            <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation EDG System</h5>
@@ -151,7 +152,7 @@
                                     <div class="row">
                                         <div class="col-lg-8 mx-auto">
                                             <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
-                                            <input type="text" name="catatan" id="catatan" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                            <input type="text" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +188,7 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id
+                url: 'burner_system/update/' + id,
                 method: 'POST',
                 data: $('#edit_burner_system').serialize(),
                 dataType: 'JSON',

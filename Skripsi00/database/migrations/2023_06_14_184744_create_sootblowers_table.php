@@ -61,6 +61,7 @@ return new class extends Migration
             $table->longText('keterangan');
             $table->text('catatan_spv');
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

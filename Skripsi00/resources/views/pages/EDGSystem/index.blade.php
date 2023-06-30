@@ -111,7 +111,7 @@
                                                                             <ul>
                                                                                 <li class="text-success">Pressure Oli </li> * {{$dt->press_oli}}
                                                                                 <li class="text-success">Jam Start / Jam Stop </li> * {{$dt->jam_start}} / {{$dt->jam_stop}}
-                                                                                <li class="text-success">Catatan </li> * {{$dt->catatan}}
+                                                                                <li class="text-success">Keterangan </li> * {{$dt->keterangan}}
                                                                             </ul>
                                                                         </div>
                                                                     </div>
@@ -176,14 +176,13 @@
                 <span class="bold">{{$dt->teg_battery}} V / {{$dt->teg_out}} V</span>
                 <li class="fw-bold">Level Oli / Pressure Oli</li>
                 <span class="bold">{{$dt->lev_oli}} / {{$dt->press_oli}} </span>
-            </ul>
-            <ul>
                 <li class="fw-bold">Frekuensi / Putaran / Temperature Coolant</li>
                 <span class="bold">{{$dt->lev_bbm_awal}} MM / {{$dt->lev_bbm_akhir}} MM</span>
                 <br>
                 <li class="fw-bold">Catatan</li>
-                <span class="bold-catatan">{{$dt->catatan}}</span>
+                <span class="bold-catatan">{{$dt->keterangan}}</span>
             </ul>
+        
             <hr>
             @empty
                 

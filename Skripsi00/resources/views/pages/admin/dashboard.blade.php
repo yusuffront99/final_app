@@ -24,14 +24,14 @@
             </div>
         </div>
 
-        {{-- ======== --}}
+      
         <div class="card bg-light p-2">
             <small class="p-2 fs-6 fw-bold text-primary">DATA INFORMASI & STATISTIK </small>
             <hr>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-lg-6 mb-2">
+                        <div class="col-lg-4 mb-2">
                             <div class="shadow-sm p-2 text-center border border-danger">
                                 <small class="bg-danger py-1 px-3 text-white rounded-pill"><i class='bx bxs-hot' ></i> Burner System</small><br>
                                 <strong class="my-4">Total Laporan</strong>
@@ -41,31 +41,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-2">
-                            <div class="shadow-sm p-2 text-center border border-secondary">
-                                <small class="bg-secondary py-1 px-3 text-white rounded-pill text-white"><i class='bx bxl-steam' ></i> CO Boiler</small><br>
+
+                        <div class="col-lg-4 mb-2">
+                            <div class="shadow-sm p-2 text-center border border-primary">
+                                <small class="bg-primary py-1 px-3 text-white rounded-pill"><i class='bx bxs-car-battery'></i> EDG System</small><br>
                                 <strong class="my-4">Total Laporan</strong>
-                                <div class="text-secondary text-center my-2">
-                                    <h2 class="text-secondary"> {{$percob}} %</h2>
-                                    <small class="bg-secondary py-1 px-4 text-white rounded-pill fw-bold">{{$pcob}}</small>
+                                <div class="text-primary text-center my-2">
+                                    <h2 class="text-primary"> {{$perbun}} %</h2>
+                                    <small class="bg-primary py-1 px-4 text-white rounded-pill fw-bold">{{$pe}}</small>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <div class="col-lg-4 mb-2">
+                            <div class="shadow-sm p-2 text-center border border-warning">
+                                <small class="bg-warning py-1 px-3 text-white rounded-pill text-white"><i class='bx bxl-steam' ></i> Sootblower System</small><br>
+                                <strong class="my-4">Total Laporan</strong>
+                                <div class="text-warning text-center my-2">
+                                    <h2 class="text-warning"> {{$percob}} %</h2>
+                                    <small class="bg-warning py-1 px-4 text-white rounded-pill fw-bold">{{$pcob}}</small>
                                 </div>
                             </div>
                         </div>
-                        
 
-
+                        <!-- ============= -->
                         
-                        {{-- <div class="col-lg-6 mb-2">
-                            <div class="shadow-sm p-2 text-center border border-warning">
-                                <small class="bg-warning py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-gas-pump'></i> LFO System</small><br>
-                                <strong class="my-4">Total Laporan</strong>
-                                <div class="text-warning text-center my-2">
-                                    <h2 class="text-warning"> {{$perlfo}} %</h2>
-                                    <small class="bg-warning py-1 px-4 text-white rounded-pill fw-bold">{{$pl}}</small>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="col-lg-6 mb-2">
+                        <div class="col-lg-4 mb-2">
                             <div class="shadow-sm p-2 text-center border border-success">
                                 <small class="bg-success py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-wind'></i> CO Turbine</small><br>
                                 <strong class="my-4">Total Laporan</strong>
@@ -76,31 +77,64 @@
                             </div>
                         </div>
 
-
-                        <div class="col-lg-6 mb-2">
-                            <div class="shadow-sm p-2 text-center border border-primary">
-                                <small class="bg-primary py-1 px-3 text-white rounded-pill"><i class='bx bxs-car-battery'></i> EDG System</small><br>
+                        <div class="col-lg-4 mb-2">
+                            <div class="shadow-sm p-2 text-center border border-success">
+                                <small class="bg-success py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-wind'></i> CO Boiler</small><br>
                                 <strong class="my-4">Total Laporan</strong>
-                                <div class="text-primary text-center my-2">
-                                    <h2 class="text-primary"> {{$perbun}} %</h2>
-                                    <small class="bg-primary py-1 px-4 text-white rounded-pill fw-bold">{{$pe}}</small>
+                                <div class="text-success text-center my-2">
+                                    <h2 class="text-success"> {{$percob}} %</h2>
+                                    <small class="bg-success py-1 px-4 text-white rounded-pill fw-bold">{{$pcot}}</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-2">
+
+                        <div class="col-lg-4 mb-2">
+                            <div class="shadow-sm p-2 text-center border border-success">
+                                <small class="bg-success py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-wind'></i> CO Common</small><br>
+                                <strong class="my-4">Total Laporan</strong>
+                                <div class="text-success text-center my-2">
+                                    <h2 class="text-success"> {{$percoc}} %</h2>
+                                    <small class="bg-success py-1 px-4 text-white rounded-pill fw-bold">{{$pcot}}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- =================== -->
+
+                        <div class="col-lg-4 mb-2">
                             <div class="shadow-sm p-2 text-center" style="border: 1px solid plum">
-                                <small style="background: plum" class="py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-hive'></i> CO Common</small><br>
+                                <small style="background: plum" class="py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-hive'></i> HSD Level</small><br>
                                 <strong class="my-4">Total Laporan</strong>
                                 <div style="color: plum" class="text-center my-2">
-                                    <h2 style="color: plum"> {{$percoc}} %</h2>
-                                    <small class="py-1 px-4 text-white rounded-pill fw-bold" style="background: plum">{{$pcoc}}</small>
+                                    <h2 style="color: plum"> {{$perhsd}} %</h2>
+                                    <small class="py-1 px-4 text-white rounded-pill fw-bold" style="background: plum">{{$phsd}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-2">
+                            <div class="shadow-sm p-2 text-center" style="border: 1px solid plum">
+                                <small style="background: plum" class="py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-hive'></i> Forwarding Pump</small><br>
+                                <strong class="my-4">Total Laporan</strong>
+                                <div style="color: plum" class="text-center my-2">
+                                    <h2 style="color: plum"> {{$perfp}} %</h2>
+                                    <small class="py-1 px-4 text-white rounded-pill fw-bold" style="background: plum">{{$pfp}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-2">
+                            <div class="shadow-sm p-2 text-center" style="border: 1px solid plum">
+                                <small style="background: plum" class="py-1 px-3 text-white rounded-pill text-white"><i class='bx bx-hive'></i> High Pressure Pump</small><br>
+                                <strong class="my-4">Total Laporan</strong>
+                                <div style="color: plum" class="text-center my-2">
+                                    <h2 style="color: plum"> {{$perhp}} %</h2>
+                                    <small class="py-1 px-4 text-white rounded-pill fw-bold" style="background: plum">{{$php}}</small>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <canvas id="myChart" height="100px"></canvas>
                 </div>
             </div>
@@ -184,7 +218,7 @@
 
     // const labels = Utils.months({count: 7});
     const data = {
-    labels: ['Waiting', 'forwarding', 'waiting material', 'working', 'resolved','rejected'],
+    labels: ['Waiting Approved', 'forwarding', 'waiting material', 'working', 'resolved','rejected'],
     datasets: [
         {
         label: 'Total',

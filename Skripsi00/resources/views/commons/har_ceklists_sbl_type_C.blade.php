@@ -1,3 +1,4 @@
+
 @if ($data_id->status_sbl23 == 'C-23')
 <div class="badge bg-danger">
 <strong for="">C-23</strong><hr>
@@ -17,6 +18,7 @@
     </div>
 </div>
 @endif
+
 
 @if ($data_id->status_sbl24 == 'C-24')
 <div class="badge bg-danger">

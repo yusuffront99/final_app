@@ -1,7 +1,7 @@
 @if ($dt->status_equipments->status_name == 'Waiting Material')
     <h1 class="text-warning text-center" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Status Waiting Material"><i class='bx bxs-hourglass fs-3'></i></h1>
 
-@elseif ($dt->status_equipments->status_name == 'Forwarding')
+@elseif ($dt->status_equipments->status_name == 'Forward')
     <h1 class="text-primary text-center" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Status Fowarding"><i class='bx bxs-chevrons-right'></i></h1>
 
 @elseif ($dt->status_equipments->status_name == 'Working')

@@ -56,7 +56,8 @@ class CrudEdg extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->keterangan = $request->get('keterangan');
+        $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
 

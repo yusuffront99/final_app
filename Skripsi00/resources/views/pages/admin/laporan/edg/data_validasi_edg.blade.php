@@ -40,6 +40,7 @@
                         @csrf
                         @method('put')
                         <input type="hidden" name="id" value="{{$data_id->id}}">
+                        <input type="hidden" name="catatan_spv" value="-">
                         <div class="row shadow-sm p-3 bg-light rounded">
                             <div class="mb-2">
                                 <a href="{{route('admin.index.edg')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
@@ -155,8 +156,8 @@
                                         <input type="text" name="lev_bbm_akhir" id="lev_bbm_akhir" class="form-control" placeholder="000" required  value="{{$data_id->lev_bbm_akhir}}">
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label for="">Catatan</label>
-                                        <input type="text" name="catatan" id="catatan" class="form-control" required value="{{$data_id->catatan}}">
+                                        <label for="">Keterangan</label>
+                                        <input type="text" name="keterangan" id="keterangan" class="form-control" required value="{{$data_id->keterangan}}">
                                     </div>
                                     <div class="form-group mb-2">
                                         <label for="" class="text-danger fw-bold">Equipment Status</label>

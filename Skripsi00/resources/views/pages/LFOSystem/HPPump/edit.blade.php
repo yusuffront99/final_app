@@ -142,7 +142,7 @@
                                     </div>
 
                                     <div class="form-group mb-2 mx-3">
-                                        <label for="arus_HP">Arus HP Pump (A)</label>
+                                        <label for="arus_HP">Current HP Pump (A)</label>
                                         <div class="row m-auto my-1">
                                             <div class="col">
                                                 <h6 class="text-center">A</h6>

@@ -177,8 +177,20 @@
                 </td>
                 <td>
                     <ul>
-                        <li>Pelaksanaan : <div class="text-success">{{$rp->status_kegiatan}}</div></li>
-                        <li>Evaluasi : <div class="text-primary"> {{$rp->status_peralatan}}</div> </li>
+                        <li>Pelaksanaan : 
+                        @if ($rp->status_kegiatan == 'Terlaksana')
+                            <div class="text-white badge bg-success">{{$rp->status_kegiatan}}</div>
+                        @else
+                            <div class="text-white badge bg-danger">{{$rp->status_kegiatan}}</div>
+                        @endif
+                        </li>
+                        <li>Evaluasi : 
+                        @if ($rp->status_peralatan == 'Normal')
+                            <div class="text-white badge bg-success">{{$rp->status_peralatan}}</div>
+                        @else
+                            <div class="text-white badge bg-danger">{{$rp->status_peralatan}}</div>
+                        @endif
+                        </li>
                         <li>Keterangan : <div class="text-danger">{{$rp->keterangan}}</div></li>
                     </ul>
                 </td>

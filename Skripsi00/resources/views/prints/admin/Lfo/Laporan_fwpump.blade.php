@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PowerPlant | LFO</title>
+<title>PowerPlant | Forwarding Pump</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
     body {
@@ -136,7 +136,7 @@
     </table>
     <br>
     <div class="text-title">
-        DATA LAPORAN LIGHT FUEL OIL SYSTEM
+        DATA LAPORAN FORWARDING PUMP
     </div>
     <br>
     <table class="table table-bordered th-content">
@@ -146,10 +146,10 @@
                 <th id="col-nip">NIP</th>
                 <th id="col-th">Operator Shift</th>
                 <th id="col-th">Atasan</th>
-                <th id="col-unit">Unit</th>
-                <th id="col-th">Tanggal Laporan</th>
-                <th id="info" class="text-center">HP Pump</th>
-                <th id="info" class="text-center">FW Pump</th>
+                <th class="text-center" id="col">Jam Update</th>
+                <th class="text-center" id="col-nip">Tanggal Update</th>
+                <th class="text-center" id="info">Keterangan</th>
+                <!-- <th>Track Report</th> -->
             </tr>
         </thead>
         <tbody>
@@ -159,40 +159,53 @@
             @foreach ($reports as $rp)
                 <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$rp->nip}}</td>
+                    <td>{{$rp->users->nip}}</td>
                     <td>
                         <span class="tb">{{$rp->operator_shift}}</span><br>
                         {{$rp->users->nama_lengkap}} / {{$rp->operator_kedua}}
                     </td>
-                    <td>{{$rp->atasan}}</td>
-                    <td>{{$rp->unit}}</td>
+                    <td class="text-center">{{$rp->atasan}}</td>
+                    <td class="text-center">{{$rp->jam_update}}</td>
                     <td class="text-center">
-                        {{Carbon\carbon::createFromFormat('Y-m-d', $rp->tanggal_update)->isoFormat('D MMMM Y')}} - {{$rp->jam_update}}
+                    {{Carbon\carbon::createFromFormat('Y-m-d', $rp->tanggal_update)->isoFormat('D MMMM Y')}}
                     </td>
                     <td>
-                        <span class="tb">HP Pump A :</span><br>
-                        - {{$rp->arus_HP_A}} A / {{$rp->press_HP_A}} MPA/ {{$rp->status_HP_A}} <br>
+                        <span style="font-weight: bold;">Forwarding Pump A </span><br>
+                        @if ($rp->status_FP_A == 'Ready')
+                            <div class="text-white badge bg-success">{{$rp->status_FP_A}}</div>
+                        @else
+                            <div class="text-white badge bg-danger">{{$rp->status_FP_A}}</div>
+                        @endif
 
-                        <span class="tb">HP Pump B :</span><br>
-                        - {{$rp->arus_HP_B}} A / {{$rp->press_HP_B}} MPA / {{$rp->status_HP_B}} <br>
+                        <ul>
+                           <li> Current FP A : {{$rp->arus_FP_A}} A</li>
+                           <li> Pressure FP A : {{$rp->press_FP_A}} MPA</li>
+                        </ul>
+                        <hr>
+                        <span style="font-weight: bold;">Forwarding Pump B </span><br>
+                        @if ($rp->status_FP_B == 'Ready')
+                            <div class="text-white badge bg-success">{{$rp->status_FP_B}}</div>
+                        @else
+                            <div class="text-white badge bg-danger">{{$rp->status_FP_B}}</div>
+                        @endif
 
-                        <span class="tb">Informasi HP Pump :</span> <br>
-                        <strong class="text-danger fw-bold">
-                            {!!$rp->info_HP!!}
-                        </strong>
+                        <ul>
+                           <li> Current FP B : {{$rp->arus_FP_B}} A</li>
+                           <li> Pressure FP B : {{$rp->press_FP_B}} MPA</li>
+                        </ul>
+                        
+                        <span style="font-weight: bold;">Catatan :</span><br>
+                        <span style="font-weight: bold;" class="text-danger">{!!$rp->info_FP!!}</span>
                     </td>
-                    <td>
-                        <span class="tb">FW Pump A :</span><br>
-                        - {{$rp->forwardings->arus_FP_A}} A / {{$rp->forwardings->press_FP_A}} MPA/ {{$rp->forwardings->status_FP_A}} <br>
-
-                        <span class="tb">FW Pump B :</span><br>
-                        - {{$rp->forwardings->arus_FP_B}} A / {{$rp->forwardings->press_FP_B}} MPA / {{$rp->forwardings->status_FP_B}} <br>
-
-                        <span class="tb">Informasi HP Pump :</span> <br>
-                        <strong class="text-danger fw-bold">
-                            {!!$rp->forwardings->info_FP!!}
-                        </strong>
-                    </td>
+                    <!-- <td>
+                       <div style="line-height: 5rem;">
+                       @if ($rp->status_equipments->status_name == 'Resolved' || $rp->status_equipments->status_name == 'Normal')
+                           <span class="badge bg-success text-white">{{$rp->status_equipments->status_name}}</span>
+                        @else
+                            <span class="badge bg-danger text-white">{{$rp->status_equipments->status_equipment}}</span>
+                       @endif
+                       </div>
+                    </td> -->
                 </tr>
             @endforeach
         </tbody>

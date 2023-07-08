@@ -13,7 +13,6 @@ use App\Models\EdgSystem;
 use App\Models\Fw_Pump;
 use App\Models\Hp_Pump;
 use App\Models\HsdLevel;
-use App\Models\LfoSystem;
 use App\Models\Sootblower;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -22,12 +21,14 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 class LaporanDataController extends Controller
 {
     // == PRINT
-    public function laporan_burner()
+    public function laporan_burner(Request $request)
     {
         // $shift_reports = BurnerSystem::with('users')->get();
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = BurnerSystem::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        $select_unit = $request->get('select_unit');
+
+        $reports = BurnerSystem::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
 
         $date_now = Carbon::now()->format('Y-m-d');
 
@@ -102,7 +103,7 @@ class LaporanDataController extends Controller
             ])
             ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
             ->setPaper('a4', 'landscape')
-            ->loadView('prints.admin.Lfo.LaporanLfo', [
+            ->loadView('prints.admin.Lfo.Laporan_hsdlevel', [
                 'img' => $img,
                 'date_now' => $date_now,
                 'reports' => $reports,
@@ -132,7 +133,7 @@ class LaporanDataController extends Controller
             ])
             ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
             ->setPaper('a4', 'landscape')
-            ->loadView('prints.admin.Lfo.LaporanLfo', [
+            ->loadView('prints.admin.Lfo.Laporan_hppump', [
                 'img' => $img,
                 'date_now' => $date_now,
                 'reports' => $reports,
@@ -162,7 +163,7 @@ class LaporanDataController extends Controller
             ])
             ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
             ->setPaper('a4', 'landscape')
-            ->loadView('prints.admin.Lfo.LaporanLfo', [
+            ->loadView('prints.admin.Lfo.Laporan_fwpump', [
                 'img' => $img,
                 'date_now' => $date_now,
                 'reports' => $reports,

@@ -47,6 +47,7 @@
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">
                                 <input type="hidden" name="id" value="{{$data_id->id}}">
+                                <input type="hidden" name="catatan_spv" value="-">
                                 <div class="form-group mb-2 mx-3">
                                     <label for="nip">NIP</label>
                                     <input type="text" class="form-control" value="{{$data_id->users->nip}}">

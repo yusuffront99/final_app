@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutEquipmentController;
 use App\Http\Controllers\Admin\CRUD\CrudBurner;
 use App\Http\Controllers\Admin\CRUD\CrudCoboiler;
 use App\Http\Controllers\Admin\CRUD\CrudCocommon;
@@ -9,13 +10,13 @@ use App\Http\Controllers\Admin\CRUD\CrudFwPump;
 use App\Http\Controllers\Admin\CRUD\CrudHpPump;
 use App\Http\Controllers\Admin\CRUD\CrudHsdLevel;
 use App\Http\Controllers\Admin\CRUD\CrudLeader;
-use App\Http\Controllers\Admin\CRUD\CrudLfo;
 use App\Http\Controllers\Admin\CRUD\CrudSootblower;
 use App\Http\Controllers\Admin\CRUD\CrudUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\NewRegisterController;
 use App\Http\Controllers\EDGSystem\EDGSystemController;
 use App\Http\Controllers\Supervisor\Laporan\LaporanMasuk;
 use App\Http\Controllers\Supervisor\SupervisorOpController;
@@ -31,10 +32,8 @@ use App\Http\Controllers\Print\Admin\LaporanDataController;
 use App\Http\Controllers\Profile\AuthController;
 use App\Http\Controllers\Report\Alls\AllDataController;
 use App\Http\Controllers\Sootblower\SootblowerController;
-use App\Models\Forwarding_Pump;
-use App\Models\HsdLevel;
-use App\Models\Leader;
-use Maatwebsite\Excel\Row;
+use App\Http\Controllers\UnitInformationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +51,8 @@ use Maatwebsite\Excel\Row;
 Route::prefix('/home')
     ->middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/unit_information', [UnitInformationController::class, 'unit_information'])->name('unit-information');
+    Route::get('/unit_information/equipment/{id}', [UnitInformationController::class, 'detail_about_equipment'])->name('detail-about-equipment');
 
     // ===== PROFILE
     Route::resource('profile', AuthController::class);
@@ -205,7 +206,6 @@ Route::prefix('/home')
         // ===== DATA LAPORAN
         Route::get('inboxta', [AllDataController::class, 'laporan_data'])->name('laporan.data');
         Route::get('inboxta/burner', [AllDataController::class, 'all_data_burner'])->name('laporan.all_data_burner');
-        Route::get('inboxta/lfo', [AllDataController::class, 'all_data_lfo'])->name('laporan.all_data_lfo');
         Route::get('inboxta/edg', [AllDataController::class, 'all_data_edg'])->name('laporan.all_data_edg');
     });
 
@@ -347,11 +347,6 @@ Route::prefix('/dashboard')
         Route::get('report/sootblower/delete_permanent/{id}', [CrudSootblower::class, 'delete_permanent'])->name('admin.delete_permanent.sootblower');
         Route::get('report/sootblower/restore/{id}', [CrudSootblower::class, 'restore'])->name('admin.restore.sootblower');
 
-        // =================== FORWARDINGS
-        Route::get('report/forwarding/{id}/edit', [CrudLfo::class, 'edit_forwarding'])->name('admin.edit.forwarding');
-        Route::put('report/forwarding/{id}', [CrudLfo::class, 'update_forwarding'])->name('admin.update.forwarding');
-        // =================== FORWARDINGS
-
         // --- DATA LAPORAN EDG
         Route::get('report/edg/', [CrudEdg::class, 'index'])->name('admin.index.edg');
         Route::get('report/edg/{id}/edit', [CrudEdg::class, 'edit'])->name('admin.edit.edg');
@@ -450,6 +445,18 @@ Route::prefix('/dashboard')
         Route::put('leader/{id}', [CrudLeader::class, 'update'])->name('leader.update');
         Route::delete('leader/{id}', [CrudLeader::class, 'destroy'])->name('leader.destroy');
 
+        // --- DATA ABOUT EQUIPMENT
+        Route::get('equipment_about', [AboutEquipmentController::class, 'index'])->name('equipment_about.index');
+        Route::post('equipment_about', [AboutEquipmentController::class, 'store'])->name('equipment_about.store');
+        Route::get('equipment_about/{id}/edit', [AboutEquipmentController::class, 'edit'])->name('equipment_about.edit');
+        Route::get('equipment_about/create', [AboutEquipmentController::class, 'create'])->name('equipment_about.create');
+        Route::put('equipment_about/{id}', [AboutEquipmentController::class, 'update'])->name('equipment_about.update');
+        Route::delete('equipment_about/{id}', [AboutEquipmentController::class, 'destroy'])->name('equipment_about.destroy');
+
+        // NEW REGISTER
+        Route::get('new_register', [NewRegisterController::class, 'new_register'])->name('new-register');
+        Route::post('process_registration', [NewRegisterController::class, 'processRegistration'])->name('process-registration');
+
 
         // ==== DOWNLOADS
         Route::get('data_laporan/burner/download/{id}', [CrudBurner::class, 'download'])->name('admin.download_burner');
@@ -464,15 +471,4 @@ Route::get('/', function(){
     return view('auth.login');
 });
 
-Route::get('/register', function(){
-    $lists = Leader::orderBy('nama_lengkap', 'asc')->get();
-    return view('auth.register', compact('lists'));
-})->name('register');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

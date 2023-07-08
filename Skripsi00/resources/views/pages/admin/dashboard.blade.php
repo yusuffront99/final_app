@@ -207,18 +207,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var wr = {{Js::from($wr)}};
-    var fr = {{Js::from($fr)}};
-    var wmr = {{Js::from($wmr)}};
-    var wor = {{Js::from($wor)}};
-    var wrs = {{Js::from($wrs)}};
-    var rr = {{Js::from($rr)}};
+    var wr = <?php echo json_encode($wr)?>;
+    var fr = <?php echo json_encode($fr)?>;
+    var wmr = <?php echo json_encode($wmr)?>;
+    var wor = <?php echo json_encode($wor)?>;
+    var wrs = <?php echo json_encode($wrs)?>;
+    var rr = <?php echo json_encode($rr)?>;
 
     var contents = [wr,fr,wmr,wor,wrs,rr];
 
     // const labels = Utils.months({count: 7});
     const data = {
-    labels: ['Waiting Approved', 'forwarding', 'waiting material', 'working', 'resolved','rejected'],
+    labels: ['Waiting Approval', 'forwarding', 'waiting material', 'working', 'resolved','rejected'],
     datasets: [
         {
         label: 'Total',

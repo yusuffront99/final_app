@@ -37,7 +37,7 @@
                     <div class="col-lg-4 col-md-4">
                         <div class="d-flex flex-column">
                             <div class="text-center">
-                                <strong>Statistic Report</strong>
+                                <strong class="badge bg-success">Statistic Data - Resolved <i class='bx bx-check-circle'></i></strong>
                             </div>
                             <div class="text-center">
                                 <canvas id="myChart"></canvas>
@@ -55,7 +55,7 @@
                 <div class="col-lg-5 col-md-5">
                     <div class="card bg-white shadow-sm p-4">
                         <div class="text-dark">
-                            <div class="fw-bold">Statistic Report</div>
+                            <div class="fw-bold badge bg-warning">Data Reports (Total <i class='bx bx-stopwatch'></i>)</div>
                             <div class="my-3">
                                 <canvas id="myChartBar"></canvas>
                             </div>
@@ -80,28 +80,81 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <small class="text-primary fw-bold">{{$db->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-primary fw-bold">{{$db->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$db->operator_shift}}</small>
                                                     <br>
-                                                    <small class="text-white">telah membuat laporan <strong class="text-danger">Burner</strong> {{$db->created_at->diffForHumans()}}</small>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">Burner</strong> {{$db->created_at->diffForHumans()}}</small>
                                                 </td>
                                                 @endforeach
                                             </tr>
-                                            {{-- <tr>
-                                                @foreach ($dl as $dl)
+                                            <tr>
+                                                @foreach ($dfp as $dfp)
                                                 <td width="10%">
-                                                    @if ($dl->users->profile_img == '-')
+                                                    @if ($dfp->users->profile_img == '-')
                                                         <img src="{{asset('frontends/assets/img/avatars/profile.png')}}" alt class="w-px-40 h-auto rounded-circle" />
                                                     @else
-                                                        <img src="{{asset('storage/' . $dl->users->profile_img)}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                        <img src="{{asset('storage/' . $dfp->users->profile_img)}}" alt class="w-px-40 h-auto rounded-circle" />
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <small class="text-primary fw-bold">{{$dl->users->nama_panggilan}}</small>
+                                                <small class="text-white badge bg-primary fw-bold">{{$dfp->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$db->operator_shift}}</small>
                                                     <br>
-                                                    <small class="text-white">telah membuat laporan <strong class="text-danger">LFO</strong> {{$dl->created_at->diffForHumans()}}</small>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">Forwarding Pump</strong> {{$dfp->created_at->diffForHumans()}}</small>
                                                 </td>
                                                 @endforeach
-                                            </tr> --}}
+                                            </tr>
+                                            <tr>
+                                                @foreach ($dhp as $dhp)
+                                                <td width="10%">
+                                                    @if ($dhp->users->profile_img == '-')
+                                                        <img src="{{asset('frontends/assets/img/avatars/profile.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    @else
+                                                        <img src="{{asset('storage/' . $dhp->users->profile_img)}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                <small class="text-white badge bg-primary fw-bold">{{$dhp->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$dhp->operator_shift}}</small>
+                                                    <br>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">High Pressure Pump</strong> {{$dhp->created_at->diffForHumans()}}</small>
+                                                </td>
+                                                @endforeach
+                                            </tr>
+                                            <tr>
+                                                @foreach ($dhsd as $dhsd)
+                                                <td width="10%">
+                                                    @if ($dhsd->users->profile_img == '-')
+                                                        <img src="{{asset('frontends/assets/img/avatars/profile.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    @else
+                                                        <img src="{{asset('storage/' . $dhsd->users->profile_img)}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                <small class="text-white badge bg-primary fw-bold">{{$dhsd->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$dhsd->operator_shift}}</small>
+                                                    <br>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">High Speed Diesel Level</strong> {{$dhsd->created_at->diffForHumans()}}</small>
+                                                </td>
+                                                @endforeach
+                                            </tr>
+                                            <tr>
+                                                @foreach ($dsbl as $dsbl)
+                                                <td width="10%">
+                                                    @if ($dsbl->users->profile_img == '-')
+                                                        <img src="{{asset('frontends/assets/img/avatars/profile.png')}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    @else
+                                                        <img src="{{asset('storage/' . $dsbl->users->profile_img)}}" alt class="w-px-40 h-auto rounded-circle" />
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                <small class="text-white badge bg-primary fw-bold">{{$dsbl->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$dsbl->operator_shift}}</small>
+                                                    <br>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">Sootblower</strong> {{$dsbl->created_at->diffForHumans()}}</small>
+                                                </td>
+                                                @endforeach
+                                            </tr>
                                             <tr>
                                                 @foreach ($de as $de)
                                                 <td width="10%">
@@ -112,9 +165,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <small class="text-primary fw-bold">{{$de->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-primary fw-bold">{{$de->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$de->operator_shift}}</small>
                                                     <br>
-                                                    <small class="text-white">telah membuat laporan <strong class="text-danger">EDG</strong> {{$de->created_at->diffForHumans()}}</small>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">EDG</strong> {{$de->created_at->diffForHumans()}}</small>
                                                 </td>
                                                 @endforeach
                                             </tr>
@@ -128,9 +182,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <small class="text-primary fw-bold">{{$dcot->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-primary fw-bold">{{$dcot->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$dcot->operator_shift}}</small>
                                                     <br>
-                                                    <small class="text-white">telah membuat laporan <strong class="text-danger">Change Over Peralatan Turbine</strong> {{$dcot->created_at->diffForHumans()}}</small>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">Change Over Peralatan Turbine</strong> {{$dcot->created_at->diffForHumans()}}</small>
                                                 </td>
                                                 @endforeach
                                             </tr>
@@ -144,9 +199,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <small class="text-primary fw-bold">{{$dcob->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-primary fw-bold">{{$dcob->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$dcob->operator_shift}}</small>
                                                     <br>
-                                                    <small class="text-white">telah membuat laporan <strong class="text-danger">Change Over Peralatan Boiler</strong> {{$dcob->created_at->diffForHumans()}}</small>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">Change Over Peralatan Boiler</strong> {{$dcob->created_at->diffForHumans()}}</small>
                                                 </td>
                                                 @endforeach
                                             </tr>
@@ -160,9 +216,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <small class="text-primary fw-bold">{{$dcoc->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-primary fw-bold">{{$dcoc->users->nama_panggilan}}</small>
+                                                    <small class="text-white badge bg-warning fw-bold">{{$dcoc->operator_shift}}</small>
                                                     <br>
-                                                    <small class="text-white">telah membuat laporan <strong class="text-danger">Change Over Peralatan Common</strong> {{$dcoc->created_at->diffForHumans()}}</small>
+                                                    <small class="text-white">telah memperbaharui laporan <strong class="text-danger">Change Over Peralatan Common</strong> {{$dcoc->created_at->diffForHumans()}}</small>
                                                 </td>
                                                 @endforeach
                                             </tr>
@@ -194,15 +251,23 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     
-    var burner = {{Js::from($burner)}}
-    var edg = {{Js::from($edg)}}
-    var cot = {{Js::from($cot)}}
-    var cob = {{Js::from($cob)}}
-    var coc = {{Js::from($coc)}}
+    var burner = <?php echo json_encode($burner)?>;
+    var sbl = <?php echo json_encode($sbl)?>;
+    var edg = <?php echo json_encode($edg)?>;
+    var hp = <?php echo json_encode($hp)?>;
+    var fp = <?php echo json_encode($fp)?>;
+    var hsd = <?php echo json_encode($hsd)?>;
+    var coc = <?php echo json_encode($coc)?>;
+    var cob = <?php echo json_encode($cob)?>;
+    var cot = <?php echo json_encode($cot)?>;
 
     const data = {
     labels: [
         'BURNER',
+        'SOOTBLOWER',
+        'HP PUMP',
+        'FP PUMP',
+        'HSD',
         'EDG',
         'CO TURBINE',
         'CO BOILER',
@@ -210,12 +275,16 @@
     ],
         datasets: [{
             label: 'Total',
-            data: [burner, edg, cot, cob, coc],
+            data: [burner, sbl, hp, fp,  hsd, edg, cot, cob, coc],
             backgroundColor: [
             'rgb(255, 99, 132)',
-            // 'rgb(255, 205, 86)',
+            '#ADADC7',
             'rgb(54, 162, 235)',
             'greenyellow',
+            '#F9A602',
+            'danger',
+            '#48AAAD',
+            '#AF69EE',
             'purple',
             'salmoon'
             ]
@@ -230,11 +299,11 @@
 
 <script>
      // ===== CHART BAR
-    var tot_e = {{Js::from($tot_e)}}
-    var tot_f = {{Js::from($tot_f)}}
-    var tot_g = {{Js::from($tot_g)}}
-    var tot_h = {{Js::from($tot_h)}}
-
+    var tot_e = <?php echo json_encode($tot_e)?>;
+    var tot_f = <?php echo json_encode($tot_f)?>;
+    var tot_g = <?php echo json_encode($tot_g)?>;
+    var tot_h = <?php echo json_encode($tot_h)?>;
+ 
     const labels = ['SHIFT E','SHIFT F','SHIFT G','SHIFT H'];
     // const labels = Utils.months({count: 7});
     const data1 = {

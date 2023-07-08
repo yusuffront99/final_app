@@ -138,6 +138,14 @@
             <div data-i18n="Analytics">Home</div>
         </a>
     @endif
+
+    @if (Auth::user()->divisi != 'Admin')
+    <li class="menu-item {{Request::is('home/unit_information') ? 'active' : ''}}">
+        <a href="{{route('unit-information')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-task"></i>
+            <div data-i18n="Analytics">Unit Information</div>
+        </a>
+    @endif
     
     @if (Auth::user()->jabatan == 'Supervisor Operasi')
     <li class="menu-item {{Request::is('home/inbox/*') || Request::is('home/lmasuk_lfo*') || Request::is('home/lmasuk_edg*') ? 'active' : ''}}">
@@ -251,10 +259,11 @@
                         </div>
                         @endif
                     </a>
-                    </li>
+                </li>
             </li>
         </ul>
     </li>
+
     @elseif (Auth::user()->jabatan == 'Supervisor Pemeliharaan')
     <li class="menu-item {{Request::is('home/inbox*') ? 'active' : ''}}">
         <a href="{{route('lmasuk.har')}}" class="menu-link">
@@ -422,8 +431,19 @@
                 <div data-i18n="Without menu">Data Leaders</div>
             </a>
             </li>
+            <li class="menu-item {{Request::is('dashboard/new_register*') ? 'active' : ''}}">
+            <a href="{{route('new-register')}}" class="menu-link">
+                <div data-i18n="Without menu" class="badge bg-success">New Register</div>
+            </a>
+            </li>
         </ul>
     </li>
+
+    <li class="menu-item {{Request::is('dashboard/equipment_about*') ? 'active' : ''}}">
+        <a href="{{route('equipment_about.index')}}" class="menu-link">
+            <i class='menu-icon tf-icons bx bx-book-reader'></i>
+            <div data-i18n="Analytics">Equipment About</div>
+        </a>
     @endif
 </ul>
 </aside>

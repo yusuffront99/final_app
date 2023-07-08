@@ -108,14 +108,22 @@
                                         <ul>
                                             <li class="text-danger">Arus : {{$dt->arus_FP_A}} A</li>
                                             <li class="text-success">Pressure : {{$dt->press_FP_A}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_FP_A}}</li>
+                                            @if ($dt->status_FP_A == 'Ready')
+                                            <li class="badge bg-success">Status : {{$dt->status_FP_A}}</li>
+                                            @else
+                                            <li class="badge bg-danger">Status : {{$dt->status_FP_A}}</li>
+                                            @endif
                                         </ul>
                                     </td>
                                     <td>
                                         <ul>
                                             <li class="text-danger">Arus : {{$dt->arus_FP_B}} A</li>
                                             <li class="text-success">Pressure : {{$dt->press_FP_B}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_FP_B}}</li>
+                                            @if ($dt->status_FP_B == 'Ready')
+                                            <li class="badge bg-success">Status : {{$dt->status_FP_B}}</li>
+                                            @else
+                                            <li class="badge bg-danger">Status : {{$dt->status_FP_B}}</li>
+                                            @endif
                                         </ul>
                                     </td>
 

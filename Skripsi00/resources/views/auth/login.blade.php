@@ -66,11 +66,6 @@
                                 </button>
                             </div>
                         </div>
-                        <p class="text-center mt-3">
-                            Anda belum punya akun ?
-                            <br>
-                            <span><a href="{{route('register')}}">Daftar Sekarang</a></span>
-                        </p>
                     </form>
                 </div>
             </div>

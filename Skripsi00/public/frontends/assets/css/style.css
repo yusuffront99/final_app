@@ -370,6 +370,8 @@ th.common-information-lg {
   }
 }
 
+
+
 i.bx.bx-alarm-snooze.icon-bg1 {
   position: absolute;
   font-size: 4.5rem;
@@ -720,7 +722,7 @@ button.bg-danger.text-white.mb-2.show_confirm {
 
 /* ------MAINTENANCE ADMIN */
 a.new-notif {
-    padding: 3px 10px;
+    padding: 7px 10px;
     background: rgb(16, 240, 53);
     border-radius: 3rem;
     position: absolute;
@@ -736,6 +738,35 @@ span i.bx.bx-cog {
   opacity: 30%;
 }
 
+
+.new-notif {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  0% {
+    visibility: visible;
+    background-color: greenyellow;
+  }
+  50% {
+    visibility: visible;
+  }
+  100% {
+    visibility: visible;
+    background-color: orange;
+  }
+}
+
+a.border.border-white.text-white.px-5.click-check:hover {
+  background-color: #00adf1;
+  cursor: pointer;
+}
+/* @-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+    background: red;
+  }
+} */
 /* 
 @-webkit-keyframes blinker {
   from {

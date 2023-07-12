@@ -716,6 +716,26 @@ button.bg-danger.text-white.mb-2.show_confirm {
   left: 0%;
   opacity: 25%;
 }
+
+
+/* ------MAINTENANCE ADMIN */
+a.new-notif {
+    padding: 3px 10px;
+    background: rgb(16, 240, 53);
+    border-radius: 3rem;
+    position: absolute;
+    right: -15px;
+    top: -20px;
+    border: 2px solid white;
+}
+
+span i.bx.bx-cog {
+  font-size: 4rem;
+  position: absolute;
+  right: 0;
+  opacity: 30%;
+}
+
 /* 
 @-webkit-keyframes blinker {
   from {

@@ -31,6 +31,8 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    
     {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
     <script>
     setInterval(customClock, 500);

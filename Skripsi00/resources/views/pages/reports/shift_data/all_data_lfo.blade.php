@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                All Shift Data {{Auth::user()->tim_divisi}}
+                                All Data LFO System
                             </span>
                         </div>
                     </div>
@@ -40,27 +40,22 @@
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
                     <table id="example" class="table table-striped my-3" style="width:100%">
-                        <div class="row mb-3">
-                            <div class="d-flex justify-content-between mb-3">
-                                @if (Auth::user()->jabatan != 'Supervisor Operasi' )
-                                    <div>
-                                        <a href="{{route('lfo_system.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                    </div>
-                                    <div>
-                                        <a href="{{route('lfo_system.print')}}" class="btn btn-sm btn-success" target="_blank"><i class='bx bx-printer'></i> All Print</a>
-                                    </div>
-                                @else
-                                    <div>
-                                        <a href="{{route('lmasuk.op.lfo')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                    </div>
-                                @endif
+                        <div class="d-flex justify-content-between mb-3">
+                            @if (Auth::user()->jabatan != 'Supervisor Operasi')
+                            <div>
+                                <a href="{{route('lfo_system.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
+                            @else
+                            <div>
+                                <a href="{{route('lmasuk.op.lfo')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            </div>
+                            @endif
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">ALL SHIFT DATA LFO SYSTEM - {{Auth::user()->tim_divisi}}</span>
+
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA LFO SYSTEM</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th>Aksi</th>
                                 <th>NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
@@ -86,9 +81,6 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    <td>
-                                        <a href="{{route('one_print_lfo', $dt->id)}}" class="p-2 bg-primary text-white" target="_blank"><i class='bx bx-printer'></i></a>
-                                    </td>
                                     <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>

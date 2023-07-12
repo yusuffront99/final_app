@@ -12,6 +12,7 @@ use App\Models\Fw_Pump;
 use App\Models\Hp_Pump;
 use App\Models\HsdLevel;
 use App\Models\Leader;
+use App\Models\Sootblower;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,7 @@ class AuthController extends Controller
     {
         
         $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
@@ -37,7 +39,7 @@ class AuthController extends Controller
         $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $user = User::where('id', Auth::user()->id)->first();
-        return view('pages.Profile.index', compact('user','nb','nedg','ncb','ncc','nct','nfw','nhp','nhsd'));
+        return view('pages.Profile.index', compact('user','nb','nedg','ncb','ncc','nct','nfw','nhp','nhsd','nsbl'));
     }
 
     /**
@@ -81,6 +83,7 @@ class AuthController extends Controller
     public function edit($id)
     {
         $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
         $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
@@ -93,7 +96,7 @@ class AuthController extends Controller
         
         $user = User::where('id', Auth::user()->id)->first();
         $data_id = User::where('id', $id)->first();
-        return view('pages.Profile.update', compact('data_id', 'leaders','user','nb','nhsd','nfw','nhp','nedg','ncb','ncc','nct'));
+        return view('pages.Profile.update', compact('data_id', 'leaders','user','nb','nsbl','nhsd','nfw','nhp','nedg','ncb','ncc','nct'));
     }
 
     /**

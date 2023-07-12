@@ -9,13 +9,16 @@ use App\Http\Controllers\Admin\CRUD\CrudEdg;
 use App\Http\Controllers\Admin\CRUD\CrudFwPump;
 use App\Http\Controllers\Admin\CRUD\CrudHpPump;
 use App\Http\Controllers\Admin\CRUD\CrudHsdLevel;
+use App\Http\Controllers\Admin\CRUD\CrudInventoryController;
 use App\Http\Controllers\Admin\CRUD\CrudLeader;
+use App\Http\Controllers\Admin\CRUD\CrudMaintenanceController;
 use App\Http\Controllers\Admin\CRUD\CrudSootblower;
 use App\Http\Controllers\Admin\CRUD\CrudUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TaskScheduleController as AdminTaskScheduleController;
 use App\Http\Controllers\Auth\NewRegisterController;
 use App\Http\Controllers\EDGSystem\EDGSystemController;
 use App\Http\Controllers\Supervisor\Laporan\LaporanMasuk;
@@ -46,7 +49,7 @@ use App\Http\Controllers\UnitInformationController;
 |
 */
 
-// Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::prefix('/home')
     ->middleware('auth')->group(function () {
@@ -54,8 +57,10 @@ Route::prefix('/home')
     Route::get('/unit_information', [UnitInformationController::class, 'unit_information'])->name('unit-information');
     Route::get('/unit_information/equipment/{id}', [UnitInformationController::class, 'detail_about_equipment'])->name('detail-about-equipment');
 
+    // Route::get('/events', [EventController::class, 'index'])->name('event.index');
     // ===== PROFILE
     Route::resource('profile', AuthController::class);
+
 
     // Route::post('profile_img', [ProfileController::class, 'store'])->name('store-img');
     // Route::get('profile_img/{id}/edit', [ProfileController::class, 'edit'])->name('edit-img');
@@ -123,7 +128,7 @@ Route::prefix('/home')
         Route::put('inbox/fw_pump/{id}', [SupervisorOpController::class, 'fwpump_updated'])->name('op.fwpump_updated');
         Route::get('inbox/fw_pump/data', [SupervisorOpController::class, 'all_fwpump_validation'])->name('op.all_fwpump_validation');
 
-        Route::get('inbox/fw_pump/data_shift', [SupervisorOpController::class, 'fw_pump_data_shift'])->name('op.fw_pump_data_shift');
+        Route::get('inbox/fw_pump/data_shift', [SupervisorOpController::class, 'fwpump_data_shift'])->name('op.fwpump_data_shift');
 
         // ===== SUPERVISOR MENU HP Pump
         Route::get('inbox/hp_pump', [LaporanMasuk::class, 'lmasuk_op_hppump'])->name('lmasuk.op.hppump');
@@ -452,6 +457,18 @@ Route::prefix('/dashboard')
         Route::get('equipment_about/create', [AboutEquipmentController::class, 'create'])->name('equipment_about.create');
         Route::put('equipment_about/{id}', [AboutEquipmentController::class, 'update'])->name('equipment_about.update');
         Route::delete('equipment_about/{id}', [AboutEquipmentController::class, 'destroy'])->name('equipment_about.destroy');
+
+        Route::resource('task_schedule', AdminTaskScheduleController::class);
+
+
+        // INVENTORIES
+        Route::get('inventory', [CrudInventoryController::class, 'index'])->name('inventory.index');
+        Route::get('inventory/create', [CrudInventoryController::class, 'create'])->name('inventory.create');
+
+        // MAINTENANCE
+        Route::get('maintenance', [CrudMaintenanceController::class, 'index'])->name('maintenance.index');
+       
+        // Route::post('/', [TaskScheduleController::class, 'destroy'])->name('schedule.destroy');
 
         // NEW REGISTER
         Route::get('new_register', [NewRegisterController::class, 'new_register'])->name('new-register');

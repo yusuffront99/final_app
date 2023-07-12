@@ -102,8 +102,14 @@
                                                                             <li>Type-L (Short) : </li> @include('commons.indication_sbl_type_L')
                                                                             <li>Type-C (Long) : </li> @include('commons.indication_sbl_type_C')
                                                                             <li>Type-G/YB (Rotary/Swing) : </li> @include('commons.indication_sbl_type_G')
+                                                                            <hr>
+                                                                            <li>
+                                                                                <div class="text-warning fw-bold">
+                                                                                Keterangan : {!!$dt->keterangan!!}
+                                                                                </div>
+                                                                            </li>
                                                                         </ul>
-                                                                       
+
                                                                 </div>
                                                                 </div>
                                                                 @endif
@@ -127,7 +133,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('sbl_system.shift_data_sootblower')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_sootblower')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -103,15 +103,27 @@
                                     <div class="row my-1">
                                         <div class="col">
                                             <h6 class="text-center">Pertama</h6>
-                                            <input value="{{$data_id->operasi_awal}}" type="text" name="operasi_awal" id="operasi_awal" class="form-control" required>
+                                            <select name="operasi_awal" id="operasi_awal" class="form-select">
+                                                <option value="">--Select--</option>
+                                                <option value="A" {{$data_id->operasi_awal == 'A' ? 'selected' : ''}}>A</option>
+                                                <option value="B" {{$data_id->operasi_awal == 'B' ? 'selected' : ''}}>B</option>
+                                            </select>
                                         </div>
                                         <div class="col">
-                                            <h6 class="text-center">Rencana</h6>
-                                            <input value="{{$data_id->rencana_operasi}}" type="text" name="rencana_operasi" id="rencana_operasi" class="form-control" required>
+                                            <h6 class="text-center">Rencana</h6> 
+                                            <select name="rencana_operasi" id="rencana_operasi" class="form-select">
+                                                <option value="">--Select--</option>
+                                                <option value="A" {{$data_id->rencana_operasi == 'A' ? 'selected' : ''}}>A</option>
+                                                <option value="B" {{$data_id->rencana_operasi == 'B' ? 'selected' : ''}}>B</option>
+                                            </select> 
                                         </div>
                                         <div class="col">
                                             <h6 class="text-center">Terakhir</h6>
-                                            <input value="{{$data_id->operasi_akhir}}" type="text" name="operasi_akhir" id="operasi_akhir" class="form-control" required>
+                                            <select name="operasi_akhir" id="operasi_akhir" class="form-select">
+                                                <option value="">--Select--</option>
+                                                <option value="A" {{$data_id->operasi_akhir == 'A' ? 'selected' : ''}}>A</option>
+                                                <option value="B" {{$data_id->operasi_akhir == 'B' ? 'selected' : ''}}>B</option>
+                                            </select> 
                                         </div>
                                     </div>
                                 </div>

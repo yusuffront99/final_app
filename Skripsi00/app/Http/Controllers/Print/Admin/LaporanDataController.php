@@ -26,9 +26,15 @@ class LaporanDataController extends Controller
         // $shift_reports = BurnerSystem::with('users')->get();
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $select_unit = $request->get('select_unit');
-
-        $reports = BurnerSystem::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
+        
+        if($request->get('select_unit') == '') 
+        {
+            $reports = BurnerSystem::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        } else {
+            $select_unit = $request->get('select_unit');
+            $reports = BurnerSystem::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
+        }
+        
 
         $date_now = Carbon::now()->format('Y-m-d');
 
@@ -54,12 +60,18 @@ class LaporanDataController extends Controller
         return $pdf->stream();
     }
 
-    public function laporan_sootblower()
+    public function laporan_sootblower(Request $request)
     {
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = Sootblower::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
-
+        if($request->get('select_unit') == '') 
+        {
+            $reports = Sootblower::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        } else {
+            $select_unit = $request->get('select_unit');
+            $reports = Sootblower::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
+        }
+        
         $date_now = Carbon::now()->format('Y-m-d');
 
         $path = base_path('public/frontends/assets/img/logo/pln.png');
@@ -88,7 +100,7 @@ class LaporanDataController extends Controller
     {
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = HsdLevel::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        $reports = HsdLevel::with(['users','status_equipments'])->whereBetween('created_at',[$first_date, $last_date])->orderBy('created_at','desc')->get();
 
         $date_now = Carbon::now()->format('Y-m-d');
 
@@ -114,12 +126,18 @@ class LaporanDataController extends Controller
         return $pdf->stream();
     }
 
-    public function laporan_hppump()
+    public function laporan_hppump(Request $request)
     {
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = Hp_Pump::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
-
+        if($request->get('select_unit') == '') 
+        {
+            $reports = Hp_Pump::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        } else {
+            $select_unit = $request->get('select_unit');
+            $reports = Hp_Pump::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
+        }
+        
         $date_now = Carbon::now()->format('Y-m-d');
 
         $path = base_path('public/frontends/assets/img/logo/pln.png');
@@ -149,6 +167,7 @@ class LaporanDataController extends Controller
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
         $reports = Fw_Pump::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        
 
         $date_now = Carbon::now()->format('Y-m-d');
 
@@ -205,11 +224,17 @@ class LaporanDataController extends Controller
         return $pdf->stream();
         // }
     }
-    public function laporan_coturbine()
+    public function laporan_coturbine(Request $request)
     {
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = CoTurbine::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        if($request->get('select_unit') == '') 
+        {
+            $reports = CoTurbine::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        } else {
+            $select_unit = $request->get('select_unit');
+            $reports = CoTurbine::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
+        }
         
         // $reports = EdgSystem::with(['users','status_equipments'])->whereBetween('tanggal_update', [$first_date, $last_date])->get();
         $date_now = Carbon::now()->format('Y-m-d');
@@ -237,13 +262,18 @@ class LaporanDataController extends Controller
         // }
     }
 
-    public function laporan_coboiler()
+    public function laporan_coboiler(Request $request)
     {
         $first_date = Carbon::parse(request()->first_date)->toDateTimeString();
         $last_date = Carbon::parse(request()->last_date)->toDateTimeString();
-        $reports = CoBoiler::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        if($request->get('select_unit') == '') 
+        {
+            $reports = CoBoiler::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->orderBy('tanggal_update','desc')->get();
+        } else {
+            $select_unit = $request->get('select_unit');
+            $reports = CoBoiler::with(['users','status_equipments'])->whereBetween('tanggal_update',[$first_date, $last_date])->where('unit',$select_unit)->orderBy('tanggal_update','desc')->get();
+        }
         
-        // $reports = EdgSystem::with(['users','status_equipments'])->whereBetween('tanggal_update', [$first_date, $last_date])->get();
         $date_now = Carbon::now()->format('Y-m-d');
 
         $path = base_path('public/frontends/assets/img/logo/pln.png');

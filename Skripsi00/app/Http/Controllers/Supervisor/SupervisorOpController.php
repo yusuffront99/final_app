@@ -359,7 +359,7 @@ class SupervisorOpController extends Controller
         $update->info_FP = $request->get('info_FP');
         // $update->DP_High = $request->get('DP_High');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
         return redirect()->route('lmasuk.op.fwpump')->with('success', 'Updated Data Successfully');
@@ -386,7 +386,7 @@ class SupervisorOpController extends Controller
         $update->info_HP = $request->get('info_HP');
         $update->DP_High = $request->get('DP_High');
         $update->status_equipment_id = $request->get('status_equipment_id');
-        $update->catatan = $request->get('catatan');
+        $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
         return redirect()->route('lmasuk.op.hppump')->with('success', 'Updated Data Successfully');
@@ -653,7 +653,24 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = BurnerSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.reports.all_data.all_data_burner', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_burner', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+    }
+
+    public function sootblower_data_shift()
+    {
+        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = Sootblower::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
+        return view('pages.reports.shift_data.all_data_sootblower', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
     public function fwpump_data_shift()
@@ -670,7 +687,7 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.supervisor.lmasuk_op.lfo_system.fw_pump.all_validasi_fwp', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_fwpump', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
     public function hppump_data_shift()
@@ -687,7 +704,24 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.supervisor.lmasuk_op.lfo_system.hp_pump.all_validasi_hpp', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_hppump', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+    }
+
+    public function hsdlevel_data_shift()
+    {
+        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = HsdLevel::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
+        return view('pages.reports.shift_data.all_data_hsdlevel', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
     public function edg_data_shift()
@@ -704,7 +738,7 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = EdgSystem::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.reports.all_data.all_data_edg', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_edg', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
 
@@ -722,7 +756,7 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = CoTurbine::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.reports.all_data.all_data_coturbine', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_coturbine', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
     public function coboiler_data_shift()
@@ -739,7 +773,7 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = CoBoiler::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.reports.all_data.all_data_coboiler', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_coboiler', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
     public function cocommon_data_shift()
@@ -756,6 +790,6 @@ class SupervisorOpController extends Controller
 
         $user = User::where('id', Auth::user()->id)->first();
         $data = CoCommon::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
-        return view('pages.reports.all_data.all_data_cocommon', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+        return view('pages.reports.shift_data.all_data_cocommon', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 }

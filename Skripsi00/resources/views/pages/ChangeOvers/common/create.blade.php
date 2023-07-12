@@ -100,17 +100,35 @@
                                 <div class="form-group mb-2 mx-3">
                                     <label for="">Peralatan Operasi</label>
                                     <div class="row my-1">
-                                        <div class="col">
+                                    <div class="col">
                                             <h6 class="text-center">Pertama</h6>
-                                            <input type="text" name="operasi_awal" id="operasi_awal" class="form-control" placeholder="Ex: A" required>
+                                            <select name="operasi_awal" id="operasi_awal" class="form-select">
+                                                <option value="">--Select--</option>
+                                                <option value="A & B">A & B</option>
+                                                <option value="B & C">B & C</option>
+                                                <option value="A & C">A & C</option>
+                                                <option value="A B C">A B C</option>
+                                            </select>
                                         </div>
                                         <div class="col">
-                                            <h6 class="text-center">Rencana</h6>
-                                            <input type="text" name="rencana_operasi" id="rencana_operasi" class="form-control" placeholder="Ex: B" required>
+                                            <h6 class="text-center">Rencana</h6> 
+                                            <select name="rencana_operasi" id="rencana_operasi" class="form-select">
+                                                <option value="">--Select--</option>
+                                                <option value="A & B">A & B</option>
+                                                <option value="B & C">B & C</option>
+                                                <option value="A & C">A & C</option>
+                                                <option value="A B C">A B C</option>
+                                            </select> 
                                         </div>
                                         <div class="col">
                                             <h6 class="text-center">Terakhir</h6>
-                                            <input type="text" name="operasi_akhir" id="operasi_akhir" class="form-control" placeholder="Ex: B" required>
+                                            <select name="operasi_akhir" id="operasi_akhir" class="form-select">
+                                                <option value="">--Select--</option>
+                                                <option value="A & B">A & B</option>
+                                                <option value="B & C">B & C</option>
+                                                <option value="A & C">A & C</option>
+                                                <option value="A B C">A B C</option>
+                                            </select> 
                                         </div>
                                     </div>
                                 </div>

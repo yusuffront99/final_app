@@ -92,7 +92,7 @@
                             <input type="hidden" value="{{$data_id->status_sbl35}}" name="status_sbl35">
                             <input type="hidden" value="{{$data_id->status_sbl36}}" name="status_sbl36">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
-                            <input type="hidden" value="{{$data_id->catatan}}" name="catatan">
+                            <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation Sootblower System</h5>

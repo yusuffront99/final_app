@@ -123,11 +123,11 @@ class SootblowerController extends Controller
         return view('pages.Sootblower.edit', compact('data_id', 'users', 'user'));
     }
 
-    public function shift_data_sbl()
+    public function shift_data_sootblower()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data = Sootblower::where('operator_shift', Auth::user()->tim_divisi)->orderBy('tanggal_update','desc')->get();
-        return view('pages.reports.all_data.shift_data_edg', compact('data','user'));
+        $data = Sootblower::orderBy('tanggal_update','desc')->get();
+        return view('pages.reports.all_data.shift_data_sootblower', compact('data','user'));
     }
 
     /**
@@ -273,11 +273,11 @@ class SootblowerController extends Controller
         return $pdf->stream();
     }
 
-    public function all_view_edg()
+    public function all_view_sootblower()
     {
         $user = User::where('id', Auth::user()->id)->first();
         $data = Sootblower::with('users','status_equipments')->orderBy('tanggal_update','desc')->get();
 
-        return view('pages.reports.all_data.all_data_edg', compact('data','user'));
+        return view('pages.reports.all_data.all_data_sootblower', compact('data','user'));
     }
 }

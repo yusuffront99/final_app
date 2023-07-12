@@ -39,7 +39,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex justify-content-between">
                             <div class="mx-1">
-                                <a href="{{route('admin.index.hppump')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                <a href="{{route('admin.index.hppump')}}" class="btn btn-sm btn-dark"><i class='bx bx-refresh'></i> Refresh</a>
                             </div>
                             <div class="mx-1">
                                 <a href="{{route('admin.trash.hppump')}}" class="btn btn-sm btn-danger"><i class='bx bxs-trash-alt' ></i> Trash Check</a>
@@ -48,6 +48,11 @@
                         <div class="row">
                             <form action="{{route('print.admin.laporan_hppump')}}" method="GET" target="_blank">
                                 <div class="input-group mb-3">
+                                <select name="select_unit" id="select_unit" class="form-select">
+                                    <option value="">-Select Unit--</option>
+                                    <option value="Unit 3">Unit 3</option>
+                                    <option value="Unit 4">Unit 4</option>
+                                </select>
                                     <input type="date" class="form-control" name="first_date" required>
                                     <input type="date" class="form-control" name="last_date" required>
                                     <button class="btn btn-success" type="submit">PRINT</button>
@@ -127,7 +132,12 @@
                                         </ul>
                                     </td>
 
-                                    <td>{!!$dt->info_HP!!}</td>
+                                    <td>
+                                    <div class="text-danger fw-bold">DP High : {{$dt->DP_High}}</div>
+                                        Catatan :{!!$dt->info_HP!!}
+                                        <br>
+                                        
+                                    </td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

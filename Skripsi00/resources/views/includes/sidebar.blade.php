@@ -139,15 +139,12 @@
         </a>
     @endif
 
-    @if (Auth::user()->divisi != 'Admin')
+    @if (Auth::user()->jabatan == 'Supervisor Operasi')
     <li class="menu-item {{Request::is('home/unit_information') ? 'active' : ''}}">
         <a href="{{route('unit-information')}}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-task"></i>
             <div data-i18n="Analytics">Unit Information</div>
         </a>
-    @endif
-    
-    @if (Auth::user()->jabatan == 'Supervisor Operasi')
     <li class="menu-item {{Request::is('home/inbox/*') || Request::is('home/lmasuk_lfo*') || Request::is('home/lmasuk_edg*') ? 'active' : ''}}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -265,6 +262,11 @@
     </li>
 
     @elseif (Auth::user()->jabatan == 'Supervisor Pemeliharaan')
+    <li class="menu-item {{Request::is('home/unit_information') ? 'active' : ''}}">
+        <a href="{{route('unit-information')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-task"></i>
+            <div data-i18n="Analytics">Unit Information</div>
+        </a>
     <li class="menu-item {{Request::is('home/inbox*') ? 'active' : ''}}">
         <a href="{{route('lmasuk.har')}}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -274,6 +276,11 @@
     {{-- OPERATOR BOILER --}}
 
     @elseif (Auth::user()->jabatan == 'Operator Boiler')
+    <li class="menu-item {{Request::is('home/unit_information') ? 'active' : ''}}">
+        <a href="{{route('unit-information')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-task"></i>
+            <div data-i18n="Analytics">Unit Information</div>
+        </a>
     <li class="menu-item {{Request::is('home/lfo_system*') || Request::is('home/sbl_system*') || Request::is('home/burner_system*') || Request::is('home/co_boiler*')  ? 'active' : ''}}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -321,6 +328,11 @@
     {{-- OPERATOR TURBINE --}}
     
     @elseif (Auth::user()->jabatan == 'Operator Turbine')
+    <li class="menu-item {{Request::is('home/unit_information') ? 'active' : ''}}">
+        <a href="{{route('unit-information')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-task"></i>
+            <div data-i18n="Analytics">Unit Information</div>
+        </a>
     <li class="menu-item {{Request::is('home/edg_system*') || Request::is('home/co_turbine*') || Request::is('home/co_common*') ? 'active' : ''}}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -352,11 +364,16 @@
             <i class="menu-icon tf-icons bx bxs-dashboard"></i>
             <div data-i18n="Analytics">Dashboard</div>
         </a>
+    <li class="menu-item {{Request::is('dashboard/task_schedule*') ? 'active' : ''}}">
+        <a href="{{route('task_schedule.index')}}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-calendar"></i>
+            <div data-i18n="Analytics">Task Schedule</div>
+        </a>
 
     <li class="menu-item {{Request::is('dashboard/report*') ? 'active' : ''}}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
-            <div data-i18n="Layouts">All Report</div>
+            <div data-i18n="Layouts">Equipment Report</div>
         </a>
         <ul class="menu-sub">
             <li class="menu-item {{Request::is('dashboard/report/burner*') ? 'active' : ''}}">
@@ -418,12 +435,12 @@
     <li class="menu-item {{Request::is('dashboard/employee*') || Request::is('dashboard/leader*') ? 'active' : ''}}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-user"></i>
-            <div data-i18n="Layouts">Data Pegawai</div>
+            <div data-i18n="Layouts">Employee</div>
         </a>
         <ul class="menu-sub">
             <li class="menu-item {{Request::is('dashboard/employee*') ? 'active' : ''}}">
             <a href="{{route('admin.index.user')}}" class="menu-link">
-                <div data-i18n="Without menu">Data Pegawai</div>
+                <div data-i18n="Without menu">Data Employee</div>
             </a>
             </li>
             <li class="menu-item {{Request::is('dashboard/leader*') ? 'active' : ''}}">
@@ -437,8 +454,12 @@
             </a>
             </li>
         </ul>
-    </li>
 
+    <li class="menu-item {{Request::is('dashboard/maintenance*') ? 'active' : ''}}">
+        <a href="{{route('maintenance.index')}}" class="menu-link">
+            <i class='menu-icon tf-icons bx bx-cog'></i>
+            <div data-i18n="Analytics">Maintenance</div>
+        </a>
     <li class="menu-item {{Request::is('dashboard/equipment_about*') ? 'active' : ''}}">
         <a href="{{route('equipment_about.index')}}" class="menu-link">
             <i class='menu-icon tf-icons bx bx-book-reader'></i>

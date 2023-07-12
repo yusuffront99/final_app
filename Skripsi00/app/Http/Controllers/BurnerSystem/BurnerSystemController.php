@@ -116,7 +116,7 @@ class BurnerSystemController extends Controller
     public function shift_data_burner()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data = BurnerSystem::where('operator_shift', Auth::user()->tim_divisi)->orderBy('tanggal_update', 'desc')->get();
+        $data = BurnerSystem::orderBy('tanggal_update', 'desc')->get();
         return view('pages.reports.all_data.shift_data_burner', compact('data','user'));
     }
 

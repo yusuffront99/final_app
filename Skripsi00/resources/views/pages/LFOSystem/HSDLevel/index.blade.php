@@ -94,7 +94,8 @@
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
                                                             <small class="bg-success rounded-pill px-2 mb-2">{{$dt->created_at}}</small>
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{$dt->users->nama_lengkap}}</small>
-                                                            
+                                                            <hr>
+                                                            @include('commons.emergency_alert_hsdlevel')
                                                             <p class="mt-4">
                                                                 <div class="row">
                                                                     <div class="col-6">
@@ -124,6 +125,7 @@
                                                                             <li>Catatan : 
                                                                                 <div class="text-warning">
                                                                                     {!!$dt->info_hsd!!}
+                                                                                    
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
@@ -152,7 +154,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('show.chart')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">Show Chart<i class='bx bxs-right-arrow-circle'></i></a>
+                                        <!-- <a href="" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">Show Detail<i class='bx bxs-right-arrow-circle'></i></a> -->
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-3 col-md-12 rounded">

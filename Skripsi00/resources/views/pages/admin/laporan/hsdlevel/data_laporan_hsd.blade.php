@@ -39,7 +39,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex justify-content-between">
                             <div class="mx-1">
-                                <a href="{{route('admin.index.hsdlevel')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                <a href="{{route('admin.index.hsdlevel')}}" class="btn btn-sm btn-dark"><i class='bx bx-refresh'></i> Refresh</a>
                             </div>
                             <div class="mx-1">
                                 <a href="{{route('admin.trash.hsdlevel')}}" class="btn btn-sm btn-danger"><i class='bx bxs-trash-alt' ></i> Trash Check</a>
@@ -101,9 +101,27 @@
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{$dt->created_at}}</td>
-                                    <td>{{$dt->status}}</td>
-                                    <td>{{$dt->storage_level}}</td>
-                                    <td>{{$dt->daily_level}}</td>
+                                    <td class="text-center">
+                                        @if ($dt->status == 'Normal')
+                                            <div class="badge bg-success">{{$dt->status}}</div>
+                                        @else
+                                            <div class="badge bg-danger">{{$dt->status}}</div>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                    @if ($dt->storage_level >= 3.50)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                    </td>
+                                    <td class="text-center">
+                                    @if ($dt->daily_level >= 2.00)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                    </td>
                                     <td>{!!$dt->info_hsd!!}</td>
                                     <td>
                                         @include('commons.report_status')

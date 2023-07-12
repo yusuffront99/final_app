@@ -47,7 +47,7 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <div class="mx-2 scroll">
+                                                <div class="mx-2 scroll-about-1">
                                                 <div class="fw-bold">Data Total Reports - SHIFT E</div>
                                                 <br>
                                                 @include('commons.track_records.E.data_record_shift_burner')
@@ -73,7 +73,7 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <div class="mx-2 scroll">
+                                                <div class="mx-2 scroll-about-1">
                                                 <div class="fw-bold">Data Total Reports - SHIFT F</div>
                                                 <br>
                                                 @include('commons.track_records.F.data_record_shift_burner')
@@ -96,10 +96,10 @@
                                             <div class="fw-bold">Data Grafik - SHIFT G</div>
                                             <canvas id="myChart-G"></canvas>
                                         </div>
-                                        <hr>
+                                        
                                         <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="mx-2 scroll">
+                                            <div class="col-lg-12 bg-light round">
+                                                <div class="mx-2 scroll-about-1">
                                                 <div class="fw-bold">Data Total Reports - SHIFT G</div>
                                                 <br>
                                                 @include('commons.track_records.G.data_record_shift_burner')
@@ -125,7 +125,7 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <div class="mx-2 scroll">
+                                                <div class="mx-2 scroll-about-1">
                                                 <div class="fw-bold">Data Total Reports - SHIFT H</div>
                                                 <br>
                                                 @include('commons.track_records.H.data_record_shift_burner')
@@ -154,16 +154,23 @@
                          </div>
                     </div>
                     <div class="col-lg-4">
-                    <div class="scroll-about card shadow-lg bg-dark">
-                        <div class="badge bg-primary d-grid p-2"><i class='bx bx-book-reader'></i> Equipment About </div>
-                        <hr>
-                        @foreach ($data as $dt)
-                        <div class="p-2 my-1 border border-white text-dark bg-white rounded">
-                            <small class="badge bg-danger">{{$dt->name_equipment}}</small><br>
-                            <?php echo substr($dt->description,0,175)?>..
-                            <a href="{{route('detail-about-equipment', $dt->id)}}" class="btn btn-sm btn-warning px-4">See Details <i class='bx bxs-right-arrow-circle'></i></a>
+                    <div class="row">
+                        <div class="p-2 bg-dark rounded fw-bold text-warning">
+                            <div id="calendar" class="bg-light"></div>
                         </div>
-                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="scroll-about-2 card shadow-lg bg-dark">
+                            <div class="badge bg-primary d-grid p-2"><i class='bx bx-book-reader'></i> Equipment About </div>
+                            
+                            @foreach ($data as $dt)
+                            <div class="p-2 my-1 border border-white text-dark bg-white rounded">
+                                <small class="badge bg-danger">{{$dt->name_equipment}}</small><br>
+                                <?php echo substr($dt->description,0,175)?>..
+                                <a href="{{route('detail-about-equipment', $dt->id)}}" class="btn btn-sm btn-warning px-4">See Details <i class='bx bxs-right-arrow-circle'></i></a>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                </div>
             </div>
@@ -186,6 +193,43 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+@push('add-script')
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            editable: true,
+            events: '/home/unit_information',
+            displayEventTime: false,
+            display: 'background',
+            eventRender: function (event, element, view) {
+                if (event.allDay === 'true') {
+                    event.allDay = true;
+                } else {
+                    event.allDay = false;
+                }
+            },
+            selectable: true,
+            selectHelper: true,
+        });
+    });
+</script>
+@endpush
 @include('includes.statistic-js.shift_E')
 @include('includes.statistic-js.shift_F')
 @include('includes.statistic-js.shift_G')

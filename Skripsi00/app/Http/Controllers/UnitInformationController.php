@@ -8,10 +8,12 @@ use App\Models\CoBoiler;
 use App\Models\CoCommon;
 use App\Models\CoTurbine;
 use App\Models\EdgSystem;
+use App\Models\Event;
 use App\Models\Fw_Pump;
 use App\Models\Hp_Pump;
 use App\Models\HsdLevel;
 use App\Models\Sootblower;
+use App\Models\TaskSchedule;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,20 +21,56 @@ use Illuminate\Support\Facades\Auth;
 
 class UnitInformationController extends Controller
 {
+    
     public function detail_about_equipment($id)
     {
+        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+
+
         $user = User::where('id', Auth::user()->id)->first();
         $equipment_id = AboutEquipment::find($id);
 
-        return view('detail_equipment', compact('equipment_id','user'));
+        return view('detail_equipment', compact('equipment_id','user','nb','nsbl','nedg','nct','ncb','ncc','nfw','nhp','nhsd'));
     }
 
     public function unit_information()
     {
+        if(request()->ajax()) 
+        {
+ 
+         $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
+         $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
+ 
+         $events = TaskSchedule::whereDate('start', '>=', $start)->whereDate('end',   '<=', $end)->get(['id','title','start', 'end']);
+         return response()->json($events);
+        }
+
+
+        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
 
         $data = AboutEquipment::get();
         $user = User::where('id', Auth::user()->id)->first();
         $mon = Carbon::now()->isoFormat('MMMM Y');
+
+        // SPV OP 
+
+        // SPV HAR 
 
         // SHIFT E **************************************************************************************************************
         $wa_burner_e = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', 'Shift E')->where('status_equipment_id', 1)->count();
@@ -412,6 +450,18 @@ class UnitInformationController extends Controller
             'user' => $user,
             'mon' => $mon,
             'data' => $data,
+
+            // SPV OP
+            'nb' => $nb, 
+            'nsbl' => $nsbl, 
+            'nedg' => $nedg, 
+            'nfw' => $nfw, 
+            'nhp'=>$nhp, 
+            'ncb'=>$ncb, 
+            'ncc'=>$ncc, 
+            'nct'=>$nct, 
+            'nhsd'=>$nhsd,
+            // SPV HAR
 
             // DATA SHIFT E
             // ===== TOTAL STATISTIK STATUS EQUIPMENT

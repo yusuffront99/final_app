@@ -52,7 +52,7 @@
                                 </div>
                             @endif
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA CHANGE OVER PERALATAN COMMON - {{Auth::user()->tim_divisi}}</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA CHANGE OVER PERALATAN COMMON</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>

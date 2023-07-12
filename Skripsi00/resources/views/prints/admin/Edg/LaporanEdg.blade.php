@@ -187,7 +187,7 @@
                         <br>
                         <br>
                         <li>Catatan</li>
-                        <span class="bold-catatan">{{$rp->catatan}}</span>
+                        <span class="bold-catatan">{{$rp->keterangan}}</span>
                     </ul>
                 </td>
             </tr>

@@ -15,12 +15,12 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('burner_system.index')}}" class="text-primary">
-                                Burner System
+                            <a href="{{route('lmasuk.op.hppump')}}" class="text-primary">
+                                LFO System
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                All Data {{Auth::user()->tim_divisi}}
+                                All Data HP Pump
                             </span>
                         </div>
                     </div>
@@ -40,39 +40,26 @@
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
                     <table id="example" class="table table-striped my-3" style="width:100%">
-                        
-                        <div class="d-flex justify-content-between mb-3">
-                            @if (Auth::user()->jabatan != 'Supervisor Operasi' )
-                                <div>
-                                    <a href="{{route('burner_system.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                                <div>
-                                    <a href="{{route('burner_system.print')}}" class="btn btn-sm btn-success" target="_blank"><i class='bx bx-printer'></i> All Print</a>
-                                </div>
-                            @else
-                                <div>
-                                    <a href="{{route('lmasuk.op.burner')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                            @endif
+                        <div>
+                            <a href="{{route('lmasuk.op.hppump')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
 
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">ALL DATA BURNER SYSTEM - {{Auth::user()->tim_divisi}}</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded my-3" style="width: 100%">HIGH PRESSURE PUMP - {{Auth::user()->tim_divisi}}</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                {{-- <th>Aksi</th> --}}
                                 <th>NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Updated Date</th>
-                                <th class="jam-col">Updated Time</th>
+                                <th class="tgl-col">Tanggal Update</th>
+                                <th class="jam-col">Jam Update</th>
                                 <th class="unit-col">Unit</th>
-                                <th class="common-info">Burner 1</th>
-                                <th class="common-info">Burner 2</th>
-                                <th class="common-info">Burner 3</th>
-                                <th class="common-info">Burner 4</th>
+                                <th class="tgl-col">DP High</th>
+                                <th class="common-info text-center">HP Pump A</th>
+                                <th class="common-info text-center">HP Pump B</th>
+                                <th class="common-info text-center">Info HP Pump</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -83,9 +70,6 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    {{-- <td>
-                                        <a href="{{route('one_print_burner', $dt->id)}}" class="p-2 bg-primary text-white" target="_blank"><i class='bx bx-printer'></i></a>
-                                    </td> --}}
                                     <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
@@ -100,42 +84,38 @@
                                             <span class="badge bg-danger rounded">{{$dt->unit}}</span>
                                         @endif
                                     </td>
+                                    <td>{{$dt->DP_High}}</td>
                                     <td>
-                                        @if ($dt->status_burner1 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner1}}</small>
+                                        <ul>
+                                            <li class="text-danger">Arus : {{$dt->arus_HP_A}} A</li>
+                                            <li class="text-success">Pressure : {{$dt->press_HP_A}} MPA</li>
+                                            <li class="text-warning">Status : {{$dt->status_HP_A}}</li>
+                                        </ul>
                                     </td>
                                     <td>
-                                        @if ($dt->status_burner2 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner2}}</small>
+                                        <ul>
+                                            <li class="text-danger">Arus : {{$dt->arus_HP_B}} A</li>
+                                            <li class="text-success">Pressure : {{$dt->press_HP_B}} MPA</li>
+                                            <li class="text-warning">Status : {{$dt->status_HP_B}}</li>
+                                        </ul>
+                                    </td>
+
+
+                                    {{-- <td>
+                                        <ul>
+                                            <li class="text-danger">Arus : {{$dt->forwardings->arus_FP_A}} A</li>
+                                            <li class="text-success">Pressure : {{$dt->forwardings->press_FP_A}} MPA</li>
+                                            <li class="text-warning">Status : {{$dt->forwardings->status_FP_A}}</li>
+                                        </ul>
                                     </td>
                                     <td>
-                                        @if ($dt->status_burner3 == 'Ready')
-                                            <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner3}}</small>
-                                    </td>
-                                    <td>
-                                        @if ($dt->status_burner4 == 'Ready')
-                                        <span class="badge bg-success rounded-pill">Ready</span>
-                                        @else
-                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
-                                        @endif
-                                        <br>
-                                        - <small>{{$dt->ket_burner4}}</small>
-                                    </td>
+                                        <ul>
+                                            <li class="text-danger">Arus : {{$dt->forwardings->arus_FP_B}} A</li>
+                                            <li class="text-success">Pressure : {{$dt->forwardings->press_FP_B}} MPA</li>
+                                            <li class="text-warning">Status : {{$dt->forwardings->status_FP_B}}</li>
+                                        </ul>
+                                    </td> --}}
+                                    <td>{!!$dt->info_HP!!}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

@@ -27,7 +27,7 @@ class CrudHsdLevel extends Controller
         $status_equipments = StatusEquipment::get();
 
         $data_id = HsdLevel::with('users','status_equipments')->where('id', $id)->first();
-        return view('pages.supervisor.lmasuk_op.lfo_system.hsd_level.validation_hsd', compact('data_id', 'status_equipments','operators','leaders','user'));
+        return view('pages.admin.laporan.hsdlevel.data_validasi_hsd', compact('data_id', 'status_equipments','operators','leaders','user'));
     }
 
     // public function edit_forwarding($id)
@@ -51,7 +51,6 @@ class CrudHsdLevel extends Controller
         $update->storage_level = $request->get('storage_level');
         $update->daily_level = $request->get('daily_level');
         $update->status = $request->get('status');
-        $update->jam_update = $request->get('jam_update');
         $update->info_hsd = $request->get('info_hsd');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->catatan_spv = $request->get('catatan_spv');
@@ -59,7 +58,7 @@ class CrudHsdLevel extends Controller
 
         $update->save();
 
-        return redirect()->route('admin.index.hppump')->with('success', 'Updated Data hppump Successfully');
+        return redirect()->route('admin.index.hsdlevel')->with('success', 'Updated Data Successfully');
     }
     
     public function delete($id)

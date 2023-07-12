@@ -183,6 +183,13 @@
                             <div class="text-white badge bg-danger">{{$rp->status_HP_B}}</div>
                         @endif
                         <br>
+                        <span style="font-weight: bold;">Diff Pressure High</span>
+                        @if ($rp->DP_High == 'Normal')
+                            <div class="text-white badge bg-success">{{$rp->DP_High}}</div>
+                        @else
+                            <div class="text-white badge bg-danger">{{$rp->DP_High}}</div>
+                        @endif
+                        <hr>
                         * Catatan : <span style="font-weight: bold;" class="text-danger">{!!$rp->info_HP!!}</span>
                     </td>
                 </tr>

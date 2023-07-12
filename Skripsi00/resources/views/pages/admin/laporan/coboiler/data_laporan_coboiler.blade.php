@@ -45,6 +45,11 @@
                             <div class="row">
                                 <form action="{{route('print.admin.laporan_coboiler')}}" method="GET" target="_blank">
                                     <div class="input-group mb-3">
+                                    <select name="select_unit" id="select_unit" class="form-select">
+                                        <option value="">-Select Unit--</option>
+                                        <option value="Unit 3">Unit 3</option>
+                                        <option value="Unit 4">Unit 4</option>
+                                    </select>
                                         <input type="date" class="form-control" name="first_date" required>
                                         <input type="date" class="form-control" name="last_date" required>
                                         <button class="btn btn-success" type="submit">PRINT</button>

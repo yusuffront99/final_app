@@ -39,6 +39,7 @@ class CrudSootblower extends Controller
         $update->user_id = $request->get('user_id');
         $update->operator_kedua = $request->get('operator_kedua');
         $update->operator_shift = $request->get('operator_shift');
+        $update->unit = $request->get('unit');
         $update->atasan = $request->get('atasan');
         $update->tanggal_update = $request->get('tanggal_update');
         $update->status_sbl1 = $request->get('status_sbl1');

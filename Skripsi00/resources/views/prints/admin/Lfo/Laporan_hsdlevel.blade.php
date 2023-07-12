@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PowerPlant | Forwarding Pump</title>
+<title>PowerPlant | High Speed Diesel</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
     body {
@@ -136,7 +136,7 @@
     </table>
     <br>
     <div class="text-title">
-        DATA LAPORAN FORWARDING PUMP
+        DATA LAPORAN HIGH SPEED DIESEL
     </div>
     <br>
     <table class="table table-bordered th-content">
@@ -146,8 +146,7 @@
                 <th id="col-nip">NIP</th>
                 <th id="col-th">Operator Shift</th>
                 <th id="col-th">Atasan</th>
-                <th id="col-th">Jam Laporan</th>
-                <th id="col-th">Tanggal Laporan</th>
+                <th id="col-th">Waktu Laporan</th>
                 <th id="info" class="text-center">Keterangan</th>
             </tr>
         </thead>
@@ -163,27 +162,33 @@
                         <span class="tb">{{$rp->operator_shift}}</span><br>
                         {{$rp->users->nama_lengkap}} / {{$rp->operator_kedua}}
                     </td>
-                    <td class="text-center">{{$rp->atasan}}</td>
-                    <td class="text-center">{{$rp->jam_update}}</td>
-                    <td class="text-center">
-                        {{Carbon\carbon::createFromFormat('Y-m-d', $rp->tanggal_update)->isoFormat('D MMMM Y')}}
-                    </td>
+                    <td class="text-center">{{$rp->users->atasan}}</td>
+                    <td class="text-center">{{$rp->updated_at}}</td>
+    
                     <td>
-                        <span style="font-weight: bold;">Forwarding Pump A : </span>
-                        @if ($rp->status_FP_A == 'Ready')
-                            <div class="text-white badge bg-success">{{$rp->status_FP_A}}</div>
+                        <span style="font-weight: bold;">Status Peralatan : 
+                            @if ($rp->status == 'Normal')
+                                <div class="badge bg-success text-white">{{$rp->status}}</div>
+                            @else
+                                <div class="badge bg-danger text-white">{{$rp->status}}</div>
+                            @endif
+                        </span><br>
+                        <span style="font-weight: bold;">Storage Tank Level (m3) : </span>
+                        
+                        @if ($rp->storage_level >= 3.5)
+                            <div class="text-white badge bg-success">{{$rp->storage_level}} / Normal</div>
                         @else
-                            <div class="text-white badge bg-danger">{{$rp->status_FP_A}}</div>
+                            <div class="text-white badge bg-danger">{{$rp->storage_level}} / Low</div>
                         @endif
                         <br>
-                        <span style="font-weight: bold;">Forwarding Pump B : </span>
-                        @if ($rp->status_FP_B == 'Ready')
-                            <div class="text-white badge bg-success">{{$rp->status_FP_B}}</div>
+                        <span style="font-weight: bold;">Daily Tank Level (m3): </span>
+                        @if ($rp->daily_level >= 2.0)
+                            <div class="text-white badge bg-success">{{$rp->daily_level}} / Normal</div>
                         @else
-                            <div class="text-white badge bg-danger">{{$rp->status_FP_B}}</div>
+                            <div class="text-white badge bg-danger">{{$rp->daily_level}} / Low</div>
                         @endif
-                        <br>
-                        * Catatan : <span style="font-weight: bold;" class="text-danger">{!!$rp->info_FP!!}</span>
+                        <hr>
+                        * Catatan : <span style="font-weight: bold;" class="text-danger">{!!$rp->info_hsd!!}</span>
                     </td>
                 </tr>
             @endforeach

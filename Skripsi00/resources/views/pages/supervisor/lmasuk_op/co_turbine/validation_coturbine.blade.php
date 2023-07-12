@@ -61,7 +61,7 @@
                             <input type="hidden" value="{{$data_id->status_peralatan}}" name="status_peralatan">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
                             <input type="hidden" value="{{$data_id->keterangan}}" name="keterangan">
-                            <input type="hidden" value="{{$data_id->catatan}}" name="catatan">
+                            <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation CO Turbine</h5>
@@ -156,29 +156,3 @@
 </div>
 @include('includes.footer')
 @endsection
-{{-- 
-@push('add-script')
-    <script>
-        $(document).ready(function(){
-            $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        });
-
-        $('#btn-simpan').click(function(){
-            alert()
-
-            $.ajax({
-                url: 'burner_system/update/' + id
-                method: 'POST',
-                data: $('#edit_burner_system').serialize(),
-                dataType: 'JSON',
-                success: function(data){
-                    
-                }
-            });
-        });
-    </script>
-@endpush --}}

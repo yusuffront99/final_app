@@ -52,7 +52,7 @@
                             @endif
                         </div>
 
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA BURNER SYSTEM</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA EMERGENCY DIESEL GENERATOR SYSTEM</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
@@ -105,7 +105,7 @@
                                             <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
                                         </ul>
                                     </td>
-                                    <td>{{$dt->catatan}}</td>
+                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

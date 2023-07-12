@@ -162,29 +162,3 @@
 </div>
 @include('includes.footer')
 @endsection
-{{-- 
-@push('add-script')
-    <script>
-        $(document).ready(function(){
-            $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        });
-
-        $('#btn-simpan').click(function(){
-            alert()
-
-            $.ajax({
-                url: 'burner_system/update/' + id
-                method: 'POST',
-                data: $('#edit_burner_system').serialize(),
-                dataType: 'JSON',
-                success: function(data){
-                    
-                }
-            });
-        });
-    </script>
-@endpush --}}

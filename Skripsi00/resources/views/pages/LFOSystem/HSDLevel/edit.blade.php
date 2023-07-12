@@ -67,11 +67,11 @@
                                             <label for="arus_HP">HSD Level (M<sup>3</sup>)</label>
                                             <div class="row m-auto my-1">
                                                 <div class="col">
-                                                    <h6 class="text-center">Storage Level</h6>
+                                                    <h6 class="text-center">Storage Tank Level</h6>
                                                     <input type="number" value="{{$data_id->storage_level}}" placeholder="0.00" name="storage_level" id="storage_level" class="form-control" required>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="text-center">Daily Level</h6>
+                                                    <h6 class="text-center">Daily Tank Level</h6>
                                                     <input type="number" value="{{$data_id->storage_level}}" placeholder="0.00" name="daily_level" id="daily_level" class="form-control" required>
                                                 </div>
                                             </div>

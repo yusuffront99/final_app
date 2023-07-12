@@ -16,11 +16,11 @@
                             </a>
                             /
                             <a href="{{route('cocommon.index')}}" class="text-primary">
-                                CO Common 
+                                CO Common
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                All Data {{Auth::user()->tim_divisi}}
+                                All Data CO Common
                             </span>
                         </div>
                     </div>
@@ -46,20 +46,16 @@
                                 <div>
                                     <a href="{{route('cocommon.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
-                                <div>
-                                    <a href="{{route('cocommon.print')}}" class="btn btn-sm btn-success" target="_blank"><i class='bx bx-printer'></i> All Print</a>
-                                </div>
                             @else
                                 <div>
-                                    <a href="{{route('lmasuk.op.edg')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                    <a href="{{route('lmasuk.op.cocommon')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             @endif
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">ALL DATA CHANGE OVER PERALATAN COMMON - {{Auth::user()->tim_divisi}}</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA CHANGE OVER PERALATAN COMMON - {{Auth::user()->tim_divisi}}</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                {{-- <th>Aksi</th> --}}
                                 <th>NIP</th>
                                 <th class="op-1">Operator</th>
                                 <th class="op-1">Supervisor</th>
@@ -79,9 +75,6 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    {{-- <td>
-                                        <a href="{{route('one_print_cocommon', $dt->id)}}" class="p-2 bg-primary text-white" target="_blank"><i class='bx bx-printer'></i></a>
-                                    </td> --}}
                                     <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>

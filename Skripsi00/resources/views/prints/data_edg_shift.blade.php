@@ -191,8 +191,8 @@
                         <span class="bold">{{$rp->lev_bbm_awal}} MM / {{$rp->lev_bbm_akhir}} MM</span>
                         <br>
                         <br>
-                        <li>Catatan</li>
-                        <span class="bold-catatan">{{$rp->catatan}}</span>
+                        <li>Keterangan</li>
+                        <span class="bold-catatan">{{$rp->keterangan}}</span>
                     </ul>
                 </td>
             </tr>

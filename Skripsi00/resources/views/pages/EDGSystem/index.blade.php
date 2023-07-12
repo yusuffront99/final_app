@@ -137,7 +137,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('edg_system.shift_data_edg')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_edg')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

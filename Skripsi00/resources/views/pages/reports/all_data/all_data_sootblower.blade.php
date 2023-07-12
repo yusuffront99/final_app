@@ -15,8 +15,8 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('coturbine.index')}}" class="text-primary">
-                                CO Turbine 
+                            <a href="{{route('sbl_system.index')}}" class="text-primary">
+                                Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -44,10 +44,7 @@
                         <div class="d-flex justify-content-between mb-3">
                             @if (Auth::user()->jabatan != 'Supervisor Operasi' )
                                 <div>
-                                    <a href="{{route('coturbine.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                                <div>
-                                    <a href="{{route('coturbine.print')}}" class="btn btn-sm btn-success" target="_blank"><i class='bx bx-printer'></i> All Print</a>
+                                    <a href="{{route('sbl_system.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             @else
                                 <div>
@@ -55,20 +52,20 @@
                                 </div>
                             @endif
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">ALL DATA CHANGE OVER PERALATAN TURBINE - {{Auth::user()->tim_divisi}}</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">ALL DATA SOOTBLOWER SYSTEM</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                {{-- <th>Aksi</th> --}}
                                 <th>NIP</th>
-                                <th class="op-1">Operator</th>
-                                <th class="op-1">Supervisor</th>
+                                <th class="op-1">Operator I</th>
+                                <th class="op-2">Operator II</th>
+                                <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Tanggal CO</th>
-                                <th class="tgl-col">Jam CO</th>
-                                <th class="tgl-col">Unit</th>
-                                <th class="common-information text-center">Motor Peralatan</th>                                
-                                <th class="common-information text-center">Informasi</th>                                                                                         
+                                <th class="tgl-col">Updated Date</th>
+                                <th class="jam-col">Updated Time</th>
+                                <th class="unit-col">Unit</th>
+                                <th class="common-information">Status Peralatan</th>
+                                <th class="common-information">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -79,16 +76,14 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    {{-- <td>
-                                        <a href="{{route('one_print_coturbine', $dt->id)}}" class="p-2 bg-primary text-white" target="_blank"><i class='bx bx-printer'></i></a>
-                                    </td> --}}
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->users->atasan}}</td>
+                                    <td>{{$dt->operator_kedua}}</td>
+                                    <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>{{$dt->jam_update}}</td>
-                                   <td>
+                                    <td>
                                         @if ($dt->unit == 'Unit 3')
                                             <span class="badge bg-success rounded">{{$dt->unit}}</span>
                                         @else
@@ -97,17 +92,20 @@
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>Operasi Awal : <div class="text-danger fw-bold">Motor {{$dt->operasi_awal}}</div></li>
-                                            <li>Rencana Operasi : <div class="text-warning fw-bold">Motor {{$dt->rencana_operasi}}</li>
-                                            <li>Operasi Akhir : <div class="text-success fw-bold">Motor {{$dt->operasi_akhir}}</li>
+                                            <li>Sootblower Type-L:</li>
+                                            @include('commons.indication_sbl_type_L')
+                                            
+                                            <li>Sootblower Type-C :</li>
+                                            @include('commons.indication_sbl_type_C')
+
+                                            <li>Sootblower Type-G/YB :</li>
+                                            @include('commons.indication_sbl_type_G')
                                         </ul>
                                     </td>
                                     <td>
-                                        <ul>
-                                            <li>Pelaksanaan : <div class="text-success">{{$dt->status_kegiatan}}</div></li>
-                                            <li>Evaluasi : <div class="text-primary"> {{$dt->status_peralatan}}</div> </li>
-                                            <li>Keterangan : <div class="text-danger">{{$dt->keterangan}}</div></li>
-                                        </ul>
+                                    <strong class="text-danger">
+                                    {!!$dt->keterangan!!}
+                                    </strong>
                                     </td>
                                     <td>
                                         @include('commons.report_status')

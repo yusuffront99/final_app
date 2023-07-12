@@ -34,11 +34,12 @@ class SupervisorHarController extends Controller
         $wcot= CoTurbine::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
         $wcob= CoBoiler::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
         $wcoc= CoCommon::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
+        $whsd= HsdLevel::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
         // // $waiting_bsd =::with('users')->latest()->where('status', 'Forwarding')->count();
 
         $data = BurnerSystem::with('users')->latest()->where('status_equipment_id', 2)->get();
 
-        return view('pages.supervisor.lmasuk_har.lmasuk_har', compact('wb','wfp','whp','we','wcot','wcob','wcoc','data','user'));
+        return view('pages.supervisor.lmasuk_har.lmasuk_har', compact('wb','wfp','whp','whsd','we','wcot','wcob','wcoc','data','user'));
     }
 
     protected function burner_validation($id)

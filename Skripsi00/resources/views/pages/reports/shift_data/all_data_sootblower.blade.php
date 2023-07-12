@@ -15,8 +15,8 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('edg_system.index')}}" class="text-primary">
-                                EDG System
+                            <a href="{{route('sbl_system.index')}}" class="text-primary">
+                                Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -44,32 +44,28 @@
                         <div class="d-flex justify-content-between mb-3">
                             @if (Auth::user()->jabatan != 'Supervisor Operasi' )
                                 <div>
-                                    <a href="{{route('edg_system.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                                <div>
-                                    <a href="{{route('edg_system.print')}}" class="btn btn-sm btn-success" target="_blank"><i class='bx bx-printer'></i> All Print</a>
+                                    <a href="{{route('sbl_system.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             @else
                                 <div>
-                                    <a href="{{route('lmasuk.op.edg')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                    <a href="{{route('lmasuk.op.sootblower')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             @endif
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">ALL DATA EMERGENCY DIESEL GENERATOR SYSTEM - {{Auth::user()->tim_divisi}}</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA SOOTBLOWER SYSTEM - {{Auth::user()->tim_divisi}}</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                {{-- <th>Aksi</th> --}}
                                 <th>NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Tanggal Update</th>
-                                <th class="tgl-col">Jam Operasi</th>
-                                <th class="common-information text-center">Info I</th>                                
-                                <th class="common-information text-center">Info II</th>                                
-                                <th class="common-information">Keterangan</th>                                                              
+                                <th class="tgl-col">Updated Date</th>
+                                <th class="jam-col">Updated Time</th>
+                                <th class="unit-col">Unit</th>
+                                <th class="common-information">Status Peralatan</th>
+                                <th class="common-information">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -80,39 +76,37 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    {{-- <td>
-                                        <a href="{{route('one_print_edg', $dt->id)}}" class="p-2 bg-primary text-white" target="_blank"><i class='bx bx-printer'></i></a>
-                                    </td> --}}
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
+                                    <td>{{$dt->jam_update}}</td>
                                     <td>
-                                        <ul>
-                                            <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
-                                            <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
-                                        </ul>
+                                        @if ($dt->unit == 'Unit 3')
+                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                        @else
+                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>Level BBM Awal : {{$dt->lev_bbm_awal}}</li>
-                                            <li>Tegangan Battery : {{$dt->teg_battery}}</li>
-                                            <li>Level Oli : {{$dt->lev_oli}}</li>
-                                            <li>Putaran : {{$dt->putaran}}</li>
+                                            <li>Sootblower Type-L:</li>
+                                            @include('commons.indication_sbl_type_L')
+                                            
+                                            <li>Sootblower Type-C :</li>
+                                            @include('commons.indication_sbl_type_C')
+
+                                            <li>Sootblower Type-G/YB :</li>
+                                            @include('commons.indication_sbl_type_G')
                                         </ul>
                                     </td>
                                     <td>
-                                        <ul>
-                                            <li>Level BBM Akhir : {{$dt->lev_bbm_akhir}}</li>
-                                            <li>Tegangan Output : {{$dt->teg_out}}</li>
-                                            <li>Pressure Oli : {{$dt->press_oli}}</li>
-                                            <li>Frekuensi : {{$dt->frekuensi}}</li>
-                                            <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
-                                        </ul>
+                                    <strong class="text-danger">
+                                    {!!$dt->keterangan!!}
+                                    </strong>
                                     </td>
-                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

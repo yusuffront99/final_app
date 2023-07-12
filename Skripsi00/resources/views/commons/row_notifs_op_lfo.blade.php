@@ -7,7 +7,7 @@
             <div class="fs-3 fw-bold">{{$totfw}}</div>
             <small>Total Laporan</small>
             <div class="bg-white rounded">
-                <a href="{{route('lmasuk.op.fwpump')}}" class="text-primary">see report</a>
+                <a href="{{route('op.fwpump_data_shift')}}" class="text-primary">see report</a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
             <div class="fs-3 fw-bold">{{$tothp}}</div>
             <small>Total Laporan</small>
             <div class="bg-white rounded">
-                <a href="{{route('lmasuk.op.hppump')}}" class="text-primary">see report</a>
+                <a href="{{route('op.hppump_data_shift')}}" class="text-primary">see report</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <div class="fs-3 fw-bold">{{$tothp}}</div>
             <small>Total Laporan</small>
             <div class="bg-white rounded">
-                <a href="{{route('lmasuk.op.hppump')}}" class="text-primary">see report</a>
+                <a href="{{route('op.hsdlevel_data_shift')}}" class="text-primary">see report</a>
             </div>
         </div>
     </div>

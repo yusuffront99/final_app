@@ -140,7 +140,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <input type="hidden" name="catatan" value="-">
+                                <input type="hidden" name="catatan_spv" value="-">
                             </div>
                             <div class="d-grid gap-2 px-4 py-2">
                                 <button type="submit" class="btn btn-success text-center" id="btn-save">Save</button>

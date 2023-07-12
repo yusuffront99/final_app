@@ -130,7 +130,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="{{route('shift_data_coboiler')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                    <a href="{{route('all_view_coboiler')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
                                 </div>
                             </div>
                         </div>

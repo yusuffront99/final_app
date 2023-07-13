@@ -24,11 +24,27 @@ class CrudMaintenanceController extends Controller
         ]);
     }
 
+    // === BURNER
+    public function index_burner()
+    {
+        $data_burner_resolved = BurnerSystem::where('status_equipment_id', 6)->get(); 
+        return view('pages.admin.laporan.maintenance.burner.index', compact('data_burner_resolved'));
+    }
     public function create()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        return view('pages.admin.laporan.maintenance.create', compact('user'));
+        $code = BurnerSystem::where('status_equipment_id', 6)->get(); 
+        return view('pages.admin.laporan.maintenance.burner.create', compact('user', 'code'));
     }
+
+    // === SOOTBLOWER
+    // === EDG
+    // === CO TURBINE
+    // === CO BOILER
+    // === CO COMMON
+    // === FORWARDING PUMP
+    // === HP PUMP
+    // === HSD LEVEL
 
     public function store(Request $request)
     {

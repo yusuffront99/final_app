@@ -48,10 +48,6 @@
                             @endif
                             <div class="row rounded m-auto">
                                 <div class="col-lg-12 col-md-12 col-sm">
-                                    <div class="mb-2">
-                                        <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Laporan Burner System adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Minggu)</small><br>
-                                        <a href="{{route('all_view_burner')}}" class="btn btn-warning btn-sm rounded-pill btn-all-info">All Information <i class='bx bxs-right-arrow-circle'></i></a>
-                                    </div>
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
                                             <div><strong><i class='bx bxs-timer'></i> Recent Report {{Auth::user()->tim_divisi}}</strong></div>

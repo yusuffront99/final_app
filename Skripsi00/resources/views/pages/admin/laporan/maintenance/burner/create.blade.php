@@ -15,7 +15,7 @@
                             </a>
                             /
                             <a href="{{route('admin.index.burner')}}" class="text-primary mx-2">
-                                Data Inventory
+                                Maintenance Burner
                             </a>
                             /
                             <span class="text-warning mx-2">

@@ -36,7 +36,16 @@
                 
                     <div class="p-2">
                         <div class="row">
-                            @include('commons.maintenance_card')
+                           <div class="col-lg-4">
+                            <div class="p-2">
+                                <div class="text-center border border-dark">
+                                    Repair History
+                                </div>
+                            </div>
+                           </div>
+                           <div class="col-lg-8">
+                           @include('commons.maintenance_card')
+                           </div>
                         </div>
                     </div>
                 </div>

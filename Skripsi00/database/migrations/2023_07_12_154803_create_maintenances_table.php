@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('maintenances', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
-            $table->foreignUuid('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignUuid('burner_system_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('repair_code');
+            $table->string('category');
             $table->longText('description');
             $table->string('item_amount');
             $table->string('item_price');
             $table->string('total_price');
-            $table->foreignId('status_equipment_id')->constrained('status_equipment');
             $table->softDeletes();
             $table->timestamps();
         });

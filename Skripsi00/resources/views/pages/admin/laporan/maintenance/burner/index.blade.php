@@ -48,7 +48,7 @@
                             </div>
                             <div class="row">
                                 <div class="mx-1">
-                                    <a href="" class="btn btn-sm btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class='bx bx-plus'></i> Create</a>
+                                    <a href="" class="btn btn-sm btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" id="create-maintenance"><i class='bx bx-plus'></i> Create</a>
                                 </div>
                             </div>
                         </div>

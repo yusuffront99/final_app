@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BurnerSystem;
 use App\Models\Maintenance;
 use App\Models\User;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,6 +38,49 @@ class CrudMaintenanceController extends Controller
         return view('pages.admin.laporan.maintenance.burner.create', compact('user', 'code'));
     }
 
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'burner_system_id' => 'required',
+            'description' => 'required',
+            'item_sp_1' => 'required',
+            'item_price_1' => 'required',
+            'item_total_1' => 'required',
+        ]);
+
+        $maintenances = new Maintenance();
+        $maintenances->burner_system_id = $request->get('burner_system_id');
+        $maintenances->category = $request->get('category');
+        $maintenances->description = $request->get('description');
+        $maintenances->item_sp_1 = $request->get('item_sp_1');
+        $maintenances->item_sp_2 = $request->get('item_sp_2');
+        $maintenances->item_sp_3 = $request->get('item_sp_3');
+        $maintenances->item_price_1 = $request->get('item_price_1');
+        $maintenances->item_price_2 = $request->get('item_price_2');
+        $maintenances->item_price_3 = $request->get('item_price_3');
+        $maintenances->item_total_1 = $request->get('item_total_1');
+        $maintenances->item_total_2 = $request->get('item_total_2');
+        $maintenances->item_total_3 = $request->get('item_total_3');
+        
+
+        $it1 =  intval($request->get('item_total_1'));
+        $it2 =  intval($request->get('item_total_3'));
+        $it3 =  intval($request->get('item_total_2'));
+
+        $tp1 =  intval($request->get('item_price_1'));
+        $tp2 =  intval($request->get('item_price_3'));
+        $tp3 =  intval($request->get('item_price_2'));
+
+        $total_price = (($it1 * $tp1) + ($it2 * $tp2) + ($it3 * $tp3));
+        $maintenances->total_price = $total_price;
+
+        $maintenances->save();
+
+        return response()->json([
+            'success' => 'Added Data Successfully'
+        ], 200);
+    }
+
     // === SOOTBLOWER
     // === EDG
     // === CO TURBINE
@@ -46,10 +90,6 @@ class CrudMaintenanceController extends Controller
     // === HP PUMP
     // === HSD LEVEL
 
-    public function store(Request $request)
-    {
-
-    }
 
     public function edit($id)
     {

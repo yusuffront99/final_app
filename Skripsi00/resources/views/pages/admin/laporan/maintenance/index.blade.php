@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
 
-                                    <a href="{{route('maintenance.see_more')}}">See More</a>
+                                    <a href="{{route('maintenance.histories')}}">See More</a>
                                 </div>
                             </div>
                            </div>

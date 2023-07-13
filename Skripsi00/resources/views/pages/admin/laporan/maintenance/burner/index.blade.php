@@ -62,7 +62,7 @@
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th>Repair Code</th>
+                                <th class="common-info">Repair Code</th>
                                 <th>NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>

@@ -134,10 +134,12 @@ class CrudMaintenanceController extends Controller
         return view('pages.admin.laporan.burner.data_trash_burner', compact('data','user'));
     }
 
-    public function see_more()
+    public function histories()
     {
-        
-        return view('pages.admin.laporan.maintenance.see_more');
+        $histories = Maintenance::get();
+
+    
+        return view('pages.admin.laporan.maintenance.histories', compact('histories'));
     }
 
 }

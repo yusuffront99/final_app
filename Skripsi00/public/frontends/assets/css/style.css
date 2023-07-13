@@ -310,6 +310,14 @@ th.common-information-lg {
   width: 400px !important;
 }
 
+th.common {
+  width: 100px !important;
+}
+
+th.common-button {
+  width: 120px !important;
+}
+
 #bell-waiting {
   position: absolute;
   background: red;

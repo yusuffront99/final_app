@@ -50,6 +50,7 @@ class CrudMaintenanceController extends Controller
 
         $maintenances = new Maintenance();
         $maintenances->burner_system_id = $request->get('burner_system_id');
+        $maintenances->user_id = $request->get('user_id');
         $maintenances->category = $request->get('category');
         $maintenances->description = $request->get('description');
         $maintenances->item_sp_1 = $request->get('item_sp_1');
@@ -79,6 +80,17 @@ class CrudMaintenanceController extends Controller
         return response()->json([
             'success' => 'Added Data Successfully'
         ], 200);
+    }
+
+    public function chooise($id)
+    {
+        $data = BurnerSystem::where('id', $id)->first();
+
+        return response()->json(
+            [
+                'data' => $data,
+                'success' => true,
+            ], 200);
     }
 
     // === SOOTBLOWER
@@ -120,6 +132,12 @@ class CrudMaintenanceController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $data = Maintenance::with('users')->onlyTrashed()->get();
         return view('pages.admin.laporan.burner.data_trash_burner', compact('data','user'));
+    }
+
+    public function see_more()
+    {
+        
+        return view('pages.admin.laporan.maintenance.see_more');
     }
 
 }

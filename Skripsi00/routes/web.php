@@ -461,13 +461,12 @@ Route::prefix('/dashboard')
         Route::resource('task_schedule', AdminTaskScheduleController::class);
 
 
-        // INVENTORIES
-        Route::get('inventory', [CrudInventoryController::class, 'index'])->name('inventory.index');
-        Route::get('inventory/create', [CrudInventoryController::class, 'create'])->name('inventory.create');
-
         // MAINTENANCE
         Route::get('maintenance', [CrudMaintenanceController::class, 'index'])->name('maintenance.index');
+        Route::get('maintenance/burner/{id}', [CrudMaintenanceController::class, 'chooise'])->name('maintenance.chooise');
+        Route::get('maintenance/repair_history', [CrudMaintenanceController::class, 'see_more'])->name('maintenance.see_more');
         Route::post('maintenance/store', [CrudMaintenanceController::class, 'store'])->name('maintenance.store');
+
         Route::get('maintenance/burner', [CrudMaintenanceController::class, 'index_burner'])->name('maintenance-burner.index');
         Route::get('maintenance/burner/create', [CrudMaintenanceController::class, 'create_burner'])->name('maintenance-burner.create');
        

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('maintenances', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
+            $table->foreignUuid('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignUuid('burner_system_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('category');
             $table->longText('description');

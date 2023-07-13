@@ -37,9 +37,20 @@
                     <div class="p-2">
                         <div class="row">
                            <div class="col-lg-4">
-                            <div class="p-2">
-                                <div class="text-center border border-dark">
-                                    Repair History
+                            <div class="border border-primary">
+                                <div class="p-2">
+                                    <div class="fw-bold bg-warning">
+                                        <i class='bx bx-history'></i> Recent Repair History
+                                    </div>
+
+                                    <div class="my-1 scroll">
+                                        <div class="card">
+                                            <small>Hello Developer,</small>
+                                            Admin telah menambahkan laporan baru
+                                        </div>
+                                    </div>
+
+                                    <a href="{{route('maintenance.see_more')}}">See More</a>
                                 </div>
                             </div>
                            </div>

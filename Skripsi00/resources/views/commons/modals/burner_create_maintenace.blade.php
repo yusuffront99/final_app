@@ -10,13 +10,14 @@
             <form action="" id="form-maintenance-burner">
                 <div class="form-group mb-2 fw-bold">
                     <label for="">Kode Perbaikan <i class='bx bx-info-circle text-warning' style="font-size: 14px;" data-bs-toggle="tooltip" data-bs-placement="right" title="Kode Perbaikan baru muncul setelah status laporan peralatan Resolved"></i></label>
-                    <select name="burner_system_id" id="burner_system_id" class="form-select text-warning fw-bold" required>
-                        <option value="" selected disabled>-- Kode Perbaikan --</option>
+                    <select name="burner_system_id" id="repair-code" class="form-select text-warning fw-bold" required>
+                        <option value="" selected disabled>-- Repair Code --</option>
                         @foreach ($data_burner_resolved as $cd)
                             <option value="{{$cd->id}}" class="fw-bold text-danger"><?php echo substr($cd->id, 0, 8)?></option>
                         @endforeach
                     </select>
                 </div>
+                <input type="hidden" name="user_id" id="user_id">
                 <div class="form-group mb-2 fw-bold">
                     <label for="">Kategori</label>
                     <select name="category" id="category" class="form-select" required>
@@ -109,6 +110,21 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+
+        $('#repair-code').on('change', function() {
+          var optionId = $(this).val();
+
+          $.ajax({
+                url: 'burner/' + optionId,
+                type: 'get',
+                data: {},
+                success:function(response){
+                  if(response.success == true){
+                        $('#user_id').val(response.data.user_id);
+                    }
+                }
+            });
         });
 
         $('#create-maintenance').click(function(){

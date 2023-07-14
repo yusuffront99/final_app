@@ -41,13 +41,14 @@ class BurnerSystem extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function forwarding()
+    public function maintenances()
     {
-        return $this->belongsTo(forwarding::class, 'forwarding_id', 'id');
+        return $this->belongsTo(Maintenance::class, 'maintenance_id', 'id');
     }
 
     public function status_equipments()
     {
         return $this->belongsTo(StatusEquipment::class, 'status_equipment_id','id');
     }
+    
 }

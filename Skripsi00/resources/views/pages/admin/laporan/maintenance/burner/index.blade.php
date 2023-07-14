@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Burner
+                                Burner System
                             </span>
                         </div>
                     </div>
@@ -48,25 +48,40 @@
                             </div>
                             <div class="row">
                                 <div class="mx-1">
-                                    <a href="" class="btn btn-sm btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" id="create-maintenance"><i class='bx bx-plus'></i> Create</a>
+                                    <a href="" class="btn btn-sm btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" id="create-maintenance"><i class='bx bx-plus'></i> Buat Rincian</a>
                                 </div>
                             </div>
                         </div>
                         <br>
+
+                        <div class="m-1">
+                        <div class="alert alert-warning fw-bold">
+                        <h3 class="fw-bold badge bg-warning rounded"><i class='bx bxs-alarm-exclamation'></i> Perhatian </h3><br>
+                        <div style="font-style: italic;">
+                        1. Data Laporan yang muncul pada tabel adalah data yang BELUM ditambahkan rincian DETAIL BIAYA pemeliharaan, silakan <div class="badge bg-danger">BUAT RINCIAN <i class='bx bx-right-top-arrow-circle'></i></div><br>
+                        2. Data List Laporan akan OTOMATIS HILANG dari tabel dalam kurun waktu 1 minggu <br>
+                        3. Data Laporan yang baru selesai MAINTENANCE (RESOLVED) akan berindikasi warna HIIJAU pada baris tabel EQUIPMENT REPAIR DATA <br>
+                        4. Data Laporan DETAIL BIAYA PEMELIHARAAN KERUSAKAN PERALATAN akan masuk ke Halaman, silakan klik <small><a class="badge bg-primary" href="{{route('maintenance.histories')}}"><i class='bx bx-link'></i> REPAIR HISTORY DATA</a></small>
+                        </div>
+                        </div>
+                        </div>
                         @include('commons.validasi_success_update')
+
+
                         
                         <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
                         <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - BURNER SYSTEM</span>
                         </div>
+                       
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
                                 <th class="common-info">Repair Code</th>
-                                <th>NIP</th>
+                                <th class="common">NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
-                                <th class="atasan-col">Supervisor</th>
+                                <th class="op-1">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
                                 <th class="tgl-col">Updated Date</th>
                                 <th class="jam-col">Updated Time</th>
@@ -82,10 +97,11 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data_burner_resolved as $dt)
-                                <tr>
+                            @foreach ($weekly_data as $dt)
+                              @if ($today == Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->updated_at)->format('d-m-Y'))
+                              <tr class="border border-danger" style="background-color: #cfffcf;">
                                     <td>{{$no++;}}</td>
-                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0,8)?></div></td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
@@ -140,6 +156,65 @@
                                         @include('commons.report_status')
                                     </td>
                                 </tr>
+                              @else
+                              <tr class="border border-danger" style="background-color: #fff1f3;">
+                                    <td>{{$no++;}}</td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
+                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nama_lengkap}}</td>
+                                    <td>{{$dt->operator_kedua}}</td>
+                                    <td>{{$dt->atasan}}</td>
+                                    <td>{{$dt->operator_shift}}</td>
+                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
+                                    <td>{{$dt->jam_update}}</td>
+                                    <td>
+                                        @if ($dt->unit == 'Unit 3')
+                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                        @else
+                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($dt->status_burner1 == 'Ready')
+                                            <span class="badge bg-success rounded-pill">Ready</span>
+                                        @else
+                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
+                                        @endif
+                                        <br>
+                                        - <small>{{$dt->ket_burner1}}</small>
+                                    </td>
+                                    <td>
+                                        @if ($dt->status_burner2 == 'Ready')
+                                            <span class="badge bg-success rounded-pill">Ready</span>
+                                        @else
+                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
+                                        @endif
+                                        <br>
+                                        - <small>{{$dt->ket_burner2}}</small>
+                                    </td>
+                                    <td>
+                                        @if ($dt->status_burner3 == 'Ready')
+                                            <span class="badge bg-success rounded-pill">Ready</span>
+                                        @else
+                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
+                                        @endif
+                                        <br>
+                                        - <small>{{$dt->ket_burner3}}</small>
+                                    </td>
+                                    <td>
+                                        @if ($dt->status_burner4 == 'Ready')
+                                        <span class="badge bg-success rounded-pill">Ready</span>
+                                        @else
+                                            <span class="badge bg-danger rounded-pill">Not Ready</span>
+                                        @endif
+                                        <br>
+                                        - <small>{{$dt->ket_burner4}}</small>
+                                    </td>
+                                    <td>
+                                        @include('commons.report_status')
+                                    </td>
+                                </tr>
+                              @endif
                             @endforeach
                         </tbody>
                     </table>

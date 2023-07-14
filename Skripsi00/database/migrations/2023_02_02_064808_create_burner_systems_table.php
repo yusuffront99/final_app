@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('status_burner3');
             $table->string('status_burner4');
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
+            // $table->foreignId('maintenance_id')->constrained('maintenances');
             $table->text('catatan_spv');
             $table->softDeletes();
             $table->timestamps();

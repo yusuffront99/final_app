@@ -10,7 +10,7 @@
         </div>
         <div class="card bg-danger text-white fw-bold shadow-md my-1">
             <div class="text-center p-1">
-                <small>Total Repaired</small>
+                <small>Total Repair</small>
                 <span><i class='bx bx-cog'></i></span>
                 <h2 class="fw-bold text-white">{{$tburner_repaired}}</h2>
                 <span>
@@ -30,7 +30,7 @@
         </div>
         <div class="card bg-danger text-white fw-bold shadow-md my-1">
             <div class="text-center p-1">
-                <small>Total Repaired</small>
+                <small>Total Repair</small>
                 <span><i class='bx bx-cog'></i></span>
                 <h2 class="fw-bold text-white">{{$tburner_repaired}}</h2>
                 <span>
@@ -50,7 +50,7 @@
         </div>
         <div class="card bg-danger text-white fw-bold shadow-md my-1">
             <div class="text-center p-1">
-                <small>Total Repaired</small>
+                <small>Total Repair</small>
                 <span><i class='bx bx-cog'></i></span>
                 <h2 class="fw-bold text-white">{{$tburner_repaired}}</h2>
                 <span>
@@ -70,7 +70,7 @@
         </div>
         <div class="card bg-danger text-white fw-bold shadow-md my-1">
             <div class="text-center p-1">
-                <small>Total Repaired</small>
+                <small>Total Repair</small>
                 <span><i class='bx bx-cog'></i></span>
                 <h2 class="fw-bold text-white">{{$tburner_repaired}}</h2>
                 <span>
@@ -90,7 +90,7 @@
         </div>
         <div class="card bg-danger text-white fw-bold shadow-md my-1">
             <div class="text-center p-1">
-                <small>Total Repaired</small>
+                <small>Total Repair</small>
                 <span><i class='bx bx-cog'></i></span>
                 <h2 class="fw-bold text-white">{{$tburner_repaired}}</h2>
                 <span>
@@ -110,7 +110,7 @@
         </div>
         <div class="card bg-danger text-white fw-bold shadow-md my-1">
             <div class="text-center p-1">
-                <small>Total Repaired</small>
+                <small>Total Repair</small>
                 <span><i class='bx bx-cog'></i></span>
                 <h2 class="fw-bold text-white">{{$tburner_repaired}}</h2>
                 <span>

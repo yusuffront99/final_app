@@ -9,11 +9,11 @@
         <div class="m-2">
             <form action="" id="form-maintenance-burner">
                 <div class="form-group mb-2 fw-bold">
-                    <label for="">Kode Perbaikan <i class='bx bx-info-circle text-warning' style="font-size: 14px;" data-bs-toggle="tooltip" data-bs-placement="right" title="Kode Perbaikan baru muncul setelah status laporan peralatan Resolved"></i></label>
+                    <label for="">Repair Code <i class='bx bx-info-circle text-warning' style="font-size: 14px;" data-bs-toggle="tooltip" data-bs-placement="right" title="KODE PERBAIKAN bisa dicek pada data Tabel EQUIPMENT REPAIR DATA"></i></label>
                     <select name="burner_system_id" id="repair-code" class="form-select text-warning fw-bold" required>
                         <option value="" selected disabled>-- Repair Code --</option>
-                        @foreach ($data_burner_resolved as $cd)
-                            <option value="{{$cd->id}}" class="fw-bold text-danger"><?php echo substr($cd->id, 0, 8)?></option>
+                        @foreach ($weekly_data as $wd)
+                        <option value="{{$wd->id}}"><?php echo substr($wd->id, 0, 8)?></option>
                         @endforeach
                     </select>
                 </div>
@@ -28,8 +28,12 @@
                   <label for="" class="fw-bold">Spare Part Item <i class='bx bx-info-circle text-warning' style="font-size: 14px;" data-bs-toggle="tooltip" data-bs-placement="right" title="Apabila Spare Part Item yang diganti hanya 1 item, maka item sebelahnya tidak perlu dipilih"></i></label>
                   <div class="col-4">
                     <div class="form-group mb-2">
+                      
                         <select name="item_sp_1" id="item_sp_1" class="form-select" required>
                             <option value="-">-- Spare Part --</option>
+                            @foreach ($spare_part as $sp)
+                            <option value="{{$sp->spart_part_name}}">{{$sp->spart_part_name}}</option>                            
+                            @endforeach
                         </select>
                     </div>
                   </div>
@@ -157,13 +161,13 @@
                     }
                 },
                 error: function(err){
-                    $.each(err.responseJSON.errors,function(field_name,error){
-                        $(document).find('[name='+field_name+']').after('<small class="text-strong text-danger" id="error">Mohon Isi</small>')
+                        $.each(err.responseJSON.errors,function(field_name,error){
+                        $(document).find('[name='+field_name+']').after('<small class="text-strong text-danger" id="error">'+error+'</small>')
                         })
                         setTimeout(() => {
                             $('small#error').remove();
                         }, 5000);
-                }
+                    }
             });
         })
   });

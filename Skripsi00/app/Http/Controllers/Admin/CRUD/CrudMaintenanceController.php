@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin\CRUD;
 use App\Http\Controllers\Controller;
 use App\Models\BurnerSystem;
 use App\Models\Maintenance;
+use App\Models\SparePart;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class CrudMaintenanceController extends Controller
 {
@@ -16,7 +18,7 @@ class CrudMaintenanceController extends Controller
     {
         $user = User::where('id', Auth::user()->id)->first();
         $data_burner = BurnerSystem::where('status_equipment_id', 6)->count();
-        $tburner_repaired = Maintenance::count();
+        $tburner_repaired = Maintenance::where('category', 'BURNER SYSTEM')->count();
         
         return view('pages.admin.laporan.maintenance.index', [
             'user' => $user,
@@ -28,20 +30,27 @@ class CrudMaintenanceController extends Controller
     // === BURNER
     public function index_burner()
     {
-        $data_burner_resolved = BurnerSystem::where('status_equipment_id', 6)->get(); 
-        return view('pages.admin.laporan.maintenance.burner.index', compact('data_burner_resolved'));
+        $today = Carbon::now()->format('d-m-Y');
+        $startDate = Carbon::now()->subWeek(); // Mengambil tanggal satu minggu yang lalu
+        $endDate = Carbon::now();
+        $spare_part = SparePart::get();
+        $weekly_data = BurnerSystem::where('status_equipment_id', 6)->orderBy('updated_at','desc')->whereBetween('updated_at', [$startDate, $endDate])->get();
+      
+        return view('pages.admin.laporan.maintenance.burner.index', compact('today','weekly_data','spare_part'));
     }
     public function create()
     {
+        $today = Carbon::now()->format('d-m-Y');
+        $new_data = BurnerSystem::whereDate('updated_at', $today)->get();
         $user = User::where('id', Auth::user()->id)->first();
-        $code = BurnerSystem::where('status_equipment_id', 6)->get(); 
-        return view('pages.admin.laporan.maintenance.burner.create', compact('user', 'code'));
+        $code = BurnerSystem::where('status_equipment_id', 6)->orderBy('updated_at','desc')->get(); 
+        return view('pages.admin.laporan.maintenance.burner.create', compact('user', 'code','today','new_data','sp'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'burner_system_id' => 'required',
+            'burner_system_id' => 'required|unique:maintenances,burner_system_id',
             'description' => 'required',
             'item_sp_1' => 'required',
             'item_price_1' => 'required',

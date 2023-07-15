@@ -9,11 +9,12 @@ use App\Http\Controllers\Admin\CRUD\CrudEdg;
 use App\Http\Controllers\Admin\CRUD\CrudFwPump;
 use App\Http\Controllers\Admin\CRUD\CrudHpPump;
 use App\Http\Controllers\Admin\CRUD\CrudHsdLevel;
-use App\Http\Controllers\Admin\CRUD\CrudInventoryController;
 use App\Http\Controllers\Admin\CRUD\CrudLeader;
 use App\Http\Controllers\Admin\CRUD\CrudMaintenanceController;
 use App\Http\Controllers\Admin\CRUD\CrudSootblower;
 use App\Http\Controllers\Admin\CRUD\CrudUser;
+use App\Http\Controllers\Admin\CRUD\Maintenance\BurnerController;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainSootblowerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -461,15 +462,22 @@ Route::prefix('/dashboard')
         Route::resource('task_schedule', AdminTaskScheduleController::class);
 
 
-        // MAINTENANCE
+        // MAINTENANCE MAIN PAGE
         Route::get('maintenance', [CrudMaintenanceController::class, 'index'])->name('maintenance.index');
-        Route::get('maintenance/burner/{id}', [CrudMaintenanceController::class, 'chooise'])->name('maintenance.chooise');
-        Route::get('maintenance/burner/{id}/edit', [CrudMaintenanceController::class, 'create_detail'])->name('maintenance.create_detail');
         Route::get('maintenance/repair_history', [CrudMaintenanceController::class, 'histories'])->name('maintenance.histories');
-        Route::post('maintenance/store', [CrudMaintenanceController::class, 'store'])->name('maintenance.store');
 
-        Route::get('maintenance/burner', [CrudMaintenanceController::class, 'index_burner'])->name('maintenance-burner.index');
-        Route::get('maintenance/burner/create', [CrudMaintenanceController::class, 'create_burner'])->name('maintenance-burner.create');
+        // === MAINTENANCE - BURNER
+        Route::get('maintenance/burner/{id}', [BurnerController::class, 'chooise'])->name('maintenance-burner.chooise');
+        Route::get('maintenance/burner/{id}/edit', [BurnerController::class, 'create_detail'])->name('maintenance-burner.create_detail');
+        Route::post('maintenance/burner/store', [BurnerController::class, 'store'])->name('maintenance-burner.store');
+        Route::get('maintenance/burner', [BurnerController::class, 'index_burner'])->name('maintenance-burner.index');
+
+        // === MAINTENANCE - SOOTBLOWER
+        Route::get('maintenance/sootblower/{id}', [MainSootblowerController::class, 'chooise'])->name('maintenance-sootblower.chooise');
+        Route::get('maintenance/sootblower/{id}/edit', [MainSootblowerController::class, 'create_detail'])->name('maintenance-sootblower.create_detail');
+        Route::post('maintenance/sootblower/store', [MainSootblowerController::class, 'store'])->name('maintenance-sootblower.store');
+        Route::get('maintenance/sootblower', [MainSootblowerController::class, 'index_sootblower'])->name('maintenance-sootblower.index');
+
        
         // Route::post('/', [TaskScheduleController::class, 'destroy'])->name('schedule.destroy');
 

@@ -113,15 +113,15 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><div class="badge bg-danger"><?php echo substr($ht->burner_systems->id, 0, 8)?></div></td>
+                            <td><div class="badge bg-success">{{$ht->repair_code}}</div></td>
                             <td><div class="badge bg-warning">{{$ht->category}}</div></td>
                             <td>{{$ht->users->nip}}</td>
                             <td>{{$ht->users->nama_lengkap}}</td>
                             <td>{{$ht->users->jabatan}} / {{$ht->users->divisi}}</td>
                             <td>{{$ht->users->atasan}}</td>
                             <td>{{$ht->users->tim_divisi}}</td>
-                            <td>{{Carbon\carbon::createFromFormat('Y-m-d', $ht->burner_systems->tanggal_update)->isoFormat('D MMMM Y')}}</td>
-                            <td>{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $ht->burner_systems->updated_at)->isoFormat('D MMMM Y')}}</td>
+                            <td>{{$ht->damage_date}}</td>
+                            <td>{{$ht->repair_date}}</td>
                             <td>{{$ht->description}}</td>
                             <td>
                                @include('commons.repair_history')
@@ -145,15 +145,15 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><div class="badge bg-danger"><?php echo substr($ht->burner_systems->id, 0, 8)?></div></td>
+                            <td><div class="badge bg-success">{{$ht->repair_code}}</div></td>
                             <td><div class="badge bg-warning">{{$ht->category}}</div></td>
                             <td>{{$ht->users->nip}}</td>
                             <td>{{$ht->users->nama_lengkap}}</td>
                             <td>{{$ht->users->jabatan}} / {{$ht->users->divisi}}</td>
                             <td>{{$ht->users->atasan}}</td>
                             <td>{{$ht->users->tim_divisi}}</td>
-                            <td>{{Carbon\carbon::createFromFormat('Y-m-d', $ht->burner_systems->tanggal_update)->isoFormat('D MMMM Y')}}</td>
-                            <td>{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $ht->burner_systems->updated_at)->isoFormat('D MMMM Y')}}</td>
+                            <td>{{$ht->damage_date}}</td>
+                            <td>{{$ht->repair_date}}</td>
                             <td>{{$ht->description}}</td>
                             <td>
                                @include('commons.repair_history')

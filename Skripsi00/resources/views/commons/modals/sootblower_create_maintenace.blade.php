@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
         <div class="m-2">
-            <form action="" id="form-maintenance-burner">
+            <form action="" id="form-maintenance-sootblower">
                 <input type="hidden" name="user_id" id="user_id">
                 <input type="hidden" name="damage_date" id="damage_date">
                 <input type="hidden" name="repair_date" id="repair_date">
@@ -29,7 +29,7 @@
                 <div class="form-group mb-2 fw-bold">
                     <label for="">Kategori</label>
                     <select name="category" id="category" class="form-select" required>
-                        <option value="BURNER SYSTEM">BURNER SYSTEM</option>
+                        <option value="sootblower SYSTEM">sootblower SYSTEM</option>
                     </select>
                 </div>
                 <div class="row">
@@ -136,7 +136,7 @@
         //   var optionId = $(this).val();
 
         //   $.ajax({
-        //         url: 'burner/' + optionId,
+        //         url: 'sootblower/' + optionId,
         //         type: 'get',
         //         data: {},
         //         success:function(response){
@@ -148,7 +148,7 @@
         // });
 
         $('#create-detail').click(function(){
-            $('#form-maintenance-burner').trigger("reset");
+            $('#form-maintenance-sootblower').trigger("reset");
         })
 
         $('#save').click(function (e) {
@@ -156,9 +156,9 @@
             $(this).html('Sending..');
         
             $.ajax({
-                url: "{{route('maintenance-burner.store')}}",
+                url: "{{route('maintenance-sootblower.store')}}",
                 method: 'POST',
-                data: $('#form-maintenance-burner').serialize(),
+                data: $('#form-maintenance-sootblower').serialize(),
                 dataType: 'JSON',
                 success: function(data){
                     if(data.success){
@@ -190,7 +190,7 @@
 
         $('body').on('click', '#create_detail', function () {
           var id = $(this).data('id');
-          $.get('burner/'+id+'/edit', function(data) {
+          $.get('sootblower/'+id+'/edit', function(data) {
               $('#exampleModal').modal('show');
               $('#code').val(data.id.slice(0,8));
               $('#user_id').val(data.user_id);

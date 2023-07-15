@@ -82,7 +82,7 @@ class SootblowerController extends Controller
         $sbl->status_sbl21 = $request->get('status_sbl21');
         $sbl->status_sbl22 = $request->get('status_sbl22');
 
-        $sbl->status_sbl23 = $request->get('status_sbl34');
+        $sbl->status_sbl23 = $request->get('status_sbl23');
         $sbl->status_sbl24 = $request->get('status_sbl24');
         $sbl->status_sbl25 = $request->get('status_sbl25');
         $sbl->status_sbl26 = $request->get('status_sbl26');

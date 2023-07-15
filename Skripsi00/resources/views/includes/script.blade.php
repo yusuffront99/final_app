@@ -45,11 +45,12 @@
             document.getElementById('timer').innerHTML = hrs + ":" + min + ":" + sec;
         }
     </script>
-    
-    {{-- <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
+
+    <!-- {{-- <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-     --}}
+     --}} -->
 

@@ -729,6 +729,10 @@ button.bg-danger.text-white.mb-2.show_confirm {
 
 
 /* ------MAINTENANCE ADMIN */
+
+.success {
+  background-color: #afffa4;
+}
 a.new-notif {
     padding: 7px 10px;
     background: rgb(16, 240, 53);

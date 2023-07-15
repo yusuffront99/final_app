@@ -1,6 +1,7 @@
+<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 badge bg-primary" id="exampleModalLabel">EQUIPMENT REPAIR FORM</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -8,16 +9,14 @@
       <div class="modal-body">
         <div class="m-2">
             <form action="" id="form-maintenance-burner">
+                <input type="hidden" name="user_id" id="user_id">
+                <input type="hidden" name="burner_system_id" id="repair_code" class="form-control">
+
                 <div class="form-group mb-2 fw-bold">
                     <label for="">Repair Code <i class='bx bx-info-circle text-warning' style="font-size: 14px;" data-bs-toggle="tooltip" data-bs-placement="right" title="KODE PERBAIKAN bisa dicek pada data Tabel EQUIPMENT REPAIR DATA"></i></label>
-                    <select name="burner_system_id" id="repair-code" class="form-select text-warning fw-bold" required>
-                        <option value="" selected disabled>-- Repair Code --</option>
-                        @foreach ($weekly_data as $wd)
-                        <option value="{{$wd->id}}"><?php echo substr($wd->id, 0, 8)?></option>
-                        @endforeach
-                    </select>
+                    <input type="text" disabled id="code" class="form-control">
                 </div>
-                <input type="hidden" name="user_id" id="user_id">
+        
                 <div class="form-group mb-2 fw-bold">
                     <label for="">Kategori</label>
                     <select name="category" id="category" class="form-select" required>
@@ -32,7 +31,7 @@
                         <select name="item_sp_1" id="item_sp_1" class="form-select" required>
                             <option value="-">-- Spare Part --</option>
                             @foreach ($spare_part as $sp)
-                            <option value="{{$sp->spart_part_name}}">{{$sp->spart_part_name}}</option>                            
+                            <option value="{{$sp->spare_part_name}}">{{$sp->spare_part_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -40,14 +39,20 @@
                   <div class="col-4">
                     <div class="form-group mb-2 fw-bold">
                         <select name="item_sp_2" id="item_sp_2" class="form-select">
-                            <option value="-">-- Spare Part --</option>
+                             <option value="-">-- Spare Part --</option>
+                            @foreach ($spare_part as $sp)
+                            <option value="{{$sp->spare_part_name}}">{{$sp->spare_part_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group mb-2 fw-bold">
                         <select name="item_sp_3" id="item_sp_3" class="form-select">
-                            <option value="-">-- Spare Part --</option>
+                             <option value="-">-- Spare Part --</option>
+                            @foreach ($spare_part as $sp)
+                            <option value="{{$sp->spare_part_name}}">{{$sp->spare_part_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                   </div>
@@ -107,6 +112,8 @@
   </div>
 </div>
 
+
+
 @push('add-script')
 <script>
   $(document).ready(function(){
@@ -116,22 +123,22 @@
             }
         });
 
-        $('#repair-code').on('change', function() {
-          var optionId = $(this).val();
+        // $('#repair-code').on('change', function() {
+        //   var optionId = $(this).val();
 
-          $.ajax({
-                url: 'burner/' + optionId,
-                type: 'get',
-                data: {},
-                success:function(response){
-                  if(response.success == true){
-                        $('#user_id').val(response.data.user_id);
-                    }
-                }
-            });
-        });
+        //   $.ajax({
+        //         url: 'burner/' + optionId,
+        //         type: 'get',
+        //         data: {},
+        //         success:function(response){
+        //           if(response.success == true){
+        //                 $('#user_id').val(response.data.user_id);
+        //             }
+        //         }
+        //     });
+        // });
 
-        $('#create-maintenance').click(function(){
+        $('#create-detail').click(function(){
             $('#form-maintenance-burner').trigger("reset");
         })
 
@@ -154,7 +161,7 @@
                         });
                         $('#form-add-leader').trigger("reset");
                         $('#modalLeader1').modal('hide');
-                        $("span").remove('#error')
+                        $("span").remove('#error');
                         window.location = "{{route('maintenance.index')}}"
                     }else{
                         console.log('gagal');
@@ -168,8 +175,19 @@
                             $('small#error').remove();
                         }, 5000);
                     }
-            });
+          });
         })
+
+
+        $('body').on('click', '#create_detail', function () {
+          var id = $(this).data('id');
+          $.get('burner/'+id+'/edit', function(data) {
+              $('#exampleModal').modal('show');
+              $('#repair_code').val(data.id);
+              $('#code').val(data.id.slice(0,8));
+              $('#user_id').val(data.user_id);
+        })
+      });
   });
 </script>
 @endpush

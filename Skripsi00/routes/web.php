@@ -464,6 +464,7 @@ Route::prefix('/dashboard')
         // MAINTENANCE
         Route::get('maintenance', [CrudMaintenanceController::class, 'index'])->name('maintenance.index');
         Route::get('maintenance/burner/{id}', [CrudMaintenanceController::class, 'chooise'])->name('maintenance.chooise');
+        Route::get('maintenance/burner/{id}/edit', [CrudMaintenanceController::class, 'create_detail'])->name('maintenance.create_detail');
         Route::get('maintenance/repair_history', [CrudMaintenanceController::class, 'histories'])->name('maintenance.histories');
         Route::post('maintenance/store', [CrudMaintenanceController::class, 'store'])->name('maintenance.store');
 

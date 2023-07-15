@@ -11,13 +11,16 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class CrudMaintenanceController extends Controller
 {
     public function index()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data_burner = BurnerSystem::where('status_equipment_id', 6)->count();
+        $startDate = Carbon::now()->subWeek(); // Mengambil tanggal satu minggu yang lalu
+        $endDate = Carbon::now();
+        $data_burner = BurnerSystem::where('status_equipment_id', 6)->orderBy('updated_at','desc')->whereBetween('updated_at', [$startDate, $endDate])->count();
         $tburner_repaired = Maintenance::where('category', 'BURNER SYSTEM')->count();
         
         return view('pages.admin.laporan.maintenance.index', [
@@ -33,11 +36,25 @@ class CrudMaintenanceController extends Controller
         $today = Carbon::now()->format('d-m-Y');
         $startDate = Carbon::now()->subWeek(); // Mengambil tanggal satu minggu yang lalu
         $endDate = Carbon::now();
-        $spare_part = SparePart::get();
+        $spare_part = SparePart::whereIn('category', ['BOILER','COMMON'])->get();
         $weekly_data = BurnerSystem::where('status_equipment_id', 6)->orderBy('updated_at','desc')->whereBetween('updated_at', [$startDate, $endDate])->get();
-      
-        return view('pages.admin.laporan.maintenance.burner.index', compact('today','weekly_data','spare_part'));
+        $tbm_exists = DB::table('maintenances')->exists();
+        $tbm_data = Maintenance::get();
+
+        return view('pages.admin.laporan.maintenance.burner.index', compact('today','weekly_data','spare_part','tbm_exists','tbm_data'));
     }
+
+    public function create_detail($id)
+    {
+        // $today = Carbon::now()->format('d-m-Y');
+        // $startDate = Carbon::now()->subWeek(); // Mengambil tanggal satu minggu yang lalu
+        // $endDate = Carbon::now();
+        // $weekly_data = BurnerSystem::where('status_equipment_id', 6)->orderBy('updated_at','desc')->whereBetween('updated_at', [$startDate, $endDate])->get();
+        $burner_id = BurnerSystem::where('id', $id)->first();
+        // $spare_part = SparePart::get();
+        return response()->json($burner_id);
+    }
+
     public function create()
     {
         $today = Carbon::now()->format('d-m-Y');
@@ -145,7 +162,7 @@ class CrudMaintenanceController extends Controller
 
     public function histories()
     {
-        $histories = Maintenance::get();
+        $histories = Maintenance::orderBy('created_at','desc')->get();
 
     
         return view('pages.admin.laporan.maintenance.histories', compact('histories'));

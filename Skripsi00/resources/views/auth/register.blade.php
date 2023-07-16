@@ -69,7 +69,7 @@
                                 <div class="col-lg-6">
                                 <div class="form-group mx-2 mb-1">
                                         <label for="" class="fw-bold">Bagian</label>
-                                        <select name="jabatan" id="jabatan" class="form-select">
+                                        <select name="divisi" id="divisi" class="form-select">
                                             <option value="Operasi">Operasi</option>
                                             <option value="Pemeliharaan">Pemeliharaan</option>
                                             <option value="Admin">Admin</option>

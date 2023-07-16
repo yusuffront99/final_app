@@ -15,12 +15,12 @@
                                 <i class='bx bxs-dashboard'></i> Dashboard
                             </a>
                             /
-                            <a href="{{route('admin.index.burner')}}" class="text-primary">
+                            <a href="{{route('maintenance.index')}}" class="text-primary">
                                 Maintenance
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Trash Repair HistoryData
+                                Repair History Data
                             </span>
                         </div>
                     </div>
@@ -38,89 +38,65 @@
                 <div class="card shadow-sm p-3 bg-light">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <a href="{{route('admin.index.burner')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="{{route('maintenance.histories')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
                     </div>
                     <br>
                     @include('commons.validasi_success_update')
-                    <table class="table table-striped table-hovered" id="example">
-                        <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">DATA BURNER SYSTEM - TRASH DATA</span>
+                    <table id="example" class="table table-striped my-3" style="width:100%">
+                        <div class="">
+                            <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">REPAIR HISTORY - TRASH DATA</span>
+                        </div>
                         <thead class="table-primary">
                             <tr>
-                                <th class="op-1 text-center">Aksi</th>
                                 <th>No</th>
-                                <th class="tgl-col">Trash In</th>
+                                <th class="common-button text-center">Aksi</th>
+                                <th class="common">Repair Code</th>
+                                <th class="common-info">Kategori</th>
                                 <th>NIP</th>
-                                <th class="op-1">Operator I</th>
-                                <th class="op-2">Operator II</th>
-                                <th class="atasan-col">Supervisor</th>
-                                <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Updated Date</th>
-                                <th class="jam-col">Updated Time</th>
-                                <th class="unit-col">Unit</th>
-                                <th class="common-info">Burner 1</th>
-                                <th class="common-info">Burner 2</th>
-                                <th class="common-info">Burner 3</th>
-                                <th class="common-info">Burner 4</th>
-                                <th>Status</th>
+                                <th class="common-info">Operator</th>
+                                <th class="common-info">Jabatan / Divisi</th>
+                                <th class="common-info">Supervisor</th>
+                                <th class="common">Shift</th>
+                                <th class="common-info">Tanggal Kerusakan</th>
+                                <th class="common-info">Tanggal Perbaikan</th>
+                                <th class="common-information">Informasi Penanganan</th>
+                                <th class="common-information">Detail Perbaikan</th>
+                                <th class="common-info">Total Biaya (IDR)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                                $no = 1;
-                            @endphp
-                            @foreach ($data as $dt)
-                                <tr>
-                                    <td>
-                                        <div class="d-flex justify-content-evenly">
-                                            <div class="mt-3">
-                                                {{-- <a href="{{route('har.burner_updated', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Download"><i class='bx bxs-download'></i></a> --}}
-                                                <a href="{{route('admin.restore.burner', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
-                                                <a href="{{route('admin.delete_permanent.burner', $dt->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{{$no++;}}</td>
-                                    <td>{{$dt->deleted_at}}</td>
-                                    <td>{{$dt->nip}}</td>
-                                    <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
-                                    <td>{{$dt->operator_shift}}</td>
-                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        @if ($dt->unit == 'Unit 3')
-                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
-                                        @else
-                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        - <small>{{$dt->ket_burner1}}</small>
-                                        <br>
-                                        - <small>{{$dt->status_burner1}}</small>
-                                    </td>
-                                    <td>
-                                        - <small>{{$dt->ket_burner2}}</small>
-                                        <br>
-                                        - <small>{{$dt->status_burner2}}</small>
-                                    </td>
-                                    <td>
-                                        - <small>{{$dt->ket_burner3}}</small>
-                                        <br>
-                                        - <small>{{$dt->status_burner3}}</small>
-                                    </td>
-                                    <td>
-                                        - <small>{{$dt->ket_burner4}}</small>
-                                        <br>
-                                        - <small>{{$dt->status_burner4}}</small>
-                                    </td>
-                                    <td>
-                                        @include('commons.report_status')
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @php
+                            $no = 1;
+                        @endphp
+                        
+                        @foreach ($histories as $ht)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>
+                                <div class="d-flex justify-content-evenly">
+                                    <div class="mt-3">
+                                        <a href="{{route('maintenance.restore', $ht->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
+                                        <a href="{{route('maintenance.delete_permanent', $ht->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><div class="badge bg-success">{{$ht->repair_code}}</div></td>
+                            <td><div class="badge bg-warning">{{$ht->category}}</div></td>
+                            <td>{{$ht->users->nip}}</td>
+                            <td>{{$ht->users->nama_lengkap}}</td>
+                            <td>{{$ht->users->jabatan}} / {{$ht->users->divisi}}</td>
+                            <td>{{$ht->users->atasan}}</td>
+                            <td>{{$ht->users->tim_divisi}}</td>
+                            <td>{{$ht->damage_date}}</td>
+                            <td>{{$ht->repair_date}}</td>
+                            <td>{{$ht->description}}</td>
+                            <td>
+                               @include('commons.repair_history')
+                            </td>
+                            <td><div class="badge bg-success">Rp. <?php echo number_format($ht->total_price, 0, ',', '.')?></div></td>
+                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

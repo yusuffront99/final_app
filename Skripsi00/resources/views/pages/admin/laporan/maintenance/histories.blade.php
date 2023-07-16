@@ -42,11 +42,12 @@
                     <div class="row">
                     <div class="d-flex justify-content-between">
                             <div class="d-flex justify-content-between">
+                               
                                 <div class="mx-1">
-                                    <a href="{{route('admin.index.burner')}}" class="btn btn-sm btn-dark"><i class='bx bx-refresh'></i> Refresh</a>
+                                    <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-refresh'></i> Refresh</a>
                                 </div>
                                 <div class="mx-1">
-                                    <a href="{{route('admin.trash.burner')}}" class="btn btn-sm btn-danger"><i class='bx bxs-trash-alt' ></i> Trash Check</a>
+                                    <a href="{{route('maintenance.trash')}}" class="btn btn-sm btn-danger"><i class='bx bxs-trash-alt' ></i> Trash Check</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -67,7 +68,7 @@
                         <br>
                         @include('commons.validasi_success_update')
                         
-                        <table id="example" class="table table-striped my-3" style="width:100%">
+                    <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
                         <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">REPAIR HISTORY DATA</span>
                         </div>
@@ -101,14 +102,14 @@
                             <td>{{$no++}}</td>
                             <td>
                                 <div class="d-flex justify-content-evenly">
-                                    <div class="mt-3">
-                                        <a href="" class="bg-primary p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Validation"><i class='bx bx-edit'></i></a>
+                                    <div class="mt-2">
+                                        <a href="{{route('maintenance.edit', $ht->id)}}" class="btn btn-primary btn-sm"><i class="bx bxs-edit"></i></a>
                                     </div>
-                                    <div class="">
-                                        <form method="POST" action="{{ route('mainte, $dt->id) }}">
+                                    <div class="mt-2">
+                                        <form method="POST" action="{{route('maintenance.delete', $ht->id)}}">
                                             @csrf
                                             <input name="_method" type="hidden" value="DELETE">
-                                            <button type="submit" class="bg-danger p-2 text-white mb-2 show_confirm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"><i class='bx bxs-trash-alt' ></i></button>
+                                            <button type="submit" class="btn btn-danger btn-sm text-white mb-2 show_confirm"><i class='bx bxs-trash-alt' ></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -133,14 +134,14 @@
                             <td>{{$no++}}</td>
                             <td>
                                 <div class="d-flex justify-content-evenly">
-                                    <div class="mt-3">
-                                        <a href="" class="bg-primary p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Validation"><i class='bx bx-edit'></i></a>
+                                    <div class="mt-2">
+                                        <a href="{{route('maintenance.edit', $ht->id)}}" class="btn btn-primary btn-sm"><i class="bx bxs-edit"></i></a>
                                     </div>
-                                    <div class="">
-                                        <form method="POST" action="">
+                                    <div class="mt-2">
+                                        <form method="POST" action="{{route('maintenance.delete', $ht->id)}}">
                                             @csrf
                                             <input name="_method" type="hidden" value="DELETE">
-                                            <button type="submit" class="bg-danger text-white mb-2 show_confirm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="trash"><i class='bx bxs-trash-alt' ></i></button>
+                                            <button type="submit" class="btn btn-danger btn-sm text-white mb-2 show_confirm"><i class='bx bxs-trash-alt' ></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -154,7 +155,7 @@
                             <td>{{$ht->users->tim_divisi}}</td>
                             <td>{{$ht->damage_date}}</td>
                             <td>{{$ht->repair_date}}</td>
-                            <td>{{$ht->description}}</td>
+                            <td>{!!$ht->description!!}</td>
                             <td>
                                @include('commons.repair_history')
                             </td>
@@ -178,7 +179,6 @@
     <!-- / Layout page -->
 @endsection
 
-
 @push('add-script')
 <script>
     $(document).ready(function(){
@@ -186,6 +186,28 @@
                 scrollY: 300,
                 scrollX: true,
             });
+
+            $('.show_confirm').click(function(event) {
+                var form =  $(this).closest("form");
+                var name = $(this).data("name");
+                event.preventDefault();
+                swal({
+                    title: `Are you sure you want to delete?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+            });
+
+            setTimeout(() => {
+            $('.notif-updated').hide();
+        }, 1000);
     });
 </script>
 @endpush

@@ -71,7 +71,6 @@
                                     <td>
                                         <div class="d-flex justify-content-evenly">
                                             <div class="mt-3">
-                                                {{-- <a href="{{route('admin.sootblower_updated', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Download"><i class='bx bxs-download'></i></a> --}}
                                                 <a href="{{route('admin.restore.sootblower', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
                                                 <a href="{{route('admin.delete_permanent.sootblower', $dt->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
                                             </div>

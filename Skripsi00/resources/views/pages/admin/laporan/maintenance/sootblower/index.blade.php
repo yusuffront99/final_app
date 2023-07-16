@@ -141,7 +141,6 @@
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
-                
                                     </td>
                                     <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->users->nip}}</td>

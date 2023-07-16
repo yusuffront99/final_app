@@ -472,8 +472,12 @@ Route::prefix('/dashboard')
         // MAINTENANCE MAIN PAGE
         Route::get('maintenance', [CrudMaintenanceController::class, 'index'])->name('maintenance.index');
         Route::get('maintenance/repair_history', [CrudMaintenanceController::class, 'histories'])->name('maintenance.histories');
-        Route::get('maintenance/repair_history/delete_permanent/{id}', [CrudMaintenanceController::class, 'delete_permanent'])->name('admin.delete_permanent.maintenance');
-        Route::get('maintenance/repair_history/restore/{id}', [CrudMaintenanceController::class, 'restore'])->name('admin.restore.maintenance');
+        Route::delete('maintenance/{id}', [CrudMaintenanceController::class, 'delete'])->name('maintenance.delete');
+        Route::get('maintenance/{id}/edit', [CrudMaintenanceController::class, 'edit'])->name('maintenance.edit');
+        Route::put('maintenance/{id}', [CrudMaintenanceController::class, 'histories_update'])->name('maintenance.update');
+        Route::get('maintenance/delete_permanent/{id}', [CrudMaintenanceController::class, 'delete_permanent'])->name('maintenance.delete_permanent');
+        Route::get('maintenance/trash', [CrudMaintenanceController::class, 'trash'])->name('maintenance.trash');
+        Route::get('maintenance/restore/{id}', [CrudMaintenanceController::class, 'restore'])->name('maintenance.restore');
 
         // === MAINTENANCE - BURNER
         Route::get('maintenance/burner/{id}', [BurnerController::class, 'chooise'])->name('maintenance-burner.chooise');

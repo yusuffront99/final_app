@@ -64,123 +64,104 @@
 
                         <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - SOOTBLOWER SYSTEM</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - HIGH SPEED DIESEL GENERATOR</span>
                         </div>
                        
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th class="common-info">Aksi</th>
-                                <th class="common-info">Repair Code</th>
-                                <th class="common">NIP</th>
-                                <th class="op-1">Operator I</th>
-                                <th class="op-2">Operator II</th>
-                                <th class="op-1">Supervisor</th>
+                                <th class="op-1 text-center">Aksi</th>
+                                <th class="op-1">Nama Operator</th>
+                                <th class="common-info">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Updated Date</th>
-                                <th class="jam-col">Updated Time</th>
-                                <th class="unit-col">Unit</th>
-                                <th class="common-information text-center">Status Peralatan</th>
-                                <th class="common-information">Keterangan</th>
+                                <th class="tgl-col">Tanggal Update</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
+                                <th class="common-info text-center">Storage Level</th>
+                                <th class="common-info text-center">Daily Level</th>
+                                <th class="common-info text-center">Info HSD Level</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
                             @php
                                 $no = 1;
                             @endphp
-                            
                             @foreach ($weekly_data as $dt)
-                        
                                @if (Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->updated_at)->format('d-m-Y') == $today)
-                                <tr style="background-color: #E2F6CA;">
+                               <tr style="background-color: #E2F6CA;">
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
-                
                                     </td>
-                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
-                                    <td>{{$dt->users->nip}}</td>
+                                    </td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
+                                    <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
-                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        @if ($dt->unit == 'Unit 3')
-                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                    <td>{{$dt->created_at}}</td>
+                                    <td class="text-center">
+                                        @if ($dt->status == 'Normal')
+                                            <div class="badge bg-success">{{$dt->status}}</div>
                                         @else
-                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                            <div class="badge bg-danger">{{$dt->status}}</div>
                                         @endif
                                     </td>
-                                    <td>
-                                        <ul>
-                                            <li>Sootblower Type-L:</li>
-                                            @include('commons.indication_sbl_type_L')
-                                            
-                                            <li>Sootblower Type-C :</li>
-                                            @include('commons.indication_sbl_type_C')
-
-                                            <li>Sootblower Type-G/YB :</li>
-                                            @include('commons.indication_sbl_type_G')
-                                        </ul>
+                                    <td class="text-center">
+                                    @if ($dt->storage_level >= 3.50)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
                                     </td>
-                                    <td>
-                                    <strong class="text-danger">
-                                    {!!$dt->keterangan!!}
-                                    </strong>
+                                    <td class="text-center">
+                                    @if ($dt->daily_level >= 2.00)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
                                     </td>
+                                    <td>{!!$dt->info_hsd!!}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>
                                 </tr>
-                                @else
-                                <tr>
+                               @else
+                               <tr>
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
-                
                                     </td>
-                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
-                                    <td>{{$dt->users->nip}}</td>
+                                    </td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
+                                    <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
-                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        @if ($dt->unit == 'Unit 3')
-                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                    <td>{{$dt->created_at}}</td>
+                                    <td class="text-center">
+                                        @if ($dt->status == 'Normal')
+                                            <div class="badge bg-success">{{$dt->status}}</div>
                                         @else
-                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                            <div class="badge bg-danger">{{$dt->status}}</div>
                                         @endif
                                     </td>
-                                    <td>
-                                        <ul>
-                                            <li>Sootblower Type-L:</li>
-                                            @include('commons.indication_sbl_type_L')
-                                            
-                                            <li>Sootblower Type-C :</li>
-                                            @include('commons.indication_sbl_type_C')
-
-                                            <li>Sootblower Type-G/YB :</li>
-                                            @include('commons.indication_sbl_type_G')
-                                        </ul>
+                                    <td class="text-center">
+                                    @if ($dt->storage_level >= 3.50)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
                                     </td>
-                                    <td>
-                                    <strong class="text-danger">
-                                    {!!$dt->keterangan!!}
-                                    </strong>
+                                    <td class="text-center">
+                                    @if ($dt->daily_level >= 2.00)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
                                     </td>
+                                    <td>{!!$dt->info_hsd!!}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>
                                 </tr>
                                @endif
-                            
                             @endforeach
                         </tbody>
                     </table>
@@ -197,7 +178,7 @@
     <!-- / Layout page -->
 @endsection
 
-@include('commons.modals.sootblower_create_maintenace')
+@include('commons.modals.hsdlevel_create_maintenace')
 <!-- Button trigger modal -->
 
 @push('add-script')

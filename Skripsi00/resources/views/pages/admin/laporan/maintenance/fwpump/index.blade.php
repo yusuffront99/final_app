@@ -71,17 +71,16 @@
                             <tr>
                                 <th>No</th>
                                 <th class="common-info">Aksi</th>
-                                <th class="common-info">Repair Code</th>
                                 <th class="common">NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
-                                <th class="op-1">Supervisor</th>
-                                <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Updated Date</th>
-                                <th class="jam-col">Updated Time</th>
-                                <th class="unit-col">Unit</th>
-                                <th class="common-information text-center">Status Peralatan</th>
-                                <th class="common-information">Keterangan</th>
+                                <th class="common-info">Supervisor</th>
+                                <th class="common">Shift</th>
+                                <th class="common-info">Tanggal Update</th>
+                                <th class="common-info">Jam Operasi</th>
+                                <th class="common-information text-center">Info I</th>                                
+                                <th class="common-information text-center">Info II</th>                                
+                                <th class="common-information">Keterangan</th>      
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -94,44 +93,41 @@
                             @foreach ($weekly_data as $dt)
                         
                                @if (Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->updated_at)->format('d-m-Y') == $today)
-                                <tr style="background-color: #E2F6CA;">
+                               <tr style="background-color: #E2F6CA;">
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
-                
                                     </td>
-                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
-                                    <td>{{$dt->users->nip}}</td>
+                                    <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        @if ($dt->unit == 'Unit 3')
-                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
-                                        @else
-                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
-                                        @endif
-                                    </td>
                                     <td>
                                         <ul>
-                                            <li>Sootblower Type-L:</li>
-                                            @include('commons.indication_sbl_type_L')
-                                            
-                                            <li>Sootblower Type-C :</li>
-                                            @include('commons.indication_sbl_type_C')
-
-                                            <li>Sootblower Type-G/YB :</li>
-                                            @include('commons.indication_sbl_type_G')
+                                            <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
+                                            <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
                                         </ul>
                                     </td>
                                     <td>
-                                    <strong class="text-danger">
-                                    {!!$dt->keterangan!!}
-                                    </strong>
+                                        <ul>
+                                            <li>Level BBM Awal : {{$dt->lev_bbm_awal}}</li>
+                                            <li>Tegangan Battery : {{$dt->teg_battery}}</li>
+                                            <li>Level Oli : {{$dt->lev_oli}}</li>
+                                            <li>Putaran : {{$dt->putaran}}</li>
+                                        </ul>
                                     </td>
+                                    <td>
+                                        <ul>
+                                            <li>Level BBM Akhir : {{$dt->lev_bbm_akhir}}</li>
+                                            <li>Tegangan Output : {{$dt->teg_out}}</li>
+                                            <li>Pressure Oli : {{$dt->press_oli}}</li>
+                                            <li>Frekuensi : {{$dt->frekuensi}}</li>
+                                            <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>
@@ -141,40 +137,37 @@
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
-                
                                     </td>
-                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
-                                    <td>{{$dt->users->nip}}</td>
+                                    <td>{{$dt->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        @if ($dt->unit == 'Unit 3')
-                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
-                                        @else
-                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
-                                        @endif
-                                    </td>
                                     <td>
                                         <ul>
-                                            <li>Sootblower Type-L:</li>
-                                            @include('commons.indication_sbl_type_L')
-                                            
-                                            <li>Sootblower Type-C :</li>
-                                            @include('commons.indication_sbl_type_C')
-
-                                            <li>Sootblower Type-G/YB :</li>
-                                            @include('commons.indication_sbl_type_G')
+                                            <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
+                                            <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
                                         </ul>
                                     </td>
                                     <td>
-                                    <strong class="text-danger">
-                                    {!!$dt->keterangan!!}
-                                    </strong>
+                                        <ul>
+                                            <li>Level BBM Awal : {{$dt->lev_bbm_awal}}</li>
+                                            <li>Tegangan Battery : {{$dt->teg_battery}}</li>
+                                            <li>Level Oli : {{$dt->lev_oli}}</li>
+                                            <li>Putaran : {{$dt->putaran}}</li>
+                                        </ul>
                                     </td>
+                                    <td>
+                                        <ul>
+                                            <li>Level BBM Akhir : {{$dt->lev_bbm_akhir}}</li>
+                                            <li>Tegangan Output : {{$dt->teg_out}}</li>
+                                            <li>Pressure Oli : {{$dt->press_oli}}</li>
+                                            <li>Frekuensi : {{$dt->frekuensi}}</li>
+                                            <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
+                                        </ul>
+                                    </td>
+                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>
@@ -197,7 +190,7 @@
     <!-- / Layout page -->
 @endsection
 
-@include('commons.modals.sootblower_create_maintenace')
+@include('commons.modals.fwpump_create_maintenace')
 <!-- Button trigger modal -->
 
 @push('add-script')

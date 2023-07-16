@@ -105,10 +105,10 @@
                                         <a href="" class="bg-primary p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Validation"><i class='bx bx-edit'></i></a>
                                     </div>
                                     <div class="">
-                                        <form method="POST" action="">
+                                        <form method="POST" action="{{ route('mainte, $dt->id) }}">
                                             @csrf
                                             <input name="_method" type="hidden" value="DELETE">
-                                            <button type="submit" class="bg-danger text-white mb-2 show_confirm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="trash"><i class='bx bxs-trash-alt' ></i></button>
+                                            <button type="submit" class="bg-danger p-2 text-white mb-2 show_confirm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete"><i class='bx bxs-trash-alt' ></i></button>
                                         </form>
                                     </div>
                                 </div>

@@ -16,11 +16,11 @@
                             </a>
                             /
                             <a href="{{route('admin.index.burner')}}" class="text-primary">
-                                Data Burner System
+                                Maintenance
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Trash Data
+                                Trash Repair HistoryData
                             </span>
                         </div>
                     </div>

@@ -14,6 +14,13 @@ use App\Http\Controllers\Admin\CRUD\CrudMaintenanceController;
 use App\Http\Controllers\Admin\CRUD\CrudSootblower;
 use App\Http\Controllers\Admin\CRUD\CrudUser;
 use App\Http\Controllers\Admin\CRUD\Maintenance\BurnerController;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainCOBoilerContoller;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainCOCommonContoller;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainCOTurbineContoller;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainEDGContoller;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainFWPumpContoller;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainHPPumpContoller;
+use App\Http\Controllers\Admin\CRUD\Maintenance\MainHSDLevelContoller;
 use App\Http\Controllers\Admin\CRUD\Maintenance\MainSootblowerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -465,6 +472,8 @@ Route::prefix('/dashboard')
         // MAINTENANCE MAIN PAGE
         Route::get('maintenance', [CrudMaintenanceController::class, 'index'])->name('maintenance.index');
         Route::get('maintenance/repair_history', [CrudMaintenanceController::class, 'histories'])->name('maintenance.histories');
+        Route::get('maintenance/repair_history/delete_permanent/{id}', [CrudMaintenanceController::class, 'delete_permanent'])->name('admin.delete_permanent.maintenance');
+        Route::get('maintenance/repair_history/restore/{id}', [CrudMaintenanceController::class, 'restore'])->name('admin.restore.maintenance');
 
         // === MAINTENANCE - BURNER
         Route::get('maintenance/burner/{id}', [BurnerController::class, 'chooise'])->name('maintenance-burner.chooise');
@@ -477,6 +486,48 @@ Route::prefix('/dashboard')
         Route::get('maintenance/sootblower/{id}/edit', [MainSootblowerController::class, 'create_detail'])->name('maintenance-sootblower.create_detail');
         Route::post('maintenance/sootblower/store', [MainSootblowerController::class, 'store'])->name('maintenance-sootblower.store');
         Route::get('maintenance/sootblower', [MainSootblowerController::class, 'index_sootblower'])->name('maintenance-sootblower.index');
+        
+        // === MAINTENANCE - EDG
+        Route::get('maintenance/edg/{id}', [MainEDGContoller::class, 'chooise'])->name('maintenance-edg.chooise');
+        Route::get('maintenance/edg/{id}/edit', [MainEDGContoller::class, 'create_detail'])->name('maintenance-edg.create_detail');
+        Route::post('maintenance/edg/store', [MainEDGContoller::class, 'store'])->name('maintenance-edg.store');
+        Route::get('maintenance/edg', [MainEDGContoller::class, 'index_edg'])->name('maintenance-edg.index');
+
+        // === MAINTENANCE - HP PUMP
+        Route::get('maintenance/hppump/{id}', [MainHPPumpContoller::class, 'chooise'])->name('maintenance-hppump.chooise');
+        Route::get('maintenance/hppump/{id}/edit', [MainHPPumpContoller::class, 'create_detail'])->name('maintenance-hppump.create_detail');
+        Route::post('maintenance/hppump/store', [MainHPPumpContoller::class, 'store'])->name('maintenance-hppump.store');
+        Route::get('maintenance/hppump', [MainHPPumpContoller::class, 'index_hppump'])->name('maintenance-hppump.index');
+
+        // === MAINTENANCE - FW PUMP
+        Route::get('maintenance/fwpump/{id}', [MainFWPumpContoller::class, 'chooise'])->name('maintenance-fwpump.chooise');
+        Route::get('maintenance/fwpump/{id}/edit', [MainFWPumpContoller::class, 'create_detail'])->name('maintenance-fwpump.create_detail');
+        Route::post('maintenance/fwpump/store', [MainFWPumpContoller::class, 'store'])->name('maintenance-fwpump.store');
+        Route::get('maintenance/fwpump', [MainFWPumpContoller::class, 'index_fwpump'])->name('maintenance-fwpump.index');
+
+        // === MAINTENANCE - HSD LEVEL
+        Route::get('maintenance/hsdlevel/{id}', [MainHSDLevelContoller::class, 'chooise'])->name('maintenance-hsdlevel.chooise');
+        Route::get('maintenance/hsdlevel/{id}/edit', [MainHSDLevelContoller::class, 'create_detail'])->name('maintenance-hsdlevel.create_detail');
+        Route::post('maintenance/hsdlevel/store', [MainHSDLevelContoller::class, 'store'])->name('maintenance-hsdlevel.store');
+        Route::get('maintenance/hsdlevel', [MainHSDLevelContoller::class, 'index_hsdlevel'])->name('maintenance-hsdlevel.index');
+
+        // === MAINTENANCE - CO TURBINE
+        Route::get('maintenance/coturbine/{id}', [MainCOTurbineContoller::class, 'chooise'])->name('maintenance-coturbine.chooise');
+        Route::get('maintenance/coturbine/{id}/edit', [MainCOTurbineContoller::class, 'create_detail'])->name('maintenance-coturbine.create_detail');
+        Route::post('maintenance/coturbine/store', [MainCOTurbineContoller::class, 'store'])->name('maintenance-coturbine.store');
+        Route::get('maintenance/coturbine', [MainCOTurbineContoller::class, 'index_coturbine'])->name('maintenance-coturbine.index');
+
+        // === MAINTENANCE - CO BOILER
+        Route::get('maintenance/coboiler/{id}', [MainCOBoilerContoller::class, 'chooise'])->name('maintenance-coboiler.chooise');
+        Route::get('maintenance/coboiler/{id}/edit', [MainCOBoilerContoller::class, 'create_detail'])->name('maintenance-coboiler.create_detail');
+        Route::post('maintenance/coboiler/store', [MainCOBoilerContoller::class, 'store'])->name('maintenance-coboiler.store');
+        Route::get('maintenance/coboiler', [MainCOBoilerContoller::class, 'index_coboiler'])->name('maintenance-coboiler.index');
+
+        // === MAINTENANCE - CO COMMON
+        Route::get('maintenance/cocommon/{id}', [MainCOCommonContoller::class, 'chooise'])->name('maintenance-cocommon.chooise');
+        Route::get('maintenance/cocommon/{id}/edit', [MainCOCommonContoller::class, 'create_detail'])->name('maintenance-cocommon.create_detail');
+        Route::post('maintenance/cocommon/store', [MainCOCommonContoller::class, 'store'])->name('maintenance-cocommon.store');
+        Route::get('maintenance/cocommon', [MainCOCommonContoller::class, 'index_cocommon'])->name('maintenance-cocommon.index');
 
        
         // Route::post('/', [TaskScheduleController::class, 'destroy'])->name('schedule.destroy');

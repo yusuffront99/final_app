@@ -17,7 +17,7 @@
                     <div class="d-flex justify-content-start">
                     <div class="mx-1">
                       <label for="">Repair Code <i class='bx bx-info-circle text-warning' style="font-size: 14px;" data-bs-toggle="tooltip" data-bs-placement="right" title="KODE PERBAIKAN bisa dicek pada data Tabel EQUIPMENT REPAIR DATA"></i></label>
-                      <input type="text" disabled id="code" class="form-control">
+                      <input type="text"  id="code" class="form-control" readonly>
                     </div>
                     <div class="mx-1">
                       <label for="">Masukan Kode Disamping</label>
@@ -132,20 +132,8 @@
             }
         });
 
-        // $('#repair-code').on('change', function() {
-        //   var optionId = $(this).val();
-
-        //   $.ajax({
-        //         url: 'burner/' + optionId,
-        //         type: 'get',
-        //         data: {},
-        //         success:function(response){
-        //           if(response.success == true){
-        //                 $('#user_id').val(response.data.user_id);
-        //             }
-        //         }
-        //     });
-        // });
+        $("#copyInput").select();
+        document.execCommand("copy");
 
         $('#create-detail').click(function(){
             $('#form-maintenance-burner').trigger("reset");

@@ -438,6 +438,7 @@ Route::prefix('/dashboard')
         Route::get('report/coturbine/print', [LaporanDataController::class, 'laporan_coturbine'])->name('print.admin.laporan_coturbine');
         Route::get('report/coboiler/print', [LaporanDataController::class, 'laporan_coboiler'])->name('print.admin.laporan_coboiler');
         Route::get('report/cocommon/print', [LaporanDataController::class, 'laporan_cocommon'])->name('print.admin.laporan_cocommon');
+        Route::get('report/maintenance/print', [LaporanDataController::class, 'laporan_maintenance'])->name('print.admin.laporan_maintenance_history');
         Route::get('report/user/download', [LaporanDataController::class, 'laporan_user'])->name('print.admin.laporan_user');
 
         // --- DATA LAPORAN USER

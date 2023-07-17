@@ -55,6 +55,7 @@ class BurnerController extends Controller
         $maintenances->repair_code = $request->get('repair_code');
         $maintenances->user_id = $request->get('user_id');
         $maintenances->category = $request->get('category');
+        $maintenances->unit = $request->get('unit');
         $maintenances->damage_date = $request->get('damage_date');
         $maintenances->repair_date = $request->get('repair_date');
         $maintenances->description = $request->get('description');

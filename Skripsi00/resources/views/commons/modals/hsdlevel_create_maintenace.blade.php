@@ -12,6 +12,7 @@
                 <input type="hidden" name="user_id" id="user_id">
                 <input type="hidden" name="damage_date" id="damage_date">
                 <input type="hidden" name="repair_date" id="repair_date">
+                <input type="hidden" name="unit" id="unit" value="Common">
                 
                 <div class="form-group mb-2 fw-bold">
                     <div class="d-flex justify-content-start">

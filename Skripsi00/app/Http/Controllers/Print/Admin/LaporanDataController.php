@@ -13,6 +13,7 @@ use App\Models\EdgSystem;
 use App\Models\Fw_Pump;
 use App\Models\Hp_Pump;
 use App\Models\HsdLevel;
+use App\Models\Maintenance;
 use App\Models\Sootblower;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -359,11 +360,41 @@ class LaporanDataController extends Controller
     }
 
 
-    // ======= DOWNLOAD
-    public function download_burner($id)
+    public function laporan_maintenance(Request $request)
     {
-        // $shift_reports = BurnerSystem::with('users')->get();
-        $reports = BurnerSystem::with(['users','status_equipments'])->where('id', $id)->get();
+        $first_date = $request->input('first_date');
+        $last_date = $request->input('last_date');
+        $category = $request->input('select_category');
+        $unit = $request->input('select_unit');
+
+        if($category == '' || $unit == '')
+        {
+            $reports= Maintenance::where('category', $category)->orWhere('unit', $unit)->whereBetween('created_at', [$first_date, $last_date])->get();   
+        }
+
+        if($first_date == '' && $last_date == '')
+        {
+            $reports= Maintenance::where('category', $category)->orWhere('unit', $unit)->get();   
+        }
+
+        if($first_date == '' && $last_date == '')
+        {
+            $reports= Maintenance::where('category', $category)->where('unit', $unit)->get();   
+        }
+
+        if($category == '' || $unit == '')
+        {
+            $reports= Maintenance::whereBetween('created_at', [$first_date, $last_date])->get();   
+        }
+
+        if($category && $unit && $first_date && $last_date)
+        {
+            $reports= Maintenance::where('category', $category)->where('unit', $unit)->whereBetween('created_at', [$first_date, $last_date])->get(); 
+        }
+
+
+        // $reports= Maintenance::whereBetween('created_at', [$first_date, $last_date])->get();
+       
         $date_now = Carbon::now()->format('Y-m-d');
 
         $path = base_path('public/frontends/assets/img/logo/pln.png');
@@ -377,7 +408,7 @@ class LaporanDataController extends Controller
             ])
             ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
             ->setPaper('a4', 'landscape')
-            ->loadView('prints.admin.Burner.DownloadBurner', [
+            ->loadView('prints.admin.maintenance.LaporanMaintenance', [
                 'img' => $img,
                 'date_now' => $date_now,
                 'reports' => $reports,
@@ -385,6 +416,6 @@ class LaporanDataController extends Controller
             ]);
 
         // return $pdf->stream();
-        return $pdf->download($date_now.'.pdf');
+        return $pdf->stream();
     }
 }

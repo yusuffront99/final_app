@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('damage_date');
             $table->string('repair_date');
             $table->string('category');
+            $table->string('unit');
             $table->longText('description');
             $table->string('item_sp_1');
             $table->string('item_sp_2');

@@ -108,6 +108,27 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="form-group my-1 mx-2">
+                                        <label for="" class="fw-bold">Total Item (1)</label>
+                                        <input type="number" name="item_total_1" id="" value="{{$maintenance_id->item_total_1}}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group my-1 mx-2">
+                                        <label for="" class="fw-bold">Total Item (2)</label>
+                                        <input type="number" name="item_total_2" id="" value="{{$maintenance_id->item_total_2}}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group my-1 mx-2">
+                                        <label for="" class="fw-bold">Total Item (3)</label>
+                                        <input type="number" name="item_total_3" id="" value="{{$maintenance_id->item_total_3}}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group my-1 mx-2">
                                         <label for="" class="fw-bold">Harge Per Item (1)</label>
                                         <input type="text" name="item_price_1" id="" value="{{$maintenance_id->item_price_1}}" class="form-control">
                                     </div>
@@ -126,27 +147,6 @@
                                 </div>
                             </div>
                         
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group my-1 mx-2">
-                                        <label for="" class="fw-bold">Total Item (1)</label>
-                                        <input type="number" name="item_total_1" id="" value="{{$maintenance_id->item_total_1}}" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group my-1 mx-2">
-                                        <label for="" class="fw-bold">Total Item (2)</label>
-                                        <input type="number" name="item_total_2" id="" value="{{$maintenance_id->item_total_2}}" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group my-1 mx-2">
-                                        <label for="" class="fw-bold">Total Item (3)</label>
-                                        <input type="number" name="item_total_3" id="" value="{{$maintenance_id->item_total_3}}" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 mb-2 p-3" style="background-color: #efefef;">
                             <div class="form-group my-1 mx-2 bg-light">

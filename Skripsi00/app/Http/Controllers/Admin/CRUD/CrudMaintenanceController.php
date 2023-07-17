@@ -140,13 +140,13 @@ class CrudMaintenanceController extends Controller
         $tp2 =  intval($request->get('item_price_2'));
         $tp3 =  intval($request->get('item_price_3'));
 
-        $update->item_price_1 = $it1;
-        $update->item_price_2 = $it2;
-        $update->item_price_3 = $it3;
+        $update->item_total_1 = $it1;
+        $update->item_total_2 = $it2;
+        $update->item_total_3 = $it3;
 
-        $update->item_total_1 = $tp1;
-        $update->item_total_2 = $tp2;
-        $update->item_total_3 = $tp3;
+        $update->item_price_1 = $tp1;
+        $update->item_price_2 = $tp2;
+        $update->item_price_3 = $tp3;
         $update->description = $request->get('description');
 
         $total_price = (($it1 * $tp1) + ($it2 * $tp2) + ($it3 * $tp3));

@@ -51,15 +51,28 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <form action="{{route('print.admin.laporan_burner')}}" method="GET" target="_blank">
+                                <form action="{{route('print.admin.laporan_maintenance_history')}}" method="GET" target="_blank">
                                     <div class="input-group mb-3">
+                                    <select name="select_category" id="select_category" class="form-select">
+                                        <option value="">-Kategori--</option>
+                                        <option value="BURNER SYSTEM">BURNER SYSTEM</option>
+                                        <option value="SOOTBLOWER SYSTEM">SOOTBLOWER SYSTEM</option>
+                                        <option value="EDG SYSTEM">EDG SYSTEM</option>
+                                        <option value="CHANGE OVER TURBINE">CHANGE OVER TURBINE</option>
+                                        <option value="CHANGE OVER BOILER">CHANGE OVER BOILER</option>
+                                        <option value="CHANGE OVER COMMON">CHANGE OVER COMMON</option>
+                                        <option value="FORWARDING PUMP">FORWARDING PUMP</option>
+                                        <option value="HIGH PRESSURE PUMP">HIGH PRESSURE PUMP</option>
+                                        <option value="HIGH SPEED DIESEL LEVEL">HIGH SPEED DIESEL LEVEL</option>
+                                    </select>
                                     <select name="select_unit" id="select_unit" class="form-select">
-                                        <option value="">-Select Unit--</option>
+                                        <option value="">-Unit--</option>
                                         <option value="Unit 3">Unit 3</option>
                                         <option value="Unit 4">Unit 4</option>
+                                        <option value="Common">Common</option>
                                     </select>
-                                        <input type="date" class="form-control" name="first_date" required>
-                                        <input type="date" class="form-control" name="last_date" required>
+                                        <input type="date" class="form-control" name="first_date">
+                                        <input type="date" class="form-control" name="last_date">
                                         <button class="btn btn-success" type="submit">PRINT</button>
                                     </div>
                                 </form>
@@ -78,7 +91,8 @@
                                 <th class="common-button text-center">Aksi</th>
                                 <th class="common">Repair Code</th>
                                 <th class="common-info">Kategori</th>
-                                <th>NIP</th>
+                                <th class="common-info">Unit</th>
+                                <th class="common">NIP</th>
                                 <th class="common-info">Operator</th>
                                 <th class="common-info">Jabatan / Divisi</th>
                                 <th class="common-info">Supervisor</th>
@@ -116,6 +130,7 @@
                             </td>
                             <td><div class="badge bg-success">{{$ht->repair_code}}</div></td>
                             <td><div class="badge bg-warning">{{$ht->category}}</div></td>
+                            <td><div class="badge bg-dark">{{$ht->unit}}</div></td>
                             <td>{{$ht->users->nip}}</td>
                             <td>{{$ht->users->nama_lengkap}}</td>
                             <td>{{$ht->users->jabatan}} / {{$ht->users->divisi}}</td>
@@ -148,6 +163,7 @@
                             </td>
                             <td><div class="badge bg-success">{{$ht->repair_code}}</div></td>
                             <td><div class="badge bg-warning">{{$ht->category}}</div></td>
+                            <td><div class="badge bg-dark">{{$ht->unit}}</div></td>
                             <td>{{$ht->users->nip}}</td>
                             <td>{{$ht->users->nama_lengkap}}</td>
                             <td>{{$ht->users->jabatan}} / {{$ht->users->divisi}}</td>

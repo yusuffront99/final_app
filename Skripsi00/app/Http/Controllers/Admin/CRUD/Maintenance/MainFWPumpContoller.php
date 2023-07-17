@@ -55,6 +55,7 @@ class MainFWPumpContoller extends Controller
        $maintenances->repair_code = $request->get('repair_code');
        $maintenances->user_id = $request->get('user_id');
        $maintenances->category = $request->get('category');
+       $maintenances->unit = $request->get('unit');
        $maintenances->description = $request->get('description');
        $maintenances->damage_date = $request->get('damage_date');
        $maintenances->repair_date = $request->get('repair_date');

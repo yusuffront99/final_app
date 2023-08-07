@@ -136,7 +136,7 @@
     </table>
     <br>
     <div class="text-title">
-        DATA LAPORAN HIGH SPEED DIESEL
+        DATA LAPORAN HIGH SPEED DIESEL LEVEL
     </div>
     <br>
     <table class="table table-bordered th-content">
@@ -146,7 +146,7 @@
                 <th id="col-nip">NIP</th>
                 <th id="col-th">Operator Shift</th>
                 <th id="col-th">Atasan</th>
-                <th id="col-th">Waktu Laporan</th>
+                <th id="col-th">Tanggal Laporan</th>
                 <th id="info" class="text-center">Keterangan</th>
             </tr>
         </thead>
@@ -163,7 +163,7 @@
                         {{$rp->users->nama_lengkap}} / {{$rp->operator_kedua}}
                     </td>
                     <td class="text-center">{{$rp->users->atasan}}</td>
-                    <td class="text-center">{{$rp->updated_at}}</td>
+                    <td class="text-center">{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $rp->created_at)->isoFormat('DD-MM-Y')}}</td>
     
                     <td>
                         <span style="font-weight: bold;">Status Peralatan : 

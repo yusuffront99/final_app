@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('admin.index.hppump')}}" class="text-primary">
-                                LFO System /  High Pressure Pump
+                                LFO System /  HSD Level
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -44,7 +44,7 @@
                     <br>
                     @include('commons.validasi_success_update')
                     <table class="table table-striped table-hovered" id="example">
-                        <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">DATA HIGH PRESSURE PUMP - TRASH DATA</span>
+                        <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">DATA HIGH SPEED DIESEL LEVEL - TRASH DATA</span>
                         <thead class="table-primary">
                             <tr>
                                 <th class="op-1 text-center">Aksi</th>

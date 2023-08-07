@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.coturbine')}}" class="text-primary mx-2">
-                                CO Turbine
+                            All Inboxes / CO Turbine
                             </a>
                             /
                             <span class="text-warning mx-2">

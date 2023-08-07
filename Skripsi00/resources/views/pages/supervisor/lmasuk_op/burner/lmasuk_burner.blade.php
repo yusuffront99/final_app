@@ -15,7 +15,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Burner System
+                            All Inboxes / Burner System
                             </span>
                         </div>
                     </div>

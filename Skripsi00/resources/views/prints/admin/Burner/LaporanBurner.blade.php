@@ -167,16 +167,52 @@
                     <td>
                         <ul>
                             <li>
-                                Burner 1 : {{$rp->ket_burner1}} / {{$rp->status_burner1}}
+                                Burner 1 : 
+                                @if ($rp->status_burner1 == 'Ready')
+                                <span class="text-success">{{$rp->ket_burner1}}</span>    
+                                /                             
+                                <span class="text-success">{{$rp->status_burner1}}</span>                                 
+                                @else
+                                <span class="text-danger">{{$rp->ket_burner1}}</span>     
+                                /                            
+                                <span class="text-danger">{{$rp->status_burner1}}</span>  
+                                @endif
                             </li>
                             <li>
-                                Burner 2 : {{$rp->ket_burner2}} / {{$rp->status_burner2}}
+                                Burner 2 :
+                                @if ($rp->status_burner2 == 'Ready')
+                                <span class="text-success">{{$rp->ket_burner2}}</span>    
+                                /                             
+                                <span class="text-success">{{$rp->status_burner2}}</span>                                 
+                                @else
+                                <span class="text-danger">{{$rp->ket_burner2}}</span>     
+                                /                            
+                                <span class="text-danger">{{$rp->status_burner2}}</span>  
+                                @endif
                             </li>
                             <li>
-                                Burner 3 : {{$rp->ket_burner3}} / {{$rp->status_burner3}}
+                                Burner 3 :
+                                @if ($rp->status_burner3 == 'Ready')
+                                <span class="text-success">{{$rp->ket_burner3}}</span>    
+                                /                             
+                                <span class="text-success">{{$rp->status_burner3}}</span>                                 
+                                @else
+                                <span class="text-danger">{{$rp->ket_burner3}}</span>     
+                                /                            
+                                <span class="text-danger">{{$rp->status_burner3}}</span>  
+                                @endif
                             </li>
                             <li>
-                                Burner 4 : {{$rp->ket_burner4}} / {{$rp->status_burner4}}
+                                Burner 4 :
+                                @if ($rp->status_burner4 == 'Ready')
+                                <span class="text-success">{{$rp->ket_burner4}}</span>    
+                                /                             
+                                <span class="text-success">{{$rp->status_burner4}}</span>                                 
+                                @else
+                                <span class="text-danger">{{$rp->ket_burner4}}</span>     
+                                /                            
+                                <span class="text-danger">{{$rp->status_burner4}}</span>  
+                                @endif
                             </li>
                         </ul>
                     </td>

@@ -109,6 +109,13 @@
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
+  
+                                                                        @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                                        <div class="text-warning fw-bold">
+                                                                            <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                                            <br><small class="text-white">{{$dt->catatan}}</small>
+                                                                        </div>
+                                                                        @endif
 
                                                                 </div>
                                                                 </div>
@@ -133,7 +140,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('all_view_sootblower')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_sootblower')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

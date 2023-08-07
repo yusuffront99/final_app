@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PowerPlant | CoTurbine</title>
+<title>PowerPlant | Maintenance</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
     body {
@@ -136,7 +136,7 @@
     </table>
     <br>
     <div class="text-title">
-        DATA LAPORAN RIWAYAT PERBAIKAN PERALATAN UNIT</span>
+        DATA LAPORAN MAINTENANCE HISTORY</span>
     </div>
     <br>
     <table class="table table-bordered th-content">
@@ -234,7 +234,7 @@
         </tbody>
         <tbody>
             <tr>
-                <td colspan="3"><h6 style="font-family:'Courier New', Courier, monospace">Total Biaya Perbaikan : </h6></td>
+                <td colspan="3"><h6 style="font-family:'Courier New', Courier, monospace">Total Biaya Pemeliharaan : </h6></td>
                 <td colspan="5"><h6 class="text-success">Rp. <?php echo number_format($reports->sum('total_price'), 0, '.','.')?></h6></td>
             </tr>
         </tbody>

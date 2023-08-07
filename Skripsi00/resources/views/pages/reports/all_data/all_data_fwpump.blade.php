@@ -79,16 +79,28 @@
                                     <td>{{$dt->jam_update}}</td>
                                     <td>
                                         <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_FP_A}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_FP_A}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_FP_A}}</li>
+                                            <li class="fw-bold">Arus : {{$dt->arus_FP_A}} A</li>
+                                            <li class="fw-bold">Pressure : {{$dt->press_FP_A}} MPA</li>
+                                            <li class="fw-bold">Status : 
+                                            @if ($dt->status_FP_A == 'Ready')
+                                                <div class="alert alert-success">{{$dt->status_FP_A}}</div>
+                                            @else
+                                                <div class="alert alert-danger">{{$dt->status_FP_A}}</div>
+                                            @endif
+                                            </li>
                                         </ul>
                                     </td>
                                     <td>
                                         <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_FP_B}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_FP_B}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_FP_B}}</li>
+                                            <li class="fw-bold">Arus : {{$dt->arus_FP_B}} A</li>
+                                            <li class="fw-bold">Pressure : {{$dt->press_FP_B}} MPA</li>
+                                            <li class="fw-bold">Status : 
+                                            @if ($dt->status_FP_B == 'Ready')
+                                                <div class="alert alert-success">{{$dt->status_FP_B}}</div>
+                                            @else
+                                                <div class="alert alert-danger">{{$dt->status_FP_B}}</div>
+                                            @endif
+                                            </li>
                                         </ul>
                                     </td>
                                     <td>{!!$dt->info_FP!!}</td>

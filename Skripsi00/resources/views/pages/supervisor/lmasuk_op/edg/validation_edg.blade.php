@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.edg')}}" class="text-primary mx-2">
-                                EDG System
+                                All Inboxes / EDG System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -68,6 +68,7 @@
                             <input type="hidden" value="{{$data_id->jam_stop}}" name="jam_stop">
                             <input type="hidden" value="{{$data_id->lev_bbm_akhir}}" name="lev_bbm_akhir">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
+                            <input type="hidden" value="{{$data_id->kondisi_peralatan}}" name="kondisi_peralatan">
                             <input type="hidden" value="{{$data_id->keterangan}}" name="keterangan">
                             <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
@@ -124,6 +125,13 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4">
                                         <ul>
+                                            <li class="text-success">Kondisi Peralatan : 
+                                                @if ($data_id->kondisi_peralatan == 'Normal')
+                                                    <span class="badge bg-success">{{$data_id->kondisi_peralatan}}</span>
+                                                @else
+                                                    <span class="badge bg-danger">{{$data_id->kondisi_peralatan}}</span>
+                                                @endif
+                                            </li>
                                             <li>Jam Start : {{$data_id->jam_start}}</li>
                                             <li>Jam Stop : {{$data_id->jam_stop}}</li>
                                             <li>Level Oli : {{$data_id->lev_oli}}</li>
@@ -143,7 +151,7 @@
                                             <li>Level BBM Akhir : {{$data_id->lev_bbm_akhir}}</li>
                                             <li>Tegangan Battery : {{$data_id->teg_battery}}</li>
                                             <li>Pressure Oli : {{$data_id->press_oli}}</li>
-                                            <li>Keterangan : {{$data_id->catatan}}</li>
+                                            <li>Keterangan : {{$data_id->keterangan}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -160,6 +168,7 @@
                                 <br>
                                 <hr class="line-dash">
                                 <div class="my-2 text-center">
+                                    
                                     <small class="mb-3">Pastikan anda sudah memilih status dipojok kanan atas, <a href="#" class="text-warning"><i class='bx bxs-up-arrow-circle'></i> see</a></small>
                                     <br>
                                     <button type="submit" class="btn btn-md btn-warning">Process</button>

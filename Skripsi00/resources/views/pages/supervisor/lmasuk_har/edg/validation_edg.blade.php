@@ -15,7 +15,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.har.edg')}}" class="text-primary mx-2">
-                                EDG System
+                                All Inboxes / EDG System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -65,8 +65,9 @@
                             <input type="hidden" value="{{$data_id->jam_stop}}" name="jam_stop">
                             <input type="hidden" value="{{$data_id->lev_bbm_akhir}}" name="lev_bbm_akhir">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
-                            <input type="hidden" value="-" name="catatan_spv">
-
+                            <input type="hidden" value="{{$data_id->keterangan}}" name="keterangan">
+                            <input type="hidden" value="{{$data_id->kondisi_peralatan}}" name="kondisi_peralatan">
+                           
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation EDG System</h5>
                                 <br>
@@ -139,11 +140,20 @@
                                             <li>Level BBM Akhir : {{$data_id->lev_bbm_akhir}}</li>
                                             <li>Tegangan Battery : {{$data_id->teg_battery}}</li>
                                             <li>Pressure Oli : {{$data_id->press_oli}}</li>
-                                            <li>Keterangan : {{$data_id->catatan}}</li>
+                                            <li>Keterangan : {{$data_id->keterangan}}</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="my-1">
+                                    <div class="row">
+                                        <div class="col-lg-8 mx-auto">
+                                            <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
+                                            <input type="text" value="{{$data_id->catatan_spv}}" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                                 <hr class="line-dash">
                                 <div class="my-2 text-center">
                                     <small class="mb-3">Pastikan anda sudah memilih status dipojok kanan atas, <a href="#" class="text-warning"><i class='bx bxs-up-arrow-circle'></i> see</a></small>

@@ -70,6 +70,7 @@
                                 <th class="op-1">Operator</th>
                                 <th class="op-1">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="tgl-col">Tanggal CO</th>
                                 <th class="tgl-col">Jam CO</th>
                                 <th class="tgl-col">Unit</th>
@@ -101,10 +102,11 @@
                                     </div>
                                 </td>
                                 <td>{{$no++;}}</td>
-                                <td>{{$dt->nip}}</td>
+                                <td>{{$dt->users->nip}}</td>
                                 <td>{{$dt->users->nama_lengkap}}</td>
                                 <td>{{$dt->users->atasan}}</td>
                                 <td>{{$dt->operator_shift}}</td>
+                                <td>@include('commons.alerts.condition_alert')</td>
                                 <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                 <td>{{$dt->jam_update}}</td>
                                 <td>

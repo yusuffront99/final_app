@@ -46,6 +46,15 @@ span.fw-bold.fs-4.text-warning {
   overflow: auto;
 }
 
+.scroll-maintenance {
+  display: block;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  height: 55vh;
+  overflow: auto;
+}
+
 .scroll-about-1 {
   display: block;
   padding: 5px;

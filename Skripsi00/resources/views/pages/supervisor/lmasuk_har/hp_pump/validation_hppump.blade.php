@@ -15,7 +15,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.har.hppump')}}" class="text-primary mx-2">
-                                LFO System
+                                All Inboxes / High Pressure Pump
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -62,10 +62,9 @@
                             <input type="hidden" value="{{$data_id->DP_High}}" name="DP_High">
                             <input type="hidden" value="{{$data_id->info_HP}}" name="info_HP">
                             <input type="hidden" value="{{$data_id->status_equipment_id}}" name="status_equipment_id">
-                            <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
-                                <h5 class="text-primary fw-bold">Validation LFO System</h5>
+                                <h5 class="text-primary fw-bold">Validation High Pressure Pump</h5>
                                 <br>
                                 <div class="d-flex justify-content-between">
                                     <div class="">
@@ -134,6 +133,15 @@
                                     </div>
                                 </div>
                                 <br>
+                                <hr>
+                                <div class="my-1">
+                                    <div class="row">
+                                        <div class="col-lg-8 mx-auto">
+                                            <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
+                                            <input type="text" value="{{$data_id->catatan_spv}}" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <hr class="line-dash">
                                 <div class="my-2 text-center">

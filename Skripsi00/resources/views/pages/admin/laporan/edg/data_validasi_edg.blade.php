@@ -45,7 +45,7 @@
                             <div class="mb-2">
                                 <a href="{{route('admin.index.edg')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
-                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Laporan EDG System</h6>
+                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Emergency Diesel Generator System</h6>
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">
                                 <div class="form-group mb-2 mx-3">
@@ -156,17 +156,27 @@
                                         <input type="text" name="lev_bbm_akhir" id="lev_bbm_akhir" class="form-control" placeholder="000" required  value="{{$data_id->lev_bbm_akhir}}">
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label for="">Keterangan</label>
-                                        <input type="text" name="keterangan" id="keterangan" class="form-control" required value="{{$data_id->keterangan}}">
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <label for="" class="text-danger fw-bold">Equipment Status</label>
-                                        <select name="status_equipment_id" id="status_equipment_id" class="form-select text-danger">
-                                            @foreach ($status as $st)
-                                                <option value="{{$st->id}}" {{$data_id->status_equipment_id == $st->id ? 'selected' : ''}}>{{$st->status_name}}</option>
-                                            @endforeach
+                                        <label for="">Kondisi Peralatan</label>
+                                        <select name="kondisi_peralatan" id="kondisi_peralatan" class="form-select">
+                                            <option value="" selected hidden>-- Kondisi --</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Abnormal">Abnormal</option>
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 px-4 py-2 mx-1">
+                                <label for="">Keterangan</label>
+                                <input type="text" name="keterangan" id="keterangan" class="form-control" required>
+                            </div>
+                            <div class="d-grid gap-2 px-4 py-2 mx-1">
+                                <div class="form-group mb-2">
+                                    <label for="" class="text-danger fw-bold">Equipment Status</label>
+                                    <select name="status_equipment_id" id="status_equipment_id" class="form-select text-danger">
+                                        @foreach ($status as $st)
+                                            <option value="{{$st->id}}" {{$data_id->status_equipment_id == $st->id ? 'selected' : ''}}>{{$st->status_name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="d-grid gap-2 px-4 py-2 mx-1">

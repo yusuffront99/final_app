@@ -75,7 +75,7 @@
                                 <td>{{$dt->created_at}}</td>
                                 <td>{{$dt->storage_level}}</td>
                                 <td>{{$dt->daily_level}}</td>
-                                <td>{{$dt->status}}</td>
+                                <td>@include('commons.alerts.condition_alert_hsd')</td>
                                 <td>{!!$dt->info_hsd!!}</td>
                                 <td>
                                     @include('commons.report_status')

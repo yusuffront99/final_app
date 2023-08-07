@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.edg')}}" class="text-primary">
-                                EDG System
+                            All Inboxes / EDG System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -55,6 +55,7 @@
                                 <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="tgl-col">Tanggal Update</th>
                                 <th class="tgl-col">Jam Operasi</th>
                                 <th class="common-information text-center">Info I</th>                                
@@ -73,11 +74,12 @@
                                     <td>
                                         <a href="{{route('op.edg_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
+                                    <td>@include('commons.alerts.condition_alert_edg')</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>
                                         <ul>
@@ -102,7 +104,7 @@
                                             <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
                                         </ul>
                                     </td>
-                                    <td>{{$dt->catatan}}</td>
+                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

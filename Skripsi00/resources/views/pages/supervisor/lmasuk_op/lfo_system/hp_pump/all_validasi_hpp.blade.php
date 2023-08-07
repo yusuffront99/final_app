@@ -16,7 +16,7 @@
                             </a>
                             /
                             <span class="text-primary mx-2">
-                                LFO System / High Pressure Pump
+                            All Inboxes / High Pressure Pump
                             </span>
                             <span class="text-warning mx-2">
                                 All validation

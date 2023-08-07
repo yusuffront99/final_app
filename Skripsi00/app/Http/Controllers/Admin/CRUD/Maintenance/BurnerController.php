@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 class BurnerController extends Controller
 {
      // === BURNER
+     public function see_more_burner()
+     {
+        return view('pages.admin.laporan.maintenance.see_more_maintenances.burner.burner');
+     }
+     
      public function index_burner()
      {
          $today = Carbon::now()->format('d-m-Y');

@@ -15,6 +15,10 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
+                            <span class="text-primary mx-2">
+                                All Inboxes
+                            </span>
+                            /
                             <span class="text-warning mx-2">
                                 CO Turbine
                             </span>

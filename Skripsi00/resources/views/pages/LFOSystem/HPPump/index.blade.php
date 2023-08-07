@@ -65,9 +65,7 @@
                             @endif
                             <div class="row rounded m-auto">
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="mb-2">
-                                        <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Light Fuel Oil (LFO) System Report adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Minggu)</small><br>
-                                    </div>
+                                   
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
                                             <div><strong><i class='bx bxs-timer'></i> Recent Report {{Auth::user()->tim_divisi}}</strong></div>
@@ -114,6 +112,13 @@
                                                                     </div>
                                                                 @endif
                                                             </p>
+                                                            
+                                                            @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                            <div class="text-warning fw-bold">
+                                                                <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                                <br><small class="text-white">{{$dt->catatan}}</small>
+                                                            </div>
+                                                            @endif
                                                         </td>
                                                         
                                                         <td class="text-center">
@@ -133,7 +138,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('all_view_hppump')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report<i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_hppump')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more<i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-3 col-md-12 rounded">

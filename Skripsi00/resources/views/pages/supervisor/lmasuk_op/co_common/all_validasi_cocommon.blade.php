@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.cocommon')}}" class="text-primary">
-                                CO Common
+                            All Inboxes / CO Common
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -56,6 +56,7 @@
                                 <th class="tgl-col">Shift</th>
                                 <th class="tgl-col">Tanggal CO</th>
                                 <th class="tgl-col">Jam CO</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="tgl-col">Unit</th>
                                 <th class="common-information text-center">Motor Peralatan</th>                                
                                 <th class="common-information text-center">Informasi</th>                                                                                         
@@ -79,6 +80,7 @@
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>{{$dt->jam_update}}</td>
+                                    <td>@include('commons.alerts.condition_alert')</td>
                                    <td>
                                         @if ($dt->unit == 'Unit 3')
                                             <span class="badge bg-success rounded">{{$dt->unit}}</span>

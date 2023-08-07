@@ -16,7 +16,7 @@
                             </a>
                             /
                             <span class="text-primary mx-2">
-                                LFO System / High Pressure Pump
+                            All Inboxes / High Pressure Pump
                             </span>
                             <span class="text-warning mx-2">
                                 All validation
@@ -42,7 +42,7 @@
                         <div class="row mb-3">
                             <div class="d-flex justify-content-between mb-3">
                                 <div>
-                                    <a href="{{route('lmasuk.op.hppump')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                    <a href="{{route('lmasuk.op.hsdlevel')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                 <tr>
                                     <td>{{$no++;}}</td>
                                     <td>
-                                        <a href="{{route('op.hppump_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
+                                        <a href="{{route('op.hsdlevel_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
                             
                                     <td>{{$dt->users->nama_lengkap}}</td>

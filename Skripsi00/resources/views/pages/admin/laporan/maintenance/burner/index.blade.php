@@ -41,11 +41,8 @@
                 <div class="card shadow-sm p-3 bg-light">
                     <div class="row">
                         <div class="d-flex justify-content-between mb-2">
-                            <div class="d-flex justify-content-between">
-                                <div class="mx-1">
-                                    <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                            </div>
+                            <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="" class="btn btn-sm btn-success px-4 rounded-pill">See More <i class='bx bx-grid-small'></i></a>
                         </div>
                         <br>
 
@@ -54,7 +51,7 @@
                         <h3 class="fw-bold badge bg-warning rounded"><i class='bx bxs-alarm-exclamation'></i> Perhatian </h3><br>
                         <div style="font-style: italic;">
                         1. Data Laporan yang muncul pada tabel adalah data yang BELUM ditambahkan rincian DETAIL BIAYA pemeliharaan, silakan <div class="badge bg-danger">BUAT RINCIAN <i class='bx bxs-down-arrow-circle'></i></div><br>
-                        2. Data Laporan pada Tabel akan OTOMATIS HILANG dalam kurun waktu 1 minggu <br>
+                        2. Data Laporan pada Tabel akan OTOMATIS HILANG dalam kurun waktu 1 minggu, untuk melihat data lebih lengkap klik tombol SEE MORE <br>
                         3. Data Laporan yang baru selesai diperbaiki (RESOLVED) akan berwarna <div class="badge bg-success">HIIJAU</div> pada baris tabel EQUIPMENT REPAIR DATA <br>
                         4. Data BIAYA PEMELIHARAAN KERUSAKAN PERALATAN akan masuk ke Halaman, silakan klik <small><a class="badge bg-primary" href="{{route('maintenance.histories')}}"><i class='bx bx-link'></i> REPAIR HISTORY DATA</a></small>
                         </div>
@@ -103,7 +100,7 @@
                 
                                     </td>
                                     <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

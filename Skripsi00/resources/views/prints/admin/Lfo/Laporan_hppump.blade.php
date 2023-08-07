@@ -146,8 +146,8 @@
                 <th id="col-nip">NIP</th>
                 <th id="col-th">Operator Shift</th>
                 <th id="col-th">Atasan</th>
-                <th id="col-th">Jam Laporan</th>
-                <th id="col-th">Tanggal Laporan</th>
+                <th id="col-th">Jam Update</th>
+                <th id="col-th">Tanggal Update</th>
                 <th id="info" class="text-center">Keterangan</th>
             </tr>
         </thead>

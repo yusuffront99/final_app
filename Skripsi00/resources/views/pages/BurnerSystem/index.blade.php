@@ -83,10 +83,9 @@
                                                             <p class="mt-2">
                                                                 @if ($dt->status_equipments->status_name == 'Rejected')
                                                                     <div class="text-danger">
-                                                                        <small class="text-danger fst-italic">*Laporan Perlu Diperbaiki : {{$dt->catatan_spv}}</small>
+                                                                        <small class="text-danger fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
                                                                         <br><small class="text-white">{{$dt->catatan}}</small>
                                                                     </div>
-                                                                    
                                                                 @else
                                                                 <div class="row">
                                                                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -134,6 +133,13 @@
                                                                             </p>
                                                                         </div>
                                                                     </div>
+
+                                                                    @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                                    <div class="text-warning fw-bold">
+                                                                        <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                                        <br><small class="text-white">{{$dt->catatan}}</small>
+                                                                    </div>
+                                                                    @endif
                                                                 </div>
                                                                 @endif
                                                             </p>
@@ -155,7 +161,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('all_view_burner')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_burner')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -43,7 +43,7 @@
                             <div class="mb-2">
                                 <a href="{{route('admin.index.sootblower')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
-                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Laporan Sootblower System</h6>
+                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Sootblower System</h6>
                             
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">

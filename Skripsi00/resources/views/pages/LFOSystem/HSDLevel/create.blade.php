@@ -45,7 +45,7 @@
                         <div class="mb-2">
                             <a href="{{route('hsd_level.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
-                        <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form LFO System - HSD Level</h6>
+                        <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form High Speed Diesel Level</h6>
                         <form action="" class="mx-auto" id="form-lfo-system">
                             @csrf
                             <div class="row">
@@ -67,11 +67,11 @@
                                             <div class="row m-auto my-1">
                                                 <div class="col">
                                                     <h6 class="text-center">Storage Tank Level</h6>
-                                                    <input type="number" placeholder="0.00" name="storage_level" id="storage_level" class="form-control" required>
+                                                    <input type="text" placeholder="0.00" name="storage_level" id="storage_level" class="form-control" required>
                                                 </div>
                                                 <div class="col">
                                                     <h6 class="text-center">Daily Tank Level</h6>
-                                                    <input type="number" placeholder="0.00" name="daily_level" id="daily_level" class="form-control" required>
+                                                    <input type="text" placeholder="0.00" name="daily_level" id="daily_level" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>

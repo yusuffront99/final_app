@@ -57,7 +57,7 @@ use App\Http\Controllers\UnitInformationController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
+// Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::prefix('/home')
     ->middleware('auth')->group(function () {
@@ -180,18 +180,19 @@ Route::prefix('/home')
         Route::put('inbox/har_edg/{id}', [SupervisorHarController::class, 'edg_updated'])->name('har.edg_updated');
         Route::get('inbox/har_edg/data', [SupervisorHarController::class, 'all_edg_validation'])->name('har.all_edg_validation');
 
-        // ===== EDG
+        // ===== COTURBINE
         Route::get('inbox/har_coturbine', [LaporanMasuk::class, 'lmasuk_har_coturbine'])->name('lmasuk.har.coturbine');
         Route::get('inbox/har_coturbine/{id}/edit', [SupervisorharController::class, 'coturbine_validation'])->name('har.coturbine_validation');
         Route::put('inbox/har_coturbine/{id}', [SupervisorHarController::class, 'coturbine_updated'])->name('har.coturbine_updated');
         Route::get('inbox/har_coturbine/data', [SupervisorHarController::class, 'all_coturbine_validation'])->name('har.all_coturbine_validation');
 
-        // ===== EDG
+        // ===== COBOILER
         Route::get('inbox/har_coboiler', [LaporanMasuk::class, 'lmasuk_har_coboiler'])->name('lmasuk.har.coboiler');
         Route::get('inbox/har_coboiler/{id}/edit', [SupervisorharController::class, 'coboiler_validation'])->name('har.coboiler_validation');
         Route::put('inbox/har_coboiler/{id}', [SupervisorHarController::class, 'coboiler_updated'])->name('har.coboiler_updated');
         Route::get('inbox/har_coboiler/data', [SupervisorHarController::class, 'all_coboiler_validation'])->name('har.all_coboiler_validation');
-        // ===== EDG
+        
+        // ===== COCOMMON
         Route::get('inbox/har_cocommon', [LaporanMasuk::class, 'lmasuk_har_cocommon'])->name('lmasuk.har.cocommon');
         Route::get('inbox/har_cocommon/{id}/edit', [SupervisorharController::class, 'cocommon_validation'])->name('har.cocommon_validation');
         Route::put('inbox/har_cocommon/{id}', [SupervisorHarController::class, 'cocommon_updated'])->name('har.cocommon_updated');
@@ -253,7 +254,7 @@ Route::prefix('/home')
         Route::post('lfo_system/fw_pump/', [FWPumpController::class, 'store'])->name('fw_pump.store');
         Route::put('lfo_system/fw_pump/{id}', [FWPumpController::class, 'update'])->name('fw_pump.update');
         Route::get('lfo_system/fw_pump/{id}/edit', [FWPumpController::class, 'edit'])->name('fw_pump.edit');
-        Route::get('lfo_system/fw_pump/data', [FWPumpController::class, 'shift_data_lfo'])->name('fw_pump.shift_data_lfo');
+        Route::get('lfo_system/fw_pump/data', [FWPumpController::class, 'shift_data_fwpump'])->name('fw_pump.shift_data_fwpump');
         Route::get('lfo_system/fw_pump/data/print', [FWPumpController::class, 'print'])->name('fw_pump.print');
         Route::get('lfo_system/fw_pump/all_view', [FWPumpController::class, 'all_view_fwpump'])->name('all_view_fwpump');
         Route::get('lfo_system/fw_pump/one_print/{id}', [FWPumpController::class, 'one_print'])->name('one_print_fwpump');
@@ -264,7 +265,7 @@ Route::prefix('/home')
         Route::post('lfo_system/hp_pump/', [HPPumpController::class, 'store'])->name('hp_pump.store');
         Route::put('lfo_system/hp_pump/{id}', [HPPumpController::class, 'update'])->name('hp_pump.update');
         Route::get('lfo_system/hp_pump/{id}/edit', [HPPumpController::class, 'edit'])->name('hp_pump.edit');
-        Route::get('lfo_system/hp_pump/data', [HPPumpController::class, 'shift_data_lfo'])->name('hp_pump.shift_data_lfo');
+        Route::get('lfo_system/hp_pump/data', [HPPumpController::class, 'shift_data_hppump'])->name('hp_pump.shift_data_hppump');
         Route::get('lfo_system/hp_pump/data/print', [HPPumpController::class, 'print'])->name('hp_pump.print');
         Route::get('lfo_system/hp_pump/all_view', [HPPumpController::class, 'all_view_hppump'])->name('all_view_hppump');
         Route::get('lfo_system/hp_pump/one_print/{id}', [HPPumpController::class, 'one_print'])->name('one_print_hppump');
@@ -277,7 +278,7 @@ Route::prefix('/home')
         Route::post('lfo_system/hsd_level/', [HSDLevelController::class, 'store'])->name('hsd_level.store');
         Route::put('lfo_system/hsd_level/{id}', [HSDLevelController::class, 'update'])->name('hsd_level.update');
         Route::get('lfo_system/hsd_level/{id}/edit', [HSDLevelController::class, 'edit'])->name('hsd_level.edit');
-        Route::get('lfo_system/hsd_level/data', [HSDLevelController::class, 'shift_data_lfo'])->name('hsd_level.shift_data_lfo');
+        Route::get('lfo_system/hsd_level/data', [HSDLevelController::class, 'shift_data_hsdlevel'])->name('hsd_level.shift_data_hsdlevel');
         Route::get('lfo_system/hsd_level/data/print', [HSDLevelController::class, 'print'])->name('hsd_level.print');
         // Route::get('lfo_system/hsd_level/all_view', [HSDLevelController::class, 'all_view_hppump'])->name('all_view_hppump');
         // Route::get('lfo_system/hsd_level/one_print/{id}', [HSDLevelController::class, 'one_print'])->name('one_print_hppump');

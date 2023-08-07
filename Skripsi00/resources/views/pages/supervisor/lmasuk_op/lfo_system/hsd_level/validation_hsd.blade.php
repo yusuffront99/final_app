@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.hppump')}}" class="text-primary mx-2">
-                                LFO System / HSD Level
+                            All Inboxes / HSD Level
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -54,7 +54,7 @@
                             <input type="hidden" value="{{$data_id->daily_level}}" name="daily_level">
                             <input type="hidden" value="{{$data_id->info_hsd}}" name="info_hsd">
                             <input type="hidden" value="{{$data_id->status}}" name="status">
-                            <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
+                            <input type="hidden"  name="catatan_spv">
                             
 
                             <div class="p-3 card bg-secondary text-white">
@@ -104,7 +104,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg">
-                                        <strong class="text-warning">HSD Level</strong>
+                                        <strong class="text-warning">High Speed Diesel Level</strong>
                                         <br>
                                         <ul>
                                             <li>Storage Level : 
@@ -141,7 +141,7 @@
                                     <div class="row">
                                         <div class="col-lg-8 mx-auto">
                                             <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
-                                            <input type="text" name="catatan" id="catatan" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                            <input type="text" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
                                         </div>
                                     </div>
                                 </div>

@@ -48,7 +48,7 @@
                             <div class="mb-2">
                                 <a href="{{route('hp_pump.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
-                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form LFO System - HP Pump</h6>
+                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form High Pressure Pump</h6>
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">
                                 <div class="form-group mb-2 mx-3">

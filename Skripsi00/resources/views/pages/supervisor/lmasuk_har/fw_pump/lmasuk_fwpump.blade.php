@@ -16,7 +16,7 @@
                             </a>
                             /
                             <span class="text-primary mx-2">
-                                LFO System 
+                                All Inboxes
                             </span>
                             /
                             <span class="text-warning mx-2">

@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.cocommon')}}" class="text-primary mx-2">
-                                CO Common
+                            All Inboxes / CO Common
                             </a>
                             /
                             <span class="text-warning mx-2">

@@ -16,7 +16,7 @@
                             </a>
                             /
                             <span class="text-primary mx-2">
-                                LFO System
+                            All Inboxes
                             </span>
                             /
                             <span class="text-warning mx-2">
@@ -86,7 +86,8 @@
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
                                                             <small class="bg-success rounded-pill px-2 mb-2">{{$dt->created_at}}</small>
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{$dt->users->nama_lengkap}}</small>
-                                                            
+                                                            <hr>
+                                                            @include('commons.alerts.emergency_alert_hsdlevel')
                                                             <p class="mt-4">
                                                                 <div class="row">
                                                                     <div class="col-6">

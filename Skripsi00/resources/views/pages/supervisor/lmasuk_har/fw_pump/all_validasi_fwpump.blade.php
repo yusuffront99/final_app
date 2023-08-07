@@ -15,8 +15,12 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('lmasuk.har.fwpump')}}" class="text-primary">
-                                LFO System
+                            <a href="{{route('lmasuk.har.hppump')}}" class="text-primary">
+                                 All Inboxes / High Pressure Pump
+                            </a>
+                            /
+                            <a href="" class="text-primary">
+                                Forwarding Pump
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -45,7 +49,7 @@
                                 <a href="{{route('lmasuk.har.fwpump')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">LIGHT FUEL OIL SYSTEM VALIDATIONS</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">LIGHT FUEL OIL SYSTEM - FORWARDING PUMP VALIDATIONS</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
@@ -57,13 +61,8 @@
                                 <th class="tgl-col">Shift</th>
                                 <th class="tgl-col">Tanggal Update</th>
                                 <th class="jam-col">Jam Update</th>
-                                <th class="unit-col">Unit</th>
-                                <th class="tgl-col">DP High</th>
-                                <th class="common-info text-center">HP Pump A</th>
-                                <th class="common-info text-center">HP Pump B</th>
                                 <th class="common-info text-center">FW Pump A</th>
                                 <th class="common-info text-center">FW Pump B</th>
-                                <th class="common-info text-center">Info HP Pump</th>
                                 <th class="common-info text-center">Info FP Pump</th>
                                 <th>Status</th>
                             </tr>
@@ -76,9 +75,9 @@
                                 <tr>
                                     <td>{{$no++;}}</td>
                                     <td>
-                                        <a href="{{route('har.lfo_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
+                                        <a href="{{route('har.fwpump_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
@@ -86,45 +85,33 @@
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>{{$dt->jam_update}}</td>
                                     <td>
-                                        @if ($dt->unit == 'Unit 3')
-                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
-                                        @else
-                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
-                                        @endif
-                                    </td>
-                                    <td>{{$dt->DP_High}}</td>
-                                    <td>
                                         <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_HP_A}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_HP_A}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_HP_A}}</li>
+                                            <li class="fw-bold">Arus : {{$dt->arus_FP_A}} A</li>
+                                            <li class="fw-bold">Pressure : {{$dt->press_FP_A}} MPA</li>
+                                            <li class="fw-bold">Status : 
+                                            @if ($dt->status_FP_A == 'Ready')
+                                                <div class="alert alert-success">{{$dt->status_FP_A}}</div>
+                                            @else
+                                                <div class="alert alert-danger">{{$dt->status_FP_A}}</div>
+                                            @endif
+                                            </li>
                                         </ul>
                                     </td>
                                     <td>
                                         <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_HP_B}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_HP_B}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_HP_B}}</li>
+                                            <li class="fw-bold">Arus : {{$dt->arus_FP_B}} A</li>
+                                            <li class="fw-bold">Pressure : {{$dt->press_FP_B}} MPA</li>
+                                            <li class="fw-bold">Status : 
+                                            @if ($dt->status_FP_B == 'Ready')
+                                                <div class="alert alert-success">{{$dt->status_FP_B}}</div>
+                                            @else
+                                                <div class="alert alert-danger">{{$dt->status_FP_B}}</div>
+                                            @endif
+                                            </li>
                                         </ul>
                                     </td>
 
-
-                                    <td>
-                                        <ul>
-                                            <li class="text-danger">Arus : {{$dt->forwardings->arus_FP_A}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->forwardings->press_FP_A}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->forwardings->status_FP_A}}</li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            <li class="text-danger">Arus : {{$dt->forwardings->arus_FP_B}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->forwardings->press_FP_B}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->forwardings->status_FP_B}}</li>
-                                        </ul>
-                                    </td>
-                                    <td>{!!$dt->info_HP!!}</td>
-                                    <td>{!!$dt->forwardings->info_FP!!}</td>
+                                    <td>{!!$dt->info_FP!!}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

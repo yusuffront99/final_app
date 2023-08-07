@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.burner')}}" class="text-primary mx-2">
-                                Burner System
+                            All Inboxes / Burner System
                             </a>
                             /
                             <span class="text-warning mx-2">

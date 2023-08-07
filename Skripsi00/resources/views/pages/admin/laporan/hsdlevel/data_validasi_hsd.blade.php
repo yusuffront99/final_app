@@ -18,8 +18,12 @@
                                 Data LFO System
                             </span>
                             /
+                            <span class="text-primary mx-2">
+                                HSD Level
+                            </span>
+                            /
                             <span class="text-warning mx-2">
-                                High Speed Diesel
+                                Validation
                             </span>
                         </div>
                     </div>
@@ -37,9 +41,9 @@
                 <div class="m-auto rounded text-dark">
                     <div class="row shadow-sm p-3 bg-light rounded">
                         <div class="mb-2">
-                            <a href="{{route('hsd_level.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="{{route('admin.index.hsdlevel')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
-                        <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form LFO System - HSD Level</h6>
+                        <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form High Speed Diesel Level</h6>
                         <form action="{{route('admin.update.hsdlevel', $data_id->id)}}" class="mx-auto" id="form-lfo-system" method="POST">
                             @csrf
                             @method('put')
@@ -62,11 +66,11 @@
                                             <div class="row m-auto my-1">
                                                 <div class="col">
                                                     <h6 class="text-center">Storage Tank Level</h6>
-                                                    <input type="number" value="{{$data_id->storage_level}}" placeholder="0.00" name="storage_level" id="storage_level" class="form-control" required>
+                                                    <input type="text" value="{{$data_id->storage_level}}" placeholder="0.00" name="storage_level" id="storage_level" class="form-control" required>
                                                 </div>
                                                 <div class="col">
                                                     <h6 class="text-center">Daily Tank Level</h6>
-                                                    <input type="number" value="{{$data_id->storage_level}}" placeholder="0.00" name="daily_level" id="daily_level" class="form-control" required>
+                                                    <input type="text" value="{{$data_id->storage_level}}" placeholder="0.00" name="daily_level" id="daily_level" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,11 +106,13 @@
                                             <input value="{{$data_id->info_hsd}}" id="info_hsd" type="hidden" name="info_hsd" required>
                                             <trix-editor input="info_hsd"></trix-editor>
                                         </div>
+                                        <div class="form-group mb-2 mx-3">
                                         <select name="status_equipment_id" id="status_equipment_id" class="form-select text-danger">
                                             @foreach ($status_equipments as $st)
                                                 <option value="{{$st->id}}" {{$data_id->status_equipment_id == $st->id ? 'selected' : ''}}>{{$st->status_name}}</option>
                                             @endforeach
                                         </select>
+                                        </div>
                                         <input type="hidden" value="-" name="catatan_spv" id="catatan_spv">
                                     </div>
 
@@ -123,46 +129,3 @@
 </div>
 @include('includes.footer')
 @endsection
-
-{{-- @push('add-script')
-    <script>
-        $(document).ready(function(){
-            $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-
-            $('#btn-save').click((e)=>{
-
-                e.preventDefault();
-
-                $.ajax({
-                    url: "{{route('lfo_system.store')}}",
-                    method: 'POST',
-                    data: $('#form-lfo-system').serialize(),
-                    dataType: 'JSON',
-                    success: function(data){
-                        if(data.success){
-                            swal({
-                                title: "Successully!",
-                                text: "Laporan Berhasil Disimpan",
-                                icon: "success",
-                                button: "simpan",
-                            });
-                            window.location = "{{route('lfo_system.index')}}"
-                        }else{
-                            console.log('gagal');
-                        }
-                    },
-                    error: function(err){
-                        $.each(err.responseJSON.errors,function(field_name,error){
-                        $(document).find('[name='+field_name+']').after('<span class="text-strong text-danger" id="error">' +error+ '</span>')
-                        })
-                    }
-                });
-            });
-        });
-    </script>   
-@endpush --}}

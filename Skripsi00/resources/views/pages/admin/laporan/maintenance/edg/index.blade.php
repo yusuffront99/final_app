@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Sootblower System
+                                Emergency Diesel Generator System
                             </span>
                         </div>
                     </div>
@@ -64,13 +64,14 @@
 
                         <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - SOOTBLOWER SYSTEM</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - EMERGENCY DIESEL GENERATOR SYSTEM</span>
                         </div>
                        
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
                                 <th class="common-info">Aksi</th>
+                                <th class="common">Repair Code</th>
                                 <th class="common">NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
@@ -98,7 +99,8 @@
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
                                     </td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

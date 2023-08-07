@@ -71,6 +71,7 @@
                             <tr>
                                 <th>No</th>
                                 <th class="op-1 text-center">Aksi</th>
+                                <th class="op-1 text-center">Repair Code</th>
                                 <th class="op-1">Nama Operator</th>
                                 <th class="common-info">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
@@ -93,7 +94,7 @@
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
                                     </td>
-                                    </td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>

@@ -150,12 +150,20 @@
                                         <input type="text" name="lev_bbm_akhir" id="lev_bbm_akhir" class="form-control" placeholder="000" required>
                                     </div>
                                     <div class="form-group mb-2">
-                                        <label for="">Keterangan</label>
-                                        <input type="text" name="keterangan" id="keterangan" class="form-control" required>
+                                        <label for="">Kondisi Peralatan</label>
+                                        <select name="kondisi_peralatan" id="kondisi_peralatan" class="form-select">
+                                            <option value="" selected hidden>-- Kondisi --</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Abnormal">Abnormal</option>
+                                        </select>
                                     </div>
                                     <input type="hidden" name="catatan_spv" value="-">
                                     <input type="hidden" name="status_equipment_id" id="status_equipment_id" value="1">
                                 </div>
+                            </div>
+                            <div class="d-grid gap-2 px-4 py-2 mx-1">
+                                <label for="">Keterangan</label>
+                                <input type="text" name="keterangan" id="keterangan" class="form-control" required>
                             </div>
                             <div class="d-grid gap-2 px-4 py-2 mx-1">
                                 <button type="submit" class="btn btn-success text-center" id="btn-save">Save</button>

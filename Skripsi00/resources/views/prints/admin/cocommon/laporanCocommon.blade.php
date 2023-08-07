@@ -150,7 +150,7 @@
                     <th class="tgl-col">Tanggal CO</th>
                     <th class="tgl-col">Jam CO</th>
                     <th class="tgl-col">Unit</th>
-                    <th class="common-information text-center">Motor Peralatan</th>                                
+                    <th class="common-information text-center">Motor Operasi</th>                                
                     <th class="common-information text-center">Informasi</th>                                                                                         
                 </tr>
         </thead>

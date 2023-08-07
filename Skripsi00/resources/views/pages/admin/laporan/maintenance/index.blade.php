@@ -37,20 +37,24 @@
                     <div class="p-2">
                         <div class="row">
                            <div class="col-lg-4">
-                            <div class="border border-primary">
+                            <div class="border border-dark bg-dark">
                                 <div class="p-2">
-                                    <div class="fw-bold bg-warning">
-                                        <i class='bx bx-history'></i> Recent Repair History
+                                    <div class="bg-dark p-2 rounded text-white">
+                                        <i class='bx bx-history'></i> Recent Equipment Repair History
                                     </div>
 
-                                    <div class="my-1 scroll">
-                                        <div class="card">
-                                            <small>Hello Developer,</small>
-                                            Admin telah menambahkan laporan baru
+                                    <div class="my-1 scroll-maintenance">
+                                        @foreach ($maintenances as $m)
+                                        <div class="card text-white p-2 mb-1" style="background-color: #a4a5b1;">
+                                            <small class="fw-bold badge bg-info"><i class='bx bx-time'></i> {{$m->created_at->diffForHumans()}}</small><hr>
+                                            <small>Admin telah menambahkan laporan Maintenance History <span class="text-warning fw-bold">{{$m->category}}</span></small>
                                         </div>
+                                        @endforeach
                                     </div>
-
-                                    <a href="{{route('maintenance.histories')}}">See More</a>
+                                    <div class="d-grid gap-2">
+                                    <a href="{{route('maintenance.histories')}}" class="btn btn-danger btn-sm">See More <i class='bx bxs-right-arrow-circle'></i></a>
+                                    </div>
+                                                                        
                                 </div>
                             </div>
                            </div>

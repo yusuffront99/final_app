@@ -65,9 +65,7 @@
                             @endif
                             <div class="row rounded m-auto">
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="mb-2">
-                                        <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Light Fuel Oil (LFO) System Report adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Minggu)</small><br>
-                                    </div>
+                                   
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
                                             <div><strong><i class='bx bxs-timer'></i> Recent Report {{Auth::user()->tim_divisi}}</strong></div>
@@ -112,12 +110,19 @@
                                                                 @else
                                                                     <div class="row">
                                                                         <div class="col-auto">
-                                                                            <div class="text-success fw-bold">HP Pump</div>
+                                                                            <div class="text-success fw-bold">Forwarding Pump</div>
                                                                             {!!$dt->info_FP!!}
                                                                         </div>
                                                                     </div>
                                                                 @endif
                                                             </p>
+                                                            
+                                                            @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                            <div class="text-warning fw-bold">
+                                                                <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                                <br><small class="text-white">{{$dt->catatan}}</small>
+                                                            </div>
+                                                            @endif
                                                         </td>
                                                         
                                                         <td class="text-center">
@@ -137,7 +142,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('all_view_fwpump')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report<i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_fwpump')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more<i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-3 col-md-12 rounded">
@@ -209,9 +214,9 @@
                     <li class="fw-bold">Tanggal Update / Jam Update</li>
                     <span class="bold">{{$dt->tanggal_update}} / {{$dt->jam_update}} </span>
                     <li class="fw-bold text-success">High Pressure Pump A</li>
-                    <span class="bold">{{$dt->press_HP_A}} MPA / {{$dt->arus_HP_A}} A</span>
+                    <span class="bold">{{$dt->press_FP_A}} MPA / {{$dt->arus_FP_A}} A</span>
                     <li class="fw-bold text-danger">High Pressure Pump B</li>
-                    <span class="bold">{{$dt->press_HP_B}} MPA / {{$dt->arus_HP_B}} A</span>
+                    <span class="bold">{{$dt->press_FP_B}} MPA / {{$dt->arus_FP_B}} A</span>
                     <li class="fw-bold">Catatan High PressurePump</li>
                     <span class="bold">{!!$dt->info_FP!!}</span>
                 </ul>

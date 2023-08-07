@@ -15,8 +15,8 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('edg_system.index')}}" class="text-primary mx-2">
-                                EDG System
+                            <a href="{{route('sbl_system.index')}}" class="text-primary mx-2">
+                            Sootblowers System
                             </a>
                             /
                             <span class="text-warning mx-2">

@@ -68,6 +68,7 @@
                             <tr>
                                 <th class="op-1 text-center">Aksi</th>
                                 <th>No</th>
+                                <th class="op-1">NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
@@ -104,6 +105,7 @@
                                         </div>
                                     </td>
                                     <td>{{$no++;}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

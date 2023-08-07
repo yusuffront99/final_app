@@ -101,25 +101,31 @@
                                             <h6 class="text-center">Pertama</h6>
                                             <select name="operasi_awal" id="operasi_awal" class="form-select">
                                                 <option value="">--Select--</option>
-                                                <option value="A" {{$data_id->operasi_awal == 'A' ? 'selected' : ''}}>A</option>
-                                                <option value="B" {{$data_id->operasi_awal == 'B' ? 'selected' : ''}}>B</option>
+                                                <option value="A & B" {{$data_id->operasi_awal == 'A & B' ? 'selected' : ''}}>A & B</option>
+                                                <option value="B & C" {{$data_id->operasi_awal == 'B & C' ? 'selected' : ''}}>B & C</option>
+                                                <option value="A & C" {{$data_id->operasi_awal == 'A & C' ? 'selected' : ''}}>A & C</option>
+                                                <option value="A B C" {{$data_id->operasi_awal == 'A B C' ? 'selected' : ''}}>A B C</option>
                                             </select>
                                         </div>
                                         <div class="col">
                                             <h6 class="text-center">Rencana</h6> 
                                             <select name="rencana_operasi" id="rencana_operasi" class="form-select">
                                                 <option value="">--Select--</option>
-                                                <option value="A" {{$data_id->rencana_operasi == 'A' ? 'selected' : ''}}>A</option>
-                                                <option value="B" {{$data_id->rencana_operasi == 'B' ? 'selected' : ''}}>B</option>
-                                            </select> 
+                                                <option value="A & B" {{$data_id->rencana_operasi == 'A & B' ? 'selected' : ''}}>A & B</option>
+                                                <option value="B & C" {{$data_id->rencana_operasi == 'B & C' ? 'selected' : ''}}>B & C</option>
+                                                <option value="A & C" {{$data_id->rencana_operasi == 'A & C' ? 'selected' : ''}}>A & C</option>
+                                                <option value="A B C" {{$data_id->rencana_operasi == 'A B C' ? 'selected' : ''}}>A B C</option>
+                                            </select>
                                         </div>
                                         <div class="col">
                                             <h6 class="text-center">Terakhir</h6>
                                             <select name="operasi_akhir" id="operasi_akhir" class="form-select">
                                                 <option value="">--Select--</option>
-                                                <option value="A" {{$data_id->operasi_akhir == 'A' ? 'selected' : ''}}>A</option>
-                                                <option value="B" {{$data_id->operasi_akhir == 'B' ? 'selected' : ''}}>B</option>
-                                            </select> 
+                                                <option value="A & B" {{$data_id->operasi_akhir == 'A & B' ? 'selected' : ''}}>A & B</option>
+                                                <option value="B & C" {{$data_id->operasi_akhir == 'B & C' ? 'selected' : ''}}>B & C</option>
+                                                <option value="A & C" {{$data_id->operasi_akhir == 'A & C' ? 'selected' : ''}}>A & C</option>
+                                                <option value="A B C" {{$data_id->operasi_akhir == 'A B C' ? 'selected' : ''}}>A B C</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

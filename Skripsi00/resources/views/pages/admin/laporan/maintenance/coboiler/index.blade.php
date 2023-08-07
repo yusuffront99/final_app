@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Sootblower System
+                                Change Over Boiler
                             </span>
                         </div>
                     </div>
@@ -64,23 +64,23 @@
 
                         <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - SOOTBLOWER SYSTEM</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - CHANGE OVER BOILER</span>
                         </div>
                        
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th class="common-info">Aksi</th>
-                                <th class="common">NIP</th>
-                                <th class="op-1">Operator I</th>
-                                <th class="op-2">Operator II</th>
+                                <th class="op-1 text-center">Aksi</th>
+                                <th class="op-1 text-center">Repair Code</th>
+                                <th class="common-info">NIP</th>
+                                <th class="common-info">Operator</th>
                                 <th class="common-info">Supervisor</th>
-                                <th class="common">Shift</th>
-                                <th class="common-info">Tanggal Update</th>
-                                <th class="common-info">Jam Operasi</th>
-                                <th class="common-information text-center">Info I</th>                                
-                                <th class="common-information text-center">Info II</th>                                
-                                <th class="common-information">Keterangan</th>      
+                                <th class="tgl-col">Shift</th>
+                                <th class="tgl-col">Tanggal CO</th>
+                                <th class="tgl-col">Jam CO</th>
+                                <th class="tgl-col">Unit</th>
+                                <th class="common-information text-center">Motor Peralatan</th>                                
+                                <th class="common-information text-center">Informasi</th>                                                                                         
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -93,41 +93,39 @@
                             @foreach ($weekly_data as $dt)
                         
                                @if (Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->updated_at)->format('d-m-Y') == $today)
-                               <tr style="background-color: #E2F6CA;">
+                                <tr style="background-color: #E2F6CA;">
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
                                     </td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
+                                    <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
+                                    <td>{{$dt->jam_update}}</td>
+                                    <td>
+                                        @if ($dt->unit == 'Unit 3')
+                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                        @else
+                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <ul>
-                                            <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
-                                            <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
+                                            <li>Operasi Awal : <div class="text-danger fw-bold">Motor {{$dt->operasi_awal}}</div></li>
+                                            <li>Rencana Operasi : <div class="text-warning fw-bold">Motor {{$dt->rencana_operasi}}</li>
+                                            <li>Operasi Akhir : <div class="text-success fw-bold">Motor {{$dt->operasi_akhir}}</li>
                                         </ul>
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>Level BBM Awal : {{$dt->lev_bbm_awal}}</li>
-                                            <li>Tegangan Battery : {{$dt->teg_battery}}</li>
-                                            <li>Level Oli : {{$dt->lev_oli}}</li>
-                                            <li>Putaran : {{$dt->putaran}}</li>
+                                            <li>Pelaksanaan : <div class="text-success">{{$dt->status_kegiatan}}</div></li>
+                                            <li>Evaluasi : <div class="text-primary"> {{$dt->status_peralatan}}</div> </li>
+                                            <li>Keterangan : <div class="text-danger">{{$dt->keterangan}}</div></li>
                                         </ul>
                                     </td>
-                                    <td>
-                                        <ul>
-                                            <li>Level BBM Akhir : {{$dt->lev_bbm_akhir}}</li>
-                                            <li>Tegangan Output : {{$dt->teg_out}}</li>
-                                            <li>Pressure Oli : {{$dt->press_oli}}</li>
-                                            <li>Frekuensi : {{$dt->frekuensi}}</li>
-                                            <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
-                                        </ul>
-                                    </td>
-                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>
@@ -138,36 +136,34 @@
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
                                     </td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
+                                    <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
+                                    <td>{{$dt->jam_update}}</td>
+                                    <td>
+                                        @if ($dt->unit == 'Unit 3')
+                                            <span class="badge bg-success rounded">{{$dt->unit}}</span>
+                                        @else
+                                            <span class="badge bg-danger rounded">{{$dt->unit}}</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <ul>
-                                            <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
-                                            <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
+                                            <li>Operasi Awal : <div class="text-danger fw-bold">Motor {{$dt->operasi_awal}}</div></li>
+                                            <li>Rencana Operasi : <div class="text-warning fw-bold">Motor {{$dt->rencana_operasi}}</li>
+                                            <li>Operasi Akhir : <div class="text-success fw-bold">Motor {{$dt->operasi_akhir}}</li>
                                         </ul>
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>Level BBM Awal : {{$dt->lev_bbm_awal}}</li>
-                                            <li>Tegangan Battery : {{$dt->teg_battery}}</li>
-                                            <li>Level Oli : {{$dt->lev_oli}}</li>
-                                            <li>Putaran : {{$dt->putaran}}</li>
+                                            <li>Pelaksanaan : <div class="text-success">{{$dt->status_kegiatan}}</div></li>
+                                            <li>Evaluasi : <div class="text-primary"> {{$dt->status_peralatan}}</div> </li>
+                                            <li>Keterangan : <div class="text-danger">{{$dt->keterangan}}</div></li>
                                         </ul>
                                     </td>
-                                    <td>
-                                        <ul>
-                                            <li>Level BBM Akhir : {{$dt->lev_bbm_akhir}}</li>
-                                            <li>Tegangan Output : {{$dt->teg_out}}</li>
-                                            <li>Pressure Oli : {{$dt->press_oli}}</li>
-                                            <li>Frekuensi : {{$dt->frekuensi}}</li>
-                                            <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
-                                        </ul>
-                                    </td>
-                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

@@ -58,9 +58,7 @@
                             @endif
                             <div class="row rounded m-auto">
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="mb-2">
-                                        <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Light Fuel Oil (LFO) System Report adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Minggu)</small><br>
-                                    </div>
+                                    
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
                                             <div><strong><i class='bx bxs-timer'></i> Recent Report HSD</strong></div>
@@ -95,7 +93,7 @@
                                                             <small class="bg-success rounded-pill px-2 mb-2">{{$dt->created_at}}</small>
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{$dt->users->nama_lengkap}}</small>
                                                             <hr>
-                                                            @include('commons.emergency_alert_hsdlevel')
+                                                            @include('commons.alerts.emergency_alert_hsdlevel')
                                                             <p class="mt-4">
                                                                 <div class="row">
                                                                     <div class="col-6">
@@ -122,7 +120,7 @@
                                                                     </div>
                                                                     <div class="col-6">
                                                                         <ul>
-                                                                            <li>Catatan : 
+                                                                            <li>keterangan : 
                                                                                 <div class="text-warning">
                                                                                     {!!$dt->info_hsd!!}
                                                                                     
@@ -130,6 +128,14 @@
                                                                             </li>
                                                                         </ul>
                                                                     </div>
+                                                                    
+                                                                    @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                                    <div class="text-warning fw-bold">
+                                                                        <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                                        <br><small class="text-white">{{$dt->catatan}}</small>
+                                                                    </div>
+                                                                    @endif
+
                                                                     @if ($dt->status_equipments->status_name == 'Rejected')
                                                                     <hr>
                                                                     <span class="text-danger fw-bold">Catatan : <span class="text-white">{{$dt->catatan_spv}}</span></span>

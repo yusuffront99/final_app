@@ -15,7 +15,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.har.burner')}}" class="text-primary mx-2">
-                                Sootblower System
+                                All Inboxes / Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">

@@ -28,6 +28,7 @@ class SupervisorHarController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
 
         $wb =BurnerSystem::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
+        $wsbl =Sootblower::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
         $wfp = Fw_Pump::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
         $whp = Hp_Pump::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
         $we= EdgSystem::with('users')->whereIn('status_equipment_id', [2,4,5])->count();
@@ -39,7 +40,7 @@ class SupervisorHarController extends Controller
 
         $data = BurnerSystem::with('users')->latest()->where('status_equipment_id', 2)->get();
 
-        return view('pages.supervisor.lmasuk_har.lmasuk_har', compact('wb','wfp','whp','whsd','we','wcot','wcob','wcoc','data','user'));
+        return view('pages.supervisor.lmasuk_har.lmasuk_har', compact('wsbl','wb','wfp','whp','whsd','we','wcot','wcob','wcoc','data','user'));
     }
 
     protected function burner_validation($id)
@@ -320,6 +321,8 @@ class SupervisorHarController extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
+        $update->kondisi_peralatan = $request->get('kondisi_peralatan');
+        $update->keterangan = $request->get('keterangan');
         $update->catatan_spv = $request->get('catatan_spv');
 
         $update->save();
@@ -423,6 +426,13 @@ class SupervisorHarController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $data = Hp_Pump::whereIn('status_equipment_id', [2,4,5])->get();
         return view('pages.supervisor.lmasuk_har.hp_pump.all_validasi_hppump', compact('data','user'));
+    }
+
+    public function all_hsdlevel_validation()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = Hp_Pump::whereIn('status_equipment_id', [2,4,5])->get();
+        return view('pages.supervisor.lmasuk_har.hsdlevel.all_validasi_hsdlevel', compact('data','user'));
     }
 
     public function all_edg_validation()

@@ -62,6 +62,7 @@
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
                                 <th class="tgl-col">Tanggal Update</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="tgl-col">Jam Operasi</th>
                                 <th class="common-information text-center">Info I</th>                                
                                 <th class="common-information text-center">Info II</th>                                
@@ -82,6 +83,9 @@
                                     <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
+                                    <td>
+                                        @include('commons.alerts.condition_alert_edg')
+                                    </td>
                                     <td>
                                         <ul>
                                             <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
@@ -105,7 +109,7 @@
                                             <li>Temperature Coolant : {{$dt->temp_coolant}}</li>
                                         </ul>
                                     </td>
-                                    <td>{{$dt->catatan}}</td>
+                                    <td>{{$dt->keterangan}}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

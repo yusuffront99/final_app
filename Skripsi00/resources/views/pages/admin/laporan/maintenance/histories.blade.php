@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Repair History
+                                History
                             </span>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             <div class="d-flex justify-content-between">
                                
                                 <div class="mx-1">
-                                    <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-refresh'></i> Refresh</a>
+                                    <a href="{{route('maintenance.histories')}}" class="btn btn-sm btn-dark"><i class='bx bx-refresh'></i> Refresh</a>
                                 </div>
                                 <div class="mx-1">
                                     <a href="{{route('maintenance.trash')}}" class="btn btn-sm btn-danger"><i class='bx bxs-trash-alt' ></i> Trash Check</a>
@@ -64,15 +64,17 @@
                                         <option value="FORWARDING PUMP">FORWARDING PUMP</option>
                                         <option value="HIGH PRESSURE PUMP">HIGH PRESSURE PUMP</option>
                                         <option value="HIGH SPEED DIESEL LEVEL">HIGH SPEED DIESEL LEVEL</option>
+                                        <option value="Semua">Semua</option>
                                     </select>
                                     <select name="select_unit" id="select_unit" class="form-select">
                                         <option value="">-Unit--</option>
                                         <option value="Unit 3">Unit 3</option>
                                         <option value="Unit 4">Unit 4</option>
                                         <option value="Common">Common</option>
+                                        <option value="Semua">Semua</option>
                                     </select>
-                                        <input type="date" class="form-control" name="first_date">
-                                        <input type="date" class="form-control" name="last_date">
+                                        <input type="date" class="form-control" name="first_date" >
+                                        <input type="date" class="form-control" name="last_date" >
                                         <button class="btn btn-success" type="submit">PRINT</button>
                                     </div>
                                 </form>
@@ -83,13 +85,13 @@
                         
                     <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">REPAIR HISTORY DATA</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">MAINTENANCE HISTORY DATA</span>
                         </div>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
                                 <th class="common-button text-center">Aksi</th>
-                                <th class="common">Repair Code</th>
+                                <th class="common-info">Repair Code</th>
                                 <th class="common-info">Kategori</th>
                                 <th class="common-info">Unit</th>
                                 <th class="common">NIP</th>
@@ -138,7 +140,7 @@
                             <td>{{$ht->users->tim_divisi}}</td>
                             <td>{{$ht->damage_date}}</td>
                             <td>{{$ht->repair_date}}</td>
-                            <td>{{$ht->description}}</td>
+                            <td>{!!$ht->description!!}</td>
                             <td>
                                @include('commons.repair_history')
                             </td>
@@ -161,7 +163,11 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><div class="badge bg-success">{{$ht->repair_code}}</div></td>
+                            <td>
+                                <div class="badge bg-success">
+                                    {{$ht->repair_code}}
+                                </div>
+                            </td>
                             <td><div class="badge bg-warning">{{$ht->category}}</div></td>
                             <td><div class="badge bg-dark">{{$ht->unit}}</div></td>
                             <td>{{$ht->users->nip}}</td>

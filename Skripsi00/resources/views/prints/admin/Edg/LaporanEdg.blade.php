@@ -186,8 +186,16 @@
                         <span class="bold">{{$rp->lev_bbm_awal}} MM / {{$rp->lev_bbm_akhir}} MM</span>
                         <br>
                         <br>
-                        <li>Catatan</li>
+                        <li>Keterangan</li>
                         <span class="bold-catatan">{{$rp->keterangan}}</span>
+                        <li>
+                        Kondisi Peralatan :
+                        @if ($rp->kondisi_peralatan == 'Normal')
+                        <div class="alert alert-success">Normal</div>
+                        @else
+                        <div class="alert alert-danger">Abnormal</div>
+                        @endif
+                        </li>
                     </ul>
                 </td>
             </tr>

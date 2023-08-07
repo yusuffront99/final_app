@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.coboiler')}}" class="text-primary mx-2">
-                                CO Boiler
+                            All Inboxes / CO Boiler
                             </a>
                             /
                             <span class="text-warning mx-2">

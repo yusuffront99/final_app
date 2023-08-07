@@ -45,7 +45,7 @@
                                     <a href="{{route('admin.index.hppump')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             </div>
-                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Laporan HP Pump</h6>
+                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form High Pressure Pump</h6>
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">
                                 <input type="hidden" name="id" value="{{$data_id->id}}">
@@ -115,7 +115,7 @@
                                     </div>
 
                                     <div class="form-group mb-2 mx-3">
-                                        <label for="arus_HP">Arus HP Pump (A)</label>
+                                        <label for="arus_HP">Current HP Pump (A)</label>
                                         <div class="row m-auto my-1">
                                             <div class="col">
                                                 <h6 class="text-center">A</h6>

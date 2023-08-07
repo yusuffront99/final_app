@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.fwpump')}}" class="text-primary">
-                                LFO System / Forwarding Pump
+                            All Inboxes / Forwarding Pump
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -75,7 +75,7 @@
                                     <td>
                                         <a href="{{route('op.fwpump_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

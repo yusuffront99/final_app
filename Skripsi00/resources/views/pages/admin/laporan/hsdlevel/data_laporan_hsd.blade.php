@@ -20,7 +20,7 @@
                             </span>
                             /
                             <span class="text-warning mx-2">
-                                High Speed Diesel
+                                High Speed Diesel Level
                             </span>
                         </div>
                     </div>
@@ -58,11 +58,12 @@
                     <br>
                     @include('commons.validasi_success_update')
                     <table class="table table-striped table-hovered" id="example">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA HIGH SPEED DIESEL</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA HIGH SPEED DIESEL LEVEL</span>
                         <thead class="table-primary">
                             <tr>
                                 <th class="op-1 text-center">Aksi</th>
                                 <th>No</th>
+                                <th class="op-1">NIP</th>
                                 <th class="op-1">Nama Operator</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
@@ -97,10 +98,11 @@
                                         </div>
                                     </td>
                                     <td>{{$no++;}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
-                                    <td>{{$dt->created_at}}</td>
+                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->created_at)->isoFormat('DD-MM-Y')}}</td>
                                     <td class="text-center">
                                         @if ($dt->status == 'Normal')
                                             <div class="badge bg-success">{{$dt->status}}</div>

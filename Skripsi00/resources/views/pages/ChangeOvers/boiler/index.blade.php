@@ -98,19 +98,30 @@
                                                                 <div class="col">
                                                                     <ul>
                                                                         <li>Nama Peralatan : <br><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}} {{$dt->operasi_akhir}}</div></li>
-                                                                        <li>Status Kegiatan : <br> <div class="text-success">{{$dt->status_kegiatan}}</div></li>
+                                                                        <li>Status Kegiatan : <br> <div class="text-success">
+                                                                            @include('commons.status_kegiatan_co')
+                                                                        </div></li>
                                                                         <li>Alat Beroperasi : <br> <div class="text-success">Motor {{$dt->operasi_akhir}}</div></li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="col">
                                                                     <ul>
-                                                                        <li>Status Peralatan : <br> <div class="text-success">{{$dt->status_peralatan}}</div></li>
+                                                                        <li>Status Peralatan : <br> <div class="text-success">
+                                                                            @include('commons.status_peralatan_co')
+                                                                        </div></li>
                                                                         <li>Keterangan : <br> <div class="text-success">{{$dt->keterangan}}</div></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                             @endif
                                                         </p>
+                                                        
+                                                        @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                        <div class="text-warning fw-bold">
+                                                            <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                            <br><small class="text-white">{{$dt->catatan}}</small>
+                                                        </div>
+                                                        @endif
                                                     </td>
                                                     
                                                     <td class="text-center">
@@ -130,7 +141,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="{{route('all_view_coboiler')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                    <a href="{{route('all_view_coboiler')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more <i class='bx bxs-right-arrow-circle'></i></a>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +181,9 @@
             <li class="fw-bold">Operasi Awal / Rencana Awal / Operasi Akhir</li>
             <span class="bold">Motor {{$dt->operasi_awal}} / Motor {{$dt->rencana_operasi}} / <div class="badge bg-success"> Motor {{$dt->operasi_akhir}}</div> </span>
             <li class="fw-bold">Status Kegiatan / Status Peralatan</li>
-            <span class="bold">{{$dt->status_kegiatan}} / {{$dt->status_peralatan}} </span>
+            <span class="bold"> 
+                @include('commons.status_kegiatan_change_over')
+            </span>
         </ul>
         <hr>
         @empty

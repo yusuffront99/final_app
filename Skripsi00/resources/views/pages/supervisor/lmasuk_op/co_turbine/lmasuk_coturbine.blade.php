@@ -15,6 +15,10 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
+                            All Inboxes
+                            </span>
+                            /
+                            <span class="text-warning mx-2">
                                 CO Turbine
                             </span>
                         </div>
@@ -95,15 +99,19 @@
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <ul>
-                                                                            <li>Nama Peralatan : <br><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}}</div></li>
-                                                                            <li>Status Kegiatan : <br> <div class="text-success">{{$dt->status_kegiatan}}</div></li>
+                                                                            <li>Nama Peralatan : <br><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}} {{$dt->operasi_akhir}}</div></li>
+                                                                            <li>Status Kegiatan : <br> <div class="text-success">
+                                                                                @include('commons.status_kegiatan_co')
+                                                                            </div></li>
                                                                             <li>Alat Beroperasi : <br> <div class="text-success">Motor {{$dt->operasi_akhir}}</div></li>
                                                                         </ul>
                                                                     </div>
                                                                     <div class="col">
                                                                         <ul>
-                                                                            <li>Status Peralatan : <br> <div class="text-success">{{$dt->status_peralatan}}</div></li>
-                                                                            <li>Keterangan : <br> <div class="text-success">{{$dt->keterangan}}</div></li>
+                                                                            <li>Status Peralatan : <br> <div class="text-success">
+                                                                                @include('commons.status_peralatan_co')
+                                                                            </div></li>
+                                                                            <li>Keterangan <br><div class="text-success">{{$dt->keterangan}}</div></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

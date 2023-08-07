@@ -45,7 +45,7 @@
                                     <a href="{{route('admin.index.fwpump')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                                 </div>
                             </div>
-                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Laporan FP Pump</h6>
+                            <h6 class="text-white bg-dark p-3 text-center rounded-pill">Form Forwarding Pump</h6>
                             <hr>
                             <div class="col-lg-6 col-md-6 text-dark fw-bold">
                                 <input type="hidden" name="id" value="{{$data_id->id}}">
@@ -95,7 +95,7 @@
                             <div class="row">
                                 <div class="col-lg-6 fw-bold form-fw">
                                     <div class="form-group mb-2 mx-3">
-                                    <label for="status_FP">Status FP Pump</label>
+                                    <label for="status_FP">Status Forwarding Pump</label>
                                         <div class="row m-auto my-2">
                                             <div class="col">
                                                 <h6 class="text-center">A</h6>
@@ -115,7 +115,7 @@
                                     </div>
 
                                     <div class="form-group mb-2 mx-3">
-                                        <label for="arus_FP">Arus FP Pump (A)</label>
+                                        <label for="arus_FP">Current Forwarding Pump (A)</label>
                                         <div class="row m-auto my-1">
                                             <div class="col">
                                                 <h6 class="text-center">A</h6>
@@ -128,7 +128,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group mb-2 mx-3">
-                                        <label for="press_FP">Pressure FP Pump (A)</label>
+                                        <label for="press_FP">Pressure Forwarding Pump (A)</label>
                                         <div class="row m-auto my-1">
                                             <div class="col">
                                                 <h6 class="text-center">A</h6>
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="col-lg-6 text-dark fw-bold">
                                     <div class="form-group mb-2 mx-3">
-                                        <label for="info_FP">Informasi FP Pump</label>
+                                        <label for="info_FP">Informasi Forwarding Pump</label>
                                         <input id="info_FP" type="hidden" name="info_FP" value="{{$data_id->info_FP}}">
                                         <trix-editor input="info_FP"></trix-editor>
                                     </div>

@@ -39,13 +39,15 @@ class CrudMaintenanceController extends Controller
         // ============================================
         $tburner_repaired = Maintenance::where('category', 'BURNER SYSTEM')->count();
         $tsootblower_repaired = Maintenance::where('category', 'SOOTBLOWER SYSTEM')->count();
-        $tedg_repaired = Maintenance::where('category', 'EDG SYSTEM')->count();
+        $tedg_repaired = Maintenance::where('category', 'EMERGENCY DIESEL SYSTEM')->count();
         $thppump_repaired = Maintenance::where('category', 'HIGH PRESSURE PUMP')->count();
         $tfwpump_repaired = Maintenance::where('category', 'FORWARDING PUMP')->count();
         $thsdlevel_repaired = Maintenance::where('category', 'HIGH SPEED DIESEL LEVEL')->count();
         $tcoturbine_repaired = Maintenance::where('category', 'CHANGE OVER TURBINE')->count();
         $tcoboiler_repaired = Maintenance::where('category', 'CHANGE OVER BOILER')->count();
         $tcocommon_repaired = Maintenance::where('category', 'CHANGE OVER COMMON')->count();
+
+        $maintenances = Maintenance::latest()->get();
        
         return view('pages.admin.laporan.maintenance.index', [
             'user' => $user,
@@ -68,6 +70,8 @@ class CrudMaintenanceController extends Controller
             'tcoturbine_repaired' => $tcoturbine_repaired,
             'tcocommon_repaired' => $tcocommon_repaired,
             'tcoboiler_repaired' => $tcoboiler_repaired,
+
+            'maintenances' => $maintenances
         ]);
     }
 

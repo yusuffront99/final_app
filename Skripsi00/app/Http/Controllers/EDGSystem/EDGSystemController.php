@@ -66,6 +66,7 @@ class EDGSystemController extends Controller
             'press_oli' => 'required',
             'jam_stop' => 'required',
             'lev_bbm_akhir' => 'required',
+            'kondisi_peralatan' => 'required',
             'status_equipment_id' => 'required',
             'catatan_spv' => 'required',
         ]);
@@ -91,6 +92,7 @@ class EDGSystemController extends Controller
         $edg->jam_stop = $request->get('jam_stop');
         $edg->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $edg->status_equipment_id = $request->get('status_equipment_id');
+        $edg->kondisi_peralatan = $request->get('kondisi_peralatan');
         $edg->keterangan = $request->get('keterangan');
         $edg->catatan_spv = $request->get('catatan_spv');
 
@@ -167,6 +169,7 @@ class EDGSystemController extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
+        $update->kondisi_peralatan = $request->get('kondisi_peralatan');
         $update->keterangan = $request->get('keterangan');
         $update->catatan_spv = $request->get('catatan_spv');
 

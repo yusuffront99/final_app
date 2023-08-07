@@ -95,15 +95,17 @@
                                             <option value="Operator Turbine">Operator Turbine</option>
                                             <option value="Supervisor Operasi">Supervisor Operasi</option>
                                             <option value="Supervisor Pemeliharaan">Supervisor Pemeliharaan</option>
+                                            <option value="Admin">Admin</option>
                                         </select>
                                     </div>
                                     <div class="form-group mx-2 mb-1">
                                         <label for="" class="fw-bold">Atasan</label>
                                         <select name="atasan" id="atasan" class="form-select">
-                                            <option value="" selected hidden>-- Leaders --</option>
+                                            <option value="-">-- Leaders --</option>
                                             @foreach ($leaders as $ld)
                                                 <option value="{{$ld->nama_lengkap}}">{{$ld->nama_lengkap}} - {{$ld->jabatan}}</option>
                                             @endforeach
+
                                         </select>
                                     </div>
                                     <div class="form-group mx-2 mb-1">

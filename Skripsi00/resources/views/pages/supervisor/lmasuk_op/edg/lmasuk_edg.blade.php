@@ -16,6 +16,10 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
+                            <span class="text-primary mx-2">
+                            All Inboxes
+                            </span>
+                            /
                             <span class="text-warning mx-2">
                                 EDG System
                             </span>
@@ -81,7 +85,7 @@
                                                         </td>
                                                         <td class="text-white">
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</small>
-                                                            <br>
+                                                            
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
                                                             
                                                             
@@ -96,7 +100,12 @@
                                                                     <div class="col-lg-6 col-md-6">
                                                                         <div class="px-2">
                                                                             <ul>
-                                                                                <li class="text-success">Tegangan Output</li> * {{$dt->teg_out}}
+                                                                                <li class="text-success">Kondisi Peralatan</li> * 
+                                                                                @if ($dt->kondisi_peralatan == 'Normal')
+                                                                                    <span class="text-success">{{$dt->kondisi_peralatan}}</span>
+                                                                                @else
+                                                                                    <span class="text-danger">{{$dt->kondisi_peralatan}}</span>
+                                                                                @endif
                                                                                 <li class="text-success">Frekuensi</li> * {{$dt->frekuensi}}
                                                                                 <li class="text-success">Putaran </li> * {{$dt->putaran}}
                                                                             </ul>

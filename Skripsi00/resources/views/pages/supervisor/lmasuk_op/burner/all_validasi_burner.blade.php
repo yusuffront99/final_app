@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.burner')}}" class="text-primary">
-                                Burner System
+                                All Inboxes / Burner System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -75,7 +75,7 @@
                                     <td>
                                         <a href="{{route('op.burner_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

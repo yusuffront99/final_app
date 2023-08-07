@@ -83,9 +83,8 @@
                                                         
                                                         </td>
                                                         <td class="text-white">
-                                                            <small class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</small>
-                                                            <br>
-                                                            <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
+                                                            <span class="bg-danger rounded-pill px-2 mb-2">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</span>
+                                                            <span class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</span>
                                                             
                                                             
                                                             <p class="mt-2">
@@ -100,7 +99,12 @@
                                                                     <div class="col-lg-6 col-md-6">
                                                                         <div class="px-2">
                                                                             <ul>
-                                                                                <li class="text-success">Tegangan Output</li> * {{$dt->teg_out}}
+                                                                                <li class="text-success">Kondisi Peralatan</li> * 
+                                                                                @if ($dt->kondisi_peralatan == 'Normal')
+                                                                                    <span class="text-success">{{$dt->kondisi_peralatan}}</span>
+                                                                                @else
+                                                                                    <span class="text-danger">{{$dt->kondisi_peralatan}}</span>
+                                                                                @endif
                                                                                 <li class="text-success">Frekuensi</li> * {{$dt->frekuensi}}
                                                                                 <li class="text-success">Putaran </li> * {{$dt->putaran}}
                                                                             </ul>
@@ -115,6 +119,13 @@
                                                                             </ul>
                                                                         </div>
                                                                     </div>
+                                                                    
+                                                                    @if ($dt->status_equipments->status_name == 'Waiting Material')
+                                                                    <div class="text-warning fw-bold">
+                                                                        <small class="text-warning fst-italic">*Catatan Supervisor : {{$dt->catatan_spv}}</small>
+                                                                        <br><small class="text-white">{{$dt->catatan}}</small>
+                                                                    </div>
+                                                                    @endif
                                                                 </div>
                                                                 @endif
                                                             </p>
@@ -137,7 +148,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="{{route('all_view_edg')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all report <i class='bx bxs-right-arrow-circle'></i></a>
+                                        <a href="{{route('all_view_edg')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

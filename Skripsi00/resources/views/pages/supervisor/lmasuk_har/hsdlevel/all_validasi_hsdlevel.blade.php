@@ -15,8 +15,8 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <a href="{{route('lmasuk.har.hppump')}}" class="text-primary">
-                                LFO System
+                            <a href="{{route('lmasuk.har.hsdlevel')}}" class="text-primary">
+                            All Inboxes / HSD Level
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -42,7 +42,7 @@
                     <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="d-flex justify-content-between mb-3">
                             <div>
-                                <a href="{{route('lmasuk.har.hppump')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                <a href="{{route('lmasuk.har.hsdlevel')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
                         </div>
                         <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">LIGHT FUEL OIL SYSTEM VALIDATIONS</span>
@@ -71,7 +71,7 @@
                                 <tr>
                                     <td>{{$no++;}}</td>
                                     <td>
-                                        <a href="{{route('har.hppump_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
+                                        <a href="{{route('har.hsdlevel_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>

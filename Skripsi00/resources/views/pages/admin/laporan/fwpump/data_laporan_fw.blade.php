@@ -48,11 +48,6 @@
                         <div class="row">
                             <form action="{{route('print.admin.laporan_fwpump')}}" method="GET" target="_blank">
                                 <div class="input-group mb-3">
-                                <select name="select_unit" id="select_unit" class="form-select">
-                                    <option value="">-Select Unit--</option>
-                                    <option value="Unit 3">Unit 3</option>
-                                    <option value="Unit 4">Unit 4</option>
-                                </select>
                                     <input type="date" class="form-control" name="first_date" required>
                                     <input type="date" class="form-control" name="last_date" required>
                                     <button class="btn btn-success" type="submit">PRINT</button>
@@ -68,6 +63,7 @@
                             <tr>
                                 <th class="op-1 text-center">Aksi</th>
                                 <th>No</th>
+                                <th class="op-1">NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
@@ -103,6 +99,7 @@
                                         </div>
                                     </td>
                                     <td>{{$no++;}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

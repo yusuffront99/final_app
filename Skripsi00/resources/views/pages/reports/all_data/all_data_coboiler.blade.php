@@ -64,6 +64,7 @@
                                 <th class="tgl-col">Tanggal CO</th>
                                 <th class="tgl-col">Jam CO</th>
                                 <th class="tgl-col">Unit</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="common-information text-center">Motor Peralatan</th>                                
                                 <th class="common-information text-center">Informasi</th>                                                                                         
                                 <th>Status</th>
@@ -74,9 +75,11 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $dt)
+
                                 <tr>
+                                    
                                     <td>{{$no++;}}</td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
@@ -89,6 +92,9 @@
                                         @else
                                             <span class="badge bg-danger rounded">{{$dt->unit}}</span>
                                         @endif
+                                    </td>
+                                    <td>
+                                        @include('commons.status_kegiatan_co')
                                     </td>
 
                                     <td>

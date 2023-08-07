@@ -63,6 +63,7 @@
                                 <th class="tgl-col">Shift</th>
                                 <th class="tgl-col">Tanggal Update</th>
                                 <th class="tgl-col">Jam Operasi</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="common-information text-center">Info I</th>                                
                                 <th class="common-information text-center">Info II</th>                                
                                 <th class="common-information">Catatan</th>                                                              
@@ -87,6 +88,9 @@
                                             <li>Jam Start : <span class="text-success fw-bold">{{$dt->jam_start}}</span></li>
                                             <li>Jam Stop : <span class="text-danger fw-bold">{{$dt->jam_stop}}</span></li>
                                         </ul>
+                                    </td>
+                                    <td>
+                                        @include('commons.alerts.condition_alert_edg')
                                     </td>
                                     <td>
                                         <ul>

@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Sootblower System
+                                Change Over Turbine
                             </span>
                         </div>
                     </div>
@@ -64,23 +64,26 @@
 
                         <table id="example" class="table table-striped my-3" style="width:100%">
                         <div class="m-auto">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - SOOTBLOWER SYSTEM</span>
+                        <!-- <div class="mb-2">
+                            <a href="{{route('all_view_coboiler')}}" class="btn btn-success text-white btn-sm rounded btn-view px-5">see more <i class='bx bxs-right-arrow-circle'></i></a>
+                       </div> -->
+                            <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - CHANGE OVER TURBINE</span>
                         </div>
                        
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th class="common-info">Aksi</th>
-                                <th class="common">NIP</th>
-                                <th class="op-1">Operator I</th>
-                                <th class="op-2">Operator II</th>
+                                <th class="op-1 text-center">Aksi</th>
+                                <th class="op-1 text-center">Repair Code</th>
+                                <th class="common-info">NIP</th>
+                                <th class="common-info">Operator</th>
                                 <th class="common-info">Supervisor</th>
-                                <th class="common">Shift</th>
-                                <th class="common-info">Tanggal Update</th>
-                                <th class="common-info">Jam Operasi</th>
-                                <th class="common-information text-center">Info I</th>                                
-                                <th class="common-information text-center">Info II</th>                                
-                                <th class="common-information">Keterangan</th>      
+                                <th class="tgl-col">Shift</th>
+                                <th class="tgl-col">Tanggal CO</th>
+                                <th class="tgl-col">Jam CO</th>
+                                <th class="tgl-col">Unit</th>
+                                <th class="common-information text-center">Motor Peralatan</th>                                
+                                <th class="common-information text-center">Informasi</th>                                                                                         
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -138,7 +141,8 @@
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
                                     </td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>
@@ -173,7 +177,6 @@
                                     </td>
                                 </tr>
                                @endif
-                            
                             @endforeach
                         </tbody>
                     </table>

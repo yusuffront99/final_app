@@ -15,7 +15,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.har.burner')}}" class="text-primary mx-2">
-                                Burner System
+                                All Inboxes / Burner System
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -86,7 +86,7 @@
                                     <tr>
                                         <th width="30%">NIP</th>
                                         <th>:</th>
-                                        <td class="text-warning">{{$data_id->nip}}</td>
+                                        <td class="text-warning">{{$data_id->users->nip}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nama Operator</th>
@@ -159,7 +159,15 @@
                                         
                                     </div>
                                 </div>
-                                <input type="hidden" name="catatan" value="{{$data_id->catatan}}">
+                               
+                                <div class="my-1">
+                                    <div class="row">
+                                        <div class="col-lg-8 mx-auto">
+                                            <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
+                                            <input type="text" value="{{$data_id->catatan_spv}}" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <br>
                                 <hr class="line-dash">
@@ -192,7 +200,7 @@
             alert()
 
             $.ajax({
-                url: 'burner_system/update/' + id
+                url: 'burner_system/update/' + id,
                 method: 'POST',
                 data: $('#edit_burner_system').serialize(),
                 dataType: 'JSON',

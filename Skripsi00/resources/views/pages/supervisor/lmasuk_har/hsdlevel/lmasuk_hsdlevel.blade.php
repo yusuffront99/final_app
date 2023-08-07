@@ -16,7 +16,7 @@
                             </a>
                             /
                             <span class="text-primary mx-2">
-                                LFO System
+                                All Inboxes
                             </span>
                             /
                             <span class="text-warning mx-2">
@@ -87,7 +87,7 @@
                                                             <small class="bg-primary rounded-pill px-2 mb-2">{{$dt->operator_shift}}</small>
                                                             <small class="bg-success rounded-pill px-2 mb-2">{{$dt->created_at}}</small>
                                                             <small class="bg-danger rounded-pill px-2 mb-2">{{$dt->users->nama_lengkap}}</small>
-                                                            
+                                                           
                                                             <p class="mt-4">
                                                                 <div class="row">
                                                                     <div class="col-6">
@@ -140,6 +140,7 @@
                                                     @endforelse
                                             </table>
                                         </div>
+                                        <a href="{{route('har.all_hsdlevel_validation')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

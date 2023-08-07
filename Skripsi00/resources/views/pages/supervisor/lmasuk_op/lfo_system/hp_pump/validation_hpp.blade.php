@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.hppump')}}" class="text-primary mx-2">
-                                LFO System / High Pressure Pump
+                            All Inboxes / High Pressure Pump
                             </a>
                             /
                             <span class="text-warning mx-2">
@@ -67,7 +67,7 @@
                             <input type="hidden" value="{{$data_id->catatan_spv}}" name="catatan_spv">
 
                             <div class="p-3 card bg-secondary text-white">
-                                <h5 class="text-primary fw-bold">Validation HP Pump</h5>
+                                <h5 class="text-primary fw-bold">Validation High Pressure Pump</h5>
                                 <br>
                                 <div class="d-flex justify-content-between">
                                     <div class="">
@@ -114,11 +114,16 @@
                                         <th>:</th>
                                         <th>{{$data_id->jam_update}}</th>
                                     </tr>
+                                    <tr>
+                                        <th>Unit</th>
+                                        <th>:</th>
+                                        <th>{{$data_id->unit}}</th>
+                                    </tr>
                                 </table>
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg">
-                                        <strong class="text-warning">HP Pump {{$data_id->unit}}</strong>
+                                        <strong class="text-warning">High Pressure Pump</strong>
                                         <br>
                                         <ul>
                                             <li>

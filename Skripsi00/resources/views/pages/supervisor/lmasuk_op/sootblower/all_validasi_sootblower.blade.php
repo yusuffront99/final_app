@@ -16,7 +16,7 @@
                             </a>
                             /
                             <a href="{{route('lmasuk.op.sootblower')}}" class="text-primary">
-                                Sootblower System
+                            All Inboxes / Sootblower System
                             </a>
                             /
                             <span class="text-warning mx-2">

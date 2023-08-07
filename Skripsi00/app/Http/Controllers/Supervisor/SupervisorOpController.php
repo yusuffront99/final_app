@@ -416,6 +416,7 @@ class SupervisorOpController extends Controller
         $update->jam_stop = $request->get('jam_stop');
         $update->lev_bbm_akhir = $request->get('lev_bbm_akhir');
         $update->status_equipment_id = $request->get('status_equipment_id');
+        $update->kondisi_peralatan = $request->get('kondisi_peralatan');
         $update->keterangan = $request->get('keterangan');
         $update->catatan_spv = $request->get('catatan_spv');
 
@@ -703,7 +704,7 @@ class SupervisorOpController extends Controller
         $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
 
         $user = User::where('id', Auth::user()->id)->first();
-        $data = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
+        $data = Hp_Pump::where('operator_shift', Auth::user()->tim_divisi)->whereIn('status_equipment_id', [6,7])->get();
         return view('pages.reports.shift_data.all_data_hppump', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 

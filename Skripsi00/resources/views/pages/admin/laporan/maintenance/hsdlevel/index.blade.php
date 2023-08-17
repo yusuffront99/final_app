@@ -40,13 +40,10 @@
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
                     <div class="row">
-                        <div class="d-flex justify-content-between mb-2">
-                            <div class="d-flex justify-content-between">
-                                <div class="mx-1">
-                                    <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="{{route('history.hsdlevel')}}" class="btn btn-sm btn-success px-4 rounded-pill">See More <i class='bx bx-grid-small'></i></a>
+                        </div>  
                         <br>
 
                         <div class="m-1">
@@ -89,7 +86,7 @@
                             @endphp
                             @foreach ($weekly_data as $dt)
                                @if (Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->updated_at)->format('d-m-Y') == $today)
-                               <tr style="background-color: #E2F6CA;">
+                                <tr style="background-color: #E2F6CA;">
                                     <td>{{$no++;}}</td>
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
@@ -100,10 +97,10 @@
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{$dt->created_at}}</td>
                                     <td class="text-center">
-                                        @if ($dt->status == 'Normal')
-                                            <div class="badge bg-success">{{$dt->status}}</div>
+                                        @if ($dt->status_peralatan == 'Normal')
+                                            <div class="badge bg-success">{{$dt->status_peralatan}}</div>
                                         @else
-                                            <div class="badge bg-danger">{{$dt->status}}</div>
+                                            <div class="badge bg-danger">{{$dt->status_peralatan}}</div>
                                         @endif
                                     </td>
                                     <td class="text-center">
@@ -131,7 +128,7 @@
                                     <td>                            
                                         <a href="javascript:void(0)" data-id="{{$dt->id}}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-success" id="create_detail" ><i class='bx bx-dollar-circle'></i> Buat Rincian</a>
                                     </td>
-                                    </td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>

@@ -151,6 +151,7 @@
                     <th class="op-1">Operator</th>
                     <th class="op-1">Supervisor</th>
                     <th class="tgl-col">Shift</th>
+                    <th class="tgl-col">Nama Peralatan</th>
                     <th class="tgl-col">Tanggal CO</th>
                     <th class="tgl-col">Jam CO</th>
                     <th class="tgl-col">Unit</th>
@@ -169,6 +170,7 @@
                 <td>{{$rp->users->nama_lengkap}}</td>
                 <td>{{$rp->users->atasan}}</td>
                 <td>{{$rp->operator_shift}}</td>
+                <td>{{$rp->nama_peralatan}}</td>
                 <td>{{Carbon\carbon::createFromFormat('Y-m-d', $rp->tanggal_update)->format('d-m-Y')}}</td>
                 <td>{{$rp->jam_update}}</td>
                 <td>{{$rp->unit}}</td>

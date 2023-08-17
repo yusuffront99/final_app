@@ -9,18 +9,18 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="mb-4 rounded-pill p-3 fw-bold">
                 <div class="row">
-                    <div class="col-lg-8 col-sm-9">
+                <div class="col-lg-8 col-sm-9">
                         <div class="p-2">
-                            <a href="{{route('home')}}" class="text-primary">
-                                <i class="bx bx-home-circle"></i> Home
+                            <a href="{{route('dashboard')}}" class="text-primary">
+                                <i class='bx bxs-dashboard'></i> Dashboard
                             </a>
                             /
-                            <a href="{{route('lmasuk.har.cocommon')}}" class="text-primary">
-                            All Inboxes / CO Common
+                            <a href="{{route('maintenance.index')}}" class="text-primary">
+                                Maintenance
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                All validation
+                                History
                             </span>
                         </div>
                     </div>
@@ -39,53 +39,57 @@
             </div>
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
-                    <table id="example" class="table table-striped my-3" style="width:100%">
-                        <div class="d-flex justify-content-between mb-3">
-                            <div>
-                                <a href="{{route('lmasuk.har.cocommon')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                    <div class="row">
+                        <div class="d-flex justify-content-between mb-2">
+                            <div class="d-flex justify-content-between">
+                                <div class="mx-1">
+                                    <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                                </div>
                             </div>
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">CHANGE OVER PERALATAN COMMON VALIDATIONS - {{Auth::user()->tim_divisi}}</span>
+                        <br>
+                        @include('commons.validasi_success_update')
+
+                        <table id="example" class="table table-striped my-3" style="width:100%">
+                        <div class="m-auto">
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">EQUIPMENT REPAIR DATA - SOOTBLOWER SYSTEM</span>
+                        </div>
+                       
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th>Aksi</th>
-                                <th>NIP</th>
-                                <th class="op-1">Operator</th>
+                                <th class="common-info">Repair Code</th>
+                                <th class="common">NIP</th>
+                                <th class="op-1">Operator I</th>
+                                <th class="op-2">Operator II</th>
                                 <th class="op-1">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Nama Peralatan</th>
-                                <th class="tgl-col">Tanggal CO</th>
-                                <th class="tgl-col">Jam CO</th>
-                                <th class="tgl-col">Kondisi Peralatan</th>
-                                <th class="tgl-col">Unit</th>
-                                <th class="common-information text-center">Motor Peralatan</th>                                
-                                <th class="common-information text-center">Informasi</th>                                                                                         
+                                <th class="tgl-col">Updated Date</th>
+                                <th class="jam-col">Updated Time</th>
+                                <th class="unit-col">Unit</th>
+                                <th class="common-information text-center">Status Peralatan</th>
+                                <th class="common-information">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        
                         <tbody>
+                            
                             @php
                                 $no = 1;
                             @endphp
+                            
                             @foreach ($data as $dt)
-                                <tr>
+                            <tr>
                                     <td>{{$no++;}}</td>
-                                    <td>
-                                        <a href="{{route('har.cocommon_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
-                                    </td>
+                                    <td><div class="badge bg-danger"><?php echo substr($dt->id, 0, 8)?></div></td>
                                     <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->users->atasan}}</td>
+                                    <td>{{$dt->operator_kedua}}</td>
+                                    <td>{{$dt->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
-                                    <td><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}}</div></td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>{{$dt->jam_update}}</td>
                                     <td>
-                                        @include('commons.alerts.condition_alert')
-                                    </td>
-                                   <td>
                                         @if ($dt->unit == 'Unit 3')
                                             <span class="badge bg-success rounded">{{$dt->unit}}</span>
                                         @else
@@ -94,17 +98,20 @@
                                     </td>
                                     <td>
                                         <ul>
-                                            <li>Operasi Awal : <div class="text-danger fw-bold">Motor {{$dt->operasi_awal}}</div></li>
-                                            <li>Rencana Operasi : <div class="text-warning fw-bold">Motor {{$dt->rencana_operasi}}</li>
-                                            <li>Operasi Akhir : <div class="text-success fw-bold">Motor {{$dt->operasi_akhir}}</li>
+                                            <li>Sootblower Type-L:</li>
+                                            @include('commons.indication_sbl_type_L')
+                                            
+                                            <li>Sootblower Type-C :</li>
+                                            @include('commons.indication_sbl_type_C')
+
+                                            <li>Sootblower Type-G/YB :</li>
+                                            @include('commons.indication_sbl_type_G')
                                         </ul>
                                     </td>
                                     <td>
-                                        <ul>
-                                            <li>Pelaksanaan : <div class="text-success">{{$dt->status_kegiatan}}</div></li>
-                                            <li>Evaluasi : <div class="text-primary"> {{$dt->status_peralatan}}</div> </li>
-                                            <li>Keterangan : <div class="text-danger">{{$dt->keterangan}}</div></li>
-                                        </ul>
+                                    <strong class="text-danger">
+                                    {!!$dt->keterangan!!}
+                                    </strong>
                                     </td>
                                     <td>
                                         @include('commons.report_status')
@@ -125,6 +132,8 @@
         <!-- / Footer -->
     <!-- / Layout page -->
 @endsection
+
+<!-- Button trigger modal -->
 
 @push('add-script')
 <script>

@@ -167,10 +167,10 @@
     
                     <td>
                         <span style="font-weight: bold;">Status Peralatan : 
-                            @if ($rp->status == 'Normal')
-                                <div class="badge bg-success text-white">{{$rp->status}}</div>
+                            @if ($rp->status_peralatan == 'Normal')
+                                <div class="badge bg-success text-white">{{$rp->status_peralatan}}</div>
                             @else
-                                <div class="badge bg-danger text-white">{{$rp->status}}</div>
+                                <div class="badge bg-danger text-white">{{$rp->status_peralatan}}</div>
                             @endif
                         </span><br>
                         <span style="font-weight: bold;">Storage Tank Level (m3) : </span>

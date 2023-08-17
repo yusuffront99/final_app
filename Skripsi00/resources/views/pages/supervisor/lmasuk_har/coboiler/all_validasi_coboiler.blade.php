@@ -54,6 +54,7 @@
                                 <th class="op-1">Operator</th>
                                 <th class="op-1">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
+                                <th class="tgl-col">Nama Peralatan</th>
                                 <th class="tgl-col">Tanggal CO</th>
                                 <th class="tgl-col">Jam CO</th>
                                 <th class="tgl-col">Kondisi Peralatan</th>
@@ -78,6 +79,7 @@
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
+                                    <td><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}}</div></td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>{{$dt->jam_update}}</td>
                                     <td>

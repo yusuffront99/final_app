@@ -56,7 +56,7 @@
                         @include('commons.validasi_success_update')
                         
                         <table id="example" class="table table-striped my-3" style="width:100%">
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA CHANGE OVER PERALATAN TURBINE</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">DATA CHANGE OVER PERALATAN COMMON</span>
                         <thead class="table-primary">
                             <tr>
                                 <th class="op-1 text-center">Aksi</th>
@@ -65,6 +65,7 @@
                                 <th class="op-1">Operator</th>
                                 <th class="op-1">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
+                                <th class="tgl-col">Nama Peralatan</th>
                                 <th class="tgl-col">Kondisi Peralatan</th>
                                 <th class="tgl-col">Tanggal CO</th>
                                 <th class="tgl-col">Jam CO</th>
@@ -101,6 +102,7 @@
                                 <td>{{$dt->users->nama_lengkap}}</td>
                                 <td>{{$dt->users->atasan}}</td>
                                 <td>{{$dt->operator_shift}}</td>
+                                <td><div class="badge bg-success rounded-pill">{{$dt->nama_peralatan}}</div></td>
                                 <td>@include('commons.alerts.condition_alert')</td>
                                 <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                 <td>{{$dt->jam_update}}</td>

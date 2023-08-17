@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CRUD\CrudMaintenanceController;
 use App\Http\Controllers\Admin\CRUD\CrudSootblower;
 use App\Http\Controllers\Admin\CRUD\CrudUser;
 use App\Http\Controllers\Admin\CRUD\Maintenance\BurnerController;
+use App\Http\Controllers\Admin\CRUD\Maintenance\Detail\MaintenanceHistoryController;
 use App\Http\Controllers\Admin\CRUD\Maintenance\MainCOBoilerContoller;
 use App\Http\Controllers\Admin\CRUD\Maintenance\MainCOCommonContoller;
 use App\Http\Controllers\Admin\CRUD\Maintenance\MainCOTurbineContoller;
@@ -536,6 +537,16 @@ Route::prefix('/dashboard')
         Route::get('maintenance/cocommon', [MainCOCommonContoller::class, 'index_cocommon'])->name('maintenance-cocommon.index');
 
        
+        // === DETAIL HISTORY MAINTENANCE
+        Route::get('maintenance/history_burner', [MaintenanceHistoryController::class, 'history_burner'])->name('history.burner');
+        Route::get('maintenance/history_sootblower', [MaintenanceHistoryController::class, 'history_sootblower'])->name('history.sootblower');
+        Route::get('maintenance/history_edg', [MaintenanceHistoryController::class, 'history_edg'])->name('history.edg');
+        Route::get('maintenance/history_coboiler', [MaintenanceHistoryController::class, 'history_coboiler'])->name('history.coboiler');
+        Route::get('maintenance/history_cocommon', [MaintenanceHistoryController::class, 'history_cocommon'])->name('history.cocommon');
+        Route::get('maintenance/history_coturbine', [MaintenanceHistoryController::class, 'history_coturbine'])->name('history.coturbine');
+        Route::get('maintenance/history_fwpump', [MaintenanceHistoryController::class, 'history_fwpump'])->name('history.fwpump');
+        Route::get('maintenance/history_hppump', [MaintenanceHistoryController::class, 'history_hppump'])->name('history.hppump');
+        Route::get('maintenance/history_hsdlevel', [MaintenanceHistoryController::class, 'history_hsdlevel'])->name('history.hsdlevel');
         // Route::post('/', [TaskScheduleController::class, 'destroy'])->name('schedule.destroy');
 
         // NEW REGISTER

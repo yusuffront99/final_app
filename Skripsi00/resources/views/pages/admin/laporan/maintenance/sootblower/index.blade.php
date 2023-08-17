@@ -40,13 +40,10 @@
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
                     <div class="row">
-                        <div class="d-flex justify-content-between mb-2">
-                            <div class="d-flex justify-content-between">
-                                <div class="mx-1">
-                                    <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <a href="{{route('maintenance.index')}}" class="btn btn-sm btn-primary rounded-pill"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="{{route('history.sootblower')}}" class="btn btn-sm btn-success px-4 rounded-pill">See More <i class='bx bx-grid-small'></i></a>
+                        </div> 
                         <br>
 
                         <div class="m-1">

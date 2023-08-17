@@ -170,6 +170,7 @@
                 <td>{{$rp->unit}}</td>
                 <td>
                     <ul>
+                        <div class="badge bg-success rounded-pill text-white">{{$rp->nama_peralatan}}</div>
                         <li>Operasi Awal : <div class="text-danger fw-bold">Motor {{$rp->operasi_awal}}</div></li>
                         <li>Rencana Operasi : <div class="text-warning fw-bold">Motor {{$rp->rencana_operasi}}</li>
                         <li>Operasi Akhir : <div class="text-success fw-bold">Motor {{$rp->operasi_akhir}}</li>

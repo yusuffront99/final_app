@@ -56,7 +56,7 @@
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
                                             <div><strong><i class='bx bxs-timer'></i> Recent Report {{Auth::user()->tim_divisi}}</strong></div>
-                                            <div><a href="" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class='bx bx-history'></i> Informasi Terakhir</a></div>
+                                            <div><a href="" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class='bx bx-history'></i> Recent History</a></div>
                                         </div>
                                         <br>
 

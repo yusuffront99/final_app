@@ -125,7 +125,7 @@
                                         <div class="form-group mb-2">
                                             <label for="">Foto Profil</label>
                                             <input type="hidden" name="oldImage" value="{{$user->profile_img}}">
-                                            <input type="file" name="profile_img" value="{{$user->profile_img}}" class="form-control" required>
+                                            <input type="file" name="profile_img" value="{{$user->profile_img}}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 py-2">

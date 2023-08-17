@@ -214,11 +214,11 @@
     var wrs = <?php echo json_encode($wrs)?>;
     var rr = <?php echo json_encode($rr)?>;
 
-    var contents = [wr,fr,wmr,wor,wrs,rr];
+    var contents = [wr,rr,wmr,wor,wrs,fr];
 
     // const labels = Utils.months({count: 7});
     const data = {
-    labels: ['Waiting Approval', 'forwarding', 'waiting material', 'working', 'resolved','rejected'],
+    labels: ['Waiting Approval', 'rejected', 'waiting material', 'working', 'resolved','forwarding'],
     datasets: [
         {
         label: 'Total',

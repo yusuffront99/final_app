@@ -233,7 +233,7 @@ class SupervisorHarController extends Controller
         $update->operator_shift = $request->get('operator_shift');
         $update->storage_level = $request->get('storage_level');
         $update->daily_level = $request->get('daily_level');
-        $update->status = $request->get('status');
+        $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->info_hsd = $request->get('info_hsd');
         $update->catatan_spv = $request->get('catatan_spv');
@@ -431,7 +431,7 @@ class SupervisorHarController extends Controller
     public function all_hsdlevel_validation()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data = Hp_Pump::whereIn('status_equipment_id', [2,4,5])->get();
+        $data = HsdLevel::whereIn('status_equipment_id', [2,4,5])->get();
         return view('pages.supervisor.lmasuk_har.hsdlevel.all_validasi_hsdlevel', compact('data','user'));
     }
 

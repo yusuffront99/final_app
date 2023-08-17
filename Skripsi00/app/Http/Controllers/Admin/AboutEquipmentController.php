@@ -37,7 +37,7 @@ class AboutEquipmentController extends Controller
         $equipment->position = $request->position;
         $equipment->description = $request->description;
         $equipment->specification = $request->specification;
-        $equipment->img_equipment =  $request->file('img_equipment')->store('uploads');
+        $equipment->img_equipment =  $request->file('img_equipment')->store('equipments');
         $equipment->save();
 
         return redirect()->route('equipment_about.index')->with('success','Add Data Successfully');

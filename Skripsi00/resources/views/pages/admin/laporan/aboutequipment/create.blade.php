@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="form-group mx-2 mb-1">
                                         <label for="" class="fw-bold">Posisi Peralatan</label>
-                                        <input type="text" name="position" id="position" class="form-control" value="{{ old('position') }}" required>
+                                        <input type="text" name="position" id="position" class="form-control" placeholder="ex:3" value="{{ old('position') }}" required>
                                     </div>
                                     <div class="form-group mx-2 mb-1">
                                         <label for="" class="fw-bold">Deskripsi Peralatan</label>

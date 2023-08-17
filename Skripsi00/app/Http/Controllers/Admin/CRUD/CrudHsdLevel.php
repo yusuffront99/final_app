@@ -50,7 +50,7 @@ class CrudHsdLevel extends Controller
         $update->operator_shift = $request->get('operator_shift');
         $update->storage_level = $request->get('storage_level');
         $update->daily_level = $request->get('daily_level');
-        $update->status = $request->get('status');
+        $update->status_peralatan = $request->get('status_peralatan');
         $update->info_hsd = $request->get('info_hsd');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->catatan_spv = $request->get('catatan_spv');

@@ -92,9 +92,9 @@
                                                                 <div class="row">
                                                                     <div class="col-6">
                                                                         <ul>
-                                                                            <li>Storage Level : 
+                                                                            <li>Storage Level Tank : 
                                                                                 @if ($dt->storage_level >= 3.50)
-                                                                                    <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} <i class='bx bxs-up-arrow-circle'></i></div>
+                                                                                    <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} / m<sup>3</sup><i class='bx bxs-up-arrow-circle'></i></div>
                                                                                 @else
                                                                                 <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
                                                                                 @endif
@@ -103,7 +103,7 @@
                                                                     </div>
                                                                     <div class="col-6">
                                                                         <ul>
-                                                                            <li>Daily Level : 
+                                                                            <li>Daily Level Tank: 
                                                                                 @if ($dt->daily_level >= 2.00)
                                                                                 <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
                                                                                 @else
@@ -141,6 +141,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <a href="{{route('op.all_hsdlevel_validation')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see all <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                             </div>

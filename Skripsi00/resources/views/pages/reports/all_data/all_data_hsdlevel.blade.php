@@ -15,11 +15,12 @@
                                 <i class="bx bx-home-circle"></i> Home
                             </a>
                             /
-                            <span class="text-primary mx-2">
-                            All Inboxes / High Pressure Pump
-                            </span>
+                            <a href="{{route('hsd_level.index')}}" class="text-primary">
+                                LFO System
+                            </a>
+                            /
                             <span class="text-warning mx-2">
-                                All validation
+                                All Data HSD Level
                             </span>
                         </div>
                     </div>
@@ -39,26 +40,23 @@
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
                     <table id="example" class="table table-striped my-3" style="width:100%">
-                        <div class="row mb-3">
-                            <div class="d-flex justify-content-between mb-3">
-                                <div>
-                                    <a href="{{route('lmasuk.op.hsdlevel')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
-                                </div>
-                            </div>
+                        <div>
+                            <a href="{{route('hsd_level.index')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">HIGH SPEED DIESEL LEVEL VALIDATIONS - {{Auth::user()->tim_divisi}}</span>
+
+                        <span class="badge bg-primary p-3 fw-bold rounded my-3" style="width: 100%">DATA LFO SYSTEM - HIGH SPEED DIESEL LEVEL</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
-                                <th>Aksi</th>
+                                <th>NIP</th>
                                 <th class="op-1">Operator I</th>
                                 <th class="atasan-col">Supervisor</th>
-                                <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Waktu Update</th>
-                                <th class="tgl-col">Storage Tank Level</th>
-                                <th class="tgl-col">Daily Tank Level</th>
-                                <th class="tgl-col">Condition</th>
-                                <th class="common-info text-center">Keterangan</th>
+                                <th class="common-info">Shift</th>
+                                <th class="common-info">Waktu Update</th>
+                                <th class="common-info">Storage Level</th>
+                                <th class="common">Daily Level</th>
+                                <th class="common">Kondisi Peralatan</th>
+                                <th class="common-information text-center">Info HSD</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -69,29 +67,26 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    <td>
-                                        <a href="{{route('op.hsdlevel_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
-                                    </td>
-                            
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->users->tim_divisi}}</td>
                                     <td>{{$dt->created_at}}</td>
                                     <td>
-                                        @if ($dt->storage_level >= 3.50)
-                                            <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} / m<sup>3</sup><i class='bx bxs-up-arrow-circle'></i></div>
-                                        @else
-                                            <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
-                                        @endif
-                                        </td>
-                                        <td>
-                                        @if ($dt->daily_level >= 2.00)
-                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
-                                        @else
-                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
-                                        @endif
-                                        </td>
-                                    <td>@include('commons.alerts.condition_alert_hsd')</td>
+                                    @if ($dt->storage_level >= 3.50)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} / m<sup>3</sup><i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                    </td>
+                                    <td>
+                                    @if ($dt->daily_level >= 2.00)
+                                    <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                    <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                    </td>
+                                    <td>@include('commons.alerts.condition_alert')</td>
                                     <td>{!!$dt->info_hsd!!}</td>
                                     <td>
                                         @include('commons.report_status')

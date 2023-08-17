@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isRendalOp
+class isAuthRole
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,11 @@ class isRendalOp
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->tim_divisi == 'Admin')
+        if(Auth::user() && Auth::user()->divisi != 'Admin')
         {
             return $next($request);
         }
 
-        return redirect()->route('home');
-        
+        return redirect()->route('dashboard');
     }
 }

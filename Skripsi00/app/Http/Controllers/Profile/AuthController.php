@@ -116,7 +116,7 @@ class AuthController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $data['profile_img'] = $request->file('profile_img')->store('uploads');
+            $data['profile_img'] = $request->file('profile_img')->store('uploads','public');
         }
 
         $item = User::findOrFail($id);

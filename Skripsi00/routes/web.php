@@ -60,7 +60,7 @@ use App\Http\Controllers\UnitInformationController;
 // Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::prefix('/home')
-    ->middleware('auth')->group(function () {
+    ->middleware('auth','auth.role')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/unit_information', [UnitInformationController::class, 'unit_information'])->name('unit-information');
     Route::get('/unit_information/equipment/{id}', [UnitInformationController::class, 'detail_about_equipment'])->name('detail-about-equipment');
@@ -280,7 +280,7 @@ Route::prefix('/home')
         Route::get('lfo_system/hsd_level/{id}/edit', [HSDLevelController::class, 'edit'])->name('hsd_level.edit');
         Route::get('lfo_system/hsd_level/data', [HSDLevelController::class, 'shift_data_hsdlevel'])->name('hsd_level.shift_data_hsdlevel');
         Route::get('lfo_system/hsd_level/data/print', [HSDLevelController::class, 'print'])->name('hsd_level.print');
-        // Route::get('lfo_system/hsd_level/all_view', [HSDLevelController::class, 'all_view_hppump'])->name('all_view_hppump');
+        Route::get('lfo_system/hsd_level/all_view', [HSDLevelController::class, 'all_view_hsdlevel'])->name('all_view_hsdlevel');
         // Route::get('lfo_system/hsd_level/one_print/{id}', [HSDLevelController::class, 'one_print'])->name('one_print_hppump');
 
 

@@ -61,8 +61,8 @@
                                     
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
-                                            <div><strong><i class='bx bxs-timer'></i> Recent Report HSD</strong></div>
-                                        
+                                            <div><strong><i class='bx bxs-timer'></i> Recent Report {{Auth::user()->tim_divisi}}</strong></div>
+                                            <div><a href="" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class='bx bx-history'></i> Recent History</a></div>
                                         </div>
                                         <br>
 
@@ -98,9 +98,9 @@
                                                                 <div class="row">
                                                                     <div class="col-6">
                                                                         <ul>
-                                                                            <li>Storage Level : 
+                                                                            <li>Storage Level Tank : 
                                                                                 @if ($dt->storage_level >= 3.50)
-                                                                                    <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} <i class='bx bxs-up-arrow-circle'></i></div>
+                                                                                    <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} / m<sup>3</sup><i class='bx bxs-up-arrow-circle'></i></div>
                                                                                 @else
                                                                                 <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
                                                                                 @endif
@@ -109,7 +109,7 @@
                                                                     </div>
                                                                     <div class="col-6">
                                                                         <ul>
-                                                                            <li>Daily Level : 
+                                                                            <li>Daily Level Tank: 
                                                                                 @if ($dt->daily_level >= 2.00)
                                                                                 <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
                                                                                 @else
@@ -160,7 +160,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <!-- <a href="" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">Show Detail<i class='bx bxs-right-arrow-circle'></i></a> -->
+                                        <a href="{{route('all_view_hsdlevel')}}" class="btn btn-primary text-white btn-sm rounded-pill btn-view mt-3">see more<i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-3 col-md-12 rounded">
@@ -179,11 +179,11 @@
         <!-- / Footer -->
 
 <!-- Modal -->
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel"><i class='bx bx-info-circle'></i> Laporan High Pressure Pump</h1>
+            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel"><i class='bx bx-info-circle'></i> Laporan High Speed Diesel Level</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -191,25 +191,43 @@
             <div class="scroll">
                 <ul class="fw-bold">
                     <li>Laporan Dibuat : <span class="badge bg-primary rounded-pill">{{$dt->users->nama_lengkap}} / {{$dt->operator_kedua}}</span></li>
-                    <li>Tanggal Laporan : <span class="badge bg-warning rounded-pill">{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</span></li>
+                    <li>Tanggal Laporan : <span class="badge bg-warning rounded-pill">{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->created_at)->format('d-m-Y')}}</span></li>
                     <li>Operator Shift : <span class="badge bg-success rounded-pill">{{$dt->operator_shift}}</span>
-                        <span class="badge bg-primary rounded-pill">{{$dt->unit}}</span>
-                    </li>
                 </ul>
                 
                 <div class="fw-bold text-white text-center bg-dark rounded-pill">Informasi Laporan</div>
                 <ul>
-                    <li class="fw-bold">Tanggal Update / Jam Update</li>
-                    <span class="bold">{{$dt->tanggal_update}} / {{$dt->jam_update}} </span>
-                    <li class="fw-bold text-success">High Pressure Pump A</li>
-                    <span class="bold">{{$dt->press_HP_A}} MPA / {{$dt->arus_HP_A}} A</span>
-                    <li class="fw-bold text-danger">High Pressure Pump B</li>
-                    <span class="bold">{{$dt->press_HP_B}} MPA / {{$dt->arus_HP_B}} A</span>
-                    <li class="fw-bold">Catatan High PressurePump</li>
-                    <span class="bold">{!!$dt->info_HP!!}</span>
+                    <li class="fw-bold">Waktu Update</li>
+                    <span class="bold">{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->created_at)->format('H:i:s')}}</span>
+                    <li class="fw-bold">Storage Level Tank / Daily Level Tank</li>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Storage Level Tank : 
+                                    @if ($dt->storage_level >= 3.50)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} / m<sup>3</sup><i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                    <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Daily Level Tank: 
+                                    @if ($dt->daily_level >= 2.00)
+                                    <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                    <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <li class="fw-bold">catatan:</li>
+                    {!!$dt->info_hsd!!}
                 </ul>
             </div>
-            <hr>
             @empty
                 <div class="text-center">Tidak ada</div>
             @endforelse
@@ -219,8 +237,8 @@
         </div>
         </div>
     </div>
-</div> --}}
-{{-- MODALS --}}
+</div> 
+
     <!-- / Layout page -->
 @endsection
 

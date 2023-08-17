@@ -152,15 +152,16 @@
                                  <span class="visually-hidden">Next</span>
                              </button>
                          </div>
-                    </div>
-                    <div class="col-lg-4">
+                </div>
+                <div class="col-lg-4">
                     <div class="row">
                         <div class="p-2 bg-dark rounded fw-bold text-warning">
+                            <div class="text-center fw-bold mb-2">Task Schedule</div>
                             <div id="calendar" class="bg-light"></div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="scroll-about-2 card shadow-lg bg-dark">
+                        <div class="scroll-equipment-about card shadow-lg bg-dark">
                             <div class="badge bg-primary d-grid p-2"><i class='bx bx-book-reader'></i> Equipment About </div>
                             
                             @foreach ($data as $dt)

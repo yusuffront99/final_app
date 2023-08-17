@@ -82,9 +82,7 @@
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
                                     <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        @include('commons.status_kegiatan_co')
-                                    </td>
+                                    <td>@include('commons.alerts.condition_alert')</td>
                                    <td>
                                         @if ($dt->unit == 'Unit 3')
                                             <span class="badge bg-success rounded">{{$dt->unit}}</span>

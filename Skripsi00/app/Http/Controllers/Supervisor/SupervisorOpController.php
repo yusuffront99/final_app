@@ -329,7 +329,7 @@ class SupervisorOpController extends Controller
         $update->operator_shift = $request->get('operator_shift');
         $update->storage_level = $request->get('storage_level');
         $update->daily_level = $request->get('daily_level');
-        $update->status = $request->get('status');
+        $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->info_hsd = $request->get('info_hsd');
         $update->catatan_spv = $request->get('catatan_spv');
@@ -550,6 +550,23 @@ class SupervisorOpController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $data = Fw_Pump::where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->where('operator_shift', Auth::user()->tim_divisi)->latest()->get();
         return view('pages.supervisor.lmasuk_op.lfo_system.fw_pump.all_validasi_fwp', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
+    }
+
+    public function all_hsdlevel_validation()
+    {
+        $nb = BurnerSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nsbl = Sootblower::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nfw = Fw_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhp = Hp_Pump::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nhsd = HsdLevel::with(['users','status_equipment'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nedg = EdgSystem::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncb = CoBoiler::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $nct = CoTurbine::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+        $ncc = CoCommon::with(['users', 'status_equipments'])->where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->count();
+
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = HsdLevel::where('operator_shift', Auth::user()->tim_divisi)->where('status_equipment_id', 1)->where('operator_shift', Auth::user()->tim_divisi)->latest()->get();
+        return view('pages.supervisor.lmasuk_op.lfo_system.hsd_level.all_validasi_hsd', compact('data','user','nb','nfw','nhp','nhsd','nedg','nct','ncb','ncc','nsbl'));
     }
 
     public function all_hppump_validation()

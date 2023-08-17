@@ -59,7 +59,8 @@ id="layout-navbar"
               </div>
               <div class="flex-grow-1">
                 <span class="fw-semibold d-block">{{Auth::user()->nama_panggilan}}</span>
-                <small class="text-muted">{{Auth::user()->tim_divisi}}</small>
+                <small class="text-muted">{{Auth::user()->tim_divisi}}</small><br>
+                <small class="text-danger">({{Auth::user()->jabatan}})</small>
               </div>
             </div>
           </a>

@@ -26,7 +26,7 @@
         <div class="p-2 shadow-sm bg-primary rounded card-item text-center text-white">
             <strong>High Speed Diesel</strong>
             <i class='bx bx-alarm-snooze icon-bg3'></i>
-            <div class="fs-3 fw-bold">{{$tothp}}</div>
+            <div class="fs-3 fw-bold">{{$tothsd}}</div>
             <small>Total Laporan</small>
             <div class="bg-white rounded">
                 <a href="{{route('op.hsdlevel_data_shift')}}" class="text-primary">see report</a>

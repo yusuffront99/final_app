@@ -32,7 +32,7 @@
             
             <div class="my-3">
                 <div class="card shadow-sm p-3 bg-light">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-2">
                         <div class="d-flex justify-content-between">
                             <div class="mx-1">
                                 <a href="{{route('equipment_about.create')}}" class="btn btn-sm btn-success"><i class='bx bx-plus'></i> New Add</a>

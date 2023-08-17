@@ -51,7 +51,7 @@
                             <input type="hidden" value="{{$data_id->storage_level}}" name="storage_level">
                             <input type="hidden" value="{{$data_id->daily_level}}" name="daily_level">
                             <input type="hidden" value="{{$data_id->info_hsd}}" name="info_hsd">
-                            <input type="hidden" value="{{$data_id->status}}" name="status">
+                            <input type="hidden" value="{{$data_id->status_peralatan}}" name="status_peralatan">
 
                             <div class="p-3 card bg-secondary text-white">
                                 <h5 class="text-primary fw-bold">Validation High Speed Diesel</h5>

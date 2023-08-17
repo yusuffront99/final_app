@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('operator_shift');
             $table->float('storage_level', 4 ,2);
             $table->float('daily_level', 4, 2);
-            $table->enum('status', ['Normal','Abnormal']);
+            $table->enum('status_peralatan', ['Normal','Abnormal']);
             $table->foreignId('status_equipment_id')->constrained('status_equipment');
             $table->longText('info_hsd');
             $table->text('catatan_spv');

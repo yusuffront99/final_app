@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'isOperatorTurbine' => \App\Http\Middleware\isOperatorTurbine::class,
         'isSpvOp' => \App\Http\Middleware\isSpvOperasi::class,
         'isSpvHar' => \App\Http\Middleware\isSpvPemeliharaan::class,
+        'auth.role' => \App\Http\Middleware\isAuthRole::class,
     ];
 
 }

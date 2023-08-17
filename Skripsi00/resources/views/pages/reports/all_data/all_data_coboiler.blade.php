@@ -93,9 +93,7 @@
                                             <span class="badge bg-danger rounded">{{$dt->unit}}</span>
                                         @endif
                                     </td>
-                                    <td>
-                                        @include('commons.status_kegiatan_co')
-                                    </td>
+                                    <td>@include('commons.alerts.condition_alert')</td>
 
                                     <td>
                                         <ul>

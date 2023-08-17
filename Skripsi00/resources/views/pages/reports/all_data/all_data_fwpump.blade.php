@@ -70,7 +70,7 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <td>{{$no++;}}</td>
-                                    <td>{{$dt->nip}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
                                     <td>{{$dt->operator_kedua}}</td>
                                     <td>{{$dt->atasan}}</td>

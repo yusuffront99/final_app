@@ -20,7 +20,7 @@
                             </a>
                             /
                             <span class="text-warning mx-2">
-                                Sootblower System
+                                High Speed Diesel Level
                             </span>
                         </div>
                     </div>

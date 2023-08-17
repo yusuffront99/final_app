@@ -17,9 +17,9 @@ class HSDLevelController extends Controller
     public function index()
     { 
         $user = User::where('id', Auth::user()->id)->first();
-        $data = HsdLevel::with('users')->latest()->get();
+        $data = HsdLevel::with('users')->where('operator_shift', Auth::user()->tim_divisi)->latest()->get();
         $date = Carbon::now()->format('Y-m-d');
-        $data_latest = HsdLevel::with('users')->orderBy('created_at','desc')->take(2)->get();
+        $data_latest = HsdLevel::with('users')->orderBy('created_at','desc')->take(1)->get();
 
         return view('pages.LFOSystem.HSDLevel.index', compact('user', 'data','date','data_latest'));
     }
@@ -63,7 +63,7 @@ class HSDLevelController extends Controller
             'operator_shift' => "required",
             'storage_level' => 'required',
             'daily_level' => 'required',
-            'status' => 'required',
+            'status_peralatan' => 'required',
             'status_equipment_id' => 'required',
             'info_hsd' => 'required',
             'catatan_spv' => 'required',
@@ -76,7 +76,7 @@ class HSDLevelController extends Controller
         $hsd->operator_shift = $request->get('operator_shift');
         $hsd->storage_level = $request->get('storage_level');
         $hsd->daily_level = $request->get('daily_level');
-        $hsd->status = $request->get('status');
+        $hsd->status_peralatan = $request->get('status_peralatan');
         $hsd->status_equipment_id = $request->get('status_equipment_id');
         $hsd->info_hsd = $request->get('info_hsd');
         $hsd->catatan_spv = $request->get('catatan_spv');
@@ -106,13 +106,20 @@ class HSDLevelController extends Controller
         $update->operator_shift = $request->get('operator_shift');
         $update->storage_level = $request->get('storage_level');
         $update->daily_level = $request->get('daily_level');
-        $update->status = $request->get('status');
+        $update->status_peralatan = $request->get('status_peralatan');
         $update->status_equipment_id = $request->get('status_equipment_id');
         $update->info_hsd = $request->get('info_hsd');
         $update->catatan_spv = $request->get('catatan_spv');
         $update->save();
 
         return redirect()->route('hsd_level.index')->with('success', 'Updated Data Successfully');
+    }
 
+    public function all_view_hsdlevel()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        $data = HsdLevel::with(['users','status_equipments'])->orderBy('created_at','desc')->get();
+
+        return view('pages.reports.all_data.all_data_hsdlevel', compact('data','user'));
     }
 }

@@ -45,21 +45,19 @@
                                 <a href="{{route('lmasuk.har.hsdlevel')}}" class="btn btn-sm btn-dark"><i class='bx bx-left-arrow-circle'></i> Back</a>
                             </div>
                         </div>
-                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">LIGHT FUEL OIL SYSTEM VALIDATIONS</span>
+                        <span class="badge bg-primary p-3 fw-bold rounded mb-4" style="width: 100%">LIGHT FUEL OIL SYSTEM - HIGH SPEED DIESEL LEVEL VALIDATIONS</span>
                         <thead class="table-primary">
                             <tr>
                                 <th>No</th>
                                 <th>Aksi</th>
                                 <th class="op-1">Operator I</th>
-                                <th class="op-2">Operator II</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
-                                <th class="tgl-col">Tanggal Update</th>
-                                <th class="jam-col">Jam Update</th>
-                                <th class="tgl-col">DP High</th>
-                                <th class="common-info text-center">HP Pump A</th>
-                                <th class="common-info text-center">HP Pump B</th>
-                                <th class="common-info text-center">Info HP Pump</th>
+                                <th class="tgl-col">Waktu Update</th>
+                                <th class="tgl-col">Storage Tank Level</th>
+                                <th class="tgl-col">Daily Tank Level</th>
+                                <th class="tgl-col">Condition</th>
+                                <th class="common-info text-center">Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -74,28 +72,25 @@
                                         <a href="{{route('har.hsdlevel_validation', $dt->id)}}" class="bg-danger p-2 text-white"><i class='bx bx-edit'></i></a>
                                     </td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
-                                    <td>{{$dt->operator_shift}}</td>
-                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>{{$dt->DP_High}}</td>
+                                    <td>{{$dt->users->atasan}}</td>
+                                    <td>{{$dt->users->tim_divisi}}</td>
+                                    <td>{{$dt->created_at}}</td>
                                     <td>
-                                        <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_HP_A}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_HP_A}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_HP_A}}</li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_HP_B}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_HP_B}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_HP_B}}</li>
-                                        </ul>
-                                    </td>
-
-                                    <td>{!!$dt->info_HP!!}</td>
+                                        @if ($dt->storage_level >= 3.50)
+                                            <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} / m<sup>3</sup><i class='bx bxs-up-arrow-circle'></i></div>
+                                        @else
+                                            <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                        @endif
+                                        </td>
+                                        <td>
+                                        @if ($dt->daily_level >= 2.00)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                        @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                        @endif
+                                        </td>
+                                    <td>@include('commons.alerts.condition_alert_hsd')</td>
+                                    <td>{!!$dt->info_hsd!!}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

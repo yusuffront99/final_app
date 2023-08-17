@@ -166,7 +166,7 @@
             <div class="modal-body">
                 <div class="d-flex justify-content-evenly">
                     @foreach ($hsd as $h)
-                    <strong class="text-primary">Storage Level (m<sup>3</sup>) : 
+                    <strong class="text-primary">Storage Level Tank (m<sup>3</sup>) : 
                         <br>
                         @if ($h->storage_level >= 3.0)
                         <div class="text-success">{{$h->storage_level}} / (m<sup>3</sup>)<i class='bx bx-up-arrow-circle'></i></div>
@@ -174,7 +174,7 @@
                             <div class="text-danger">{{$h->storage_level}} / (m<sup>3</sup>)<i class='bx bx-down-arrow-circle'></i></div>
                         @endif
                     </strong>
-                    <strong class="text-primary">Daily Level (m<sup>3</sup>) : <br><span class="text-danger">{{$h->daily_level}} / (m<sup>3</sup>)<i class='bx bx-down-arrow-circle'></i></span></strong>
+                    <strong class="text-primary">Daily Level Tank (m<sup>3</sup>) : <br><span class="text-danger">{{$h->daily_level}} / (m<sup>3</sup>)<i class='bx bx-down-arrow-circle'></i></span></strong>
                     @endforeach
                 </div>
                 <hr>

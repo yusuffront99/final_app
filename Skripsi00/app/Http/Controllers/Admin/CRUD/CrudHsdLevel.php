@@ -36,7 +36,7 @@ class CrudHsdLevel extends Controller
     //     $operators = User::where('jabatan', 'Operator Boiler')->orderBy('nama_lengkap', 'asc')->get();
     //     $status_equipments = StatusEquipment::get();
     //     $forwarding = forwarding::where('id', $id)->first();
-    //     return view('pages.admin.laporan.hppump.data_validasi_forwarding', compact('forwarding', 'status_equipments','operators','user'));
+    //     return view('pages.admin.laporan.hsdlevel.data_validasi_forwarding', compact('forwarding', 'status_equipments','operators','user'));
     // }
 
     public function update($id, Request $request)
@@ -79,15 +79,15 @@ class CrudHsdLevel extends Controller
     {
         $user = User::where('id', Auth::user()->id)->first();
         $data = HsdLevel::with('users')->onlyTrashed()->get();
-        return view('pages.admin.laporan.hppump.data_trash_hppump', compact('data','user'));
+        return view('pages.admin.laporan.hsdlevel.data_trash_hsd', compact('data','user'));
     }
 
     public function restore($id) 
     {
-        $hppump = HsdLevel::onlyTrashed()->where('id',$id);
-    	$hppump->restore();
+        $hsdlevel = HsdLevel::onlyTrashed()->where('id',$id);
+    	$hsdlevel->restore();
 
-        return redirect()->route('admin.index.hppump')->with('succes', 'Data restored successfully');
+        return redirect()->route('admin.index.hsdlevel')->with('succes', 'Data restored successfully');
     }
 
     // public function download($id)

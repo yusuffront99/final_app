@@ -164,7 +164,7 @@
                                     <div class="row">
                                         <div class="col-lg-8 mx-auto">
                                             <label for="">Masukkan Catatan <span style="color: yellow">*</span></label>
-                                            <input type="text" name="catatan" id="catatan" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
+                                            <input type="text" name="catatan_spv" id="catatan_spv" class="form-control" placeholder="Laporan Sesuai..." style="height: 40px" required>
                                         </div>
                                     </div>
                                 </div>

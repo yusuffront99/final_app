@@ -60,23 +60,29 @@
                                     <div class="col-lg-6 col-md-6">
                                         <input type="hidden" name="{{$user->id}}">
                                         <div class="form-group">
-                                            <label for="">NIP</label>
+                                            <label for="" class="fw-bold">NIP</label>
                                             <input type="text" name="nip" id="nip" class="form-control mb-2" value="{{$user->nip}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Nama Lengkap</label>
+                                            <label for="" class="fw-bold">Nama Lengkap</label>
                                             <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control mb-2" value="{{$user->nama_lengkap}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Nama Panggilan</label>
+                                            <label for="" class="fw-bold">Nama Panggilan</label>
                                             <input type="text" name="nama_panggilan" id="nama_panggilan" class="form-control mb-2" value="{{$user->nama_panggilan}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Email</label>
+                                            <label for="" class="fw-bold">Email</label>
                                             <input type="email" name="email" id="email" class="form-control mb-2" value="{{$user->email}}">
                                         </div>
+                                        <!-- <div class="form-group">
+                                            <label for="" class="fw-bold">Password</label>
+                                            <input type="password" name="password" id="password" class="form-control" value="{{$user->password}}">
+                                        </div> -->
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="">Divisi</label>
+                                            <label for="" class="fw-bold">Divisi</label>
                                             <select name="divisi" id="divisi" class="form-select">
                                                 <option value="Admin" selected hidden>-- Pilih Divisi --</option>
                                                 <option value="Operasi" {{$user->divisi == 'Operasi' ? 'selected' : ''}}>Operasi</option>
@@ -85,7 +91,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Tim Divisi</label>
+                                            <label for="" class="fw-bold">Tim Divisi</label>
                                             <select name="tim_divisi" id="tim_divisi" class="form-select">
                                                 <option value="Admin" selected hidden>-- Pilih Divisi --</option>
                                                 <option value="Shift E" {{$user->tim_divisi == 'Shift E' ? 'selected' : ''}}>Shift E</option>
@@ -97,10 +103,8 @@
                                                 <option value="Tim BOT" {{$user->tim_divisi == 'Tim BOT' ? 'selected' : ''}}>Tim BOT</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-group mb-2">
-                                            <label for="">Jabatan</label>
+                                            <label for="" class="fw-bold">Jabatan</label>
                                             <select name="jabatan" id="jabatan" class="form-select">
                                                 <option value="-" selected hidden>-- Pilih Jabatan --</option>
                                                 <option value="Operator Boiler" {{$user->jabatan == 'Operator Boiler' ? 'selected' : ''}}>Operator Boiler</option>
@@ -110,7 +114,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="">Atasan</label>
+                                            <label for="" class="fw-bold">Atasan</label>
                                             <select name="atasan" id="atasan" class="form-select">
                                                 @foreach ($leaders as $ld)
                                                     @if (Auth::user()->atasan == "-")
@@ -123,7 +127,7 @@
                                         </div>
                                     
                                         <div class="form-group mb-2">
-                                            <label for="">Foto Profil</label>
+                                            <label for="" class="fw-bold">Foto Profil</label>
                                             <input type="hidden" name="oldImage" value="{{$user->profile_img}}">
                                             <input type="file" name="profile_img" value="{{$user->profile_img}}" class="form-control">
                                         </div>

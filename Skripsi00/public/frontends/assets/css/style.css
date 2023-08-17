@@ -303,6 +303,26 @@ a.btn.btn-warning.btn-sm.btn-view {
   border-radius: 50%;
 }
 
+.dot {
+  background: greenyellow;
+  padding: 1px 5px;
+  border-radius: 50%;
+}
+
+.reject {
+  background: greenyellow;
+  padding: 1px 5px;
+  border-radius: 50%;
+}
+
+span.notif-reject.p-2.rounded-circle {
+  position: absolute;
+  padding: 5px !important;
+  top: 5px;
+  right: -10px;
+  background: red !important;
+}
+
 th#th-col-burn1 {
   width: 190px !important;
 }

@@ -74,7 +74,7 @@
                                         <br>
                                         <select name="status_equipment_id" id="status_equipment_id" class="" width="50%">
                                             @foreach ($status_equipments as $status)
-                                                <option value="{{$status->id}}">{{$status->status_equipment}}</option>
+                                                <option value="{{$status->id}}">{{$status->status_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

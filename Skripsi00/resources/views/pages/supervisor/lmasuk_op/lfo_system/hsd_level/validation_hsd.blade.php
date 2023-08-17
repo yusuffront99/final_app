@@ -122,7 +122,7 @@
                                                 @endif
                                             </li>
                                             <li>
-                                                <small>Status: <span class="badge bg-success">{{$data_id->status}}</span></small>
+                                                <small>Status: <span class="badge bg-success">{{$data_id->status_peralatan}}</span></small>
                                             </li>
                                         </ul>
                                     </div>

@@ -15,7 +15,7 @@
                                 <i class='bx bxs-dashboard'></i> Dashboard
                             </a>
                             /
-                            <a href="{{route('admin.index.hppump')}}" class="text-primary">
+                            <a href="{{route('admin.index.hsdlevel')}}" class="text-primary">
                                 LFO System /  HSD Level
                             </a>
                             /
@@ -38,7 +38,7 @@
                 <div class="card shadow-sm p-3 bg-light">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <a href="{{route('admin.index.hppump')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
+                            <a href="{{route('admin.index.hsdlevel')}}" class="btn btn-sm btn-primary"><i class='bx bx-left-arrow-circle'></i> Back</a>
                         </div>
                     </div>
                     <br>
@@ -47,18 +47,17 @@
                         <span class="badge bg-danger p-3 fw-bold rounded mb-4" style="width: 100%">DATA HIGH SPEED DIESEL LEVEL - TRASH DATA</span>
                         <thead class="table-primary">
                             <tr>
-                                <th class="op-1 text-center">Aksi</th>
+                                <<th class="op-1 text-center">Aksi</th>
                                 <th>No</th>
-                                <th class="op-1 text-center">Trash In</th>
-                                <th class="op-1">Operator I</th>
-                                <th class="op-2">Operator II</th>
+                                <th class="op-1">NIP</th>
+                                <th class="op-1">Nama Operator</th>
                                 <th class="atasan-col">Supervisor</th>
                                 <th class="tgl-col">Shift</th>
                                 <th class="tgl-col">Tanggal Update</th>
-                                <th class="jam-col">Jam Update</th>
-                                <th class="common-info text-center">FW Pump A</th>
-                                <th class="common-info text-center">FW Pump B</th>
-                                <th class="common-info text-center">Info FP Pump</th>
+                                <th class="tgl-col">Kondisi Peralatan</th>
+                                <th class="common-info text-center">Storage Level</th>
+                                <th class="common-info text-center">Daily Level</th>
+                                <th class="common-info text-center">Info HSD Level</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -72,34 +71,39 @@
                                         <div class="d-flex justify-content-evenly">
                                             <div class="mt-3">
                                                 {{-- <a href="{{route('har.burner_updated', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Download"><i class='bx bxs-download'></i></a> --}}
-                                                <a href="{{route('admin.restore.hppump', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
-                                                <a href="{{route('admin.delete_permanent.hppump', $dt->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
+                                                <a href="{{route('admin.restore.hsdlevel', $dt->id)}}" class="bg-success p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="restore"><i class='bx bx-refresh'></i></a>
+                                                <a href="{{route('admin.delete_permanent.hsdlevel', $dt->id)}}" class="bg-danger p-2 text-white mb-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="delete"><i class='bx bxs-trash-alt' ></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td>{{$no++;}}</td>
-                                    <td>{{$dt->deleted_at}}</td>
+                                    <td>{{$dt->users->nip}}</td>
                                     <td>{{$dt->users->nama_lengkap}}</td>
-                                    <td>{{$dt->operator_kedua}}</td>
-                                    <td>{{$dt->atasan}}</td>
+                                    <td>{{$dt->users->atasan}}</td>
                                     <td>{{$dt->operator_shift}}</td>
-                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d', $dt->tanggal_update)->format('d-m-Y')}}</td>
-                                    <td>{{$dt->jam_update}}</td>
-                                    <td>
-                                        <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_FP_A}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_FP_A}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_FP_A}}</li>
-                                        </ul>
+                                    <td>{{Carbon\carbon::createFromFormat('Y-m-d H:i:s', $dt->created_at)->isoFormat('DD-MM-Y')}}</td>
+                                    <td class="text-center">
+                                        @if ($dt->status_peralatan == 'Normal')
+                                            <div class="badge bg-success">{{$dt->status_peralatan}}</div>
+                                        @else
+                                            <div class="badge bg-danger">{{$dt->status_peralatan}}</div>
+                                        @endif
                                     </td>
-                                    <td>
-                                        <ul>
-                                            <li class="text-danger">Arus : {{$dt->arus_FP_B}} A</li>
-                                            <li class="text-success">Pressure : {{$dt->press_FP_B}} MPA</li>
-                                            <li class="text-warning">Status : {{$dt->status_FP_B}}</li>
-                                        </ul>
+                                    <td class="text-center">
+                                    @if ($dt->storage_level >= 3.50)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->storage_level}} <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->storage_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
                                     </td>
-                                    <td>{!!$dt->info_FP!!}</td>
+                                    <td class="text-center">
+                                    @if ($dt->daily_level >= 2.00)
+                                        <div class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Normal">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-up-arrow-circle'></i></div>
+                                    @else
+                                        <div class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Level Low">{{$dt->daily_level}} / m<sup>3</sup> <i class='bx bxs-down-arrow-circle'></i></div>
+                                    @endif
+                                    </td>
+                                    <td>{!!$dt->info_hsd!!}</td>
                                     <td>
                                         @include('commons.report_status')
                                     </td>

@@ -186,6 +186,7 @@
               $('#unit').val(data.unit);
               $('#damage_date').val((dayjs(data.tanggal_update).format('DD-MM-YYYY')));
               $('#repair_date').val((dayjs(data.updated_at).format('DD-MM-YYYY')));
+              $('#description').val(data.catatan_spv);
         })
       });
   });

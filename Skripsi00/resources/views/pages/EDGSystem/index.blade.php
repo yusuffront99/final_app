@@ -51,7 +51,6 @@
                                 <div class="col-lg-12 col-md-12 col-sm">
                                     <div class="mb-2">
                                         <small class="text-dark fst-italic"><i class='bx bx-info-circle'></i> Laporan Emergency Diesel Generator System adalah sebuah laporan yang dibuat untuk mengupdate kondisi terakhir peralatan tersebut. Yang mana ini dilakukan setiap seminggu sekali (Hari Jum'at)</small><br>
-                                        <a href="{{route('all_view_edg')}}" class="btn btn-warning btn-sm rounded-pill btn-all-info">All Information <i class='bx bxs-right-arrow-circle'></i></a>
                                     </div>
                                     <div class="card bg-secondary text-white p-3">
                                         <div class="d-flex justify-content-between">
@@ -166,7 +165,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel"><i class='bx bx-info-circle'></i> Laporan Light Fuel Oil</h1>
+            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel"><i class='bx bx-info-circle'></i> Laporan Emergency Diesel Generator</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

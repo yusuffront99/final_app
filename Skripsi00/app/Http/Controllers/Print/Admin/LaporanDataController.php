@@ -367,9 +367,34 @@ class LaporanDataController extends Controller
         $category = $request->input('select_category');
         $unit = $request->input('select_unit');
 
-        if($category == '' || $unit == '')
+        if($category)
         {
-            $reports= Maintenance::whereBetween('created_at', [$first_date, $last_date])->orderBy('created_at','desc')->get();   
+            $reports = Maintenance::orderBy('created_at','desc')->get();
+        }
+         
+        if($first_date && $last_date)
+        {
+            $reports = Maintenance::whereBetween('created_at', [$first_date, $last_date])->orderBy('created_at','desc')->get();
+        }
+
+        if($category && $first_date && $last_date)
+        {
+            $reports = Maintenance::whereBetween('created_at', [$first_date, $last_date])->orderBy('created_at','desc')->get();
+        }
+
+        if($unit)
+        {
+            $reports = Maintenance::orderBy('created_at','desc')->get();
+        }
+
+        if($category && $unit == '')
+        {
+            $reports= Maintenance::where('category', $category)->whereBetween('created_at', [$first_date, $last_date])->orderBy('created_at','desc')->get();   
+        }
+
+        if($category == '' && $unit)
+        {
+            $reports= Maintenance::where('unit', $unit)->whereBetween('created_at', [$first_date, $last_date])->orderBy('created_at','desc')->get();   
         }
 
         if($first_date == '' && $last_date == '')

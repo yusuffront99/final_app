@@ -220,7 +220,7 @@
                                     <ul>
                                         <li>Nama Item  : {{$rp->item_sp_1}}</li>
                                         <li>Total Item : {{$rp->item_total_1}} (Jumlah)</li>
-                                        <li>Harga Per item : <?php echo number_format($rp->item_price_3, 0, ',', '.')?> (Rupiah)</li>
+                                        <li>Harga Per item : <?php echo number_format($rp->item_price_1, 0, ',', '.')?> (Rupiah)</li>
                                     </ul>
                             @else
                                 -

@@ -40,10 +40,13 @@ use App\Http\Controllers\ChangeOver\COTurbineController;
 use App\Http\Controllers\LFOSystem\FWPumpController;
 use App\Http\Controllers\LFOSystem\HPPumpController;
 use App\Http\Controllers\LFOSystem\HSDLevelController;
+use App\Http\Controllers\LogBook\LogBookController;
 use App\Http\Controllers\Print\Admin\LaporanDataController;
+use App\Http\Controllers\PrintTestController;
 use App\Http\Controllers\Profile\AuthController;
 use App\Http\Controllers\Report\Alls\AllDataController;
 use App\Http\Controllers\Sootblower\SootblowerController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UnitInformationController;
 
 
@@ -60,8 +63,10 @@ use App\Http\Controllers\UnitInformationController;
 
 // Route::get('/', [HomeController::class, 'home'])->name('home');
 
+
 Route::prefix('/home')
     ->middleware('auth','auth.role')->group(function () {
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/unit_information', [UnitInformationController::class, 'unit_information'])->name('unit-information');
     Route::get('/unit_information/equipment/{id}', [UnitInformationController::class, 'detail_about_equipment'])->name('detail-about-equipment');
@@ -70,10 +75,10 @@ Route::prefix('/home')
     // ===== PROFILE
     Route::resource('profile', AuthController::class);
 
+    // ==== LOGBOOK
+    Route::get('logbook', [LogBookController::class, 'index'])->name('logbook.index');
 
-    // Route::post('profile_img', [ProfileController::class, 'store'])->name('store-img');
-    // Route::get('profile_img/{id}/edit', [ProfileController::class, 'edit'])->name('edit-img');
-    // Route::put('profile_img/{id}', [ProfileController::class, 'update'])->name('update-img');
+    
     // ===== PROFILE
     // *** CHART FILTER
     Route::get('home/lfo_system/hsd_level/chart', [HSDLevelController::class, 'showChart'])->name('show.chart');
@@ -341,7 +346,7 @@ Route::prefix('/dashboard')
     ->middleware(['auth', 'isRendalOp'])
     ->group(function(){
         Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
-    
+
         // --- DATA LAPORAN BURNER
         // Route::get('data_laporan', [DataLaporanController::class, 'index'])->name('admin.data_laporan');
         Route::get('report/burner/', [CrudBurner::class, 'index'])->name('admin.index.burner');

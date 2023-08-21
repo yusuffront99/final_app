@@ -134,10 +134,10 @@
                                     <td>{{$dt->operator_shift}}</td>
                                     <td>{{$dt->created_at}}</td>
                                     <td class="text-center">
-                                        @if ($dt->status == 'Normal')
-                                            <div class="badge bg-success">{{$dt->status}}</div>
+                                        @if ($dt->status_peralatan == 'Normal')
+                                            <div class="badge bg-success">{{$dt->status_peralatan}}</div>
                                         @else
-                                            <div class="badge bg-danger">{{$dt->status}}</div>
+                                            <div class="badge bg-danger">{{$dt->status_peralatan}}</div>
                                         @endif
                                     </td>
                                     <td class="text-center">

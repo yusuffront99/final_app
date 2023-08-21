@@ -195,7 +195,7 @@
               $('#exampleModal').modal('show');
               $('#code').val(data.id.slice(0,8));
               $('#user_id').val(data.user_id);
-              // $('#unit').val(data.unit);
+              $('#description').val(data.catatan_spv);
               $('#damage_date').val((dayjs(data.tanggal_update).format('DD-MM-YYYY')));
               $('#repair_date').val((dayjs(data.updated_at).format('DD-MM-YYYY')));
         })
